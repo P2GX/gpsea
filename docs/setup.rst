@@ -37,7 +37,7 @@ and install the packages into the environment.
 
 A specific release (e.g. ``v0.7.0``) can be installed with::
 
-  python3 -m pip install gpsea=0.7.0
+  python3 -m pip install gpsea==0.7.0
 
 
 Latest release
