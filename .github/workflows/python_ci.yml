@@ -20,6 +20,6 @@ jobs:
           with:
             python-version: ${{ matrix.python-version }}
         - name: Install package
-          run: python3 -m pip install .[test]
+          run: python3 -m pip install --editable .[test]
         - name: Run pytest tests
           run: MPLBACKEND=Agg GPSEA_CACHEDIR=.gpsea_ci_cachedir pytest
