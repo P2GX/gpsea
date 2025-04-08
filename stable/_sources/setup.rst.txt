@@ -37,7 +37,7 @@ and install the packages into the environment.
 
 A specific release (e.g. ``v0.7.0``) can be installed with::
 
-  python3 -m pip install gpsea=0.7.0
+  python3 -m pip install gpsea==0.7.0
 
 
 Latest release
@@ -47,7 +47,7 @@ It is also possible to instal the *latest* release with the latest features and 
 On top of having Python available, installation of the latest release needs
 `Git <https://git-scm.com/>`_ to be installed as well::
 
-  git clone https://github.com/monarch-initiative/gpsea.git
+  git clone https://github.com/P2GX/gpsea.git
   
   cd gpsea
 
@@ -67,20 +67,22 @@ Run tests
 *********
 
 Running tests can be done as an optional step after the installation, to ensure GPSEA works correctly.
-However, several extra libraries are required to do so, hence we must install GPSEA with ``test`` extras::
+However, the Pytest testing framework is needed to orchestrate the test execution.
+To install ``pytest``, we can install GPSEA with ``test`` extras.
+Moreover, GPSEA must be installed in `editable` mode (``--editable``)::
 
-  python3 -m pip install .[test]
+  python3 -m pip install --editable .[test]
 
 .. note::
 
   Most users do *not* need to run the tests while installing GPSEA,
   as the tests are run within the contiunuous integration (CI) pipeline.
 
-With the ``test`` extras installed, Then, running the tests is as simple as::
+Then, running the tests is as simple as::
 
   pytest
 
-The Pytest runner will run >400 unit and integration tests, and report the results to the command line.
+Pytest will run >400 unit and integration tests, and report the results to the command line.
 
 Only the tests that do *not* require internet access are run.
 To run the "online" tests, we add ``--runonline`` option to the command line invocation::
