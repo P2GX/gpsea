@@ -5,7 +5,7 @@ from collections import Counter
 
 import hpotk
 
-from gpsea.model import Patient
+from gpsea.model import Patient, Cohort, SampleLabels
 from ..predicate import VariantPredicate, true
 
 from ._api import Categorization, PatientCategory
@@ -735,4 +735,126 @@ def random_classifier(
     """
     return RandomClassifier(
         seed=seed,
+    )
+
+
+class FrozenGenotypeClassifier(GenotypeClassifier):
+
+    def __init__(
+        self,
+        label_to_code: typing.Mapping[SampleLabels, int],
+        code_to_cat: typing.Mapping[int, Categorization],
+        categorizations: typing.Iterable[Categorization],
+    ):
+        self._label_to_code = dict(label_to_code)
+        self._code_to_cat = dict(code_to_cat)
+        self._categorizations = tuple(categorizations)
+        self._hash = FrozenGenotypeClassifier._compute_hash(
+            vals=self._code_to_cat,
+            cats=self._categorizations,
+        )
+
+    @property
+    def name(self) -> str:
+        return "Frozen genotype classifier"
+
+    @property
+    def description(self) -> str:
+        return "Classify the individuals based on provided genotype codes"
+
+    @property
+    def variable_name(self) -> str:
+        return "Genotype code"
+
+    def get_categorizations(self) -> typing.Sequence[Categorization]:
+        return self._categorizations
+
+    def test(
+        self,
+        patient: Patient,
+    ) -> typing.Optional[Categorization]:
+        code = self._label_to_code.get(patient.labels, None)
+        if code is None:
+            raise ValueError(f"Unexpected patient {patient.labels}")
+
+        return self._code_to_cat[code]
+
+    @staticmethod
+    def _compute_hash(
+        vals: typing.Mapping[typing.Any, typing.Any],
+        cats: typing.Iterable[typing.Hashable],
+    ) -> int:
+        hash_value = 17
+
+        for key, val in vals.items():
+            hash_value += 13 * hash(key)
+            hash_value += 13 * hash(val)
+
+        for cat in cats:
+            hash_value += 23 * hash(cat)
+
+        return hash_value
+
+    def __eq__(self, value: object) -> bool:
+        return isinstance(value, FrozenGenotypeClassifier) \
+            and self._label_to_code == value._label_to_code \
+            and self._code_to_cat == value._code_to_cat \
+            and self._categorizations == value._categorizations
+
+    def __hash__(self) -> int:
+        return self._hash
+
+
+def frozen_classifier(
+    samples: typing.Union[Cohort, typing.Iterable[Patient]],
+    codes: typing.Iterable[int],
+    labels: typing.Optional[typing.Mapping[int, str]] = None,
+) -> GenotypeClassifier:
+    """
+    TODO: write docs
+    """
+    if isinstance(samples, Cohort):
+        samples = tuple(samples.all_patients)
+    elif isinstance(samples, typing.Iterable):
+        samples = tuple(samples)
+    else:
+        raise ValueError("Bla")
+
+    n_samples = len(samples)
+    codes = tuple(codes)
+    assert n_samples == len(codes), (
+        f"Sample count {n_samples} must match the code count {len(codes)}"
+    )
+
+    label_to_code: typing.Mapping[SampleLabels, int] = {
+        sample.labels: code for sample, code in zip(samples, codes)
+    }
+
+    assert len(label_to_code) == n_samples, (
+        f"Duplicate samples detected! Found only ({len(label_to_code)} unique sample labels in {n_samples} samples)"
+    )
+
+    codes_uniq = sorted(set(codes))
+    code_to_cat: typing.Mapping[int, Categorization] = {}
+    for code in codes_uniq:
+        if labels is None:
+            name = str(code)
+        else:
+            if code in labels:
+                name = labels[code]
+            else:
+                raise ValueError(f"Missing label for code {code} in provided `labels`")
+
+        code_to_cat[code] = Categorization(
+            category=PatientCategory(
+                cat_id=int(code),
+                name=name,
+                description=None,
+            ),
+        )
+
+    return FrozenGenotypeClassifier(
+        label_to_code=label_to_code,
+        code_to_cat=code_to_cat,
+        categorizations=(code_to_cat[code] for code in codes_uniq),
     )

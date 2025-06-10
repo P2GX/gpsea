@@ -9,6 +9,7 @@ from ._gt_classifiers import (
     monoallelic_classifier,
     biallelic_classifier,
     allele_count,
+    frozen_classifier,
     random_classifier,
 )
 from ._util import (
@@ -29,6 +30,7 @@ __all__ = [
     "monoallelic_classifier",
     "biallelic_classifier",
     "allele_count",
+    "frozen_classifier",
     "random_classifier",
     "PhenotypeClassifier",
     "PhenotypeCategorization",

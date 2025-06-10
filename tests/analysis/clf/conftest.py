@@ -1,3 +1,5 @@
+import typing
+
 import pytest
 
 from gpsea.model import (
@@ -20,13 +22,24 @@ from gpsea.model.genome import (
 )
 
 
-"""
-Genesis family - Autosomal dominant but can also be used as X dominant.
+@pytest.fixture(scope="package")
+def genesis_family(
+    adam: Patient,
+    eve: Patient,
+    cain: Patient,
+) -> typing.Sequence[Patient]:
+    """
+    Genesis family - Autosomal dominant but can also be used as X dominant.
 
-* Adam - father, unaffected
-* Eve - mother, affected
-* Cain - son, affected
-"""
+    * Adam - father, unaffected
+    * Eve - mother, affected
+    * Cain - son, affected
+    """
+    return (
+        adam,
+        eve,
+        cain,
+    )
 
 
 @pytest.fixture(scope="package")
