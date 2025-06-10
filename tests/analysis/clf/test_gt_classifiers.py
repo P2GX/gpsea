@@ -80,3 +80,12 @@ class TestFrozenClassifier:
         )
         
         assert isinstance(gt_clf, GenotypeClassifier)
+
+    def test_reports_code_count_mismatch(self):
+        with pytest.raises(AssertionError) as e:
+            frozen_classifier(
+                samples=(),
+                codes=(0,),
+            )
+        
+        assert e.value.args == ("Sample count 0 must match the code count 1",)

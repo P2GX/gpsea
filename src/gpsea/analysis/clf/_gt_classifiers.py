@@ -804,6 +804,15 @@ class FrozenGenotypeClassifier(GenotypeClassifier):
     def __hash__(self) -> int:
         return self._hash
 
+    def __repr__(self) -> str:
+        return (
+            "FrozenGenotypeClassifier("
+            f"label_to_code={self._label_to_code}, "
+            f"code_to_cat={self._code_to_cat}, "
+            f"categorizations={self._categorizations}"
+            ")"
+        )
+
 
 def frozen_classifier(
     samples: typing.Union[Cohort, typing.Iterable[Patient]],
@@ -811,14 +820,27 @@ def frozen_classifier(
     labels: typing.Optional[typing.Mapping[int, str]] = None,
 ) -> GenotypeClassifier:
     """
-    TODO: write docs
+    Frozen classifier assigns the `samples` into genotype groups
+    based on user-provided genotype codes, such as cluster IDs.
+
+    Since the classifier associates the `codes` with the `samples`,
+    the classifier can only be used with the `samples` of the cohort,
+    and *not* with any other cohorts/individuals.
+    The classifiers raises an error if asked to assign a :class:`~gpsea.model.Patient`
+    that is not present in `samples`.
+
+    See the :ref:`genotype-codes` section for an example.
+
+    :param samples: a GPSEA cohort or another iterable of :class:`~gpsea.model.Patient` objects.
+    :param codes: an iterable of genotype codes. The `codes` length must match the `samples` count.
+    :param labels: a mapping with code to label (e.g. ``{0: "Missense", 1: "Frameshift"}``).
     """
     if isinstance(samples, Cohort):
         samples = tuple(samples.all_patients)
     elif isinstance(samples, typing.Iterable):
         samples = tuple(samples)
     else:
-        raise ValueError("Bla")
+        raise ValueError(f"`samples` should be a `Cohort` or an iterable with patients, but got {samples}")
 
     n_samples = len(samples)
     codes = tuple(codes)
