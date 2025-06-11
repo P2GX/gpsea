@@ -6,11 +6,12 @@ Genotype classifiers
 
 
 A genotype classifier assigns an individual into a class based on their genotype.
-In GPSEA, genotype classifiers leverage information from one of the three areas:
+In GPSEA, genotype classifiers leverage information from one of the four areas:
 
 * Sex
 * Disease diagnosis
 * Presence of variant(s) that meet certain inclusion criteria (e.g. a missense variant in heterozygous genotype)
+* User-provided codes
 
 Classification based on sex or disease diagnosis is relatively straightforward - the individuals
 are assigned by the biological sex or presence of a specific diagnosis.
@@ -25,6 +26,9 @@ including factors such as the expected mode of inheritance and sex,
 to assign the tested individual into a genotype group
 (:ref:`variant-category` or :ref:`allele-count`).
 
+The ultimate flexibility in the genotype class assignment can be achieved using genotype codes,
+which essentially delegate the assignment to the user (:ref:`genotype-codes`).
+
 .. toctree::
   :maxdepth: 1
   :caption: Contents:
@@ -34,3 +38,4 @@ to assign the tested individual into a genotype group
   variant_predicates
   variant_category
   allele_count
+  genotype_codes
