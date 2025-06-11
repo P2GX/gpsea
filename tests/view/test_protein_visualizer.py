@@ -34,7 +34,7 @@ class TestProteinVisualizer:
         visualizer: BaseProteinVisualizer,
         suox_protein_metadata: ProteinMetadata,
     ):
-        empty = Cohort(members=(), excluded_member_count=0)
+        empty = Cohort.from_patients(members=())
 
         _, ax = plt.subplots(figsize=(20, 20))
         with pytest.raises(ValueError) as e:

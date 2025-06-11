@@ -3,6 +3,14 @@ from gpsea.model import Cohort
 
 class TestCohort:
 
+    def test_from_patients(self):
+        # An empty cohort can be created
+        cohort = Cohort.from_patients(
+            members=(),
+        )
+        assert cohort is not None
+        assert len(cohort) == 0
+
     def test_all_transcript_ids(
         self,
         suox_cohort: Cohort,

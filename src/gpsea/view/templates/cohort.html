@@ -24,12 +24,6 @@
     {{ cohort.count_with_disease_onset() | pluralize('individual')}} had disease onset information
     and {{ cohort.count_with_age_of_last_encounter() }} had information about the age of last encounter.
   </p>
-
-  {% if cohort.get_excluded_count() > 0 %}
-  <p>Unable to load {{ cohort.get_excluded_count() | pluralize('individual') }}.</p>
-  {% else %}
-  <p>No errors encountered.</p>
-  {% endif %}
 </div>
 
 {# Genotype & Phenotype #}

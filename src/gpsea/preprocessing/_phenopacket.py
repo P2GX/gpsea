@@ -323,7 +323,7 @@ class PhenopacketOntologyTermOnsetParser:
 
 class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
     """
-    `PhenopacketPatientCreator` transforms `Phenopacket` into :class:`~gpsea.model.Patient`.
+    `PhenopacketPatientCreator` transforms a `Phenopacket` into a :class:`~gpsea.model.Patient`.
 
     :param hpo: HPO as :class:`~hpotk.MinimalOntology`.
     :param validator: validation runner to check HPO terms.
