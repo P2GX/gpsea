@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.analysis.clf._gt_classifiers &mdash; GPSEA 0.9.7 documentation</title>
+  <title>gpsea.analysis.clf._gt_classifiers &mdash; GPSEA 0.9.8 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=f2328ca0"></script>
+      <script src="../../../../_static/documentation_options.js?v=1a282f62"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -83,7 +83,7 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patient</span><span class="p">,</span> <span class="n">Cohort</span><span class="p">,</span> <span class="n">SampleLabels</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..predicate</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantPredicate</span><span class="p">,</span> <span class="n">true</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">._api</span><span class="w"> </span><span class="kn">import</span> <span class="n">Categorization</span><span class="p">,</span> <span class="n">PatientCategory</span>
@@ -830,6 +830,153 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">RandomClassifier</span><span class="p">(</span>
         <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FrozenGenotypeClassifier</span><span class="p">(</span><span class="n">GenotypeClassifier</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">label_to_code</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">SampleLabels</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+        <span class="n">code_to_cat</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Categorization</span><span class="p">],</span>
+        <span class="n">categorizations</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Categorization</span><span class="p">],</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">label_to_code</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">code_to_cat</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">categorizations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="n">FrozenGenotypeClassifier</span><span class="o">.</span><span class="n">_compute_hash</span><span class="p">(</span>
+            <span class="n">vals</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span><span class="p">,</span>
+            <span class="n">cats</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Frozen genotype classifier&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Classify the individuals based on provided genotype codes&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Genotype code&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_categorizations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Categorization</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Categorization</span><span class="p">]:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">code</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected patient </span><span class="si">{</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span><span class="p">[</span><span class="n">code</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_hash</span><span class="p">(</span>
+        <span class="n">vals</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
+        <span class="n">cats</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Hashable</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">hash_value</span> <span class="o">=</span> <span class="mi">17</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">hash_value</span> <span class="o">+=</span> <span class="mi">13</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">hash_value</span> <span class="o">+=</span> <span class="mi">13</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">cats</span><span class="p">:</span>
+            <span class="n">hash_value</span> <span class="o">+=</span> <span class="mi">23</span> <span class="o">*</span> <span class="nb">hash</span><span class="p">(</span><span class="n">cat</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">hash_value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">FrozenGenotypeClassifier</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_label_to_code</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_code_to_cat</span> \
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_categorizations</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="s2">&quot;FrozenGenotypeClassifier(&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;label_to_code=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;code_to_cat=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;categorizations=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;)&quot;</span>
+        <span class="p">)</span>
+
+
+<div class="viewcode-block" id="frozen_classifier">
+<a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.frozen_classifier">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">frozen_classifier</span><span class="p">(</span>
+    <span class="n">samples</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">Cohort</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Patient</span><span class="p">]],</span>
+    <span class="n">codes</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenotypeClassifier</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Frozen classifier assigns the `samples` into genotype groups</span>
+<span class="sd">    based on user-provided genotype codes, such as cluster IDs.</span>
+
+<span class="sd">    Since the classifier associates the `codes` with the `samples`,</span>
+<span class="sd">    the classifier can only be used with the `samples` of the cohort,</span>
+<span class="sd">    and *not* with any other cohorts/individuals.</span>
+<span class="sd">    The classifiers raises an error if asked to assign a :class:`~gpsea.model.Patient`</span>
+<span class="sd">    that is not present in `samples`.</span>
+
+<span class="sd">    See the :ref:`genotype-codes` section for an example.</span>
+
+<span class="sd">    :param samples: a GPSEA cohort or another iterable of :class:`~gpsea.model.Patient` objects.</span>
+<span class="sd">    :param codes: an iterable of genotype codes. The `codes` length must match the `samples` count.</span>
+<span class="sd">    :param labels: a mapping with code to label (e.g. ``{0: &quot;Missense&quot;, 1: &quot;Frameshift&quot;}``).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">Cohort</span><span class="p">):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">samples</span><span class="o">.</span><span class="n">all_patients</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`samples` should be a `Cohort` or an iterable with patients, but got </span><span class="si">{</span><span class="n">samples</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">n_samples</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">),</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Sample count </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> must match the code count </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">label_to_code</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">SampleLabels</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span> <span class="n">code</span> <span class="k">for</span> <span class="n">sample</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">codes</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_to_code</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_samples</span><span class="p">,</span> <span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Duplicate samples detected! Found only (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">label_to_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> unique sample labels in </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> samples)&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">codes_uniq</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">codes</span><span class="p">))</span>
+    <span class="n">code_to_cat</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Categorization</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes_uniq</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">code</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing label for code </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2"> in provided `labels`&quot;</span><span class="p">)</span>
+
+        <span class="n">code_to_cat</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="o">=</span> <span class="n">Categorization</span><span class="p">(</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">PatientCategory</span><span class="p">(</span>
+                <span class="n">cat_id</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">code</span><span class="p">),</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">FrozenGenotypeClassifier</span><span class="p">(</span>
+        <span class="n">label_to_code</span><span class="o">=</span><span class="n">label_to_code</span><span class="p">,</span>
+        <span class="n">code_to_cat</span><span class="o">=</span><span class="n">code_to_cat</span><span class="p">,</span>
+        <span class="n">categorizations</span><span class="o">=</span><span class="p">(</span><span class="n">code_to_cat</span><span class="p">[</span><span class="n">code</span><span class="p">]</span> <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes_uniq</span><span class="p">),</span>
     <span class="p">)</span></div>
 
 </pre></div>
