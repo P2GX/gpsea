@@ -347,45 +347,31 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
     """
     Cohort is a collection of individuals that have been preprocessed
     and are ready for genotype-phenotype association analysis.
+
+    Note: the constructor is for *internal* use only.
+    Use the static constructors (static methods that start with "Cohort.from_",
+    such as :meth:`~gpsea.model.Cohort.from_patients`) to create a cohort.
     """
 
     @staticmethod
     def from_patients(
         members: typing.Iterable[Patient],
-        include_patients_with_no_HPO: bool = False,
-        include_patients_with_no_variants: bool = False,
     ):
         """
         Create a cohort from a sequence of patients.
         """
-        # TODO: move this logic into `CohortCreator` and remove `excluded_member_count` from `Cohort`.
-        filtered = set()
-        excluded_member_count = 0
-        for patient in members:
-            if len(patient.phenotypes) == 0 and not include_patients_with_no_HPO:
-                excluded_member_count += 1
-                continue
-            elif len(patient.variants) == 0 and not include_patients_with_no_variants:
-                excluded_member_count += 1
-                continue
-            else:
-                filtered.add(patient)
-
         return Cohort(
             members=members,
-            excluded_member_count=excluded_member_count
         )
 
     def __init__(
         self,
         members: typing.Iterable[Patient],
-        excluded_member_count: int,
     ):
         self._members = tuple(members)
-        self._excluded_count = excluded_member_count
 
     @property
-    def all_patients(self) -> typing.Collection[Patient]:
+    def all_patients(self) -> typing.Sequence[Patient]:
         """
         Get a collection of all patients in the cohort.
         """
@@ -597,9 +583,6 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
 
         return counters
 
-    def get_excluded_count(self) -> int:
-        return self._excluded_count
-
     def get_variant_by_key(self, variant_key) -> Variant:
         for v in self.all_variants():
             if v.variant_info.variant_key == variant_key:
@@ -703,7 +686,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         return len(self._members)
 
     def __repr__(self):
-        return f'Cohort(members={self._members}, excluded_count={self._excluded_count})'
+        return f'Cohort(members={self._members})'
 
     def __str__(self):
         return repr(self)

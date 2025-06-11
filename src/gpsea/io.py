@@ -159,7 +159,6 @@ class GpseaJSONEncoder(JSONEncoder):
         elif isinstance(o, Cohort):
             return {
                 "members": o.all_patients,
-                "excluded_patient_count": o.get_excluded_count(),
             }
         elif isinstance(o, TranscriptCoordinates):
             return {
@@ -224,7 +223,7 @@ _DISEASE_FIELDS = ("term_id", "name", "is_observed", "onset")
 _MEASUREMENT_FIELDS = ("test_term_id", "test_name", "test_result", "unit")
 _PATIENT_FIELDS = ("labels", "sex", "age", "vital_status", "phenotypes", "diseases", "variants")
 _VITAL_STATUS_FIELDS = ("status", "age_of_death")
-_COHORT_FIELDS = ("members", "excluded_patient_count")
+_COHORT_FIELDS = ("members",)
 
 
 class GpseaJSONDecoder(JSONDecoder):
@@ -401,7 +400,6 @@ class GpseaJSONDecoder(JSONDecoder):
         elif GpseaJSONDecoder._has_all_fields(obj, _COHORT_FIELDS):
             return Cohort(
                 members=obj["members"],
-                excluded_member_count=obj["excluded_patient_count"],
             )
         else:
             return obj
