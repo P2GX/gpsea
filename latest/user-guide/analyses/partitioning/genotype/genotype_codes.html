@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group by genotype code &mdash; GPSEA 0.9.8-dev0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/gpsea.css?v=547657ed" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=3b0b0217"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Phenotype classifiers and scorers" href="../phenotype/index.html" />
+    <link rel="prev" title="Group by allele count" href="allele_count.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            GPSEA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">User guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../input-data.html">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../exploratory.html">Cohort exploratory analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Statistical analyses</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Partitioning</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="index.html">Genotype classifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../phenotype/index.html">Phenotype classifiers and scorers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../gallery.html">Gallery</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../phenotype-classes.html">Compare genotype and phenotype classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mtc.html">Multiple-testing correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../phenotype-scores.html">Compare phenotype scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../measurements.html">Compare measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../survival.html">Survival analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../custom-components.html">Custom components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../apidocs/modules.html">API reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">GPSEA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">User guide</a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Statistical analyses</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Partitioning</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Genotype classifiers</a></li>
+      <li class="breadcrumb-item active">Group by genotype code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/user-guide/analyses/partitioning/genotype/genotype_codes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="group-by-genotype-code">
+<span id="genotype-codes"></span><h1>Group by genotype code<a class="headerlink" href="#group-by-genotype-code" title="Link to this heading"></a></h1>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../../_images/genotype-code-classifier.png"><img alt="Frozen classifier" src="../../../../_images/genotype-code-classifier.png" style="width: 600px;" />
+</a>
+</figure>
+<p>Sometimes, we may not want to assign individuals into genotype groups using GPSEA classifiers.
+Perhaps no suitable classifier exists, or the criterion cannot be encoded into a <a class="reference internal" href="../../../../apidocs/gpsea.model.html#gpsea.model.Patient" title="gpsea.model.Patient"><code class="xref py py-class docutils literal notranslate"><span class="pre">Patient</span></code></a>.
+For instance, we might want to test for association of phenotypes with patient clusters obtained from an external clustering method.</p>
+<p>We can easily do this with a <a class="reference internal" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.frozen_classifier" title="gpsea.analysis.clf.frozen_classifier"><code class="xref py py-func docutils literal notranslate"><span class="pre">frozen_classifier()</span></code></a> which groups the individuals
+based on user-provided genotype codes.</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>Let’s assume that we want to analyze association of HPO terms
+with some (arbitrary) codes in 19 individuals with mutations in <em>RERE</em> gene.</p>
+<p>We will load the <a class="reference internal" href="../../../../apidocs/gpsea.model.html#gpsea.model.Cohort" title="gpsea.model.Cohort"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cohort</span></code></a>
+from a <a class="reference external" href="https://github.com/P2GX/gpsea/tree/main/docs/cohort-data/RERE.0.1.20.json">JSON file</a>.
+The cohort was prepared from phenopackets as described in <a class="reference internal" href="../../../input-data.html#create-a-cohort"><span class="std std-ref">Create a cohort</span></a> section,
+and then serialized as a JSON file following the instructions in <a class="reference internal" href="../../../input-data.html#cohort-persistence"><span class="std std-ref">Persist the cohort for later</span></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/RERE.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort_json</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
+<span class="go">19</span>
+</pre></div>
+</div>
+<p>Now, we prepare a sequence of 19 codes (a code for an individual).
+In real life, these could be e.g. cluster ids obtained by an orthogonal method,
+but here, for the sake of example, we will assign the first 10 individuals into group <cite>0</cite>
+and the rest into the group <cite>1</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_codes</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">9</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gt_codes</span>
+<span class="go">[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span>
+</pre></div>
+</div>
+<p>We prepared a list of <cite>gt_codes</cite>, one <cite>int</cite> per a cohort member. The order of the codes is <em>important</em>.
+It must match the order of the cohort members.</p>
+<p>We can (optionally) define the code labels to simplify the interpretation.
+For instance, we could use e.g. <code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">&quot;High</span> <span class="pre">impact&quot;,</span> <span class="pre">1:</span> <span class="pre">&quot;Mild</span> <span class="pre">impact&quot;}</span></code> to assign the codes with meaningful names.
+However, since here we are working only with arbitrary groups, we will just use <cite>Group A</cite> and <cite>Group B</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_code_labels</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Group A&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Group B&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can create the classifier using <a class="reference internal" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.frozen_classifier" title="gpsea.analysis.clf.frozen_classifier"><code class="xref py py-func docutils literal notranslate"><span class="pre">frozen_classifier()</span></code></a> function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.clf</span><span class="w"> </span><span class="kn">import</span> <span class="n">frozen_classifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">frozen_classifier</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">samples</span><span class="o">=</span><span class="n">cohort</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">codes</span><span class="o">=</span><span class="n">gt_codes</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">labels</span><span class="o">=</span><span class="n">gt_code_labels</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The classifier will assign an individual from <em>RERE</em> cohort
+either into <cite>Group A</cite> or <cite>Group B</cite> based on its <code class="docutils literal notranslate"><span class="pre">gt_codes</span></code> entry.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
+<span class="go">(&#39;Group A&#39;, &#39;Group B&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Frozen classifier is usable only with the individuals of the cohort that were used to create it.
+Subjecting an individual outside of the cohort raises an error.
+This is <em>different</em> from other genotype classifiers, which can be used on <em>any</em> cohort.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="allele_count.html" class="btn btn-neutral float-left" title="Group by allele count" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../phenotype/index.html" class="btn btn-neutral float-right" title="Phenotype classifiers and scorers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

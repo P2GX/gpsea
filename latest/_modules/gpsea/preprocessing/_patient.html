@@ -77,14 +77,14 @@
              
   <h1>Source code for gpsea.preprocessing._patient</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">dataclasses</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">stairval.notepad</span><span class="w"> </span><span class="kn">import</span> <span class="n">Notepad</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patient</span><span class="p">,</span> <span class="n">Cohort</span>
 
-<span class="n">T</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The input for `PatientCreator`.</span>
 
@@ -98,7 +98,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    `PatientCreator` can create a `Patient` from some input `T`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
 <div class="viewcode-block" id="PatientCreator.process">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.PatientCreator.process">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
@@ -112,22 +112,72 @@
 
 
 
+<div class="viewcode-block" id="CohortCreatorOptions">
+<a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.CohortCreatorOptions">[docs]</a>
+<span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CohortCreatorOptions</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Options for :class:`~gpsea.preprocessing.CohortCreator`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">keep_individuals_with_no_hpo</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">keep_individuals_with_no_variants</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+
 <div class="viewcode-block" id="CohortCreator">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.CohortCreator">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CohortCreator</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    `CohortCreator` creates a cohort from an iterable of some `T` where `T` represents a cohort member.</span>
+<span class="sd">    `CohortCreator` creates a cohort from the provided `inputs`,</span>
+<span class="sd">    subjecting the cohort members to Q/C and filtering.</span>
+
+<span class="sd">    Cohort creator uses :class:`~gpsea.preprocessing.PatientCreator`</span>
+<span class="sd">    to map each cohort member into a :class:`~gpsea.model.Patient`.</span>
+<span class="sd">    The cohort creator is generic over the cohort member type `T`</span>
+<span class="sd">    and all that matters is if the inner :class:`~gpsea.preprocessing.PatientCreator`</span>
+<span class="sd">    can map `T` into a :class:`~gpsea.model.Patient`.</span>
+
+
+<span class="sd">    **Q/C checks**</span>
+
+<span class="sd">    The members are checked for duplicates and the duplicates are reported into the `notepad`.</span>
+<span class="sd">    The `notepad` also retains the issues found by :class:`~gpsea.preprocessing.PatientCreator`.</span>
+
+<span class="sd">    Note, a cohort *is* created even in presence of Q/C errors.</span>
+
+
+<span class="sd">    **Filtering**</span>
+
+<span class="sd">    The following filters are applied after mapping `T` to cohort members:</span>
+<span class="sd">    </span>
+<span class="sd">    * filter out the individuals who have 0 phenotypes, controlled by :class:`gpsea.preprocessing.CohortCreatorOptions.keep_individuals_with_no_hpo`</span>
+<span class="sd">    * filter out the individuals who have 0 variants, controlled by :class:`gpsea.preprocessing.CohortCreatorOptions.keep_individuals_with_no_variants`</span>
+
+
+<span class="sd">    **Cohort member order**</span>
+
+<span class="sd">    Cohort creator guarantees stable order of the cohort members, i.e. iterating over :meth:`~gpsea.model.Cohort`</span>
+<span class="sd">    yields the cohort members in the same order as they were seen in the `inputs` iterable.</span>
+
+<span class="sd">    :param patient_creator: an instance of :class:`~gpsea.preprocessing.PatientCreator` to map `T` into :class:`~gpsea.model.Patient`.</span>
+<span class="sd">    :param options: cohort creator options or `None` if default options should be used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">patient_creator</span><span class="p">:</span> <span class="n">PatientCreator</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+        <span class="n">options</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">CohortCreatorOptions</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="c1"># Check that we&#39;re getting a `PatientCreator`.</span>
         <span class="c1"># Unfortunately, we cannot check that `T`s of `PatientCreator` and `CohortCreator` actually match</span>
         <span class="c1"># due to Python&#39;s loosey-goosey nature.</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">patient_creator</span><span class="p">,</span> <span class="n">PatientCreator</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pc</span> <span class="o">=</span> <span class="n">patient_creator</span>
+        <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">CohortCreatorOptions</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">CohortCreatorOptions</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
 
 <div class="viewcode-block" id="CohortCreator.process">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.CohortCreator.process">[docs]</a>
@@ -136,12 +186,16 @@
         <span class="n">inputs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
         <span class="n">notepad</span><span class="p">:</span> <span class="n">Notepad</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Cohort</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process the `inputs` into a :class:`~gpsea.model.Cohort`</span>
+<span class="sd">        and write any Q/C issues into the `notepad`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">patients</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">patient_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">duplicate_pat_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-            <span class="n">sub</span> <span class="o">=</span> <span class="n">notepad</span><span class="o">.</span><span class="n">add_subsection</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;patient #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">sub</span> <span class="o">=</span> <span class="n">notepad</span><span class="o">.</span><span class="n">add_subsection</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;patient #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">patient</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pc</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="n">sub</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">patient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">patient</span><span class="o">.</span><span class="n">labels</span> <span class="ow">in</span> <span class="n">patient_labels</span><span class="p">:</span>
@@ -149,7 +203,6 @@
                 <span class="n">patient_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
                 <span class="n">patients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span>
 
-        <span class="c1"># What happens if a sample has</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">duplicate_pat_labels</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">label_summaries</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">label_summary</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">duplicate_pat_labels</span><span class="p">]</span>
             <span class="n">label_summaries</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -158,15 +211,27 @@
                 <span class="s2">&quot;Please verify every patient has an unique ID.&quot;</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="c1"># We should have &gt;1 patients in the cohort, right?</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">notepad</span><span class="o">.</span><span class="n">add_error</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Cohort must include </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span><span class="si">}</span><span class="s1">&gt;1 members&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Fix issues in patients to enable the analysis&#39;</span><span class="p">,</span>
-            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Cohort</span><span class="o">.</span><span class="n">from_patients</span><span class="p">(</span>
+            <span class="n">members</span><span class="o">=</span><span class="nb">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_passes_filtering</span><span class="p">,</span> <span class="n">patients</span><span class="p">),</span>
+        <span class="p">)</span></div>
 
-        <span class="k">return</span> <span class="n">Cohort</span><span class="o">.</span><span class="n">from_patients</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span></div>
-</div>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_passes_filtering</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">phenotypes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">keep_individuals_with_no_hpo</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">variants</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="o">.</span><span class="n">keep_individuals_with_no_variants</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span></div>
 
 </pre></div>
 

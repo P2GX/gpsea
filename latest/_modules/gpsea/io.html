@@ -241,7 +241,6 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Cohort</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
                 <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">all_patients</span><span class="p">,</span>
-                <span class="s2">&quot;excluded_patient_count&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">get_excluded_count</span><span class="p">(),</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">TranscriptCoordinates</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
@@ -308,7 +307,7 @@
 <span class="n">_MEASUREMENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;test_term_id&quot;</span><span class="p">,</span> <span class="s2">&quot;test_name&quot;</span><span class="p">,</span> <span class="s2">&quot;test_result&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">)</span>
 <span class="n">_PATIENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;vital_status&quot;</span><span class="p">,</span> <span class="s2">&quot;phenotypes&quot;</span><span class="p">,</span> <span class="s2">&quot;diseases&quot;</span><span class="p">,</span> <span class="s2">&quot;variants&quot;</span><span class="p">)</span>
 <span class="n">_VITAL_STATUS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;age_of_death&quot;</span><span class="p">)</span>
-<span class="n">_COHORT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;members&quot;</span><span class="p">,</span> <span class="s2">&quot;excluded_patient_count&quot;</span><span class="p">)</span>
+<span class="n">_COHORT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;members&quot;</span><span class="p">,)</span>
 
 
 <div class="viewcode-block" id="GpseaJSONDecoder">
@@ -489,7 +488,6 @@
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_COHORT_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Cohort</span><span class="p">(</span>
                 <span class="n">members</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;members&quot;</span><span class="p">],</span>
-                <span class="n">excluded_member_count</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;excluded_patient_count&quot;</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">obj</span></div>

@@ -104,11 +104,12 @@
   <section id="genotype-classifiers">
 <span id="id1"></span><h1>Genotype classifiers<a class="headerlink" href="#genotype-classifiers" title="Link to this heading"></a></h1>
 <p>A genotype classifier assigns an individual into a class based on their genotype.
-In GPSEA, genotype classifiers leverage information from one of the three areas:</p>
+In GPSEA, genotype classifiers leverage information from one of the four areas:</p>
 <ul class="simple">
 <li><p>Sex</p></li>
 <li><p>Disease diagnosis</p></li>
 <li><p>Presence of variant(s) that meet certain inclusion criteria (e.g. a missense variant in heterozygous genotype)</p></li>
+<li><p>User-provided codes</p></li>
 </ul>
 <p>Classification based on sex or disease diagnosis is relatively straightforward - the individuals
 are assigned by the biological sex or presence of a specific diagnosis.
@@ -121,6 +122,8 @@ then count and interpret the number of alleles in the cohort members,
 including factors such as the expected mode of inheritance and sex,
 to assign the tested individual into a genotype group
 (<a class="reference internal" href="variant_category.html#variant-category"><span class="std std-ref">Group by variant category</span></a> or <a class="reference internal" href="allele_count.html#allele-count"><span class="std std-ref">Group by allele count</span></a>).</p>
+<p>The ultimate flexibility in the genotype class assignment can be achieved using genotype codes,
+which essentially delegate the assignment to the user (<a class="reference internal" href="genotype_codes.html#genotype-codes"><span class="std std-ref">Group by genotype code</span></a>).</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -129,6 +132,7 @@ to assign the tested individual into a genotype group
 <li class="toctree-l1"><a class="reference internal" href="variant_predicates.html">Variant Predicates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variant_category.html">Group by variant category</a></li>
 <li class="toctree-l1"><a class="reference internal" href="allele_count.html">Group by allele count</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genotype_codes.html">Group by genotype code</a></li>
 </ul>
 </div>
 </section>
