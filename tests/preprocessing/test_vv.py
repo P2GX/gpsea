@@ -6,7 +6,7 @@ import pytest
 
 from gpsea.io import GpseaJSONEncoder
 from gpsea.model.genome import GenomeBuild, Strand
-from gpsea.preprocessing import VVMultiCoordinateService
+from gpsea.preprocessing import VVMultiCoordinateService, VVHgvsVariantCoordinateFinder
 
 from gpsea.model.genome import transpose_coordinate
 
@@ -240,6 +240,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
         response: typing.Mapping[str, typing.Any],
     ):
         transcripts = response.get("transcripts")
+        assert transcripts is not None
         t0 = transcripts[0]
         assert isinstance(t0, dict)
         expected_keys = {
@@ -269,6 +270,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
         assert "NC_000012.12" in genomic_spans
 
         hg38span = genomic_spans.get("NC_000012.12")
+        assert isinstance(hg38span, dict)
         assert isinstance(hg38span.get("exon_structure"), list)
         assert hg38span.get("end_position") == 56005525
         assert len(hg38span.get("exon_structure")) == 4
@@ -462,3 +464,53 @@ class TestVVMultiCoordinateService_as_GeneCoordinateService:
 def load_response_json(path: str):
     with open(path) as fh:
         return json.load(fh)
+
+
+# @pytest.mark.online
+class TestVVHgvsVariantCoordinateFinder:
+    @pytest.fixture(scope="class")
+    def coordinate_finder(
+        self,
+        genome_build: GenomeBuild,
+    ) -> VVHgvsVariantCoordinateFinder:
+        return VVHgvsVariantCoordinateFinder(
+            genome_build=genome_build,
+        )
+
+    @pytest.mark.parametrize(
+        "item,chrom,start,end,ref,alt",
+        [
+            ("NM_000419.3:c.3077G>A", "17", 44372406, 44372407, "C", "T"),
+            ("NM_005572.4:c.1711C>A", "1", 156137755, 156137756, "C", "A"),
+        ],
+    )
+    def test_find_coordinates(
+        self,
+        coordinate_finder: VVHgvsVariantCoordinateFinder,
+        item: str,
+        chrom: str,
+        start: int,
+        end: int,
+        ref: str,
+        alt: str,
+    ):
+        vc = coordinate_finder.find_coordinates(item)
+
+        assert vc is not None
+
+        assert vc.chrom == chrom
+        assert vc.start == start
+        assert vc.end == end
+        assert vc.ref == ref
+        assert vc.alt == alt
+
+    def test_find_coordinates_invalid_input(
+        self,
+        coordinate_finder: VVHgvsVariantCoordinateFinder,
+    ):
+        with pytest.raises(ValueError) as e:
+            coordinate_finder.find_coordinates(item="NM_006772.3:c.359_")
+
+        assert e.value.args == (
+            "Unable to find genomic coordinates of NM_006772.3:c.359_. Please see https://rest.variantvalidator.org/VariantValidator/variantvalidator/GRCh38/NM_006772.3:c.359_/NM_006772.3 for more info",
+        )

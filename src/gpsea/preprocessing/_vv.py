@@ -3,7 +3,6 @@ import logging
 import re
 import typing
 
-import hpotk
 import requests
 import ratelimit
 import json
@@ -22,7 +21,7 @@ REFSEQ_TX_PT = re.compile(r'^[NX]M_\d+(\.\d+)?$')
 def fetch_response(
     url, 
     headers, 
-    timeout,
+    timeout: float,
 ):
     # This is the only place we interact with the Variant validator REST API.
     # Per documentation at `https://rest.variantvalidator.org/`,
@@ -43,8 +42,14 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
     :param timeout: the REST API request timeout
     """
 
-    def __init__(self, genome_build: GenomeBuild, timeout: int = 30):
-        self._build = hpotk.util.validate_instance(genome_build, GenomeBuild, 'genome_build')
+    def __init__(
+        self,
+        genome_build: GenomeBuild,
+        timeout: float = 30.,
+    ):
+        assert isinstance(genome_build, GenomeBuild)
+        self._build = genome_build
+        assert isinstance(timeout, float) and timeout > 0.
         self._timeout = timeout
         self._url = 'https://rest.variantvalidator.org/VariantValidator/variantvalidator/%s/%s/%s'
         self._headers = {'Content-type': 'application/json'}
@@ -64,7 +69,16 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
 
             try:
                 response = fetch_response(request_url, self._headers, self._timeout)
-                variant_coordinates = self._extract_variant_coordinates(response)
+                match response['flag']:
+                    case "warning":
+                        raise ValueError(f"Unable to find genomic coordinates of {item}. Please see {request_url} for more info")
+                    case "gene_variant":
+                        return self._extract_variant_coordinates(response)
+                    case _:
+                        # Variant Validator API response includes an unexpected flag.
+                        # Please submit an issue to our GitHub tracker if you believe
+                        # there is nothing wrong with the HGVS input.
+                        raise ValueError(f"Got unexpected flag: {response['flag']}. Please open a ticket on our issue tracker")
             except (requests.exceptions.RequestException, VariantValidatorDecodeException) as e:
                 raise ValueError(f'Error processing {item}', e)
         else:
@@ -72,8 +86,6 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
             # Please submit an issue to our GitHub tracker if you believe
             # the HGVS expression is correct.
             raise ValueError(f'Invalid HGVS string: {item}')
-
-        return variant_coordinates
 
     def _extract_variant_coordinates(self, response: typing.Dict) -> typing.Optional[VariantCoordinates]:
         """
@@ -149,11 +161,10 @@ class VVMultiCoordinateService(TranscriptCoordinateService, GeneCoordinateServic
         timeout: float = 30.,
     ):
         self._logger = logging.getLogger(__name__)
-        self._genome_build = hpotk.util.validate_instance(genome_build, GenomeBuild, 'genome_build')
-
+        assert isinstance(genome_build, GenomeBuild)
+        self._genome_build = genome_build
+        assert isinstance(timeout, float) and timeout > 0.
         self._timeout = timeout
-        if self._timeout <= 0:
-            raise ValueError(f'`timeout` must be a positive `float` but got {timeout}')
 
         self._url = "https://rest.variantvalidator.org/VariantValidator/tools/gene2transcripts/%s"
         self._headers = {'Accept': 'application/json'}
