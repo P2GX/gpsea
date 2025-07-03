@@ -61,6 +61,7 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
 
         :param item: a hgvs string
         :return: variant coordinates
+        :raises ValueError: if 
         """
         matcher = self._hgvs_pattern.match(item)
         if matcher:
@@ -71,16 +72,16 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
                 response = fetch_response(request_url, self._headers, self._timeout)
                 match response['flag']:
                     case "warning":
-                        raise ValueError(f"Unable to find genomic coordinates of {item}. Please see {request_url} for more info")
+                        raise ValueError(f"Cannot find genomic coordinates for {item}. See URL for more info: {request_url}")
                     case "gene_variant":
                         return self._extract_variant_coordinates(response)
                     case _:
                         # Variant Validator API response includes an unexpected flag.
                         # Please submit an issue to our GitHub tracker if you believe
                         # there is nothing wrong with the HGVS input.
-                        raise ValueError(f"Got unexpected flag: {response['flag']}. Please open a ticket on our issue tracker")
+                        raise ValueError(f"Got unexpected flag: {response['flag']}. Open a ticket on our issue tracker")
             except (requests.exceptions.RequestException, VariantValidatorDecodeException) as e:
-                raise ValueError(f'Error processing {item}', e)
+                raise ValueError(f'Error processing {item}') from e
         else:
             # The HGVS did not pass validation by a regular expression.
             # Please submit an issue to our GitHub tracker if you believe

@@ -478,8 +478,7 @@ def load_phenopackets(
 
     The results of the validation are reported back.
 
-    :param phenopackets: path to a folder with phenopacket JSON files. An error is raised if the path does not point to
-      a directory with at least one phenopacket.
+    :param phenopackets: phenopackets to load.
     :param cohort_creator: cohort creator for turning a sequence of phenopacket
       into a :class:`~gpsea.model.Cohort`.
     :param validation_policy: a `str` with the validation policy.

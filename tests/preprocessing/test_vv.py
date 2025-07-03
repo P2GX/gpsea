@@ -512,5 +512,5 @@ class TestVVHgvsVariantCoordinateFinder:
             coordinate_finder.find_coordinates(item="NM_006772.3:c.359_")
 
         assert e.value.args == (
-            "Unable to find genomic coordinates of NM_006772.3:c.359_. Please see https://rest.variantvalidator.org/VariantValidator/variantvalidator/GRCh38/NM_006772.3:c.359_/NM_006772.3 for more info",
+            "Cannot find genomic coordinates for NM_006772.3:c.359_. See URL for more info: https://rest.variantvalidator.org/VariantValidator/variantvalidator/GRCh38/NM_006772.3:c.359_/NM_006772.3",
         )
