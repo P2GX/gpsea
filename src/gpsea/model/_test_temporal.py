@@ -4,7 +4,6 @@ from ._temporal import Timeline, Age
 
 
 class TestTimeline:
-
     @pytest.mark.parametrize(
         "left, right, expected",
         [
@@ -43,9 +42,8 @@ class TestTimeline:
 
 
 class TestAge:
-
     def test_fails_if_days_is_nan(self):
         with pytest.raises(ValueError) as e:
-            Age(days=float('nan'), timeline=Timeline.POSTNATAL)
-        
+            Age(days=float("nan"), timeline=Timeline.POSTNATAL)
+
         assert e.value.args == ("`days` must be a non-negative `float` but was nan",)

@@ -79,9 +79,7 @@ class TestMultiPhenotypeAnalysisResult:
         self,
         multi_phenotype_analysis_result: MultiPhenotypeAnalysisResult,
     ):
-        indices = multi_phenotype_analysis_result.significant_phenotype_indices(
-            alpha=0.05, pval_kind="corrected"
-        )
+        indices = multi_phenotype_analysis_result.significant_phenotype_indices(alpha=0.05, pval_kind="corrected")
         assert indices == (2, 1)
 
     @pytest.mark.parametrize(
@@ -130,6 +128,4 @@ class TestMultiPhenotypeAnalysisResult:
                 n_categories=3,
                 n_colors=2,
             )
-        assert e.value.args == (
-            "The predicate produces 3 categories but the palette includes only 2 colors!",
-        )
+        assert e.value.args == ("The predicate produces 3 categories but the palette includes only 2 colors!",)

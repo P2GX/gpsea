@@ -22,6 +22,4 @@ class Survival:
     """
 
     def __post_init__(self):
-        assert math.isfinite(
-            self.value
-        ), f"`value` must be finite and non-NaN, but was {self.value}"
+        assert math.isfinite(self.value), f"`value` must be finite and non-NaN, but was {self.value}"

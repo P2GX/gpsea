@@ -6,7 +6,6 @@ from gpsea.analysis.temporal.stats import LogRankTest
 
 
 class TestLogRankTest:
-
     @pytest.fixture(scope="class")
     def statistic(self) -> LogRankTest:
         return LogRankTest()

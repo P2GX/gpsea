@@ -16,14 +16,14 @@ class UniprotProteinMetadataService(ProteinMetadataService):
 
     def __init__(
         self,
-        timeout: float = 30.,
+        timeout: float = 30.0,
     ):
         self._logger = logging.getLogger(__name__)
         self._headers = {"Content-type": "application/json"}
-        
+
         # Query is parameterized during lookup
         query = "(%s)AND(reviewed:true)&(organism_id:9606)"
-        
+
         # An opinionated list of fields of interest.
         # Reference: https://rest.uniprot.org/configure/uniprotkb/result-fields
         fields = ",".join(
@@ -71,7 +71,7 @@ class UniprotProteinMetadataService(ProteinMetadataService):
         Raises:
             `ValueError` if unable to parse a complete instance
         """
-        results = payload['results']
+        results = payload["results"]
         if len(results) == 0:
             raise ValueError(f"No proteins found for ID {protein_id}. Please verify refseq ID.")
         elif len(results) == 1:
@@ -82,13 +82,13 @@ class UniprotProteinMetadataService(ProteinMetadataService):
             )
         else:
             for protein in results:
-                if any(uni['id'] == protein_id for uni in protein['uniProtKBCrossReferences']):
+                if any(uni["id"] == protein_id for uni in protein["uniProtKBCrossReferences"]):
                     return UniprotProteinMetadataService._extract_metadata(
                         protein_id=protein_id,
                         data=protein,
                     )
 
-        raise ValueError(f'Could not find an entry for {protein_id} in Uniprot response')
+        raise ValueError(f"Could not find an entry for {protein_id} in Uniprot response")
 
     @staticmethod
     def _extract_metadata(
@@ -97,9 +97,9 @@ class UniprotProteinMetadataService(ProteinMetadataService):
     ) -> ProteinMetadata:
         # `protein` has a cross-reference to the `protein_id` of interest
         try:
-            protein_name = data['proteinDescription']['recommendedName']['fullName']['value']
+            protein_name = data["proteinDescription"]["recommendedName"]["fullName"]["value"]
         except KeyError:
-            protein_name = data['proteinDescription']['submissionNames'][0]['fullName']['value']
+            protein_name = data["proteinDescription"]["submissionNames"][0]["fullName"]["value"]
 
         all_features_list = []
         try:
@@ -155,13 +155,9 @@ class UniprotProteinMetadataService(ProteinMetadataService):
         if not isinstance(protein_id, str):
             raise ValueError(f"Protein ID must be a str but it was {type(protein_id)}")
         if protein_id.startswith(" ") or protein_id.endswith(" "):
-            raise ValueError(
-                f"Please remove whitespace from protein id: `{protein_id}` and try again!"
-            )
+            raise ValueError(f"Please remove whitespace from protein id: `{protein_id}` and try again!")
         if not protein_id.startswith("NP_"):
-            raise ValueError(
-                f"only works with a RefSeq database ID (e.g. NP_037407.4), but we got {protein_id}"
-            )
+            raise ValueError(f"only works with a RefSeq database ID (e.g. NP_037407.4), but we got {protein_id}")
 
         response = self._fetch_uniprot_response(protein_id)
         return UniprotProteinMetadataService.parse_uniprot_json(response, protein_id)

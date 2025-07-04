@@ -94,9 +94,7 @@ class TestSurvivalAnalysis:
                 endpoint=endpoint,
             )
 
-        assert e.value.args == (
-            "The survival values did not meet the expectation of the statistical test!",
-        )
+        assert e.value.args == ("The survival values did not meet the expectation of the statistical test!",)
 
 
 class TestSurvivalAnalysisResult:

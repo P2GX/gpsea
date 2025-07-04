@@ -15,7 +15,6 @@ from gpsea.model.genome._genome import Region
 
 
 class ProteinVisualizable:
-
     def __init__(
         self,
         tx_coordinates: typing.Optional[TranscriptCoordinates],
@@ -33,9 +32,10 @@ class ProteinVisualizable:
 
         # store the annotations for the target transcript
         transcript_annotations = ProteinVisualizable._get_tx_anns(
-            cohort.all_variants(), protein_meta.protein_id,
+            cohort.all_variants(),
+            protein_meta.protein_id,
         )
-        
+
         variant_regions_on_protein: typing.List[Region] = list()
         self._variant_effect = list()
         for tx_ann in transcript_annotations:
@@ -59,9 +59,7 @@ class ProteinVisualizable:
             self._protein_feature_starts.append(feature.info.start)
             self._protein_feature_ends.append(feature.info.end)
 
-        self._variant_locations = np.array(
-            [item.start for item in variant_regions_on_protein]
-        )
+        self._variant_locations = np.array([item.start for item in variant_regions_on_protein])
 
         # variant_locations = (variant_locations * 3) - 2 + min_exon_limit  # to convert from codons to bases
         # variant_effects = np.array([(ann.variant_effects[0]) for ann in tx_anns])

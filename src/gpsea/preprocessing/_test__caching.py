@@ -6,7 +6,6 @@ from ._caching import JsonCache, PicklingCache
 
 
 class TestJsonCache:
-
     def test_can_create_cache(self, tmp_path):
         data_dir = str(tmp_path)
         cache = JsonCache(data_dir=data_dir)
@@ -39,7 +38,6 @@ class TestJsonCache:
 
 
 class TestPicklingCache:
-    
     def test_can_create_cache(self, tmp_path):
         data_dir = str(tmp_path)
         cache = PicklingCache(data_dir=data_dir)
@@ -69,4 +67,3 @@ class TestPicklingCache:
         loaded = cache.load_item(identifier)
         assert loaded is not None
         assert loaded == item
-    

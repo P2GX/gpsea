@@ -75,18 +75,10 @@ def configure_caching_cohort_creator(
 
     build = _configure_build(genome_build)
     validator = _setup_hpo_validator(hpo, validation_runner)
-    functional_annotator = _configure_functional_annotator(
-        cache_dir, variant_fallback, timeout
-    )
-    imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(
-        build, cache_dir, timeout
-    )
+    functional_annotator = _configure_functional_annotator(cache_dir, variant_fallback, timeout)
+    imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(build, cache_dir, timeout)
     hgvs_annotator = VVHgvsVariantCoordinateFinder(build)
-    term_onset_parser = (
-        PhenopacketOntologyTermOnsetParser.default_parser()
-        if include_ontology_class_onsets
-        else None
-    )
+    term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
         hpo=hpo,
         validator=validator,
@@ -135,11 +127,7 @@ def configure_cohort_creator(
         timeout=timeout,
     )
     hgvs_annotator = VVHgvsVariantCoordinateFinder(build)
-    term_onset_parser = (
-        PhenopacketOntologyTermOnsetParser.default_parser()
-        if include_ontology_class_onsets
-        else None
-    )
+    term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
         hpo=hpo,
         validator=validator,
@@ -310,6 +298,7 @@ def _configure_func_annotator(
     )
     return CachingFunctionalAnnotator(cache=tx_cache, fallback=fallback)
 
+
 def _configure_cache_dir(
     cache_dir: typing.Optional[str] = None,
 ) -> str:
@@ -337,9 +326,7 @@ def _configure_build(genome_build: typing.Union[GenomeBuild, str]) -> GenomeBuil
         elif genome_build == "GRCh37.p13":
             return GRCh37
         else:
-            raise ValueError(
-                f"Unknown build {genome_build}. Choose from ['GRCh37.p13', 'GRCh38.p13']"
-            )
+            raise ValueError(f"Unknown build {genome_build}. Choose from ['GRCh37.p13', 'GRCh38.p13']")
     else:
         raise ValueError(f"Unsupported `genome_build`: {genome_build}")
 
@@ -367,7 +354,6 @@ def _configure_functional_annotator(
     variant_fallback: str,
     timeout: float,
 ) -> FunctionalAnnotator:
-
     # (2) FunctionalAnnotator
     # Setup fallback
     fallback = _configure_fallback_functional(variant_fallback, timeout)
@@ -478,8 +464,7 @@ def load_phenopackets(
 
     The results of the validation are reported back.
 
-    :param phenopackets: path to a folder with phenopacket JSON files. An error is raised if the path does not point to
-      a directory with at least one phenopacket.
+    :param phenopackets: phenopackets to load.
     :param cohort_creator: cohort creator for turning a sequence of phenopacket
       into a :class:`~gpsea.model.Cohort`.
     :param validation_policy: a `str` with the validation policy.
@@ -494,9 +479,7 @@ def load_phenopackets(
     # Turn phenopackets into a cohort using the cohort creator.
     # Keep track of the progress by wrapping the list of phenopackets
     # with TQDM 😎
-    cohort_iter = tqdm(
-        phenopackets, desc="Individuals Processed", file=sys.stdout, unit=" individuals"
-    )
+    cohort_iter = tqdm(phenopackets, desc="Individuals Processed", file=sys.stdout, unit=" individuals")
     notepad = create_notepad(label="Phenopackets")
     cohort = cohort_creator.process(cohort_iter, notepad)
 

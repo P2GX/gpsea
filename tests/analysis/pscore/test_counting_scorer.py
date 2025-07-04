@@ -8,7 +8,6 @@ from gpsea.analysis.pscore import CountingPhenotypeScorer
 
 
 class TestCountingPhenotypeScorer:
-
     @pytest.fixture
     def counting_scorer(
         self,
@@ -72,9 +71,9 @@ class TestCountingPhenotypeScorer:
     ):
         lines = counting_scorer.summary().splitlines()
         assert lines == [
-            'HPO Group Count',
-            'Assign a phenotype score that is equivalent to the count of present phenotypes '
-            + 'that are either an exact match to the query terms or their descendants',
+            "HPO Group Count",
+            "Assign a phenotype score that is equivalent to the count of present phenotypes "
+            + "that are either an exact match to the query terms or their descendants",
         ]
 
     def test_creating_scorer_with_term_and_ancestor_fails(

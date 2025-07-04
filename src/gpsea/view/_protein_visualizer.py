@@ -44,13 +44,13 @@ class ProteinVisualizer(BaseProteinVisualizer):
         rng = random.Random(random_seed)
         rng.shuffle(mycolors)
         self._available_colors = mycolors
-        self.protein_feature_outline_color = 'black'
-        self.exon_colors = cycle(['blue', 'lightblue'])
-        self.exon_outline_color = 'black'
-        self.axis_color = 'black'
-        self.protein_track_color = '#a9a9a9'
-        self.transcript_track_color = '#a9a9a9'
-        self.variant_stem_color = '#a9a9a9'
+        self.protein_feature_outline_color = "black"
+        self.exon_colors = cycle(["blue", "lightblue"])
+        self.exon_outline_color = "black"
+        self.axis_color = "black"
+        self.protein_track_color = "#a9a9a9"
+        self.transcript_track_color = "#a9a9a9"
+        self.variant_stem_color = "#a9a9a9"
         # plot options
         self.protein_track_x_min = 0.15
         self.protein_track_x_max = 0.85
@@ -87,7 +87,7 @@ class ProteinVisualizer(BaseProteinVisualizer):
             starts.append(feature.info.start)
             ends.append(feature.info.end)
             names.append(feature.info.name)
-        
+
         # STATE
         feature_handler = DrawableProteinFeatureHandler(
             starts,
@@ -101,13 +101,13 @@ class ProteinVisualizer(BaseProteinVisualizer):
         )
 
         if not at_least_variant_annotated_wrt_protein(cohort.all_variants(), protein_metadata.protein_id):
-            raise ValueError(f"No variants annotated with respect to \"{protein_metadata.protein_id}\" were found")
+            raise ValueError(f'No variants annotated with respect to "{protein_metadata.protein_id}" were found')
 
         pvis = ProteinVisualizable(
             tx_coordinates=None,
             protein_meta=protein_metadata,
             cohort=cohort,
-        )  
+        )
         variant_handler = DrawableProteinVariantHandler(
             pvis=pvis,
         )
@@ -119,56 +119,82 @@ class ProteinVisualizer(BaseProteinVisualizer):
         for f in feature_handler.features:
             cur_limits = f.min_pos_abs, f.max_pos_abs
             f.min_pos_plotting, f.max_pos_plotting = translate_to_ax_coordinates(
-                np.array(cur_limits), min_absolute=1, max_absolute=protein_metadata.protein_length,
-                min_relative=self.protein_track_x_min, max_relative=self.protein_track_x_max
+                np.array(cur_limits),
+                min_absolute=1,
+                max_absolute=protein_metadata.protein_length,
+                min_relative=self.protein_track_x_min,
+                max_relative=self.protein_track_x_max,
             )
 
         for v in variant_handler.variants:
             pos_abs = v.pos_abs
             v.pos_plotting = translate_to_ax_coordinates(
-                np.array([pos_abs]), min_absolute=1, max_absolute=protein_metadata.protein_length,
+                np.array([pos_abs]),
+                min_absolute=1,
+                max_absolute=protein_metadata.protein_length,
                 min_relative=self.protein_track_x_min,
-                max_relative=self.protein_track_x_max, clip=True)
+                max_relative=self.protein_track_x_max,
+                clip=True,
+            )
 
-        x_ticks_relative = translate_to_ax_coordinates(x_ticks, min_absolute=1,
-                                                       max_absolute=protein_metadata.protein_length,
-                                                       min_relative=self.protein_track_x_min,
-                                                       max_relative=self.protein_track_x_max)
+        x_ticks_relative = translate_to_ax_coordinates(
+            x_ticks,
+            min_absolute=1,
+            max_absolute=protein_metadata.protein_length,
+            min_relative=self.protein_track_x_min,
+            max_relative=self.protein_track_x_max,
+        )
 
         # PLOTTING
-        draw_axes(ax,
-                  x_ticks, x_ticks_relative, y_ticks,
-                  variant_handler.max_marker_count, 1, protein_metadata.protein_length, max_overlapping_features,
-                  self.protein_track_x_min, self.protein_track_x_max,
-                  self.protein_track_y_max, self.protein_track_height, self.protein_track_buffer,
-                  self.font_size, self.text_padding,
-                  self.axis_color, self.protein_track_color
-                  )
+        draw_axes(
+            ax,
+            x_ticks,
+            x_ticks_relative,
+            y_ticks,
+            variant_handler.max_marker_count,
+            1,
+            protein_metadata.protein_length,
+            max_overlapping_features,
+            self.protein_track_x_min,
+            self.protein_track_x_max,
+            self.protein_track_y_max,
+            self.protein_track_height,
+            self.protein_track_buffer,
+            self.font_size,
+            self.text_padding,
+            self.axis_color,
+            self.protein_track_color,
+        )
 
         variant_handler.draw_variants(ax, self.protein_track_y_max, stem_color=self.variant_stem_color)
 
-        feature_handler.draw_features(ax,
-                                      self.protein_features_y_max,
-                                      self.protein_feature_height,
-                                      self.protein_feature_outline_color)
+        feature_handler.draw_features(
+            ax, self.protein_features_y_max, self.protein_feature_height, self.protein_feature_outline_color
+        )
 
-        legend1_width = draw_legends(ax, feature_handler,
-                                     self.color_box_x_dim, self.color_box_y_dim, self.color_circle_radius,
-                                     self.row_spacing,
-                                     self.legend1_min_x, self.legend1_max_y,
-                                     self.legend2_min_x, self.legend2_max_y,
-                                     variant_handler.variant_effect_colors(),
-                                     labeling_method, )
+        legend1_width = draw_legends(
+            ax,
+            feature_handler,
+            self.color_box_x_dim,
+            self.color_box_y_dim,
+            self.color_circle_radius,
+            self.row_spacing,
+            self.legend1_min_x,
+            self.legend1_max_y,
+            self.legend2_min_x,
+            self.legend2_max_y,
+            variant_handler.variant_effect_colors(),
+            labeling_method,
+        )
 
         ax.set(
             xlim=(0, max(1.0, self.legend1_min_x + legend1_width + 0.02)),
             ylim=(0.3, 0.75),
-            aspect='equal',
-            title=f'{protein_metadata.label}\n'
-                  f'protein: {protein_metadata.protein_id}',
+            aspect="equal",
+            title=f"{protein_metadata.label}\nprotein: {protein_metadata.protein_id}",
         )
 
-        ax.axis('off')
+        ax.axis("off")
 
     def draw_protein_diagram(
         self,
@@ -176,7 +202,7 @@ class ProteinVisualizer(BaseProteinVisualizer):
         protein_metadata: ProteinMetadata,
         cohort: Cohort,
         ax: typing.Optional[plt.Axes] = None,
-        labeling_method: typing.Literal['abbreviate', 'enumerate'] = 'abbreviate'
+        labeling_method: typing.Literal["abbreviate", "enumerate"] = "abbreviate",
     ) -> typing.Optional[plt.Axes]:
         warnings.warn(
             "draw_protein_diagram was deprecated and will be removed in `1.0.0`. Use `draw_protein` instead",
@@ -188,7 +214,7 @@ class ProteinVisualizer(BaseProteinVisualizer):
             _, ax = plt.subplots(figsize=(20, 20))
         else:
             should_return_ax = False
-        
+
         self.draw_protein(
             cohort=cohort,
             protein_metadata=protein_metadata,
@@ -198,13 +224,12 @@ class ProteinVisualizer(BaseProteinVisualizer):
 
         if should_return_ax:
             return ax
-        
 
     def draw_fig(
         self,
         pvis: ProteinVisualizable,
         ax: typing.Optional[plt.Axes] = None,
-        labeling_method: typing.Literal['abbreviate', 'enumerate'] = 'abbreviate'
+        labeling_method: typing.Literal["abbreviate", "enumerate"] = "abbreviate",
     ) -> typing.Optional[plt.Axes]:
         """
         Visualize the cohort variants on a protein diagram.
@@ -255,30 +280,52 @@ class DrawableProteinFeature:
     max_pos_plotting: float
     track: int
 
-    __slots__ = ['name', 'min_pos_abs', 'max_pos_abs', 'label', 'color', 'min_pos_plotting', 'max_pos_plotting', 'track']
+    __slots__ = [
+        "name",
+        "min_pos_abs",
+        "max_pos_abs",
+        "label",
+        "color",
+        "min_pos_plotting",
+        "max_pos_plotting",
+        "track",
+    ]
 
     def draw(self, ax: plt.Axes, features_y_max: float, feature_height: float, feature_outline_color: str):
         feature_y_max = features_y_max - self.track * feature_height
         feature_y_min = feature_y_max - feature_height
         draw_rectangle(
             ax,
-            self.min_pos_plotting, feature_y_min, self.max_pos_plotting, feature_y_max,
-            line_color=feature_outline_color, fill_color=self.color, line_width=1.0,
+            self.min_pos_plotting,
+            feature_y_min,
+            self.max_pos_plotting,
+            feature_y_max,
+            line_color=feature_outline_color,
+            fill_color=self.color,
+            line_width=1.0,
         )
         # too small to display horizontally, so display vertically
         if (self.max_pos_plotting - self.min_pos_plotting) <= 0.03:
             draw_string(
-                ax, self.label,
+                ax,
+                self.label,
                 0.05 * (self.max_pos_plotting - self.min_pos_plotting) + self.min_pos_plotting,
                 0.55 * (feature_y_max - feature_y_min) + feature_y_min,
-                ha="left", va="center", rotation=90, color='black', fontsize=8,
+                ha="left",
+                va="center",
+                rotation=90,
+                color="black",
+                fontsize=8,
             )
         else:
             draw_string(
-                ax, self.label,
+                ax,
+                self.label,
                 0.2 * (self.max_pos_plotting - self.min_pos_plotting) + self.min_pos_plotting,
                 0.4 * (feature_y_max - feature_y_min) + feature_y_min,
-                ha="left", va="center", color='black',
+                ha="left",
+                va="center",
+                color="black",
             )
 
 
@@ -308,18 +355,18 @@ class DrawableProteinFeatureHandler:
         mapping_all2cleaned = dict()
         for feature_name in unique_feature_names:
             # remove digits from feature name
-            cleaned_feature_name = str(''.join(char for char in feature_name if not char.isdigit()))
+            cleaned_feature_name = str("".join(char for char in feature_name if not char.isdigit()))
             cleaned_unique_feature_names.add(cleaned_feature_name)
             mapping_all2cleaned[feature_name] = cleaned_feature_name
         # generate labels for features
-        if self.labeling_method == 'enumerate':
-            ascii_capital_a = ord('A')
+        if self.labeling_method == "enumerate":
+            ascii_capital_a = ord("A")
             labels = {fn: chr(ascii_capital_a + i) for i, fn in enumerate(cleaned_unique_feature_names)}
 
-        elif self.labeling_method == 'abbreviate':
+        elif self.labeling_method == "abbreviate":
             labels = {feature_name: feature_name[0:5] for feature_name in cleaned_unique_feature_names}
         else:
-            raise ValueError(f'Unsupported labeling method {self.labeling_method}')
+            raise ValueError(f"Unsupported labeling method {self.labeling_method}")
 
         cleaned_unique_feature_names = list(cleaned_unique_feature_names)
         cleaned_unique_feature_names.sort()
@@ -336,8 +383,9 @@ class DrawableProteinFeatureHandler:
                 name=name,
                 label=self.labels[self.mapping_all2cleaned[name]],
                 color=self.colors[self.mapping_all2cleaned[name]],
-                min_pos_plotting=-1.0, max_pos_plotting=-1.0,  # will be set later in draw_fig(), when plot limits known
-                track=0
+                min_pos_plotting=-1.0,
+                max_pos_plotting=-1.0,  # will be set later in draw_fig(), when plot limits known
+                track=0,
             )
             for start, end, name in zip(self._starts, self._ends, self._feature_names)
         ]
@@ -360,7 +408,7 @@ class DrawableProteinVariant:
     pos_plotting: float
     count: int
 
-    __slots__ = ['effect', 'pos_abs', 'color', 'pos_plotting', 'count']
+    __slots__ = ["effect", "pos_abs", "color", "pos_plotting", "count"]
 
     def draw(self, ax: plt.Axes, y_max: float, stem_color: str):
         """
@@ -368,8 +416,12 @@ class DrawableProteinVariant:
         currently putting marker in the middle of start and end, can change this later
         """
         radius, stem_length = marker_dim(self.count, y_max)
-        draw_line(ax, self.pos_plotting, y_max, self.pos_plotting, stem_length - radius, line_color=stem_color, line_width=0.5)
-        draw_circle(ax, self.pos_plotting, stem_length, radius, line_color=stem_color, fill_color=self.color, line_width=0.5)
+        draw_line(
+            ax, self.pos_plotting, y_max, self.pos_plotting, stem_length - radius, line_color=stem_color, line_width=0.5
+        )
+        draw_circle(
+            ax, self.pos_plotting, stem_length, radius, line_color=stem_color, fill_color=self.color, line_width=0.5
+        )
 
     @property
     def name(self):
@@ -380,13 +432,13 @@ class DrawableProteinVariantHandler:
     def __init__(
         self,
         pvis: ProteinVisualizable,
-        aggregation_method: typing.Literal['standard', 'disease'] = 'standard',
+        aggregation_method: typing.Literal["standard", "disease"] = "standard",
     ):
         self._pvis = pvis
-        if aggregation_method in ['standard', 'disease']:
+        if aggregation_method in ["standard", "disease"]:
             self.aggregation_method = aggregation_method
         else:
-            raise ValueError(f'Unsupported aggregation method {aggregation_method}')
+            raise ValueError(f"Unsupported aggregation method {aggregation_method}")
 
         self.variant_effect2color = {
             VariantEffect.TRANSCRIPT_ABLATION: "#ff0000",
@@ -431,21 +483,23 @@ class DrawableProteinVariantHandler:
             VariantEffect.SEQUENCE_VARIANT: "#33ff00",
         }
         self.max_marker_count = np.max(self._pvis.marker_counts)
-        if self.aggregation_method == 'standard':
+        if self.aggregation_method == "standard":
             self.variants = self._generate_variant_markers()
-        elif self.aggregation_method == 'disease':
-            raise NotImplementedError('Disease aggregation method not implemented')
+        elif self.aggregation_method == "disease":
+            raise NotImplementedError("Disease aggregation method not implemented")
 
     def _generate_variant_markers(self):
         variants = list()
         for j, vl in enumerate(self._pvis.variant_locations_counted_absolute):
             i = np.where(self._pvis.variant_locations == vl)[0][0]
             effect = self._pvis.variant_effects[i]
-            v = DrawableProteinVariant(effect=effect,
-                                       pos_abs=vl,
-                                       color=self.variant_effect2color[effect],
-                                       pos_plotting=-1.0,
-                                       count=self._pvis.marker_counts[j])
+            v = DrawableProteinVariant(
+                effect=effect,
+                pos_abs=vl,
+                color=self.variant_effect2color[effect],
+                pos_plotting=-1.0,
+                count=self._pvis.marker_counts[j],
+            )
             variants.append(v)
 
         return variants
@@ -463,33 +517,69 @@ class DrawableProteinVariantHandler:
 
 
 def draw_rectangle(
-        ax: plt.Axes,
-        start_x, start_y, end_x, end_y, line_color='black', fill_color=None, line_width=1.0,
+    ax: plt.Axes,
+    start_x,
+    start_y,
+    end_x,
+    end_y,
+    line_color="black",
+    fill_color=None,
+    line_width=1.0,
 ):
-    rect = plt.Rectangle((start_x, start_y), end_x - start_x, end_y - start_y, edgecolor=line_color,
-                         fill=fill_color is not None, linewidth=line_width, facecolor=fill_color)
+    rect = plt.Rectangle(
+        (start_x, start_y),
+        end_x - start_x,
+        end_y - start_y,
+        edgecolor=line_color,
+        fill=fill_color is not None,
+        linewidth=line_width,
+        facecolor=fill_color,
+    )
     ax.add_patch(rect)
 
 
 def draw_line(
-        ax: plt.Axes,
-        start_x, start_y, end_x, end_y, line_color='black', line_width=1.0,
+    ax: plt.Axes,
+    start_x,
+    start_y,
+    end_x,
+    end_y,
+    line_color="black",
+    line_width=1.0,
 ):
     ax.plot([start_x, end_x], [start_y, end_y], color=line_color, linewidth=line_width)
 
 
 def draw_circle(
-        ax: plt.Axes,
-        center_x, center_y, radius, line_color='black', fill_color=None, line_width=1.0,
+    ax: plt.Axes,
+    center_x,
+    center_y,
+    radius,
+    line_color="black",
+    fill_color=None,
+    line_width=1.0,
 ):
-    circle = plt.Circle((center_x, center_y), radius, edgecolor=line_color, fill=fill_color is not None,
-                        linewidth=line_width, facecolor=fill_color)
+    circle = plt.Circle(
+        (center_x, center_y),
+        radius,
+        edgecolor=line_color,
+        fill=fill_color is not None,
+        linewidth=line_width,
+        facecolor=fill_color,
+    )
     ax.add_patch(circle)
 
 
 def draw_string(
-        ax: plt.Axes,
-        text, x, y, ha, va, color='black', fontsize=12, rotation=0,
+    ax: plt.Axes,
+    text,
+    x,
+    y,
+    ha,
+    va,
+    color="black",
+    fontsize=12,
+    rotation=0,
 ):
     ax.text(x, y, text, fontsize=fontsize, color=color, ha=ha, va=va, rotation=rotation)
 
@@ -503,7 +593,7 @@ def marker_dim(marker_count, protein_track_y_max, marker_length=0.02, marker_rad
 def round_to_nearest_power_ten(x, base=None):
     if base is None:
         order_of_magnitude = np.floor(np.log10(np.abs(x)))
-        base = 10 ** order_of_magnitude
+        base = 10**order_of_magnitude
         return (base * np.round(x / base)).astype(int), base
     else:
         return (base * np.round(x / base)).astype(int)
@@ -511,28 +601,43 @@ def round_to_nearest_power_ten(x, base=None):
 
 def generate_ticks(apprx_n_ticks, min, max):
     tick_step_size, base = round_to_nearest_power_ten((max - min) / apprx_n_ticks)
-    ticks = np.array(list(filter(
-        lambda x: x < max,
-        (min + i * tick_step_size for i in range(1, apprx_n_ticks + 1))
-    ))).astype(int)
+    ticks = np.array(
+        list(filter(lambda x: x < max, (min + i * tick_step_size for i in range(1, apprx_n_ticks + 1))))
+    ).astype(int)
     return round_to_nearest_power_ten(ticks, base)
 
 
-def draw_axes(ax, x_ticks, x_ticks_relative, y_ticks, max_marker_count,
-              min_aa_pos, max_aa_pos,
-              num_tracks: int,
-              protein_track_x_min: float, protein_track_x_max: float,
-              protein_track_y_max: float, protein_track_height: float, protein_track_buffer: float,
-              font_size: int, text_padding: float,
-              axis_color: str, protein_track_color: str
-              ):
+def draw_axes(
+    ax,
+    x_ticks,
+    x_ticks_relative,
+    y_ticks,
+    max_marker_count,
+    min_aa_pos,
+    max_aa_pos,
+    num_tracks: int,
+    protein_track_x_min: float,
+    protein_track_x_max: float,
+    protein_track_y_max: float,
+    protein_track_height: float,
+    protein_track_buffer: float,
+    font_size: int,
+    text_padding: float,
+    axis_color: str,
+    protein_track_color: str,
+):
     # draw the tracks
     protein_track_y_min = protein_track_y_max - num_tracks * (protein_track_height + 2 * protein_track_buffer)
     protein_track_y_min += 2 * protein_track_buffer
     draw_rectangle(
         ax,
-        protein_track_x_min, protein_track_y_min, protein_track_x_max, protein_track_y_max,
-        line_color=protein_track_color, fill_color=protein_track_color, line_width=2.0,
+        protein_track_x_min,
+        protein_track_y_min,
+        protein_track_x_max,
+        protein_track_y_max,
+        line_color=protein_track_color,
+        fill_color=protein_track_color,
+        line_width=2.0,
     )
     # x_axis
     x_axis_y = protein_track_y_min - 0.02
@@ -540,40 +645,68 @@ def draw_axes(ax, x_ticks, x_ticks_relative, y_ticks, max_marker_count,
     big_tick_length, small_tick_length = 0.015, 0.005
     draw_line(  # main line
         ax,
-        x_axis_min_x, x_axis_y, x_axis_max_x, x_axis_y,
-        line_color=axis_color, line_width=1.0,
+        x_axis_min_x,
+        x_axis_y,
+        x_axis_max_x,
+        x_axis_y,
+        line_color=axis_color,
+        line_width=1.0,
     )
     draw_string(
         ax,
-        str(min_aa_pos), x_axis_min_x, x_axis_y - big_tick_length - text_padding,
-        fontsize=font_size, ha='center', va='top',
+        str(min_aa_pos),
+        x_axis_min_x,
+        x_axis_y - big_tick_length - text_padding,
+        fontsize=font_size,
+        ha="center",
+        va="top",
     )
     draw_string(
         ax,
-        str(max_aa_pos), x_axis_max_x, x_axis_y - big_tick_length - text_padding,
-        fontsize=font_size, ha='center', va='top',
+        str(max_aa_pos),
+        x_axis_max_x,
+        x_axis_y - big_tick_length - text_padding,
+        fontsize=font_size,
+        ha="center",
+        va="top",
     )
     # draw x ticks
     draw_line(  # max tick
         ax,
-        x_axis_max_x, x_axis_y - big_tick_length, x_axis_max_x, x_axis_y,
-        line_color=axis_color, line_width=1.0,
+        x_axis_max_x,
+        x_axis_y - big_tick_length,
+        x_axis_max_x,
+        x_axis_y,
+        line_color=axis_color,
+        line_width=1.0,
     )
     draw_line(  # minimum tick
         ax,
-        x_axis_min_x, x_axis_y - big_tick_length, x_axis_min_x, x_axis_y,
-        line_color=axis_color, line_width=1.0,
+        x_axis_min_x,
+        x_axis_y - big_tick_length,
+        x_axis_min_x,
+        x_axis_y,
+        line_color=axis_color,
+        line_width=1.0,
     )
     for x_tick_relative, x_tick_absolute in zip(x_ticks_relative, x_ticks):
         draw_line(
             ax,
-            x_tick_relative, x_axis_y - small_tick_length, x_tick_relative, x_axis_y,
-            line_color=axis_color, line_width=1.0,
+            x_tick_relative,
+            x_axis_y - small_tick_length,
+            x_tick_relative,
+            x_axis_y,
+            line_color=axis_color,
+            line_width=1.0,
         )
         draw_string(
             ax,
-            str(x_tick_absolute), x_tick_relative, x_axis_y - small_tick_length - text_padding,
-            fontsize=font_size, ha='center', va='top',
+            str(x_tick_absolute),
+            x_tick_relative,
+            x_axis_y - small_tick_length - text_padding,
+            fontsize=font_size,
+            ha="center",
+            va="top",
         )
 
         # y_axis
@@ -582,66 +715,104 @@ def draw_axes(ax, x_ticks, x_ticks_relative, y_ticks, max_marker_count,
         _, y_axis_max_y = marker_dim(max_marker_count, protein_track_y_max)
         y_ticks_relative = translate_to_ax_coordinates(
             y_ticks,
-            min_absolute=0, max_absolute=max_marker_count, min_relative=y_axis_min_y, max_relative=y_axis_max_y,
+            min_absolute=0,
+            max_absolute=max_marker_count,
+            min_relative=y_axis_min_y,
+            max_relative=y_axis_max_y,
         )
         draw_line(
             ax,
-            y_axis_x, y_axis_min_y, y_axis_x, y_axis_max_y,
-            line_color=axis_color, line_width=1.0,
+            y_axis_x,
+            y_axis_min_y,
+            y_axis_x,
+            y_axis_max_y,
+            line_color=axis_color,
+            line_width=1.0,
         )
         draw_string(
             ax,
-            "0", y_axis_x - small_tick_length - text_padding, y_axis_min_y,
-            fontsize=font_size, ha='right', va='center',
+            "0",
+            y_axis_x - small_tick_length - text_padding,
+            y_axis_min_y,
+            fontsize=font_size,
+            ha="right",
+            va="center",
         )
         draw_string(
             ax,
-            str(max_marker_count), y_axis_x - small_tick_length - text_padding, y_axis_max_y,
-            fontsize=font_size, ha='right', va='center',
+            str(max_marker_count),
+            y_axis_x - small_tick_length - text_padding,
+            y_axis_max_y,
+            fontsize=font_size,
+            ha="right",
+            va="center",
         )
         draw_string(  # y axis label
             ax,
-            "# Variants", y_axis_x - 0.05, (y_axis_min_y + y_axis_max_y) / 2,
-            fontsize=font_size, ha='center', va='center', rotation=90,
+            "# Variants",
+            y_axis_x - 0.05,
+            (y_axis_min_y + y_axis_max_y) / 2,
+            fontsize=font_size,
+            ha="center",
+            va="center",
+            rotation=90,
         )
         # Note that we do not label the X-axis, the meaning will be obvious to users (amino acid residues)
         # draw y ticks
         draw_line(  # 0 tick
             ax,
-            y_axis_x - small_tick_length, y_axis_min_y, y_axis_x, y_axis_min_y,
-            line_color=axis_color, line_width=1.0,
+            y_axis_x - small_tick_length,
+            y_axis_min_y,
+            y_axis_x,
+            y_axis_min_y,
+            line_color=axis_color,
+            line_width=1.0,
         )
         draw_line(  # max tick
             ax,
-            y_axis_x - small_tick_length, y_axis_max_y, y_axis_x, y_axis_max_y,
-            line_color=axis_color, line_width=1.0,
+            y_axis_x - small_tick_length,
+            y_axis_max_y,
+            y_axis_x,
+            y_axis_max_y,
+            line_color=axis_color,
+            line_width=1.0,
         )
         for y_tick_relative, y_tick_absolute in zip(y_ticks_relative, y_ticks):
             draw_line(
                 ax,
-                y_axis_x - small_tick_length, y_tick_relative, y_axis_x, y_tick_relative,
-                line_color=axis_color, line_width=1.0,
+                y_axis_x - small_tick_length,
+                y_tick_relative,
+                y_axis_x,
+                y_tick_relative,
+                line_color=axis_color,
+                line_width=1.0,
             )
             draw_string(
                 ax,
-                str(y_tick_absolute), y_axis_x - small_tick_length - text_padding, y_tick_relative,
-                fontsize=font_size, ha='right', va='center',
+                str(y_tick_absolute),
+                y_axis_x - small_tick_length - text_padding,
+                y_tick_relative,
+                fontsize=font_size,
+                ha="right",
+                va="center",
             )
 
 
 def translate_to_ax_coordinates(
-        absolute: np.ndarray,
-        min_absolute, max_absolute,
-        min_relative, max_relative,
-        clip: bool = False,
+    absolute: np.ndarray,
+    min_absolute,
+    max_absolute,
+    min_relative,
+    max_relative,
+    clip: bool = False,
 ) -> np.ndarray:
     if clip:
         # Put the coordinate of an item located at or after the stop codon to the location of the last AA
         absolute = np.minimum(absolute, max_absolute)
         # Put the coordinate of an item located at or before the start codon to the location of the first AA
         absolute = np.maximum(absolute, min_absolute)
-    shifted_to_0_1 = ((absolute - min_absolute) / (max_absolute - min_absolute))
-    relative_scale = (max_relative - min_relative)
+    shifted_to_0_1 = (absolute - min_absolute) / (max_absolute - min_absolute)
+    relative_scale = max_relative - min_relative
     return shifted_to_0_1 * relative_scale + min_relative
 
 
@@ -666,22 +837,27 @@ def assign_colors(
 def draw_legends(
     ax: plt.Axes,
     feature_handler,
-    color_box_x_dim, color_box_y_dim, color_circle_radius, row_spacing,
-    legend1_min_x, legend1_max_y,
-    legend2_min_x, legend2_max_y,
+    color_box_x_dim,
+    color_box_y_dim,
+    color_circle_radius,
+    row_spacing,
+    legend1_min_x,
+    legend1_max_y,
+    legend2_min_x,
+    legend2_max_y,
     variant_effect_colors,
     labeling_method,
 ):
     # draw legend 1 for protein features
     n_unique_features = len(feature_handler.cleaned_unique_feature_names)
-    if labeling_method == 'abbreviate':
+    if labeling_method == "abbreviate":
         color_box_x_dim *= 3.5
     legend1_width = 0.2 + color_box_x_dim
     legend1_min_y = legend1_max_y - (n_unique_features + 1) * row_spacing - n_unique_features * color_box_y_dim
     legend1_max_x = legend1_min_x + legend1_width
 
     # legend box
-    draw_rectangle(ax, legend1_min_x, legend1_min_y, legend1_max_x, legend1_max_y, 'black')
+    draw_rectangle(ax, legend1_min_x, legend1_min_y, legend1_max_x, legend1_max_y, "black")
     for i, feature_name in enumerate(feature_handler.cleaned_unique_feature_names):
         # colored box
         color_box_min_x = legend1_min_x + row_spacing
@@ -689,47 +865,70 @@ def draw_legends(
         color_box_max_y = legend1_max_y - (i + 1) * row_spacing - i * color_box_y_dim
         color_box_min_y = color_box_max_y - color_box_y_dim
         draw_rectangle(
-            ax, color_box_min_x, color_box_min_y, color_box_max_x, color_box_max_y,
-            line_color='black', fill_color=feature_handler.colors[feature_name],
+            ax,
+            color_box_min_x,
+            color_box_min_y,
+            color_box_max_x,
+            color_box_max_y,
+            line_color="black",
+            fill_color=feature_handler.colors[feature_name],
         )
         # label in colored box (same as on x axis in the boxes)
         draw_string(
-            ax, feature_handler.labels[feature_name], color_box_min_x + 0.002, color_box_min_y + 0.005,
-            fontsize=10, ha="left", va="center", color='black',
+            ax,
+            feature_handler.labels[feature_name],
+            color_box_min_x + 0.002,
+            color_box_min_y + 0.005,
+            fontsize=10,
+            ha="left",
+            va="center",
+            color="black",
         )
         # full feature name
         draw_string(
-            ax, feature_name,
-            color_box_max_x + 0.005, color_box_min_y + 0.005,
-            fontsize=12, ha="left", va="center", color='black',
+            ax,
+            feature_name,
+            color_box_max_x + 0.005,
+            color_box_min_y + 0.005,
+            fontsize=12,
+            ha="left",
+            va="center",
+            color="black",
         )
 
     # draw legend 2 for variant effects
     unique_variant_effects = list(variant_effect_colors.keys())
     n_unique_effects = len(unique_variant_effects)
-    legend2_min_y = legend2_max_y - (
-            n_unique_effects + 1) * row_spacing - n_unique_effects * 2 * color_circle_radius
+    legend2_min_y = legend2_max_y - (n_unique_effects + 1) * row_spacing - n_unique_effects * 2 * color_circle_radius
     legend2_max_x = legend2_min_x + 0.2
-    draw_rectangle(ax, legend2_min_x, legend2_min_y, legend2_max_x, legend2_max_y, 'black')
+    draw_rectangle(ax, legend2_min_x, legend2_min_y, legend2_max_x, legend2_max_y, "black")
     for i, variant_effect in enumerate(unique_variant_effects):
         colored_circle_x = legend2_min_x + row_spacing + color_circle_radius
         colored_circle_y = legend2_max_y - (i + 1) * row_spacing - i * 2 * color_circle_radius - color_circle_radius
         draw_circle(
-            ax, colored_circle_x, colored_circle_y, color_circle_radius,
-            line_color='black', fill_color=variant_effect_colors[variant_effect],
+            ax,
+            colored_circle_x,
+            colored_circle_y,
+            color_circle_radius,
+            line_color="black",
+            fill_color=variant_effect_colors[variant_effect],
         )
         draw_string(
-            ax, str(variant_effect).replace('_', ' ').title(),
-            colored_circle_x + 2 * color_circle_radius, colored_circle_y,
-            fontsize=12, ha="left", va="center", color='black', )
+            ax,
+            str(variant_effect).replace("_", " ").title(),
+            colored_circle_x + 2 * color_circle_radius,
+            colored_circle_y,
+            fontsize=12,
+            ha="left",
+            va="center",
+            color="black",
+        )
 
     return legend1_width
 
 
 def sweep_line(
-    intervals: typing.Iterable[
-        typing.Tuple[typing.Union[int, float], typing.Union[int, float]],
-    ],
+    intervals: typing.Iterable[typing.Tuple[typing.Union[int, float], typing.Union[int, float]],],
 ) -> int:
     """
     Given a list of intervals, find the maximum number of overlapping intervals.
@@ -786,5 +985,3 @@ def resolve_overlap(intervals: typing.Collection[typing.Tuple[int, int]]) -> typ
             heapq.heappush(available_y_positions, y_pos)
 
     return result
-
-

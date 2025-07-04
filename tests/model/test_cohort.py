@@ -2,7 +2,6 @@ from gpsea.model import Cohort
 
 
 class TestCohort:
-
     def test_from_patients(self):
         # An empty cohort can be created
         cohort = Cohort.from_patients(
@@ -34,22 +33,22 @@ class TestCohort:
         assert set(counts.keys()) == suox_cohort.all_transcript_ids
 
         # Let's check counts on the SUOX MANE transcript
-        suox_mane = 'NM_001032386.2'
+        suox_mane = "NM_001032386.2"
         assert suox_mane in counts
-        
+
         mane_counts = counts[suox_mane]
 
         # print(mane_counts)
-        assert mane_counts == {'MISSENSE_VARIANT': 29, 'STOP_GAINED': 10, 'FRAMESHIFT_VARIANT': 9}
+        assert mane_counts == {"MISSENSE_VARIANT": 29, "STOP_GAINED": 10, "FRAMESHIFT_VARIANT": 9}
 
     def test_variant_effect_count_by_tx__singular(
-            self,
-            suox_cohort: Cohort,
+        self,
+        suox_cohort: Cohort,
     ):
-        suox_mane = 'NM_001032386.2'
+        suox_mane = "NM_001032386.2"
         counts = suox_cohort.variant_effect_count_by_tx(tx_id=suox_mane)
 
         assert suox_mane in counts
-        assert len(counts) == 1, 'The counts should only have one item'
+        assert len(counts) == 1, "The counts should only have one item"
 
-        assert counts[suox_mane] == {'MISSENSE_VARIANT': 29, 'STOP_GAINED': 10, 'FRAMESHIFT_VARIANT': 9}
+        assert counts[suox_mane] == {"MISSENSE_VARIANT": 29, "STOP_GAINED": 10, "FRAMESHIFT_VARIANT": 9}

@@ -9,6 +9,7 @@ class AlleleCounter:
 
     :param predicate: a :class:`VariantPredicate` for selecting the target variants.
     """
+
     # TODO: this class should probably be an implementation detail,
     #   and not a public member of the package.
 
@@ -47,21 +48,19 @@ class AlleleCounter:
                 genotype = var.genotypes.for_sample(patient.labels)
                 if genotype == Genotype.HOMOZYGOUS_ALTERNATE:
                     count += 2
-                elif (
-                    genotype == Genotype.HETEROZYGOUS or genotype == Genotype.HEMIZYGOUS
-                ):
+                elif genotype == Genotype.HETEROZYGOUS or genotype == Genotype.HEMIZYGOUS:
                     count += 1
-        
+
         return count
 
     def __eq__(self, value: object) -> bool:
         return isinstance(value, AlleleCounter) and self._predicate == value._predicate
-    
+
     def __hash__(self) -> int:
         return hash((self._predicate,))
-    
+
     def __str__(self) -> str:
-        return f'AlleleCounter(predicate={self._predicate})'
-    
+        return f"AlleleCounter(predicate={self._predicate})"
+
     def __repr__(self) -> str:
         return str(self)

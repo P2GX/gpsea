@@ -32,6 +32,7 @@ PALETTE_SPECIAL = "#00aaff"  # light "blue"
 A "special" (emphasis) color.
 """
 
+
 def get_cache_dir_path(
     cache: typing.Optional[typing.Union[str, pathlib.Path]] = None,
 ) -> pathlib.Path:
@@ -61,8 +62,6 @@ def get_cache_dir_path(
     elif isinstance(cache, str):
         cache_path = pathlib.Path(cache)
     else:
-        raise ValueError(
-            f"`cache` must be a `str` or `pathlib.Path` but was {type(cache)}"
-        )
+        raise ValueError(f"`cache` must be a `str` or `pathlib.Path` but was {type(cache)}")
 
     return cache_path

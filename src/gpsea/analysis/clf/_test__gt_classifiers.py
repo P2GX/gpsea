@@ -111,10 +111,15 @@ def test__build_ac_to_cat(
             ((0, 1), (1,)),
             "element 1 was present 2!=1 times",
         ),
-        (((0,), (0,), (2,)),
-            "partition (0,) was present 2!=1 times"),
+        (((0,), (0,), (2,)), "partition (0,) was present 2!=1 times"),
         (
-            ((0, 1), (1, 2,)),
+            (
+                (0, 1),
+                (
+                    1,
+                    2,
+                ),
+            ),
             "element 1 was present 2!=1 times",
         ),
         (
@@ -122,7 +127,14 @@ def test__build_ac_to_cat(
             "element 0 was present 2!=1 times, element 1 was present 2!=1 times",
         ),
         (
-            ((0, 1, 1), (1, 1, 2,)),
+            (
+                (0, 1, 1),
+                (
+                    1,
+                    1,
+                    2,
+                ),
+            ),
             "element 1 was present 4!=1 times",
         ),
         (

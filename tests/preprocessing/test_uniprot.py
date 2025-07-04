@@ -21,7 +21,6 @@ def read_json_payload(path: str) -> typing.Mapping[str, typing.Any]:
 
 
 class TestUniprotProteinMetadataService:
-
     @pytest.fixture
     def uniprot_metadata_service(self) -> UniprotProteinMetadataService:
         return UniprotProteinMetadataService()
@@ -48,12 +47,12 @@ class TestUniprotProteinMetadataService:
         assert protein_metadata.label == "Ankyrin repeat domain-containing protein 11"
         assert len(protein_metadata.protein_features) == 16
         assert protein_metadata.protein_length == 2663
-    
+
     def test_itpr1(
         self,
         fpath_uniprot_response_dir: str,
     ):
-        response_json_path = os.path.join(fpath_uniprot_response_dir, 'ITPR1_HUMAN.json')
+        response_json_path = os.path.join(fpath_uniprot_response_dir, "ITPR1_HUMAN.json")
         response_json = read_json_payload(response_json_path)
 
         protein_id = "NP_001365381.1"

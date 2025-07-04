@@ -3,14 +3,13 @@ import typing
 
 from gpsea.model import Variant
 
-T = typing.TypeVar('T')
+T = typing.TypeVar("T")
 
 
 class Formatter(typing.Generic[T], metaclass=abc.ABCMeta):
-    
     @abc.abstractmethod
     def format_as_string(self, item: T) -> str:
-        """ Inputs an item and outputs a human readable string that can be used
+        """Inputs an item and outputs a human readable string that can be used
         to more easily read the item in tables or other visualizers.
 
         Args:
@@ -26,9 +25,10 @@ class VariantFormatter(Formatter[Variant]):
     """
     A class that can be used to format a `Variant` to a human readable string
     """
+
     def __init__(self, tx_id: typing.Optional[str] = None) -> None:
         self._tx_id = tx_id
-        
+
     def format_as_string(self, item: Variant) -> str:
         """
         Args:

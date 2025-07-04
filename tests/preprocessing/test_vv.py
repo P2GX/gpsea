@@ -6,7 +6,7 @@ import pytest
 
 from gpsea.io import GpseaJSONEncoder
 from gpsea.model.genome import GenomeBuild, Strand
-from gpsea.preprocessing import VVMultiCoordinateService
+from gpsea.preprocessing import VVMultiCoordinateService, VVHgvsVariantCoordinateFinder
 
 from gpsea.model.genome import transpose_coordinate
 
@@ -59,9 +59,7 @@ class TestVVTranscriptCoordinateServiceProcessResponse:
         assert tx_coordinates.region.end == end
         assert tx_coordinates.region.strand == strand
 
-    @pytest.mark.skip(
-        "Run to regenerate the response JSON files if the response format changed"
-    )
+    @pytest.mark.skip("Run to regenerate the response JSON files if the response format changed")
     @pytest.mark.parametrize(
         "tx_id",
         [
@@ -240,6 +238,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
         response: typing.Mapping[str, typing.Any],
     ):
         transcripts = response.get("transcripts")
+        assert transcripts is not None
         t0 = transcripts[0]
         assert isinstance(t0, dict)
         expected_keys = {
@@ -269,6 +268,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
         assert "NC_000012.12" in genomic_spans
 
         hg38span = genomic_spans.get("NC_000012.12")
+        assert isinstance(hg38span, dict)
         assert isinstance(hg38span.get("exon_structure"), list)
         assert hg38span.get("end_position") == 56005525
         assert len(hg38span.get("exon_structure")) == 4
@@ -287,9 +287,7 @@ class TestVVTranscriptCoordinateServiceOffline:
     ):
         tx_id = "NM_002834.5"
 
-        response_fpath = os.path.join(
-            fpath_vv_response_dir, "txid-NM_002834.5-PTPN11.json"
-        )
+        response_fpath = os.path.join(fpath_vv_response_dir, "txid-NM_002834.5-PTPN11.json")
         response = load_response_json(response_fpath)
 
         tc = vv_multi_coordinate_service.parse_response(tx_id, response)
@@ -322,9 +320,7 @@ class TestVVTranscriptCoordinateServiceOffline:
     ):
         tx_id = "NM_000518.4"
 
-        response_fpath = os.path.join(
-            fpath_vv_response_dir, "txid-NM_000518.4-HBB.json"
-        )
+        response_fpath = os.path.join(fpath_vv_response_dir, "txid-NM_000518.4-HBB.json")
         response = load_response_json(response_fpath)
 
         tc = vv_multi_coordinate_service.parse_response(tx_id, response)
@@ -462,3 +458,53 @@ class TestVVMultiCoordinateService_as_GeneCoordinateService:
 def load_response_json(path: str):
     with open(path) as fh:
         return json.load(fh)
+
+
+# @pytest.mark.online
+class TestVVHgvsVariantCoordinateFinder:
+    @pytest.fixture(scope="class")
+    def coordinate_finder(
+        self,
+        genome_build: GenomeBuild,
+    ) -> VVHgvsVariantCoordinateFinder:
+        return VVHgvsVariantCoordinateFinder(
+            genome_build=genome_build,
+        )
+
+    @pytest.mark.parametrize(
+        "item,chrom,start,end,ref,alt",
+        [
+            ("NM_000419.3:c.3077G>A", "17", 44372406, 44372407, "C", "T"),
+            ("NM_005572.4:c.1711C>A", "1", 156137755, 156137756, "C", "A"),
+        ],
+    )
+    def test_find_coordinates(
+        self,
+        coordinate_finder: VVHgvsVariantCoordinateFinder,
+        item: str,
+        chrom: str,
+        start: int,
+        end: int,
+        ref: str,
+        alt: str,
+    ):
+        vc = coordinate_finder.find_coordinates(item)
+
+        assert vc is not None
+
+        assert vc.chrom == chrom
+        assert vc.start == start
+        assert vc.end == end
+        assert vc.ref == ref
+        assert vc.alt == alt
+
+    def test_find_coordinates_invalid_input(
+        self,
+        coordinate_finder: VVHgvsVariantCoordinateFinder,
+    ):
+        with pytest.raises(ValueError) as e:
+            coordinate_finder.find_coordinates(item="NM_006772.3:c.359_")
+
+        assert e.value.args == (
+            "Cannot find genomic coordinates for NM_006772.3:c.359_. See URL for more info: https://rest.variantvalidator.org/VariantValidator/variantvalidator/GRCh38/NM_006772.3:c.359_/NM_006772.3",
+        )

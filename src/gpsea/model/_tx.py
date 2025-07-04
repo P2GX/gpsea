@@ -14,16 +14,16 @@ class TranscriptCoordinates:
     """
 
     def __init__(
-        self, 
+        self,
         identifier: str,
         region: GenomicRegion,
         exons: typing.Iterable[GenomicRegion],
         cds_start: typing.Optional[int],
         cds_end: typing.Optional[int],
-        is_preferred: typing.Optional[bool] = None
+        is_preferred: typing.Optional[bool] = None,
     ):
-        self._id = hpotk.util.validate_instance(identifier, str, 'identifier')
-        self._region = hpotk.util.validate_instance(region, GenomicRegion, 'region')
+        self._id = hpotk.util.validate_instance(identifier, str, "identifier")
+        self._region = hpotk.util.validate_instance(region, GenomicRegion, "region")
         self._exons = tuple(exons)
 
         if cds_start is None and cds_end is None:
@@ -32,13 +32,15 @@ class TranscriptCoordinates:
         else:
             # coding transcript
             if cds_start is None or cds_end is None:
-                raise ValueError(f'Both cds_start={cds_start} and cds_end={cds_end} must not be `None`')
+                raise ValueError(f"Both cds_start={cds_start} and cds_end={cds_end} must not be `None`")
             if not isinstance(cds_start, int) or not isinstance(cds_end, int):
-                raise ValueError(f'CDS coordinates must be `int`s but were cds_start={cds_start}, cds_end={cds_end}')
+                raise ValueError(f"CDS coordinates must be `int`s but were cds_start={cds_start}, cds_end={cds_end}")
             if not self._region.contains_pos(cds_start + 1) or not self._region.contains_pos(cds_end):
                 # `+1` to convert the 0-based start into a 1-based coordinate for a moment
-                raise ValueError(f'CDS coordinates cds_start={cds_start:,}, cds_end={cds_end:,} must be '
-                                 f'in the tx region: ({self._region.end}, {self._region.end}]')
+                raise ValueError(
+                    f"CDS coordinates cds_start={cds_start:,}, cds_end={cds_end:,} must be "
+                    f"in the tx region: ({self._region.end}, {self._region.end}]"
+                )
         self._cds_start = cds_start
         self._cds_end = cds_end
         self._is_preferred = is_preferred
@@ -98,8 +100,8 @@ class TranscriptCoordinates:
         n_bases = 0
         for exon in self.exons:
             # Assuming `_cds_start` and `_cds_end` are always present since we check `is_coding()` above.
-            start = max(self._cds_start, exon.start) # type: ignore
-            end = min(self._cds_end, exon.end) # type: ignore
+            start = max(self._cds_start, exon.start)  # type: ignore
+            end = min(self._cds_end, exon.end)  # type: ignore
             n_bases += max(end - start, 0)
 
         return n_bases - 3  # minus stop codon
@@ -113,8 +115,9 @@ class TranscriptCoordinates:
         n_coding_bases = self.get_coding_base_count()
         if n_coding_bases is None:
             return None
-        assert n_coding_bases % 3 == 0, (f"Transcript {self._id} has {n_coding_bases:,} "
-                                         f"coding bases that is not divisible by 3!")
+        assert n_coding_bases % 3 == 0, (
+            f"Transcript {self._id} has {n_coding_bases:,} coding bases that is not divisible by 3!"
+        )
         return int(n_coding_bases / 3)
 
     def get_five_prime_utrs(self) -> typing.Sequence[GenomicRegion]:
@@ -192,38 +195,39 @@ class TranscriptCoordinates:
                         coding_regions.append(exon)
                     else:
                         # Part of the exon is coding, another part is UTR
-                        cds = GenomicRegion(exon.contig,
-                                            max(self._cds_start, exon.start),
-                                            min(exon.end, self._cds_end),
-                                            exon.strand)
+                        cds = GenomicRegion(
+                            exon.contig, max(self._cds_start, exon.start), min(exon.end, self._cds_end), exon.strand
+                        )
                         coding_regions.append(cds)
 
         return tuple(coding_regions)
-    
+
     @property
     def is_preferred(self) -> typing.Optional[bool]:
         """
-        Check if the transcript belongs among the preferred transcripts of the gene. 
+        Check if the transcript belongs among the preferred transcripts of the gene.
         This usually means that the transcript was chosen by the MANE project or similar.
-        
+
         Returns `None` if the info is not available.
         """
         return self._is_preferred
 
     def __eq__(self, other):
-        return (isinstance(other, TranscriptCoordinates)
-                and self._id == other._id
-                and self._region == other._region
-                and self._exons == other._exons
-                and self._cds_start == other._cds_start
-                and self._cds_end == other._cds_end
-                and self._is_preferred == other._is_preferred)
+        return (
+            isinstance(other, TranscriptCoordinates)
+            and self._id == other._id
+            and self._region == other._region
+            and self._exons == other._exons
+            and self._cds_start == other._cds_start
+            and self._cds_end == other._cds_end
+            and self._is_preferred == other._is_preferred
+        )
 
     def __hash__(self):
         return hash((self._id, self._region, self._exons, self._cds_start, self._cds_end, self._is_preferred))
 
     def __str__(self):
-        return f'TranscriptCoordinates(identifier={self.identifier}, region={self.region})'
+        return f"TranscriptCoordinates(identifier={self.identifier}, region={self.region})"
 
     def __repr__(self):
         return str(self)

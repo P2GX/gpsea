@@ -92,8 +92,6 @@ class TestHpoTermAnalysis:
             pheno_clfs=suox_pheno_clfs,
         )
 
-        assert (
-            result.total_tests == 0
-        ), "No tests should have been done due to MTC filtering"
+        assert result.total_tests == 0, "No tests should have been done due to MTC filtering"
         assert np.all(np.isnan(result.pvals)), "All p values should be NaN"
         assert result.corrected_pvals is None

@@ -33,6 +33,7 @@ class CohortCreatorOptions:
     """
     Options for :class:`~gpsea.preprocessing.CohortCreator`.
     """
+
     keep_individuals_with_no_hpo: bool = False
     keep_individuals_with_no_variants: bool = False
 
@@ -60,7 +61,7 @@ class CohortCreator(typing.Generic[T]):
     **Filtering**
 
     The following filters are applied after mapping `T` to cohort members:
-    
+
     * filter out the individuals who have 0 phenotypes, controlled by :class:`gpsea.preprocessing.CohortCreatorOptions.keep_individuals_with_no_hpo`
     * filter out the individuals who have 0 variants, controlled by :class:`gpsea.preprocessing.CohortCreatorOptions.keep_individuals_with_no_variants`
 
@@ -128,15 +129,9 @@ class CohortCreator(typing.Generic[T]):
         self,
         patient: Patient,
     ) -> bool:
-        if (
-            len(patient.phenotypes) == 0
-            and not self._options.keep_individuals_with_no_hpo
-        ):
+        if len(patient.phenotypes) == 0 and not self._options.keep_individuals_with_no_hpo:
             return False
-        elif (
-            len(patient.variants) == 0
-            and not self._options.keep_individuals_with_no_variants
-        ):
+        elif len(patient.variants) == 0 and not self._options.keep_individuals_with_no_variants:
             return False
         else:
             return True

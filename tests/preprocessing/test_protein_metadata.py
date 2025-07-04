@@ -10,7 +10,6 @@ ITPR1_protein_len = 2758
 
 
 class TestProteinMetadata:
-
     @pytest.fixture
     def itpr1_protein_metadata(self) -> ProteinMetadata:
         region_list = [
@@ -46,15 +45,15 @@ class TestProteinMetadata:
         assert domain.info.name == "Suppresor domain"
         assert domain.info.start == 0  # 0-based!
         assert domain.info.end == 223
-        assert domain.feature_type == 'domain'
+        assert domain.feature_type == "domain"
 
     def test_IP3_domain(self, itpr1_protein_metadata: ProteinMetadata):
         region = itpr1_protein_metadata.protein_features[1]
-        
+
         assert region.info.name == "IP3 binding"
         assert region.info.start == 223  # 0-based!
         assert region.info.end == 578
-        assert region.feature_type == 'region'
+        assert region.feature_type == "region"
 
     def test_malformed_protein_metadata(self):
         """
@@ -80,6 +79,8 @@ class TestProteinMetadata:
                 features=df,
                 protein_length=ITPR1_protein_len,
             )
-        
-        assert e.value.args[0] == "The column(s) {category} are missing from the `features` DataFrame: ('region', 'start', 'end')"
-        
+
+        assert (
+            e.value.args[0]
+            == "The column(s) {category} are missing from the `features` DataFrame: ('region', 'start', 'end')"
+        )

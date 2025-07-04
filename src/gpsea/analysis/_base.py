@@ -49,11 +49,7 @@ class StatisticResult:
         return self._pval
 
     def __eq__(self, value: object) -> bool:
-        return (
-            isinstance(value, StatisticResult)
-            and self._statistic == value._statistic
-            and self._pval == value._pval
-        )
+        return isinstance(value, StatisticResult) and self._statistic == value._statistic and self._pval == value._pval
 
     def __hash__(self) -> int:
         return hash(
@@ -163,9 +159,7 @@ class AnalysisResult(metaclass=abc.ABCMeta):
         Choose the color indices for coloring `n_categories` using a palette with `n_colors`.
         """
         if n_colors < 2:
-            raise ValueError(
-                f"Expected a palette with at least 2 colors but got {n_colors}"
-            )
+            raise ValueError(f"Expected a palette with at least 2 colors but got {n_colors}")
         if n_colors < n_categories:
             raise ValueError(
                 f"The predicate produces {n_categories} categories but the palette includes only {n_colors} colors!"
@@ -176,9 +170,7 @@ class AnalysisResult(metaclass=abc.ABCMeta):
 
     def __eq__(self, value: object) -> bool:
         return (
-            isinstance(value, AnalysisResult)
-            and self._gt_clf == value._gt_clf
-            and self._statistic == value._statistic
+            isinstance(value, AnalysisResult) and self._gt_clf == value._gt_clf and self._statistic == value._statistic
         )
 
     def __hash__(self) -> int:
@@ -218,9 +210,7 @@ class MultiPhenotypeAnalysisResult(typing.Generic[P], AnalysisResult):
         self._all_counts = tuple(all_counts)
 
         self._statistic_results = tuple(statistic_results)
-        self._corrected_pvals = (
-            None if corrected_pvals is None else tuple(corrected_pvals)
-        )
+        self._corrected_pvals = None if corrected_pvals is None else tuple(corrected_pvals)
         errors = self._check_sanity()
         if errors:
             raise ValueError(os.linesep.join(errors))
@@ -239,14 +229,11 @@ class MultiPhenotypeAnalysisResult(typing.Generic[P], AnalysisResult):
         ):
             if len(self._pheno_clfs) != len(seq):
                 errors.append(
-                    f"`len(pheno_clfs)` must be the same as `len({name})` but "
-                    f"{len(self._pheno_clfs)}!={len(seq)}"
+                    f"`len(pheno_clfs)` must be the same as `len({name})` but {len(self._pheno_clfs)}!={len(seq)}"
                 )
 
         # ... including the optional corrected p values
-        if self._corrected_pvals is not None and len(self._pheno_clfs) != len(
-            self._corrected_pvals
-        ):
+        if self._corrected_pvals is not None and len(self._pheno_clfs) != len(self._corrected_pvals):
             errors.append(
                 f"`len(pheno_predicates)` must be the same as `len(corrected_pvals)` but "
                 f"{len(self._pheno_clfs)}!={len(self._corrected_pvals)}"
@@ -314,9 +301,7 @@ class MultiPhenotypeAnalysisResult(typing.Generic[P], AnalysisResult):
         Get a sequence of nominal p values for each tested phenotype.
         The sequence includes a `NaN` value for each phenotype that was *not* tested.
         """
-        return tuple(
-            float("nan") if r is None else r.pval for r in self._statistic_results
-        )
+        return tuple(float("nan") if r is None else r.pval for r in self._statistic_results)
 
     @property
     def corrected_pvals(self) -> typing.Optional[typing.Sequence[float]]:
