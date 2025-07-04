@@ -86,7 +86,6 @@
 <div class="viewcode-block" id="DefaultImpreciseSvFunctionalAnnotator">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.DefaultImpreciseSvFunctionalAnnotator">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DefaultImpreciseSvFunctionalAnnotator</span><span class="p">(</span><span class="n">ImpreciseSvFunctionalAnnotator</span><span class="p">):</span>
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">gene_coordinate_service</span><span class="p">:</span> <span class="n">GeneCoordinateService</span><span class="p">,</span>
@@ -98,14 +97,14 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">ImpreciseSvInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
         <span class="n">gene_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">gene_id</span>
         <span class="n">tx_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coordinate_service</span><span class="o">.</span><span class="n">fetch_for_gene</span><span class="p">(</span><span class="n">gene_id</span><span class="p">)</span>
-        
+
         <span class="n">tx_annotations</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">txc</span> <span class="ow">in</span> <span class="n">tx_coordinates</span><span class="p">:</span>
             <span class="n">is_preferred</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="n">txc</span><span class="o">.</span><span class="n">is_preferred</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">txc</span><span class="o">.</span><span class="n">is_preferred</span>
             <span class="n">variant_effects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_to_variant_effects</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">variant_class</span><span class="p">)</span>
-            
+
             <span class="c1"># We assume all exons are affected</span>
-            <span class="n">affected_exons</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txc</span><span class="o">.</span><span class="n">exons</span><span class="p">))</span>  
+            <span class="n">affected_exons</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txc</span><span class="o">.</span><span class="n">exons</span><span class="p">))</span>
             <span class="n">annotation</span> <span class="o">=</span> <span class="n">TranscriptAnnotation</span><span class="p">(</span>
                 <span class="n">gene_id</span><span class="o">=</span><span class="n">gene_id</span><span class="p">,</span>
                 <span class="n">tx_id</span><span class="o">=</span><span class="n">txc</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
@@ -118,12 +117,12 @@
                 <span class="n">protein_effect_coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">tx_annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
-        
+
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tx_annotations</span><span class="p">)</span></div>
 
-    
+
     <span class="k">def</span><span class="w"> </span><span class="nf">_map_to_variant_effects</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> 
+        <span class="bp">self</span><span class="p">,</span>
         <span class="n">variant_class</span><span class="p">:</span> <span class="n">VariantClass</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">VariantEffect</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">variant_class</span> <span class="o">==</span> <span class="n">VariantClass</span><span class="o">.</span><span class="n">DEL</span><span class="p">:</span>
@@ -134,9 +133,9 @@
             <span class="k">return</span> <span class="p">(</span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">TRANSCRIPT_TRANSLOCATION</span><span class="p">,)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># This mapping is most likely incomplete.</span>
-            <span class="c1"># Please open a ticket if support </span>
+            <span class="c1"># Please open a ticket if support</span>
             <span class="c1"># for a variant class should be added.</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unsupported variant class </span><span class="si">{</span><span class="n">variant_class</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported variant class </span><span class="si">{</span><span class="n">variant_class</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 </pre></div>
 

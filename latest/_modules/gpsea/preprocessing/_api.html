@@ -98,7 +98,6 @@
 <div class="viewcode-block" id="VariantCoordinateFinder">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.VariantCoordinateFinder">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">VariantCoordinateFinder</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-
 <div class="viewcode-block" id="VariantCoordinateFinder.find_coordinates">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.VariantCoordinateFinder.find_coordinates">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
@@ -120,13 +119,10 @@
 <div class="viewcode-block" id="FunctionalAnnotator">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.FunctionalAnnotator">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FunctionalAnnotator</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-
 <div class="viewcode-block" id="FunctionalAnnotator.annotate">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.FunctionalAnnotator.annotate">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">variant_coordinates</span><span class="p">:</span> <span class="n">VariantCoordinates</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">annotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variant_coordinates</span><span class="p">:</span> <span class="n">VariantCoordinates</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute functional annotations for the variant coordinates. The annotations can be empty.</span>
 
@@ -197,7 +193,7 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">TranscriptInfoAware</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">tx</span><span class="o">.</span><span class="n">transcript_id</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected a `str` or `TranscriptInfoAware` but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">tx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected a `str` or `TranscriptInfoAware` but got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
 
@@ -288,16 +284,16 @@
 
 <span class="sd">        :returns: `True` if the analysis can proceed or `False` if errors/warnings were found.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s1">&#39;permissive&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s2">&quot;permissive&quot;</span><span class="p">:</span>
             <span class="c1"># No validation</span>
             <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s1">&#39;lenient&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s2">&quot;lenient&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notepad</span><span class="o">.</span><span class="n">has_errors</span><span class="p">(</span><span class="n">include_subsections</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s1">&#39;strict&#39;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_policy</span> <span class="o">==</span> <span class="s2">&quot;strict&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_notepad</span><span class="o">.</span><span class="n">has_errors_or_warnings</span><span class="p">(</span><span class="n">include_subsections</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Bug, please report to the developers.</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unexpected policy </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_policy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected policy </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_policy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PreprocessingValidationResult.summarize">
@@ -335,20 +331,14 @@
                         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; errors:&quot;</span><span class="p">)</span>
                         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">errors</span><span class="p">():</span>
-                            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                                <span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; ·&quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="n">message</span> <span class="o">+</span> <span class="p">(</span>
-                                    <span class="sa">f</span><span class="s2">&quot;. </span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">solution</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">solution</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-                                <span class="p">)</span>
-                            <span class="p">)</span>
+                            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; ·&quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="n">message</span> <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;. </span><span class="si">{</span><span class="n">error</span><span class="o">.</span><span class="n">solution</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">solution</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
                             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">has_warnings</span><span class="p">():</span>
                         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; warnings:&quot;</span><span class="p">)</span>
                         <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
                         <span class="k">for</span> <span class="n">warning</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">warnings</span><span class="p">():</span>
                             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                                <span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; ·&quot;</span> <span class="o">+</span> <span class="n">warning</span><span class="o">.</span><span class="n">message</span> <span class="o">+</span> <span class="p">(</span>
-                                    <span class="sa">f</span><span class="s2">&quot;. </span><span class="si">{</span><span class="n">warning</span><span class="o">.</span><span class="n">solution</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">warning</span><span class="o">.</span><span class="n">solution</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
-                                <span class="p">)</span>
+                                <span class="n">l_pad</span> <span class="o">+</span> <span class="s2">&quot; ·&quot;</span> <span class="o">+</span> <span class="n">warning</span><span class="o">.</span><span class="n">message</span> <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;. </span><span class="si">{</span><span class="n">warning</span><span class="o">.</span><span class="n">solution</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">warning</span><span class="o">.</span><span class="n">solution</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
                             <span class="p">)</span>
                             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>

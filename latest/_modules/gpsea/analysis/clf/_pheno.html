@@ -156,7 +156,8 @@
 <div class="viewcode-block" id="HpoClassifier.test">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.HpoClassifier.test">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">PhenotypeCategorization</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_patient</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span>
 
@@ -166,8 +167,7 @@
         <span class="k">for</span> <span class="n">phenotype</span> <span class="ow">in</span> <span class="n">patient</span><span class="o">.</span><span class="n">phenotypes</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">is_present</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">identifier</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">anc</span>
-                    <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">phenotype</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">anc</span> <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">phenotype</span><span class="p">)</span>
                 <span class="p">):</span>
                     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_observed</span>
             <span class="k">else</span><span class="p">:</span>
@@ -175,8 +175,7 @@
                     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_excluded</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
-                        <span class="n">phenotype</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="n">anc</span>
-                        <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">)</span>
+                        <span class="n">phenotype</span><span class="o">.</span><span class="n">identifier</span> <span class="o">==</span> <span class="n">anc</span> <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">)</span>
                     <span class="p">):</span>
                         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_excluded</span>
 
@@ -184,11 +183,13 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">HpoClassifier</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">version</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_query</span> \
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">HpoClassifier</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">version</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_query</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_missing_implies_phenotype_excluded</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_missing_implies_phenotype_excluded</span>
-    
+        <span class="p">)</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_missing_implies_phenotype_excluded</span><span class="p">))</span>
 
@@ -257,9 +258,7 @@
 
 <div class="viewcode-block" id="DiseasePresenceClassifier.test">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.DiseasePresenceClassifier.test">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">PhenotypeCategorization</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">PhenotypeCategorization</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_patient</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">dis</span> <span class="ow">in</span> <span class="n">patient</span><span class="o">.</span><span class="n">diseases</span><span class="p">:</span>
@@ -270,9 +269,8 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">DiseasePresenceClassifier</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_query</span>
-    
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">DiseasePresenceClassifier</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_query</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">,))</span>
 

@@ -136,9 +136,7 @@
             <span class="k">if</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span>
 
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">AllVariantPredicate</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="n">AllVariantPredicate</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">AllVariantPredicate</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AllVariantPredicate</span><span class="p">):</span>
                 <span class="c1"># Merging two *all* variant predicates is equivalent</span>
                 <span class="c1"># to chaining their predicates</span>
                 <span class="k">return</span> <span class="n">AllVariantPredicate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">predicates</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">predicates</span><span class="p">)</span>
@@ -155,9 +153,7 @@
             <span class="k">if</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span>
 
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">AnyVariantPredicate</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="n">AnyVariantPredicate</span>
-            <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">AnyVariantPredicate</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AnyVariantPredicate</span><span class="p">):</span>
                 <span class="c1"># Merging two any variant predicates is equivalent</span>
                 <span class="c1"># to chaining their predicates</span>
                 <span class="k">return</span> <span class="n">AnyVariantPredicate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">predicates</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">predicates</span><span class="p">)</span>

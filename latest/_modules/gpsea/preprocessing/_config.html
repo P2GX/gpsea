@@ -155,18 +155,10 @@
 
     <span class="n">build</span> <span class="o">=</span> <span class="n">_configure_build</span><span class="p">(</span><span class="n">genome_build</span><span class="p">)</span>
     <span class="n">validator</span> <span class="o">=</span> <span class="n">_setup_hpo_validator</span><span class="p">(</span><span class="n">hpo</span><span class="p">,</span> <span class="n">validation_runner</span><span class="p">)</span>
-    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_functional_annotator</span><span class="p">(</span>
-        <span class="n">cache_dir</span><span class="p">,</span> <span class="n">variant_fallback</span><span class="p">,</span> <span class="n">timeout</span>
-    <span class="p">)</span>
-    <span class="n">imprecise_sv_functional_annotator</span> <span class="o">=</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span>
-        <span class="n">build</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">,</span> <span class="n">timeout</span>
-    <span class="p">)</span>
+    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_functional_annotator</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">,</span> <span class="n">variant_fallback</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+    <span class="n">imprecise_sv_functional_annotator</span> <span class="o">=</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span><span class="n">build</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
     <span class="n">hgvs_annotator</span> <span class="o">=</span> <span class="n">VVHgvsVariantCoordinateFinder</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
-    <span class="n">term_onset_parser</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">PhenopacketOntologyTermOnsetParser</span><span class="o">.</span><span class="n">default_parser</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">include_ontology_class_onsets</span>
-        <span class="k">else</span> <span class="kc">None</span>
-    <span class="p">)</span>
+    <span class="n">term_onset_parser</span> <span class="o">=</span> <span class="n">PhenopacketOntologyTermOnsetParser</span><span class="o">.</span><span class="n">default_parser</span><span class="p">()</span> <span class="k">if</span> <span class="n">include_ontology_class_onsets</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">pc</span> <span class="o">=</span> <span class="n">PhenopacketPatientCreator</span><span class="p">(</span>
         <span class="n">hpo</span><span class="o">=</span><span class="n">hpo</span><span class="p">,</span>
         <span class="n">validator</span><span class="o">=</span><span class="n">validator</span><span class="p">,</span>
@@ -218,11 +210,7 @@
         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">hgvs_annotator</span> <span class="o">=</span> <span class="n">VVHgvsVariantCoordinateFinder</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
-    <span class="n">term_onset_parser</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">PhenopacketOntologyTermOnsetParser</span><span class="o">.</span><span class="n">default_parser</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">include_ontology_class_onsets</span>
-        <span class="k">else</span> <span class="kc">None</span>
-    <span class="p">)</span>
+    <span class="n">term_onset_parser</span> <span class="o">=</span> <span class="n">PhenopacketOntologyTermOnsetParser</span><span class="o">.</span><span class="n">default_parser</span><span class="p">()</span> <span class="k">if</span> <span class="n">include_ontology_class_onsets</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">pc</span> <span class="o">=</span> <span class="n">PhenopacketPatientCreator</span><span class="p">(</span>
         <span class="n">hpo</span><span class="o">=</span><span class="n">hpo</span><span class="p">,</span>
         <span class="n">validator</span><span class="o">=</span><span class="n">validator</span><span class="p">,</span>
@@ -406,6 +394,7 @@
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">CachingFunctionalAnnotator</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">tx_cache</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">)</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">_configure_cache_dir</span><span class="p">(</span>
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -433,9 +422,7 @@
         <span class="k">elif</span> <span class="n">genome_build</span> <span class="o">==</span> <span class="s2">&quot;GRCh37.p13&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">GRCh37</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Unknown build </span><span class="si">{</span><span class="n">genome_build</span><span class="si">}</span><span class="s2">. Choose from [&#39;GRCh37.p13&#39;, &#39;GRCh38.p13&#39;]&quot;</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown build </span><span class="si">{</span><span class="n">genome_build</span><span class="si">}</span><span class="s2">. Choose from [&#39;GRCh37.p13&#39;, &#39;GRCh38.p13&#39;]&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported `genome_build`: </span><span class="si">{</span><span class="n">genome_build</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -463,7 +450,6 @@
     <span class="n">variant_fallback</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionalAnnotator</span><span class="p">:</span>
-
     <span class="c1"># (2) FunctionalAnnotator</span>
     <span class="c1"># Setup fallback</span>
     <span class="n">fallback</span> <span class="o">=</span> <span class="n">_configure_fallback_functional</span><span class="p">(</span><span class="n">variant_fallback</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
@@ -597,9 +583,7 @@
     <span class="c1"># Turn phenopackets into a cohort using the cohort creator.</span>
     <span class="c1"># Keep track of the progress by wrapping the list of phenopackets</span>
     <span class="c1"># with TQDM 😎</span>
-    <span class="n">cohort_iter</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span>
-        <span class="n">phenopackets</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Individuals Processed&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot; individuals&quot;</span>
-    <span class="p">)</span>
+    <span class="n">cohort_iter</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">phenopackets</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Individuals Processed&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot; individuals&quot;</span><span class="p">)</span>
     <span class="n">notepad</span> <span class="o">=</span> <span class="n">create_notepad</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Phenopackets&quot;</span><span class="p">)</span>
     <span class="n">cohort</span> <span class="o">=</span> <span class="n">cohort_creator</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">cohort_iter</span><span class="p">,</span> <span class="n">notepad</span><span class="p">)</span>
 

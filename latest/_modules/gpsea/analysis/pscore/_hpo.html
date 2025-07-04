@@ -124,9 +124,7 @@
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">):</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;query argument must be iterable of hpotk TermId&#39;s or strings but we found </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;query argument must be iterable of hpotk TermId&#39;s or strings but we found </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># Now check that the term IDs are HPO term IDs.</span>
             <span class="k">if</span> <span class="n">q</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hpo</span><span class="p">:</span>
@@ -152,9 +150,9 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">hpo</span><span class="p">:</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">MinimalOntology</span><span class="p">,</span>
-            <span class="n">query</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">],</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">hpo</span><span class="p">:</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">MinimalOntology</span><span class="p">,</span>
+        <span class="n">query</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">],</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span> <span class="o">=</span> <span class="n">hpo</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_query</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
@@ -178,8 +176,8 @@
 <div class="viewcode-block" id="CountingPhenotypeScorer.score">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer.score">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span>
-            <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get the count (number) of terms in the query set</span>
@@ -191,9 +189,7 @@
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">patient</span><span class="o">.</span><span class="n">present_phenotypes</span><span class="p">():</span>
                 <span class="n">hpo_id</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">identifier</span>
-                <span class="k">if</span> <span class="n">hpo_id</span> <span class="o">==</span> <span class="n">q</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
-                        <span class="n">anc</span> <span class="o">==</span> <span class="n">q</span> <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)</span>
-                <span class="p">):</span>
+                <span class="k">if</span> <span class="n">hpo_id</span> <span class="o">==</span> <span class="n">q</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">anc</span> <span class="o">==</span> <span class="n">q</span> <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">hpo_id</span><span class="p">)):</span>
                     <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="c1"># We break the inner loop to continue the outer.</span>
                     <span class="k">break</span>
@@ -224,15 +220,21 @@
 
         <span class="c1"># severe and profound GDD</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gdd_tids</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;HP:0011344&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;HP:0012736&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s1">&#39;HP:0011342&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;HP:0011343&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;HP:0001263&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0011344&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0012736&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0011342&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0011343&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0001263&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="p">}</span>
 
         <span class="c1"># mild, moderate, and unspecified GDD (borderline has 0.5)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_idd_tids</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;HP:0010864&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;HP:0002187&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s1">&#39;HP:0001256&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;HP:0002342&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;HP:0001249&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s1">&#39;HP:0006889&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0010864&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0002187&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0001256&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0002342&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0001249&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;HP:0006889&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="p">}</span>
 
     <span class="nd">@property</span>
@@ -241,9 +243,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="s2">&quot;A phenotypic severity score for individuals with intellectual disability&quot;</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;A phenotypic severity score for individuals with intellectual disability&quot;</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -304,10 +304,10 @@
 
 <span class="sd">        Returns: an `int` (between 0 and 2)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">microcephaly</span> <span class="o">=</span> <span class="s1">&#39;HP:0000252&#39;</span>
-        <span class="n">short_stature</span> <span class="o">=</span> <span class="s1">&#39;HP:0004322&#39;</span>
-        <span class="n">macrocephaly</span> <span class="o">=</span> <span class="s1">&#39;HP:0000256&#39;</span>
-        <span class="n">tall_stature</span> <span class="o">=</span> <span class="s1">&#39;HP:0000098&#39;</span>
+        <span class="n">microcephaly</span> <span class="o">=</span> <span class="s2">&quot;HP:0000252&quot;</span>
+        <span class="n">short_stature</span> <span class="o">=</span> <span class="s2">&quot;HP:0004322&quot;</span>
+        <span class="n">macrocephaly</span> <span class="o">=</span> <span class="s2">&quot;HP:0000256&quot;</span>
+        <span class="n">tall_stature</span> <span class="o">=</span> <span class="s2">&quot;HP:0000098&quot;</span>
         <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">microcephaly</span><span class="p">,</span> <span class="n">short_stature</span><span class="p">,</span> <span class="n">macrocephaly</span><span class="p">,</span> <span class="n">tall_stature</span><span class="p">):</span>
             <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="p">)</span>
@@ -331,13 +331,13 @@
 <span class="sd">        Returns: facial dysmorphism score (between 0 and 2)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">globe_location</span> <span class="o">=</span> <span class="s1">&#39;HP:0100886&#39;</span>  <span class="c1"># include Hypertelorism and others</span>
-        <span class="n">lip</span> <span class="o">=</span> <span class="s1">&#39;HP:0000159&#39;</span> <span class="c1"># Abnormal lip morphology HP:0000159</span>
-        <span class="n">external_nose</span> <span class="o">=</span> <span class="s1">&#39;HP:0010938&#39;</span>
-        <span class="n">pinna_morphology</span> <span class="o">=</span> <span class="s1">&#39;HP:0000377&#39;</span>
-        <span class="n">facial_shape</span> <span class="o">=</span> <span class="s1">&#39;HP:0001999&#39;</span>  <span class="c1"># Abnormal facial shape</span>
-        <span class="n">midface</span> <span class="o">=</span> <span class="s1">&#39;HP:0000309&#39;</span>  <span class="c1"># Abnormal midface morphology</span>
-        <span class="n">chin</span> <span class="o">=</span> <span class="s1">&#39;HP:0000306&#39;</span>  <span class="c1"># Abnormality of the chin</span>
+        <span class="n">globe_location</span> <span class="o">=</span> <span class="s2">&quot;HP:0100886&quot;</span>  <span class="c1"># include Hypertelorism and others</span>
+        <span class="n">lip</span> <span class="o">=</span> <span class="s2">&quot;HP:0000159&quot;</span>  <span class="c1"># Abnormal lip morphology HP:0000159</span>
+        <span class="n">external_nose</span> <span class="o">=</span> <span class="s2">&quot;HP:0010938&quot;</span>
+        <span class="n">pinna_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0000377&quot;</span>
+        <span class="n">facial_shape</span> <span class="o">=</span> <span class="s2">&quot;HP:0001999&quot;</span>  <span class="c1"># Abnormal facial shape</span>
+        <span class="n">midface</span> <span class="o">=</span> <span class="s2">&quot;HP:0000309&quot;</span>  <span class="c1"># Abnormal midface morphology</span>
+        <span class="n">chin</span> <span class="o">=</span> <span class="s2">&quot;HP:0000306&quot;</span>  <span class="c1"># Abnormality of the chin</span>
 
         <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">globe_location</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
         <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">lip</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
@@ -366,13 +366,20 @@
 <span class="sd">        Returns:   Non-facial dysmorphism and congenital abnormalities score (between 0 and 2)</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">abn_external_genitalia</span> <span class="o">=</span> <span class="s1">&#39;HP:0000811&#39;</span>  <span class="c1"># Abnormal external genitalia</span>
-        <span class="n">abnormal_hand_morphology</span> <span class="o">=</span> <span class="s1">&#39;HP:0005922&#39;</span>
-        <span class="n">abnormal_heart_morphology</span> <span class="o">=</span> <span class="s1">&#39;HP:0001627&#39;</span>
+        <span class="n">abn_external_genitalia</span> <span class="o">=</span> <span class="s2">&quot;HP:0000811&quot;</span>  <span class="c1"># Abnormal external genitalia</span>
+        <span class="n">abnormal_hand_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0005922&quot;</span>
+        <span class="n">abnormal_heart_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0001627&quot;</span>
 
-        <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">abn_external_genitalia</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">,)</span>
-        <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">abnormal_hand_morphology</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
-        <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">abnormal_heart_morphology</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
+        <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span>
+            <span class="n">target_tid</span><span class="o">=</span><span class="n">abn_external_genitalia</span><span class="p">,</span>
+            <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span>
+            <span class="n">target_tid</span><span class="o">=</span><span class="n">abnormal_hand_morphology</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span>
+        <span class="p">)</span>
+        <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span>
+            <span class="n">target_tid</span><span class="o">=</span><span class="n">abnormal_heart_morphology</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span>
+        <span class="p">)</span>
         <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">total_count</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_prenatal_growth_score</span><span class="p">(</span>
@@ -388,8 +395,8 @@
 <span class="sd">        Returns: score between 0 and 2</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">small_for_gestational_age</span> <span class="o">=</span> <span class="s1">&#39;HP:0001518&#39;</span>
-        <span class="n">intrauterine_growth_retardation</span> <span class="o">=</span> <span class="s1">&#39;HP:0001511&#39;</span>
+        <span class="n">small_for_gestational_age</span> <span class="o">=</span> <span class="s2">&quot;HP:0001518&quot;</span>
+        <span class="n">intrauterine_growth_retardation</span> <span class="o">=</span> <span class="s2">&quot;HP:0001511&quot;</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_for_gestational_age</span><span class="p">,</span> <span class="n">intrauterine_growth_retardation</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="n">observed_term_ids</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">tid</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>

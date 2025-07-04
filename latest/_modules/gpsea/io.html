@@ -357,9 +357,7 @@
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_any_field</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VARIANT_INFO_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">VariantInfo</span><span class="p">(</span>
-                <span class="n">variant_coordinates</span><span class="o">=</span><span class="p">(</span>
-                    <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_coordinates&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;variant_coordinates&quot;</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span>
-                <span class="p">),</span>
+                <span class="n">variant_coordinates</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_coordinates&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;variant_coordinates&quot;</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
                 <span class="n">sv_info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;sv_info&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;sv_info&quot;</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VARIANT_COORDINATES_FIELDS</span><span class="p">):</span>
