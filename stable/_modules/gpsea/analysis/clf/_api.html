@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.analysis.clf._api &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.analysis.clf._api &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -108,9 +108,7 @@
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cat_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">cat_id</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;cat_id&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_optional_instance</span><span class="p">(</span>
-            <span class="n">description</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_description</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_optional_instance</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">cat_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -134,11 +132,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;PatientCategory(cat_id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cat_id</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;description=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;PatientCategory(cat_id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">cat_id</span><span class="si">}</span><span class="s2">, name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, description=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
@@ -187,9 +181,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">category</span><span class="p">:</span> <span class="n">PatientCategory</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-            <span class="n">category</span><span class="p">,</span> <span class="n">PatientCategory</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">PatientCategory</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">category</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PatientCategory</span><span class="p">:</span>
@@ -379,12 +371,12 @@
 <span class="sd">(have `__eq__` and `__lt__` magic methods).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">YES</span> <span class="o">=</span> <span class="n">PatientCategory</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;The patient belongs to the group.&#39;</span><span class="p">)</span>
+<span class="n">YES</span> <span class="o">=</span> <span class="n">PatientCategory</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;The patient belongs to the group.&quot;</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Category for a patient who *belongs* to the tested group.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">NO</span> <span class="o">=</span> <span class="n">PatientCategory</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="s1">&#39;The patient does not belong to the group.&#39;</span><span class="p">)</span>
+<span class="n">NO</span> <span class="o">=</span> <span class="n">PatientCategory</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;The patient does not belong to the group.&quot;</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Category for a patient who does *not* belong to the tested group.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -410,19 +402,17 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="s2">&quot;PhenotypeCategorization(&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;category=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;phenotype=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;PhenotypeCategorization(category=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="si">}</span><span class="s2">, phenotype=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">PhenotypeCategorization</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_category</span> \
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">PhenotypeCategorization</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_category</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_category</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_phenotype</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_category</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="p">))</span></div>
@@ -432,7 +422,8 @@
 <div class="viewcode-block" id="PhenotypeClassifier">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.PhenotypeClassifier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhenotypeClassifier</span><span class="p">(</span>
-    <span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">[</span><span class="n">P</span><span class="p">],</span> <span class="n">Classifier</span><span class="p">[</span><span class="n">PhenotypeCategorization</span><span class="p">[</span><span class="n">P</span><span class="p">]],</span> 
+    <span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">[</span><span class="n">P</span><span class="p">],</span>
+    <span class="n">Classifier</span><span class="p">[</span><span class="n">PhenotypeCategorization</span><span class="p">[</span><span class="n">P</span><span class="p">]],</span>
     <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

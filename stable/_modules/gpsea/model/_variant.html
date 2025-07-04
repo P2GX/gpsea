@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.model._variant &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.model._variant &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -136,21 +136,15 @@
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gene_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">gene_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;gene_id&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">tx_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;tx_id&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_hgvs_cdna</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_optional_instance</span><span class="p">(</span>
-            <span class="n">hgvs_cdna</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;hgvs_cdna&quot;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_preferred</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-            <span class="n">is_preferred</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="s2">&quot;is_preferred&quot;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hgvs_cdna</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_optional_instance</span><span class="p">(</span><span class="n">hgvs_cdna</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_preferred</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">is_preferred</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="s2">&quot;is_preferred&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_variant_effects</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">variant_effects</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">affected_exons</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_affected_exons</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">affected_exons</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_affected_exons</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">protein_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_protein_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-                <span class="n">protein_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;protein_id&quot;</span>
-            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_protein_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">protein_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;protein_id&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_protein_id</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">hgvsp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -480,9 +474,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_region</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ref</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_alt</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">alt</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_change_length</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-            <span class="n">change_length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;change_length&quot;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_change_length</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">change_length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;change_length&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">chrom</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -608,11 +600,7 @@
 
 <span class="sd">        :return: `True` if the variant coordinates use structural variant notation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&lt;&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_alt</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&gt;&quot;</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -659,12 +647,8 @@
         <span class="n">gene_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">gene_symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_structural_type</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-            <span class="n">structural_type</span><span class="p">,</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">,</span> <span class="s2">&quot;structural_type&quot;</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_variant_class</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span>
-            <span class="n">variant_class</span><span class="p">,</span> <span class="n">VariantClass</span><span class="p">,</span> <span class="s2">&quot;variant_class&quot;</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_structural_type</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">structural_type</span><span class="p">,</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">,</span> <span class="s2">&quot;structural_type&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variant_class</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">variant_class</span><span class="p">,</span> <span class="n">VariantClass</span><span class="p">,</span> <span class="s2">&quot;variant_class&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gene_id</span> <span class="o">=</span> <span class="n">gene_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gene_symbol</span> <span class="o">=</span> <span class="n">gene_symbol</span>
 
@@ -755,9 +739,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_variant_coordinates</span> <span class="o">=</span> <span class="n">variant_coordinates</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_sv_info</span> <span class="o">=</span> <span class="n">sv_info</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Only one field can be set: variant_coordinates=</span><span class="si">{</span><span class="n">variant_coordinates</span><span class="si">}</span><span class="s2">, sv_info=</span><span class="si">{</span><span class="n">sv_info</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Only one field can be set: variant_coordinates=</span><span class="si">{</span><span class="n">variant_coordinates</span><span class="si">}</span><span class="s2">, sv_info=</span><span class="si">{</span><span class="n">sv_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variant_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">VariantCoordinates</span><span class="p">]:</span>
@@ -834,9 +816,7 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_handle_missing_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;VariantInfo should have either variant coordinates or SV info!&quot;</span>
-        <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;VariantInfo should have either variant coordinates or SV info!&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -849,11 +829,7 @@
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_variant_coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sv_info</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;VariantInfo(&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;variant_coordinates=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_variant_coordinates</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;sv_info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sv_info</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;VariantInfo(variant_coordinates=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_variant_coordinates</span><span class="si">}</span><span class="s2">, sv_info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_sv_info</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -880,7 +856,6 @@
 <div class="viewcode-block" id="FunctionalAnnotationAware">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.FunctionalAnnotationAware">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FunctionalAnnotationAware</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-
     <span class="nd">@property</span>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">tx_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
@@ -888,9 +863,7 @@
 
 <div class="viewcode-block" id="FunctionalAnnotationAware.get_tx_anno_by_tx_id">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.FunctionalAnnotationAware.get_tx_anno_by_tx_id">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_tx_anno_by_tx_id</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">transcript_id</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_tx_anno_by_tx_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transcript_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a transcript ID, this will return the `TranscriptAnnotation` associated with that</span>
 <span class="sd">        variant and transcript.</span>
 
@@ -1003,7 +976,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variant_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VariantInfo</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get the representation of the variant data for sequence and symbolic variants, </span>
+<span class="sd">        Get the representation of the variant data for sequence and symbolic variants,</span>
 <span class="sd">        as well as for large imprecise SVs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variant_info</span>
@@ -1038,9 +1011,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Variant(variant_info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_variant_info</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;tx_annotations=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_annotations</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;genotypes=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gts</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Variant(variant_info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_variant_info</span><span class="si">}</span><span class="s2">, tx_annotations=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_annotations</span><span class="si">}</span><span class="s2">, genotypes=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gts</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="p">)</span></div>
 
 </pre></div>

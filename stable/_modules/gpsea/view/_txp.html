@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.view._txp &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.view._txp &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -84,15 +84,13 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Variant</span><span class="p">,</span> <span class="n">TranscriptCoordinates</span><span class="p">,</span> <span class="n">ProteinMetadata</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_interpolated_location_in_protein</span><span class="p">(</span><span class="n">aa_pos_in_prot</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span>
-                                        <span class="n">prot_len</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span>
-                                        <span class="n">plot_width</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>
-                                        <span class="n">margin_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="nb">int</span><span class="p">]:</span>
-    <span class="n">used_plot_width</span> <span class="o">=</span> <span class="n">plot_width</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">margin_size</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_interpolated_location_in_protein</span><span class="p">(</span>
+    <span class="n">aa_pos_in_prot</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">prot_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">plot_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span> <span class="n">margin_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">used_plot_width</span> <span class="o">=</span> <span class="n">plot_width</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">margin_size</span>
     <span class="n">rel_pos_in_prot</span> <span class="o">=</span> <span class="n">aa_pos_in_prot</span> <span class="o">/</span> <span class="n">prot_len</span>
     <span class="n">interpolated_x</span> <span class="o">=</span> <span class="n">margin_size</span> <span class="o">+</span> <span class="n">used_plot_width</span> <span class="o">*</span> <span class="n">rel_pos_in_prot</span>
     <span class="k">return</span> <span class="n">interpolated_x</span>
-
 
 
 <div class="viewcode-block" id="VariantTranscriptVisualizer">
@@ -106,9 +104,7 @@
     <span class="c1"># noinspection PyMethodMayBeStatic</span>
 <div class="viewcode-block" id="VariantTranscriptVisualizer.draw_variants">
 <a class="viewcode-back" href="../../../apidocs/gpsea.view.html#gpsea.view.VariantTranscriptVisualizer.draw_variants">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">draw_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variants</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Variant</span><span class="p">],</span>
-                    <span class="n">tx</span><span class="p">:</span> <span class="n">TranscriptCoordinates</span><span class="p">,</span>
-                    <span class="n">protein</span><span class="p">:</span> <span class="n">ProteinMetadata</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variants</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Variant</span><span class="p">],</span> <span class="n">tx</span><span class="p">:</span> <span class="n">TranscriptCoordinates</span><span class="p">,</span> <span class="n">protein</span><span class="p">:</span> <span class="n">ProteinMetadata</span><span class="p">):</span>
         <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">protein</span><span class="o">.</span><span class="n">protein_id</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">protein</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">)&quot;</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
         <span class="n">protein_domains</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -118,11 +114,11 @@
         <span class="c1"># draw a box that is ten aax tall, where aax is the dimension of one amino acid</span>
         <span class="n">prot_start</span> <span class="o">=</span> <span class="n">get_interpolated_location_in_protein</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">amino_acid_len</span><span class="p">)</span>
         <span class="n">prot_end</span> <span class="o">=</span> <span class="n">get_interpolated_location_in_protein</span><span class="p">(</span><span class="n">amino_acid_len</span><span class="p">,</span> <span class="n">amino_acid_len</span><span class="p">)</span>
-        <span class="n">_box_height</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="n">amino_acid_len</span>
+        <span class="n">_box_height</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">amino_acid_len</span>
         <span class="n">prot_width</span> <span class="o">=</span> <span class="n">prot_end</span> <span class="o">-</span> <span class="n">prot_start</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="n">protein_height</span> <span class="o">=</span> <span class="n">prot_width</span><span class="o">/</span><span class="mi">20</span>
-        <span class="c1">#rect = Rectangle((prot_start, BOTTOM_MARGIN), prot_width, protein_height)</span>
-        <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">prot_width</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">protein_height</span> <span class="o">=</span> <span class="n">prot_width</span> <span class="o">/</span> <span class="mi">20</span>
+        <span class="c1"># rect = Rectangle((prot_start, BOTTOM_MARGIN), prot_width, protein_height)</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">prot_width</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
             <span class="n">tx_annot_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">txa</span> <span class="k">for</span> <span class="n">txa</span> <span class="ow">in</span> <span class="n">variant</span><span class="o">.</span><span class="n">tx_annotations</span> <span class="k">if</span> <span class="n">txa</span><span class="o">.</span><span class="n">transcript_id</span> <span class="o">==</span> <span class="n">tx</span><span class="o">.</span><span class="n">identifier</span><span class="p">]</span>
@@ -160,8 +156,8 @@
             <span class="n">line</span> <span class="o">=</span> <span class="n">Line2D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
             <span class="c1"># TODO show one box per mutation or otherwise represent frequency</span>
-            <span class="n">color_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
-            <span class="n">feature_to_color_index_d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># default is red</span>
+            <span class="n">color_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">]</span>
+            <span class="n">feature_to_color_index_d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># default is red</span>
             <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">protein_domains</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">name</span>
                 <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">feature_to_color_index_d</span><span class="p">:</span>
@@ -171,21 +167,21 @@
                 <span class="n">box_color</span> <span class="o">=</span> <span class="n">color_list</span><span class="p">[</span><span class="n">color_idx</span><span class="p">]</span>
                 <span class="n">start</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">start</span>
                 <span class="n">end</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">end</span>
-                <span class="c1">#print(name, start, end, box_color)</span>
-                <span class="n">_box_height</span> <span class="o">=</span> <span class="mi">10</span><span class="o">/</span><span class="n">amino_acid_len</span>
+                <span class="c1"># print(name, start, end, box_color)</span>
+                <span class="n">_box_height</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">amino_acid_len</span>
                 <span class="n">prot_width</span> <span class="o">=</span> <span class="n">prot_end</span> <span class="o">-</span> <span class="n">prot_start</span> <span class="o">+</span> <span class="mi">1</span>
-                <span class="n">protein_height</span> <span class="o">=</span> <span class="n">prot_width</span><span class="o">/</span><span class="mi">20</span>
-                <span class="c1">#rect = Rectangle((prot_start, BOTTOM_MARGIN), prot_width, protein_height)</span>
-                <span class="n">box_start</span> <span class="o">=</span> <span class="n">get_interpolated_location_in_protein</span><span class="p">(</span><span class="n">start</span><span class="p">,</span>  <span class="n">amino_acid_len</span><span class="p">)</span>
+                <span class="n">protein_height</span> <span class="o">=</span> <span class="n">prot_width</span> <span class="o">/</span> <span class="mi">20</span>
+                <span class="c1"># rect = Rectangle((prot_start, BOTTOM_MARGIN), prot_width, protein_height)</span>
+                <span class="n">box_start</span> <span class="o">=</span> <span class="n">get_interpolated_location_in_protein</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">amino_acid_len</span><span class="p">)</span>
                 <span class="n">box_end</span> <span class="o">=</span> <span class="n">get_interpolated_location_in_protein</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">amino_acid_len</span><span class="p">)</span>
                 <span class="n">box_width</span> <span class="o">=</span> <span class="n">box_end</span> <span class="o">-</span> <span class="n">box_start</span>
-                <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="n">box_start</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">box_width</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">box_color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+                <span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">((</span><span class="n">box_start</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">box_width</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">box_color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;x-large&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X Label&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.5</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y label&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-large&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X Label&quot;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y label&quot;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">14.5</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span></div>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

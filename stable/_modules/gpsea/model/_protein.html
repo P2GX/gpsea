@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.model._protein &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.model._protein &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -149,11 +149,7 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_region</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">FeatureInfo</span><span class="p">)</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">region</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">FeatureInfo</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">region</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">region</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_region</span><span class="p">))</span>
@@ -165,11 +161,12 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">_deprecation_warning</span><span class="p">():</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;`FeatureType` was deprecated and will be removed prior `v1.0.0`. Use a `str` instead!&quot;</span><span class="p">,</span>
-            <span class="ne">DeprecationWarning</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="s2">&quot;`FeatureType` was deprecated and will be removed prior `v1.0.0`. Use a `str` instead!&quot;</span><span class="p">,</span>
+        <span class="ne">DeprecationWarning</span><span class="p">,</span>
+    <span class="p">)</span>
 
 
 <div class="viewcode-block" id="FeatureType">
@@ -271,7 +268,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized protein feature type: &quot;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></div>
 
-        
+
 <div class="viewcode-block" id="FeatureType.deprecation_warning">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.FeatureType.deprecation_warning">[docs]</a>
     <span class="nd">@staticmethod</span>
@@ -284,7 +281,6 @@
 <div class="viewcode-block" id="ProteinFeature">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.ProteinFeature">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProteinFeature</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-
 <div class="viewcode-block" id="ProteinFeature.create">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.ProteinFeature.create">[docs]</a>
     <span class="nd">@staticmethod</span>
@@ -352,17 +348,13 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;SimpleProteinFeature(type=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="sa">f</span><span class="s2">&quot;info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;SimpleProteinFeature(type=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="si">}</span><span class="s2">, info=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">SimpleProteinFeature</span><span class="p">)</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_type</span>
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_info</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">SimpleProteinFeature</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_type</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_info</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">))</span>
@@ -466,8 +458,7 @@
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">col_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">expected_headers</span><span class="p">):</span>
             <span class="n">missing_cols</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">expected_headers</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The column(s) </span><span class="se">{{</span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="se">}}</span><span class="s2"> are missing from the `features` DataFrame: &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">tuple</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;The column(s) </span><span class="se">{{</span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="se">}}</span><span class="s2"> are missing from the `features` DataFrame: </span><span class="si">{</span><span class="nb">tuple</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
         <span class="n">region_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
@@ -475,9 +466,7 @@
             <span class="n">region_start</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># convert to 0-based coordinates</span>
             <span class="n">region_end</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
             <span class="n">feature_type</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
-            <span class="n">finfo</span> <span class="o">=</span> <span class="n">FeatureInfo</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">region_name</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">Region</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">region_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">region_end</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">finfo</span> <span class="o">=</span> <span class="n">FeatureInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">region_name</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">Region</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">region_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">region_end</span><span class="p">))</span>
             <span class="n">pfeature</span> <span class="o">=</span> <span class="n">ProteinFeature</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">finfo</span><span class="p">,</span> <span class="n">feature_type</span><span class="o">=</span><span class="n">feature_type</span><span class="p">)</span>
             <span class="n">region_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pfeature</span><span class="p">)</span>
 
@@ -521,14 +510,10 @@
         <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]:</span>
             <span class="n">region_name</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span>
             <span class="n">locus</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span>
-            <span class="n">region_start</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="nb">int</span><span class="p">(</span><span class="n">locus</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
-            <span class="p">)</span>  <span class="c1"># convert to 0-based coordinates</span>
+            <span class="n">region_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">locus</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># convert to 0-based coordinates</span>
             <span class="n">region_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">locus</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
             <span class="n">feature_type</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
-            <span class="n">finfo</span> <span class="o">=</span> <span class="n">FeatureInfo</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">region_name</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">Region</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">region_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">region_end</span><span class="p">)</span>
-            <span class="p">)</span>
+            <span class="n">finfo</span> <span class="o">=</span> <span class="n">FeatureInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">region_name</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">Region</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">region_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">region_end</span><span class="p">))</span>
             <span class="n">pfeature</span> <span class="o">=</span> <span class="n">ProteinFeature</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">finfo</span><span class="p">,</span> <span class="n">feature_type</span><span class="o">=</span><span class="n">feature_type</span><span class="p">)</span>
             <span class="n">regions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pfeature</span><span class="p">)</span>
 
@@ -592,9 +577,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Iterable[ProteinFeature]: A subgroup of the protein features that correspond to protein domains.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;DOMAIN&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;DOMAIN&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ProteinMetadata.repeats">
@@ -604,9 +587,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Iterable[ProteinFeature]: A subgroup of the protein features that correspond to repeat regions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;REPEAT&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;REPEAT&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ProteinMetadata.regions">
@@ -616,9 +597,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Iterable[ProteinFeature]: A subgroup of the protein features that correspond to generic regions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;REGION&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;REGION&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ProteinMetadata.motifs">
@@ -628,9 +607,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Iterable[ProteinFeature]: A subgroup of the protein features that correspond to motifs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span>
-            <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;MOTIF&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">feature_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;MOTIF&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ProteinMetadata.get_features_variant_overlaps">
@@ -647,19 +624,11 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            Collection[ProteinFeature]: a collection of overlapping protein features.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="n">feature</span>
-            <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span>
-            <span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">overlaps_with</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
-        <span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">feature</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span> <span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">overlaps_with</span><span class="p">(</span><span class="n">region</span><span class="p">))</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;ProteinMetadata(id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_id</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;features=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;ProteinMetadata(id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_id</span><span class="si">}</span><span class="s2">, label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">, features=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>

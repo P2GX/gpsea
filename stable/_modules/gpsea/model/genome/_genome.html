@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.model.genome._genome &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.model.genome._genome &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -102,15 +102,15 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">gb_acc</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">refseq_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ucsc_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gb_acc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">gb_acc</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;gb_acc&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refseq</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">refseq_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;refseq_name&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ucsc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">ucsc_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;ucsc_name&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gb_acc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">gb_acc</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;gb_acc&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refseq</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">refseq_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;refseq_name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ucsc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">ucsc_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;ucsc_name&quot;</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;length&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Length must not be negative but got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length must not be negative but got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -138,11 +138,13 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Contig</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">refseq_name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">refseq_name</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">ucsc_name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">ucsc_name</span>
-                <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Contig</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">refseq_name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">refseq_name</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">ucsc_name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">ucsc_name</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">refseq_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ucsc_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span></div>
@@ -182,12 +184,14 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get genome build identifier consisting of major assembly + patch, e.g. `GRCh38.p13`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">major_assembly</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">major_assembly</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">patch</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">major_assembly</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">major_assembly</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">patch</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">major_assembly</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="p">))</span>
@@ -220,7 +224,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="n">contigs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Contig</span><span class="p">]):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="s1">&#39;identifier&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="s2">&quot;identifier&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_contigs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">contigs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_contig_by_name</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contigs</span><span class="p">:</span>
@@ -311,11 +315,11 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`start` and `end` must be ints but were `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="si">}</span><span class="s1">`, `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="si">}</span><span class="s1">`&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` and `end` must be ints but were `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`start` and `end` must be positive but were `</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s1">`, `</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s1">`&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` and `end` must be positive but were `</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`start` </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s1"> must be at or before `end` </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> must be at or before `end` </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="n">start</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="n">end</span>
 
@@ -410,22 +414,20 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Region&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Region</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`other` is not instance of `Region`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`other` is not instance of `Region`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">other</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Region</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Region</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Region(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Region(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -439,12 +441,12 @@
 <span class="sd">    `Strand` is an enum to model positive and negative strands of double-stranded sequences, such as DNA.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">POSITIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,)</span>
+    <span class="n">POSITIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">,)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The positive strand of a double stranded sequence.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">NEGATIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,)</span>
+    <span class="n">NEGATIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The negative strand of a double stranded sequence.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -504,7 +506,7 @@
 <span class="sd">    Raises: ValueError if the `coordinate` is out of contig bounds.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">coordinate</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coordinate </span><span class="si">{</span><span class="n">coordinate</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> is out of bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">] for contig </span><span class="si">{</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinate </span><span class="si">{</span><span class="n">coordinate</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> is out of bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">] for contig </span><span class="si">{</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span> <span class="o">-</span> <span class="n">coordinate</span></div>
 
 
@@ -574,8 +576,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_contig</span> <span class="o">=</span> <span class="n">contig</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_strand</span> <span class="o">=</span> <span class="n">strand</span>
         <span class="k">if</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Genomic region end </span><span class="si">{end}</span><span class="s1"> must not extend &#39;</span>
-                             <span class="sa">f</span><span class="s1">&#39;beyond contig </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">)</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Genomic region end </span><span class="si">{end}</span><span class="s2"> must not extend &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;beyond contig </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
+            <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">contig</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Contig</span><span class="p">:</span>
@@ -682,8 +686,10 @@
         <span class="n">other</span> <span class="o">=</span> <span class="n">GenomicRegion</span><span class="o">.</span><span class="n">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot calculate distance between regions on different contigs: &#39;</span>
-                             <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> &lt;-&gt; </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot calculate distance between regions on different contigs: &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> &lt;-&gt; </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
 
         <span class="n">other_start</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">start_on_strand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_strand</span><span class="p">)</span>
         <span class="n">other_end</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">end_on_strand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_strand</span><span class="p">)</span>
@@ -694,21 +700,23 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`other` is not instance of `GenomicRegion`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`other` is not instance of `GenomicRegion`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">other</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">)</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">strand</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">strand</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">strand</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">strand</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;GenomicRegion(contig=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s1">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s1">, strand=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomicRegion(contig=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">, strand=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="si">}</span><span class="s2">)&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>

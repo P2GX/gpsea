@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.analysis.clf._gt_classifiers &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.analysis.clf._gt_classifiers &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -100,14 +100,10 @@
             <span class="n">fixed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">partition</span><span class="p">,))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
             <span class="n">vals</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span>
-            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span>
-                <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span>
-            <span class="p">),</span> <span class="s2">&quot;All indices must be `int`s!&quot;</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">),</span> <span class="s2">&quot;All indices must be `int`s!&quot;</span>
             <span class="n">fixed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Partition </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> is neither an `int` nor an iterable of `int`s: </span><span class="si">{</span><span class="n">partition</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Partition </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> is neither an `int` nor an iterable of `int`s: </span><span class="si">{</span><span class="n">partition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fixed</span>
 
 
@@ -126,9 +122,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">partitions</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least 2 partitions must be provided&quot;</span><span class="p">)</span>
     <span class="c1"># ... and the inner collection elements are all ints</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
-        <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">partition</span>
-    <span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">e</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">partition</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Each partition index must be a non-negative int&quot;</span><span class="p">)</span>
 
     <span class="c1"># Each partition must be unique ...</span>
@@ -218,16 +212,8 @@
         <span class="n">b_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PolyCountingGenotypeClassifier&quot;</span><span class="p">:</span>
         <span class="n">count2cat</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="n">Categorization</span><span class="p">(</span>
-                <span class="n">PatientCategory</span><span class="p">(</span>
-                    <span class="n">cat_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">a_label</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monoallelic </span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
-            <span class="p">),</span>
-            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="n">Categorization</span><span class="p">(</span>
-                <span class="n">PatientCategory</span><span class="p">(</span>
-                    <span class="n">cat_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">b_label</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monoallelic </span><span class="si">{</span><span class="n">b_label</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
-            <span class="p">),</span>
+            <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="n">Categorization</span><span class="p">(</span><span class="n">PatientCategory</span><span class="p">(</span><span class="n">cat_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">a_label</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monoallelic </span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)),</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="n">Categorization</span><span class="p">(</span><span class="n">PatientCategory</span><span class="p">(</span><span class="n">cat_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">b_label</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Monoallelic </span><span class="si">{</span><span class="n">b_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)),</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="n">PolyCountingGenotypeClassifier</span><span class="o">.</span><span class="n">for_predicates_and_categories</span><span class="p">(</span>
@@ -353,7 +339,7 @@
         <span class="n">b_predicate</span><span class="o">=</span><span class="n">b_predicate</span><span class="p">,</span>
         <span class="n">a_label</span><span class="o">=</span><span class="n">a_label</span><span class="p">,</span>
         <span class="n">b_label</span><span class="o">=</span><span class="n">b_label</span><span class="p">,</span>
-    <span class="p">)</span>    
+    <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">PolyCountingGenotypeClassifier</span><span class="o">.</span><span class="n">monoallelic</span><span class="p">(</span>
         <span class="n">a_predicate</span><span class="o">=</span><span class="n">a_predicate</span><span class="p">,</span>
@@ -403,7 +389,7 @@
         <span class="n">a_label</span><span class="o">=</span><span class="n">a_label</span><span class="p">,</span>
         <span class="n">b_label</span><span class="o">=</span><span class="n">b_label</span><span class="p">,</span>
     <span class="p">)</span>
-    
+
     <span class="n">partitions</span> <span class="o">=</span> <span class="n">_fixate_partitions</span><span class="p">(</span><span class="n">partitions</span><span class="p">)</span>
     <span class="n">_qc_partitions</span><span class="p">(</span><span class="n">partitions</span><span class="p">)</span>
 
@@ -416,26 +402,29 @@
     <span class="p">)</span></div>
 
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">_validate_b_predicate</span><span class="p">(</span>
     <span class="n">a_predicate</span><span class="p">:</span> <span class="n">VariantPredicate</span><span class="p">,</span>
     <span class="n">b_predicate</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">VariantPredicate</span><span class="p">],</span>
     <span class="n">a_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">b_label</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span>
-    <span class="n">VariantPredicate</span><span class="p">,</span> <span class="n">VariantPredicate</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">VariantPredicate</span><span class="p">,</span>
+    <span class="n">VariantPredicate</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">,</span>
 <span class="p">]:</span>
     <span class="k">if</span> <span class="n">b_predicate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">b_predicate</span> <span class="o">=</span> <span class="o">~</span><span class="n">a_predicate</span>
         <span class="k">if</span> <span class="n">b_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Using a regular uppercase `C` instead of Unicode complement (`∁`)</span>
             <span class="c1"># to reduce the 😕 factor.</span>
-            <span class="n">b_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">^C&quot;</span> <span class="c1"># complement of A</span>
+            <span class="n">b_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">^C&quot;</span>  <span class="c1"># complement of A</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b_label</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>    
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b_label</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">b_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">b_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">^C&quot;</span> <span class="c1"># complement of A</span>
-        
+            <span class="n">b_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a_label</span><span class="si">}</span><span class="s2">^C&quot;</span>  <span class="c1"># complement of A</span>
+
     <span class="k">return</span> <span class="n">a_predicate</span><span class="p">,</span> <span class="n">b_predicate</span><span class="p">,</span> <span class="n">b_label</span>
 
 
@@ -460,6 +449,7 @@
 
     <span class="k">return</span> <span class="n">ac2cat</span>
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">_pluralize</span><span class="p">(</span>
     <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">base</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -468,6 +458,7 @@
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">s&quot;</span>
+
 
 <div class="viewcode-block" id="allele_count">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.allele_count">[docs]</a>
@@ -545,9 +536,7 @@
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">AlleleCounter</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_counter</span> <span class="o">=</span> <span class="n">counter</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="n">_deduplicate_categorizations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count2cat</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_deduplicate_categorizations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count2cat</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count2cat</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_counter</span><span class="p">,))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_categorizations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Categorization</span><span class="p">]:</span>
@@ -674,12 +663,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">labels</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
-        <span class="k">assert</span> <span class="p">(</span>
-            <span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span>
-        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;We need at least 2 diagnoses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="k">assert</span> <span class="p">(</span>
-            <span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
-        <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;The number of labels must match the number of diagnose IDs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">!=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;We need at least 2 diagnoses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;The number of labels must match the number of diagnose IDs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">diagnosis_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">!=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
 
         <span class="c1"># Then, prepare the categorizations.</span>
         <span class="n">categorizations</span> <span class="o">=</span> <span class="p">{</span>
@@ -699,9 +686,7 @@
         <span class="n">categorizations</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">,</span> <span class="n">Categorization</span><span class="p">],</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_id2cat</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">categorizations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="nb">sorted</span><span class="p">(</span><span class="n">categorizations</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">categorizations</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">categorizations</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
 
     <span class="nd">@property</span>
@@ -773,18 +758,19 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">RandomClassifier</span><span class="p">(</span><span class="n">GenotypeClassifier</span><span class="p">):</span>
-    
     <span class="n">CATS</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Categorization</span><span class="p">(</span>
             <span class="n">category</span><span class="o">=</span><span class="n">PatientCategory</span><span class="p">(</span>
-                <span class="n">cat_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+                <span class="n">cat_id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="p">),</span>
         <span class="n">Categorization</span><span class="p">(</span>
             <span class="n">category</span><span class="o">=</span><span class="n">PatientCategory</span><span class="p">(</span>
-                <span class="n">cat_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+                <span class="n">cat_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">),</span>
     <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
@@ -815,7 +801,7 @@
         <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">RandomClassifier</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rng</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_rng</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_rng</span><span class="p">,</span> <span class="p">))</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_rng</span><span class="p">,))</span>
 
 
 <div class="viewcode-block" id="random_classifier">
@@ -835,7 +821,6 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">FrozenGenotypeClassifier</span><span class="p">(</span><span class="n">GenotypeClassifier</span><span class="p">):</span>
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">label_to_code</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">SampleLabels</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
@@ -892,10 +877,12 @@
         <span class="k">return</span> <span class="n">hash_value</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">FrozenGenotypeClassifier</span><span class="p">)</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_label_to_code</span> \
-            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_code_to_cat</span> \
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">FrozenGenotypeClassifier</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_label_to_code</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_code_to_cat</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_categorizations</span> <span class="o">==</span> <span class="n">value</span><span class="o">.</span><span class="n">_categorizations</span>
+        <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span>
@@ -942,13 +929,9 @@
 
     <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
     <span class="n">codes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">n_samples</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">),</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;Sample count </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> must match the code count </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">n_samples</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Sample count </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> must match the code count </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    <span class="n">label_to_code</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">SampleLabels</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span> <span class="n">code</span> <span class="k">for</span> <span class="n">sample</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">codes</span><span class="p">)</span>
-    <span class="p">}</span>
+    <span class="n">label_to_code</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="n">SampleLabels</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span> <span class="n">code</span> <span class="k">for</span> <span class="n">sample</span><span class="p">,</span> <span class="n">code</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">codes</span><span class="p">)}</span>
 
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_to_code</span><span class="p">)</span> <span class="o">==</span> <span class="n">n_samples</span><span class="p">,</span> <span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;Duplicate samples detected! Found only (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">label_to_code</span><span class="p">)</span><span class="si">}</span><span class="s2"> unique sample labels in </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> samples)&quot;</span>

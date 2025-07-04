@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.preprocessing package &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.preprocessing package &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../_static/documentation_options.js?v=a449968d"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -480,8 +480,7 @@ The value must be one of <cite>{‘permissive’, ‘lenient’, ‘strict’}</
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>phenopackets</strong> – path to a folder with phenopacket JSON files. An error is raised if the path does not point to
-a directory with at least one phenopacket.</p></li>
+<li><p><strong>phenopackets</strong> – phenopackets to load.</p></li>
 <li><p><strong>cohort_creator</strong> – cohort creator for turning a sequence of phenopacket
 into a <a class="reference internal" href="gpsea.model.html#gpsea.model.Cohort" title="gpsea.model.Cohort"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cohort</span></code></a>.</p></li>
 <li><p><strong>validation_policy</strong> – a <cite>str</cite> with the validation policy.
@@ -687,7 +686,7 @@ A C G T A</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="gpsea.preprocessing.VVHgvsVariantCoordinateFinder">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gpsea.preprocessing.</span></span><span class="sig-name descname"><span class="pre">VVHgvsVariantCoordinateFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genome_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gpsea.model.genome.html#gpsea.model.genome.GenomeBuild" title="gpsea.model.genome._genome.GenomeBuild"><span class="pre">GenomeBuild</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/preprocessing/_vv.html#VVHgvsVariantCoordinateFinder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.preprocessing.VVHgvsVariantCoordinateFinder" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gpsea.preprocessing.</span></span><span class="sig-name descname"><span class="pre">VVHgvsVariantCoordinateFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genome_build</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gpsea.model.genome.html#gpsea.model.genome.GenomeBuild" title="gpsea.model.genome._genome.GenomeBuild"><span class="pre">GenomeBuild</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/preprocessing/_vv.html#VVHgvsVariantCoordinateFinder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.preprocessing.VVHgvsVariantCoordinateFinder" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gpsea.preprocessing.VariantCoordinateFinder" title="gpsea.preprocessing._api.VariantCoordinateFinder"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantCoordinateFinder</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
 <p><cite>VVHgvsVariantCoordinateFinder</cite> uses Variant Validator’s REST API to build <a class="reference internal" href="gpsea.model.html#gpsea.model.VariantCoordinates" title="gpsea.model.VariantCoordinates"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantCoordinates</span></code></a>
 from an HGVS string.</p>
@@ -710,6 +709,9 @@ from an HGVS string.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>variant coordinates</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><strong>ValueError</strong></a> – for an error of any kind</p>
 </dd>
 </dl>
 </dd></dl>

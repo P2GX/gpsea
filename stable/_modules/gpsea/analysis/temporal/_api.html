@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.analysis.temporal._api &mdash; GPSEA 0.9.8 documentation</title>
+  <title>gpsea.analysis.temporal._api &mdash; GPSEA 0.9.9-dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=1a282f62"></script>
+      <script src="../../../../_static/documentation_options.js?v=a449968d"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -196,9 +196,7 @@
 <span class="sd">        :param plot_kwargs: keyword arguments passed directly to :func:`matplotlib.axes.Axes.step`.</span>
 <span class="sd">            Unless overridden, ``where=&#39;post&#39;``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">col_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_palette_idxs</span><span class="p">(</span>
-            <span class="n">n_categories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">(),</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="n">col_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_palette_idxs</span><span class="p">(</span><span class="n">n_categories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">(),</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">pat_cat</span><span class="p">,</span> <span class="n">color_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">get_categories</span><span class="p">(),</span> <span class="n">col_idxs</span><span class="p">):</span>
             <span class="n">survivals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
@@ -221,9 +219,7 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SurvivalAnalysisResult</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">super</span><span class="p">(</span>
-            <span class="n">MonoPhenotypeAnalysisResult</span><span class="p">,</span> <span class="bp">self</span>
-        <span class="p">)</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SurvivalAnalysisResult</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">super</span><span class="p">(</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
@@ -293,9 +289,7 @@
             <span class="k">if</span> <span class="n">gt_cat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span><span class="p">,</span> <span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span><span class="p">,</span> <span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="n">gt_cat</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span>
-                <span class="p">)</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span><span class="p">,</span> <span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]</span> <span class="o">=</span> <span class="n">gt_cat</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span>
 
             <span class="n">survival</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">compute_survival</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span>
             <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span><span class="p">,</span> <span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">PH_COL</span><span class="p">]</span> <span class="o">=</span> <span class="n">survival</span>  <span class="c1"># type: ignore</span>
