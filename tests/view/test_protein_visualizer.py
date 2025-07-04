@@ -44,6 +44,4 @@ class TestProteinVisualizer:
                 ax=ax,
             )
 
-        assert e.value.args == (
-            'No variants annotated with respect to "NP_001027558.1" were found',
-        )
+        assert e.value.args == ('No variants annotated with respect to "NP_001027558.1" were found',)

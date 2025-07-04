@@ -26,7 +26,7 @@ class OnsetAware(metaclass=abc.ABCMeta):
 class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAware):
     """
     `Phenotype` represents a clinical sign or symptom represented as an HPO term.
-    
+
     The phenotype can be either present in the patient or excluded.
     """
 
@@ -53,8 +53,8 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
         elif isinstance(term_id, hpotk.TermId):
             pass
         else:
-            raise ValueError('`term_id` must be either a `str` or a `hpotk.TermId`')
-        
+            raise ValueError("`term_id` must be either a `str` or a `hpotk.TermId`")
+
         return Phenotype(
             term_id,
             is_observed=is_observed,
@@ -96,8 +96,11 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
         Returns:
             bool: `True` if this phenotype was observed in the respective patient.
         """
-        warnings.warn('`observed` property was deprecated and will be removed in `v0.3.0`. '
-                      'Use `is_present` instead', DeprecationWarning, stacklevel=2)
+        warnings.warn(
+            "`observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self.is_present
 
     @property
@@ -112,24 +115,26 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
         """
         Returns `True` if the phenotype was *present* in the respective patient.
         """
-        warnings.warn('`is_observed` property was deprecated and will be removed in `v0.3.0`. '
-                      'Use `is_present` instead', DeprecationWarning, stacklevel=2)
+        warnings.warn(
+            "`is_observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         return self.is_present
 
     def __eq__(self, other):
-        return isinstance(other, Phenotype) \
-            and self._term_id == other._term_id \
-            and self._observed == other._observed \
+        return (
+            isinstance(other, Phenotype)
+            and self._term_id == other._term_id
+            and self._observed == other._observed
             and self._onset == other._onset
+        )
 
     def __hash__(self):
         return hash((self._term_id, self._observed, self._onset))
 
     def __str__(self):
-        return f"Phenotype(" \
-               f"identifier={self._term_id}, " \
-               f"is_present={self._observed}, " \
-               f"onset={self._onset})"
+        return f"Phenotype(identifier={self._term_id}, is_present={self._observed}, onset={self._onset})"
 
     def __repr__(self):
         return str(self)
@@ -149,7 +154,7 @@ class Disease(hpotk.model.Identified, hpotk.model.ObservableFeature, hpotk.model
     ) -> "Disease":
         if isinstance(term_id, str):
             term_id = hpotk.TermId.from_curie(term_id)
-        
+
         return Disease(
             term_id=term_id,
             name=name,
@@ -194,7 +199,7 @@ class Disease(hpotk.model.Identified, hpotk.model.ObservableFeature, hpotk.model
         Return `True` if the disease was diagnosed in the individual or `False` if it was excluded.
         """
         return self._observed
-    
+
     @property
     def onset(self) -> typing.Optional[Age]:
         """
@@ -203,25 +208,25 @@ class Disease(hpotk.model.Identified, hpotk.model.ObservableFeature, hpotk.model
         return self._onset
 
     def __eq__(self, other):
-        return isinstance(other, Disease) \
-            and self._term_id == other._term_id \
-            and self._name == other._name \
-            and self._observed == other._observed \
+        return (
+            isinstance(other, Disease)
+            and self._term_id == other._term_id
+            and self._name == other._name
+            and self._observed == other._observed
             and self._onset == other._onset
+        )
 
     def __hash__(self):
         return hash((self._term_id, self._name, self._observed, self._onset))
 
     def __str__(self):
-        return f"Disease(" \
-               f"identifier={self._term_id}, " \
-               f"name={self._name}, " \
-               f"is_present={self._observed}, " \
-               f"onset={self._onset})"
+        return (
+            f"Disease(identifier={self._term_id}, name={self._name}, is_present={self._observed}, onset={self._onset})"
+        )
 
     def __repr__(self):
         return str(self)
-    
+
 
 class Measurement(hpotk.model.Identified, hpotk.model.Named):
     """
@@ -266,7 +271,7 @@ class Measurement(hpotk.model.Identified, hpotk.model.Named):
         Return `True` if the disease was diagnosed in the individual or `False` if it was excluded.
         """
         return self._test_result
-    
+
     @property
     def unit(self) -> hpotk.TermId:
         """
@@ -275,21 +280,25 @@ class Measurement(hpotk.model.Identified, hpotk.model.Named):
         return self._unit
 
     def __eq__(self, other):
-        return isinstance(other, Measurement) \
-            and self._term_id == other._term_id \
-            and self._name == other._name \
-            and self._test_result == other._test_result \
+        return (
+            isinstance(other, Measurement)
+            and self._term_id == other._term_id
+            and self._name == other._name
+            and self._test_result == other._test_result
             and self._unit == other._unit
+        )
 
     def __hash__(self):
         return hash((self._term_id, self._name, self._test_result, self._unit))
 
     def __str__(self):
-        return "Measurement(" \
-               f"identifier={self._term_id}, " \
-               f"name={self._name}, " \
-               f"test_result={self._test_result}), " \
-               f"unit={self._unit})"
+        return (
+            "Measurement("
+            f"identifier={self._term_id}, "
+            f"name={self._name}, "
+            f"test_result={self._test_result}), "
+            f"unit={self._unit})"
+        )
 
     def __repr__(self):
         return str(self)

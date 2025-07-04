@@ -22,15 +22,15 @@ class Contig(typing.Sized):
     """
 
     def __init__(self, name: str, gb_acc: str, refseq_name: str, ucsc_name: str, length: int):
-        self._name = hpotk.util.validate_instance(name, str, 'name')
+        self._name = hpotk.util.validate_instance(name, str, "name")
 
-        self._gb_acc = hpotk.util.validate_instance(gb_acc, str, 'gb_acc')
-        self._refseq = hpotk.util.validate_instance(refseq_name, str, 'refseq_name')
-        self._ucsc = hpotk.util.validate_instance(ucsc_name, str, 'ucsc_name')
+        self._gb_acc = hpotk.util.validate_instance(gb_acc, str, "gb_acc")
+        self._refseq = hpotk.util.validate_instance(refseq_name, str, "refseq_name")
+        self._ucsc = hpotk.util.validate_instance(ucsc_name, str, "ucsc_name")
 
-        self._len = hpotk.util.validate_instance(length, int, 'length')
+        self._len = hpotk.util.validate_instance(length, int, "length")
         if self._len < 0:
-            raise ValueError(f'Length must not be negative but got {self._len}')
+            raise ValueError(f"Length must not be negative but got {self._len}")
 
     @property
     def name(self) -> str:
@@ -58,11 +58,13 @@ class Contig(typing.Sized):
         return str(self)
 
     def __eq__(self, other):
-        return (isinstance(other, Contig)
-                and self.name == other.name
-                and self.refseq_name == other.refseq_name
-                and self.ucsc_name == other.ucsc_name
-                and len(self) == len(other))
+        return (
+            isinstance(other, Contig)
+            and self.name == other.name
+            and self.refseq_name == other.refseq_name
+            and self.ucsc_name == other.ucsc_name
+            and len(self) == len(other)
+        )
 
     def __hash__(self):
         return hash((self.name, self.refseq_name, self.ucsc_name, len(self)))
@@ -99,12 +101,14 @@ class GenomeBuildIdentifier:
         """
         Get genome build identifier consisting of major assembly + patch, e.g. `GRCh38.p13`
         """
-        return self._major_assembly + '.' + self._patch
+        return self._major_assembly + "." + self._patch
 
     def __eq__(self, other):
-        return (isinstance(other, GenomeBuildIdentifier)
-                and self.major_assembly == other.major_assembly
-                and self.patch == other.patch)
+        return (
+            isinstance(other, GenomeBuildIdentifier)
+            and self.major_assembly == other.major_assembly
+            and self.patch == other.patch
+        )
 
     def __hash__(self):
         return hash((self.major_assembly, self.patch))
@@ -134,7 +138,7 @@ class GenomeBuild:
     """
 
     def __init__(self, identifier: GenomeBuildIdentifier, contigs: typing.Iterable[Contig]):
-        self._id = hpotk.util.validate_instance(identifier, GenomeBuildIdentifier, 'identifier')
+        self._id = hpotk.util.validate_instance(identifier, GenomeBuildIdentifier, "identifier")
         self._contigs = tuple(contigs)
         self._contig_by_name = {}
         for contig in self._contigs:
@@ -219,11 +223,11 @@ class Region(typing.Sized):
 
     def __init__(self, start: int, end: int):
         if not isinstance(start, int) or not isinstance(end, int):
-            raise ValueError(f'`start` and `end` must be ints but were `{type(start)}`, `{type(end)}`')
+            raise ValueError(f"`start` and `end` must be ints but were `{type(start)}`, `{type(end)}`")
         if start < 0 or end < 0:
-            raise ValueError(f'`start` and `end` must be positive but were `{start}`, `{end}`')
+            raise ValueError(f"`start` and `end` must be positive but were `{start}`, `{end}`")
         if start > end:
-            raise ValueError(f'`start` {start} must be at or before `end` {end}')
+            raise ValueError(f"`start` {start} must be at or before `end` {end}")
         self._start = start
         self._end = end
 
@@ -303,22 +307,20 @@ class Region(typing.Sized):
     @staticmethod
     def _check_is_region(other: "Region"):
         if not isinstance(other, Region):
-            raise ValueError(f'`other` is not instance of `Region`: {type(other)}')
+            raise ValueError(f"`other` is not instance of `Region`: {type(other)}")
         return other
 
     def __len__(self) -> int:
         return self._end - self._start
 
     def __eq__(self, other):
-        return (isinstance(other, Region)
-                and self.start == other.start
-                and self.end == other.end)
+        return isinstance(other, Region) and self.start == other.start and self.end == other.end
 
     def __hash__(self):
         return hash((self._start, self._end))
 
     def __str__(self):
-        return f'Region(start={self.start}, end={self.end})'
+        return f"Region(start={self.start}, end={self.end})"
 
     def __repr__(self):
         return str(self)
@@ -329,12 +331,12 @@ class Strand(enum.Enum):
     `Strand` is an enum to model positive and negative strands of double-stranded sequences, such as DNA.
     """
 
-    POSITIVE = ('+',)
+    POSITIVE = ("+",)
     """
     The positive strand of a double stranded sequence.
     """
 
-    NEGATIVE = ('-',)
+    NEGATIVE = ("-",)
     """
     The negative strand of a double stranded sequence.
     """
@@ -382,7 +384,7 @@ def transpose_coordinate(contig: Contig, coordinate: int) -> int:
     Raises: ValueError if the `coordinate` is out of contig bounds.
     """
     if not 0 <= coordinate <= len(contig):
-        raise ValueError(f'Coordinate {coordinate:,} is out of bounds [0,{len(contig):,}] for contig {contig.name}')
+        raise ValueError(f"Coordinate {coordinate:,} is out of bounds [0,{len(contig):,}] for contig {contig.name}")
     return len(contig) - coordinate
 
 
@@ -431,8 +433,10 @@ class GenomicRegion(Transposable, Region):
         self._contig = contig
         self._strand = strand
         if end > len(self._contig):
-            raise ValueError('Genomic region end {end} must not extend '
-                             f'beyond contig {self._contig.name} bounds [0,{len(self._contig)}]')
+            raise ValueError(
+                "Genomic region end {end} must not extend "
+                f"beyond contig {self._contig.name} bounds [0,{len(self._contig)}]"
+            )
 
     @property
     def contig(self) -> Contig:
@@ -522,8 +526,10 @@ class GenomicRegion(Transposable, Region):
         other = GenomicRegion._check_is_genomic_region(other)
 
         if self.contig != other.contig:
-            raise ValueError(f'Cannot calculate distance between regions on different contigs: '
-                             f'{self.contig.name} <-> {other.contig.name}')
+            raise ValueError(
+                f"Cannot calculate distance between regions on different contigs: "
+                f"{self.contig.name} <-> {other.contig.name}"
+            )
 
         other_start = other.start_on_strand(self._strand)
         other_end = other.end_on_strand(self._strand)
@@ -533,21 +539,23 @@ class GenomicRegion(Transposable, Region):
     @staticmethod
     def _check_is_genomic_region(other):
         if not isinstance(other, GenomicRegion):
-            raise ValueError(f'`other` is not instance of `GenomicRegion`: {type(other)}')
+            raise ValueError(f"`other` is not instance of `GenomicRegion`: {type(other)}")
         return other
 
     def __eq__(self, other):
-        return (isinstance(other, GenomicRegion)
-                and self.contig == other.contig
-                and self.start == other.start
-                and self.end == other.end
-                and self.strand == other.strand)
+        return (
+            isinstance(other, GenomicRegion)
+            and self.contig == other.contig
+            and self.start == other.start
+            and self.end == other.end
+            and self.strand == other.strand
+        )
 
     def __hash__(self):
         return hash((self.contig, self.start, self.end, self.strand))
 
     def __str__(self):
-        return f'GenomicRegion(contig={self.contig.name}, start={self.start}, end={self.end}, strand={self.strand})'
+        return f"GenomicRegion(contig={self.contig.name}, start={self.start}, end={self.end}, strand={self.strand})"
 
     def __repr__(self):
         return str(self)

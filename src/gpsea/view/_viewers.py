@@ -12,9 +12,7 @@ from ._formatter import VariantFormatter
 
 ToDisplay = namedtuple("ToDisplay", ["hgvs_cdna", "hgvsp", "variant_effects"])
 IdentifiedCount = namedtuple("IdentifiedCount", ("term_id", "label", "count"))
-VariantData = namedtuple(
-    "VariantData", ["variant_key", "hgvsc", "hgvsp", "variant_effects", "exons"]
-)
+VariantData = namedtuple("VariantData", ["variant_key", "hgvsc", "hgvsp", "variant_effects", "exons"])
 
 
 class CohortViewer(BaseViewer):
@@ -78,20 +76,14 @@ class CohortViewer(BaseViewer):
         disease_counts = self._summarize_disease_counts(cohort)
 
         variant_counts = list()
-        variant_to_display_d = CohortViewer._get_variant_description(
-            cohort, transcript_id
-        )
+        variant_to_display_d = CohortViewer._get_variant_description(cohort, transcript_id)
         for variant_key, count in cohort.list_all_variants(top=self._top_variant_count):
             # get HGVS or human readable variant
             if variant_key in variant_to_display_d:
                 display = variant_to_display_d[variant_key]
                 hgvsc = display.hgvs_cdna
                 hgvsp = display.hgvsp
-                effects = (
-                    ""
-                    if display.variant_effects is None
-                    else ", ".join(display.variant_effects)
-                )
+                effects = "" if display.variant_effects is None else ", ".join(display.variant_effects)
             else:
                 hgvsc = ""
                 hgvsp = ""
@@ -111,9 +103,7 @@ class CohortViewer(BaseViewer):
         has_transcript = transcript_id is not None
         if has_transcript:
             var_effects_d = dict()
-            for tx_id, counter in cohort.variant_effect_count_by_tx(
-                tx_id=transcript_id
-            ).items():
+            for tx_id, counter in cohort.variant_effect_count_by_tx(tx_id=transcript_id).items():
                 # e.g., data structure
                 #   -- {'effect}': 'FRAMESHIFT_VARIANT', 'count': 175},
                 #   -- {'effect}': 'STOP_GAINED', 'count': 67},
@@ -123,9 +113,7 @@ class CohortViewer(BaseViewer):
                     break
             total = sum(var_effects_d.values())
             # Sort in descending order based on counts
-            for effect, count in sorted(
-                var_effects_d.items(), key=lambda item: item[1], reverse=True
-            ):
+            for effect, count in sorted(var_effects_d.items(), key=lambda item: item[1], reverse=True):
                 variant_effects.append(
                     {
                         "effect": effect,
@@ -147,9 +135,7 @@ class CohortViewer(BaseViewer):
             terms_and_ancestors_with_onset_information = set()
             for pf in pat.present_phenotypes():
                 if pf.onset is not None:
-                    ancs = self._hpo.graph.get_ancestors(
-                        pf.identifier, include_source=True
-                    )
+                    ancs = self._hpo.graph.get_ancestors(pf.identifier, include_source=True)
                     terms_and_ancestors_with_onset_information.update(ancs)
             for hpo_id in terms_and_ancestors_with_onset_information:
                 hpo_id_to_has_cnset_count_d[hpo_id] += 1
@@ -209,9 +195,7 @@ class CohortViewer(BaseViewer):
         self,
         cohort: Cohort,
     ) -> typing.Sequence[IdentifiedCount]:
-        measurement2label = {
-            m.identifier.value: m.name for m in cohort.all_measurements()
-        }
+        measurement2label = {m.identifier.value: m.name for m in cohort.all_measurements()}
 
         return [
             IdentifiedCount(
@@ -275,9 +259,7 @@ class CohortViewer(BaseViewer):
                 var_effects = None
             else:
                 hgvsp = tx_annotation.hgvsp
-                var_effects = [
-                    var_eff.name for var_eff in tx_annotation.variant_effects
-                ]
+                var_effects = [var_eff.name for var_eff in tx_annotation.variant_effects]
 
             if only_hgvs:
                 # do not show the transcript id
@@ -301,9 +283,7 @@ class DiseaseViewer(BaseViewer):
     TODO
     """
 
-    def __init__(
-        self, hpo: hpotk.MinimalOntology, transcript_id: typing.Optional[str] = None
-    ):
+    def __init__(self, hpo: hpotk.MinimalOntology, transcript_id: typing.Optional[str] = None):
         super().__init__()
         self._hpo = hpo
         self._tx_id = transcript_id
@@ -346,18 +326,12 @@ class DiseaseViewer(BaseViewer):
 
             for pat in cohort.all_patients:
                 for disease in pat.diseases:
-                    variant_key_count = disease_variants_counts[
-                        disease.identifier.value
-                    ]
-                    variant_key_count.update(
-                        variant.variant_info.variant_key for variant in pat.variants
-                    )
+                    variant_key_count = disease_variants_counts[disease.identifier.value]
+                    variant_key_count.update(variant.variant_info.variant_key for variant in pat.variants)
                     for variant in pat.variants:
                         for txa in variant.tx_annotations:
                             if self._tx_id == txa.transcript_id:
-                                disease_effects_counts[curie].update(
-                                    eff.name for eff in txa.variant_effects
-                                )
+                                disease_effects_counts[curie].update(eff.name for eff in txa.variant_effects)
 
         return {
             "n_diseases": n_diseases,
@@ -427,11 +401,7 @@ class CohortVariantViewer(BaseViewer):
                     "variant_key": var_data.variant_key,
                     "hgvs": f"{var_data.hgvsc} ({var_data.hgvsp})",
                     "variant_effects": ", ".join(var_data.variant_effects),
-                    "exons": (
-                        "-"
-                        if var_data.exons is None
-                        else ", ".join(map(str, var_data.exons))
-                    ),
+                    "exons": ("-" if var_data.exons is None else ", ".join(map(str, var_data.exons))),
                 }
             )
 
@@ -457,9 +427,7 @@ class CohortVariantViewer(BaseViewer):
             assert sv_info is not None
             gene_symbol = sv_info.gene_symbol
             display = f"SV involving {gene_symbol}"
-            effect = VariantEffect.structural_so_id_to_display(
-                so_term=sv_info.structural_type
-            )
+            effect = VariantEffect.structural_so_id_to_display(so_term=sv_info.structural_type)
             return VariantData(
                 variant_key=variant.variant_info.variant_key,
                 hgvsc=display,
@@ -486,11 +454,7 @@ class CohortVariantViewer(BaseViewer):
                         else:
                             hgvsc = fields_dna[0]
 
-                        fields_ps = (
-                            tx_annotation.hgvsp.split(":")
-                            if tx_annotation.hgvsp is not None
-                            else ("-",)
-                        )
+                        fields_ps = tx_annotation.hgvsp.split(":") if tx_annotation.hgvsp is not None else ("-",)
                         if len(fields_ps) > 1:
                             hgvsp = fields_ps[1]
                         else:
@@ -498,9 +462,7 @@ class CohortVariantViewer(BaseViewer):
                 else:
                     hgvsc = tx_annotation.hgvs_cdna
 
-                var_effects = tuple(
-                    var_eff.to_display() for var_eff in tx_annotation.variant_effects
-                )
+                var_effects = tuple(var_eff.to_display() for var_eff in tx_annotation.variant_effects)
                 exons = tx_annotation.overlapping_exons
 
             return VariantData(
@@ -547,9 +509,7 @@ class ProteinVariantViewer(BaseViewer):
     def _prepare_context(self, cohort: Cohort) -> typing.Mapping[str, typing.Any]:
         protein_id = self._protein_meta.protein_id
         protein_label = self._protein_meta.label
-        protein_features = sorted(
-            self._protein_meta.protein_features, key=lambda f: f.info.start
-        )
+        protein_features = sorted(self._protein_meta.protein_features, key=lambda f: f.info.start)
 
         # collect variants that are located in the protein features as well as other variants that are located
         # "in-between" the features
@@ -560,9 +520,7 @@ class ProteinVariantViewer(BaseViewer):
         # This iterates over variants as recorded in individuals,
         # not over *unique* `VariantInfo`s
         for var in cohort.all_variants():
-            target_annot = next(
-                (x for x in var.tx_annotations if x.protein_id == self._protein_meta.protein_id), None
-            )
+            target_annot = next((x for x in var.tx_annotations if x.protein_id == self._protein_meta.protein_id), None)
             if target_annot is None:
                 # structural variants do not have a transcript id, and we skip them
                 # It should never happen that HGVS variants do not have the proper transcript id but we do not check

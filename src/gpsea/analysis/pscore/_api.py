@@ -206,9 +206,7 @@ class PhenotypeScoreAnalysisResult(MonoPhenotypeAnalysisResult):
         )
 
         # Set face colors of the boxes
-        col_idxs = self._choose_palette_idxs(
-            n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors)
-        )
+        col_idxs = self._choose_palette_idxs(n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors))
         for patch, col_idx in zip(bplot["boxes"], col_idxs):
             patch.set_facecolor(colors[col_idx])
 
@@ -265,9 +263,7 @@ class PhenotypeScoreAnalysisResult(MonoPhenotypeAnalysisResult):
             ticklabels=gt_cat_names,
         )
 
-        col_idxs = self._choose_palette_idxs(
-            n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors)
-        )
+        col_idxs = self._choose_palette_idxs(n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors))
         for pc, color_idx in zip(parts["bodies"], col_idxs):
             pc.set(
                 facecolor=colors[color_idx],
@@ -285,9 +281,9 @@ class PhenotypeScoreAnalysisResult(MonoPhenotypeAnalysisResult):
         return lower_adjacent_value, upper_adjacent_value
 
     def __eq__(self, value: object) -> bool:
-        return isinstance(value, PhenotypeScoreAnalysisResult) and super(
-            MonoPhenotypeAnalysisResult, self
-        ).__eq__(value)
+        return isinstance(value, PhenotypeScoreAnalysisResult) and super(MonoPhenotypeAnalysisResult, self).__eq__(
+            value
+        )
 
     def __hash__(self) -> int:
         return super(MonoPhenotypeAnalysisResult, self).__hash__()
@@ -338,9 +334,7 @@ class PhenotypeScoreAnalysis:
         :param gt_clf: a classifier for assigning an individual into a genotype class.
         :param pheno_scorer: the scorer to compute phenotype score.
         """
-        assert (
-            gt_clf.n_categorizations() == 2
-        ), "We only support 2 genotype categories at this point"
+        assert gt_clf.n_categorizations() == 2, "We only support 2 genotype categories at this point"
         assert isinstance(pheno_scorer, PhenotypeScorer)
 
         idx = pd.Index((patient.patient_id for patient in cohort), name="patient_id")
@@ -354,26 +348,15 @@ class PhenotypeScoreAnalysis:
         for individual in cohort:
             gt_cat = gt_clf.test(individual)
             if gt_cat is None:
-                data.loc[
-                    individual.patient_id,
-                    MonoPhenotypeAnalysisResult.GT_COL
-                ] = None
+                data.loc[individual.patient_id, MonoPhenotypeAnalysisResult.GT_COL] = None
             else:
-                data.loc[
-                    individual.patient_id, 
-                    MonoPhenotypeAnalysisResult.GT_COL
-                ] = gt_cat.category.cat_id
+                data.loc[individual.patient_id, MonoPhenotypeAnalysisResult.GT_COL] = gt_cat.category.cat_id
 
-            data.loc[
-                individual.patient_id,
-                MonoPhenotypeAnalysisResult.PH_COL
-            ] = pheno_scorer.score(individual)
+            data.loc[individual.patient_id, MonoPhenotypeAnalysisResult.PH_COL] = pheno_scorer.score(individual)
 
         # Sort by PatientCategory.cat_id and unpack.
         # For now, we only allow to have up to 2 groups.
-        x_key, y_key = sorted(
-            data[MonoPhenotypeAnalysisResult.GT_COL].dropna().unique()
-        )
+        x_key, y_key = sorted(data[MonoPhenotypeAnalysisResult.GT_COL].dropna().unique())
         x = data.loc[
             data[MonoPhenotypeAnalysisResult.GT_COL] == x_key,
             MonoPhenotypeAnalysisResult.PH_COL,

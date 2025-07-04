@@ -22,14 +22,10 @@ def _fixate_partitions(
             fixed.append((partition,))
         elif isinstance(partition, typing.Iterable):
             vals = tuple(partition)
-            assert all(
-                isinstance(val, int) for val in vals
-            ), "All indices must be `int`s!"
+            assert all(isinstance(val, int) for val in vals), "All indices must be `int`s!"
             fixed.append(vals)
         else:
-            raise ValueError(
-                f"Partition {i} is neither an `int` nor an iterable of `int`s: {partition}"
-            )
+            raise ValueError(f"Partition {i} is neither an `int` nor an iterable of `int`s: {partition}")
     return fixed
 
 
@@ -48,9 +44,7 @@ def _qc_partitions(
     if not len(partitions) >= 2:
         raise ValueError("At least 2 partitions must be provided")
     # ... and the inner collection elements are all ints
-    if not all(
-        isinstance(e, int) and e >= 0 for partition in partitions for e in partition
-    ):
+    if not all(isinstance(e, int) and e >= 0 for partition in partitions for e in partition):
         raise ValueError("Each partition index must be a non-negative int")
 
     # Each partition must be unique ...
@@ -140,16 +134,8 @@ class PolyCountingGenotypeClassifier(GenotypeClassifier):
         b_label: str,
     ) -> "PolyCountingGenotypeClassifier":
         count2cat = {
-            (1, 0): Categorization(
-                PatientCategory(
-                    cat_id=0, name=a_label, description=f"Monoallelic {a_label}"
-                )
-            ),
-            (0, 1): Categorization(
-                PatientCategory(
-                    cat_id=1, name=b_label, description=f"Monoallelic {b_label}"
-                )
-            ),
+            (1, 0): Categorization(PatientCategory(cat_id=0, name=a_label, description=f"Monoallelic {a_label}")),
+            (0, 1): Categorization(PatientCategory(cat_id=1, name=b_label, description=f"Monoallelic {b_label}")),
         }
 
         return PolyCountingGenotypeClassifier.for_predicates_and_categories(
@@ -273,7 +259,7 @@ def monoallelic_classifier(
         b_predicate=b_predicate,
         a_label=a_label,
         b_label=b_label,
-    )    
+    )
 
     return PolyCountingGenotypeClassifier.monoallelic(
         a_predicate=a_predicate,
@@ -320,7 +306,7 @@ def biallelic_classifier(
         a_label=a_label,
         b_label=b_label,
     )
-    
+
     partitions = _fixate_partitions(partitions)
     _qc_partitions(partitions)
 
@@ -332,26 +318,29 @@ def biallelic_classifier(
         partitions=partitions,
     )
 
+
 def _validate_b_predicate(
     a_predicate: VariantPredicate,
     b_predicate: typing.Optional[VariantPredicate],
     a_label: str,
     b_label: typing.Optional[str],
 ) -> typing.Tuple[
-    VariantPredicate, VariantPredicate, str,
+    VariantPredicate,
+    VariantPredicate,
+    str,
 ]:
     if b_predicate is None:
         b_predicate = ~a_predicate
         if b_label is None:
             # Using a regular uppercase `C` instead of Unicode complement (`∁`)
             # to reduce the 😕 factor.
-            b_label = f"{a_label}^C" # complement of A
+            b_label = f"{a_label}^C"  # complement of A
         else:
-            assert isinstance(b_label, str)    
+            assert isinstance(b_label, str)
     else:
         if b_label is None:
-            b_label = f"{a_label}^C" # complement of A
-        
+            b_label = f"{a_label}^C"  # complement of A
+
     return a_predicate, b_predicate, b_label
 
 
@@ -376,6 +365,7 @@ def _build_ac_to_cat(
 
     return ac2cat
 
+
 def _pluralize(
     count: int,
     base: str,
@@ -384,6 +374,7 @@ def _pluralize(
         return f"{count} {base}"
     else:
         return f"{count} {base}s"
+
 
 def allele_count(
     counts: typing.Collection[typing.Union[int, typing.Collection[int]]],
@@ -458,9 +449,7 @@ class AlleleCountClassifier(GenotypeClassifier):
         assert isinstance(counter, AlleleCounter)
         self._counter = counter
 
-        self._categorizations = tuple(
-            _deduplicate_categorizations(self._count2cat.values())
-        )
+        self._categorizations = tuple(_deduplicate_categorizations(self._count2cat.values()))
         self._hash = _compute_hash(self._count2cat, (self._counter,))
 
     def get_categorizations(self) -> typing.Sequence[Categorization]:
@@ -584,12 +573,10 @@ class DiagnosisClassifier(GenotypeClassifier):
         else:
             labels = tuple(labels)
 
-        assert (
-            len(diagnosis_ids) >= 2
-        ), f"We need at least 2 diagnoses: {len(diagnosis_ids)}"
-        assert (
-            len(diagnosis_ids) == len(labels)
-        ), f"The number of labels must match the number of diagnose IDs: {len(diagnosis_ids)}!={len(labels)}"
+        assert len(diagnosis_ids) >= 2, f"We need at least 2 diagnoses: {len(diagnosis_ids)}"
+        assert len(diagnosis_ids) == len(labels), (
+            f"The number of labels must match the number of diagnose IDs: {len(diagnosis_ids)}!={len(labels)}"
+        )
 
         # Then, prepare the categorizations.
         categorizations = {
@@ -609,9 +596,7 @@ class DiagnosisClassifier(GenotypeClassifier):
         categorizations: typing.Mapping[hpotk.TermId, Categorization],
     ):
         self._id2cat = dict(categorizations)
-        self._categorizations = tuple(
-            sorted(categorizations.values(), key=lambda c: c.category.cat_id)
-        )
+        self._categorizations = tuple(sorted(categorizations.values(), key=lambda c: c.category.cat_id))
         self._hash = hash(tuple(categorizations.items()))
 
     @property
@@ -680,18 +665,19 @@ def diagnosis_classifier(
 
 
 class RandomClassifier(GenotypeClassifier):
-    
     CATS = (
         Categorization(
             category=PatientCategory(
-                cat_id=0, name="A",
+                cat_id=0,
+                name="A",
             )
         ),
         Categorization(
             category=PatientCategory(
-                cat_id=1, name="B",
+                cat_id=1,
+                name="B",
             )
-        )
+        ),
     )
 
     def __init__(
@@ -722,7 +708,7 @@ class RandomClassifier(GenotypeClassifier):
         return isinstance(value, RandomClassifier) and self._rng == value._rng
 
     def __hash__(self) -> int:
-        return hash((self._rng, ))
+        return hash((self._rng,))
 
 
 def random_classifier(
@@ -739,7 +725,6 @@ def random_classifier(
 
 
 class FrozenGenotypeClassifier(GenotypeClassifier):
-
     def __init__(
         self,
         label_to_code: typing.Mapping[SampleLabels, int],
@@ -796,10 +781,12 @@ class FrozenGenotypeClassifier(GenotypeClassifier):
         return hash_value
 
     def __eq__(self, value: object) -> bool:
-        return isinstance(value, FrozenGenotypeClassifier) \
-            and self._label_to_code == value._label_to_code \
-            and self._code_to_cat == value._code_to_cat \
+        return (
+            isinstance(value, FrozenGenotypeClassifier)
+            and self._label_to_code == value._label_to_code
+            and self._code_to_cat == value._code_to_cat
             and self._categorizations == value._categorizations
+        )
 
     def __hash__(self) -> int:
         return self._hash
@@ -844,13 +831,9 @@ def frozen_classifier(
 
     n_samples = len(samples)
     codes = tuple(codes)
-    assert n_samples == len(codes), (
-        f"Sample count {n_samples} must match the code count {len(codes)}"
-    )
+    assert n_samples == len(codes), f"Sample count {n_samples} must match the code count {len(codes)}"
 
-    label_to_code: typing.Mapping[SampleLabels, int] = {
-        sample.labels: code for sample, code in zip(samples, codes)
-    }
+    label_to_code: typing.Mapping[SampleLabels, int] = {sample.labels: code for sample, code in zip(samples, codes)}
 
     assert len(label_to_code) == n_samples, (
         f"Duplicate samples detected! Found only ({len(label_to_code)} unique sample labels in {n_samples} samples)"

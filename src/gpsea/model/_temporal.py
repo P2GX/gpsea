@@ -8,20 +8,20 @@ import typing
 class Timeline(enum.Enum):
     """
     `Timeline` represents the stage of temporal development of an organism.
-    
+
     There are two stages: gestational and postnatal.
-    
+
     Gestational timeline starts at the last menstrual period and ends at (but does not include) birth.
     The postnatal timeline starts at birth and ends at death.
 
     The `Timeline` overloads comparison operators. Gestational timeline is always before postnatal timeline.
     """
-    
+
     GESTATIONAL = enum.auto()
     """
     Gestational timeline starts at the last menstrual period and ends at birth (excluded).
     """
-    
+
     POSTNATAL = enum.auto()
     """
     Postnatal timeline starts at birth and ends at death.
@@ -67,9 +67,7 @@ class Age:
     Internally, the age is always stored as the number of days.
     """
 
-    ISO8601PT = re.compile(
-        r"^P(?P<year>\d+Y)?(?P<month>\d+M)?(?P<week>\d+W)?(?P<day>\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$"
-    )
+    ISO8601PT = re.compile(r"^P(?P<year>\d+Y)?(?P<month>\d+M)?(?P<week>\d+W)?(?P<day>\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?$")
     DAYS_IN_YEAR = 365.25
     DAYS_IN_MONTH = DAYS_IN_YEAR / 12
     DAYS_IN_WEEK = 7
@@ -142,7 +140,7 @@ class Age:
         days: int,
     ) -> "Age":
         if all(isinstance(val, int) and val >= 0 for val in (years, months, days)):
-            total = 0.
+            total = 0.0
             total += years * Age.DAYS_IN_YEAR
             total += months * Age.DAYS_IN_MONTH
             total += days
@@ -162,11 +160,11 @@ class Age:
 
         A `value` with **weeks** or days is parsed into a gestational age, while a `value` with years, months or days
         is parsed into a postnatal age.
-        
+
         An error is raised if a value for weeks and months (or years) is included
         at the same time or if the `value` is not a valid ISO8601 string.
 
-        
+
         Examples
         --------
 
@@ -182,7 +180,7 @@ class Age:
         >>> postnatal = Age.from_iso8601_period("P10Y")
         >>> postnatal
         Age(days=3652.5, timeline=Timeline.POSTNATAL)
-        
+
 
         :param value: a `str` with the duration (e.g. `P22W3D` for a gestational age or `P10Y4M2D` for a postnatal age).
         """
@@ -193,29 +191,23 @@ class Age:
             week = matcher.group("week")
             day = matcher.group("day")
             if all(val is None for val in (year, month, week, day)):
-                raise ValueError(
-                    "At least one of year, month, week or day fields must provided"
-                )
+                raise ValueError("At least one of year, month, week or day fields must provided")
             if week is None:
                 # postnatal
                 if all(val is None for val in (year, month, day)):
-                    raise ValueError(
-                        f"Year, month or day must be provided for postnatal age: {value}"
-                    )
+                    raise ValueError(f"Year, month or day must be provided for postnatal age: {value}")
                 years = 0 if year is None else int(year[:-1])
                 months = 0 if month is None else int(month[:-1])
                 days = 0 if day is None else int(day[:-1])
-                
+
                 return Age.postnatal(years=years, months=months, days=days)
             else:
                 # gestational
                 if any(val is not None for val in (year, month)):
-                    raise ValueError(
-                        f"Year and month must not be provided for gestational age: {value}"
-                    )
+                    raise ValueError(f"Year and month must not be provided for gestational age: {value}")
                 weeks = 0 if week is None else int(week[:-1])
                 days = 0 if day is None else int(day[:-1])
-                
+
                 return Age.gestational(weeks=weeks, days=days)
         else:
             raise ValueError(f"'{value}' did not match ISO8601 pattern")
@@ -282,11 +274,7 @@ class Age:
             return NotImplemented
 
     def __eq__(self, value: object) -> bool:
-        return (
-            isinstance(value, Age)
-            and self._days == value._days
-            and self._timeline == value._timeline
-        )
+        return isinstance(value, Age) and self._days == value._days and self._timeline == value._timeline
 
     def __hash__(self) -> int:
         return hash((self._days, self._timeline))

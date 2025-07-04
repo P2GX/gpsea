@@ -14,7 +14,6 @@ from gpsea.model.genome import Region
 
 
 class TestVariantPredicates:
-
     def test_always_true_predicate(
         self,
         suox_cohort: Cohort,
@@ -23,93 +22,93 @@ class TestVariantPredicates:
         assert all(predicate.test(v) for v in suox_cohort.all_variants())
 
     @pytest.mark.parametrize(
-        'effect, expected',
+        "effect, expected",
         [
             (VariantEffect.MISSENSE_VARIANT, True),
             (VariantEffect.SPLICE_DONOR_VARIANT, True),
             (VariantEffect.STOP_GAINED, False),
             (VariantEffect.STOP_LOST, False),
-        ]
+        ],
     )
     def test_variant_effect_predicate(
-            self,
-            missense_variant: Variant,
-            effect: VariantEffect,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        effect: VariantEffect,
+        expected: bool,
     ):
-        predicate = vp.variant_effect(effect, tx_id='tx:xyz')
+        predicate = vp.variant_effect(effect, tx_id="tx:xyz")
 
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'variant_key, expected',
+        "variant_key, expected",
         [
-            ('22_101_101_C_G', True),
-            ('22_101_101_C_T', False),
-        ]
+            ("22_101_101_C_G", True),
+            ("22_101_101_C_T", False),
+        ],
     )
     def test_variant_key_predicate(
-            self,
-            missense_variant: Variant,
-            variant_key: str,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        variant_key: str,
+        expected: bool,
     ):
         predicate = vp.variant_key(variant_key)
 
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'exon, expected',
+        "exon, expected",
         [
             (1, False),
             (4, True),
             (5, False),
-        ]
+        ],
     )
     def test_exon_predicate(
-            self,
-            missense_variant: Variant,
-            exon: int,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        exon: int,
+        expected: bool,
     ):
-        predicate = vp.exon(exon, tx_id='tx:xyz')
+        predicate = vp.exon(exon, tx_id="tx:xyz")
 
         assert predicate.test(missense_variant) == expected
 
     def test_exon_predicate_fails_on_invalid_exon(self):
         with pytest.raises(AssertionError) as e:
-            vp.exon(0, tx_id='tx:xyz')
-        assert e.value.args[0] == '`exon` must be a positive `int`'
+            vp.exon(0, tx_id="tx:xyz")
+        assert e.value.args[0] == "`exon` must be a positive `int`"
 
     @pytest.mark.parametrize(
-        'tx_id, expected',
+        "tx_id, expected",
         [
-            ('tx:xyz', True),
-            ('other', False),
-        ]
+            ("tx:xyz", True),
+            ("other", False),
+        ],
     )
     def test_transcript_predicate(
-            self,
-            missense_variant: Variant,
-            tx_id: str,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        tx_id: str,
+        expected: bool,
     ):
         predicate = vp.transcript(tx_id)
 
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'symbol, expected',
+        "symbol, expected",
         [
-            ('a_gene', True),
-            ('b_gene', False),
-        ]
+            ("a_gene", True),
+            ("b_gene", False),
+        ],
     )
     def test_gene_predicate(
-            self,
-            missense_variant: Variant,
-            symbol: str,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        symbol: str,
+        expected: bool,
     ):
         predicate = vp.gene(symbol)
 
@@ -140,7 +139,7 @@ class TestVariantPredicates:
         missense_variant: Variant,
         structural_variant: Variant,
     ):
-        predicate = vp.structural_type('SO:1000029')
+        predicate = vp.structural_type("SO:1000029")
 
         assert predicate.test(missense_variant) is False
         assert predicate.test(structural_variant) is True
@@ -158,8 +157,8 @@ class TestVariantPredicates:
         missense_variant: Variant,
         structural_variant: Variant,
     ):
-        predicate = vp.change_length('==', 0)
-        
+        predicate = vp.change_length("==", 0)
+
         # variant is an SNP
         assert predicate.test(missense_variant) is True
 
@@ -184,7 +183,6 @@ class TestVariantPredicates:
 
 
 class TestProteinPredicates:
-
     @pytest.fixture(scope="class")
     def protein_metadata(self) -> ProteinMetadata:
         return ProteinMetadata(
@@ -193,29 +191,29 @@ class TestProteinPredicates:
             protein_features=(
                 ProteinFeature.create(
                     FeatureInfo(name="MOCK_REPEAT", region=Region(55, 80)),
-                    'REPEAT',
+                    "REPEAT",
                 ),
                 ProteinFeature.create(
                     FeatureInfo(name="MOCK_DOMAIN", region=Region(30, 50)),
-                    'DOMAIN',
+                    "DOMAIN",
                 ),
             ),
             protein_length=100,
         )
 
     @pytest.mark.parametrize(
-        'feature_type, expected',
+        "feature_type, expected",
         [
-            ('DOMAIN', True),
-            ('REPEAT', False),
-        ]
+            ("DOMAIN", True),
+            ("REPEAT", False),
+        ],
     )
     def test_protein_feature_type(
-            self,
-            missense_variant: Variant,
-            feature_type: str,
-            protein_metadata: ProteinMetadata,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        feature_type: str,
+        protein_metadata: ProteinMetadata,
+        expected: bool,
     ):
         predicate = vp.protein_feature_type(
             feature_type=feature_type,
@@ -225,19 +223,19 @@ class TestProteinPredicates:
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'feature_id, expected',
+        "feature_id, expected",
         [
-            ('MOCK_DOMAIN', True),
-            ('REAL_DOMAIN', False),
-            ('MOCK_REPEAT', False),
-        ]
+            ("MOCK_DOMAIN", True),
+            ("REAL_DOMAIN", False),
+            ("MOCK_REPEAT", False),
+        ],
     )
     def test_protein_feature_id(
-            self,
-            missense_variant: Variant,
-            feature_id: str,
-            protein_metadata: ProteinMetadata,
-            expected: bool,
+        self,
+        missense_variant: Variant,
+        feature_id: str,
+        protein_metadata: ProteinMetadata,
+        expected: bool,
     ):
         predicate = vp.protein_feature(
             feature_id=feature_id,
@@ -253,8 +251,8 @@ class TestLogicalVariantPredicate:
     """
 
     def test_equivalent_predicates_are_not_chained(self):
-        a1 = vp.gene(symbol='A')
-        a2 = vp.gene(symbol='A')
+        a1 = vp.gene(symbol="A")
+        a2 = vp.gene(symbol="A")
 
         assert a1 & a2 is a1
         assert a1 | a2 is a1
@@ -263,13 +261,13 @@ class TestLogicalVariantPredicate:
         assert a2 | a1 is a2
 
     @pytest.mark.parametrize(
-        'left,right,expected',
+        "left,right,expected",
         [
-            ('tx:abc', 'tx:xyz', True),
-            ('tx:abc', 'whatever', False),
-            ('whatever', 'tx:xyz', False),
-            ('whatever', 'whoever', False),
-        ]
+            ("tx:abc", "tx:xyz", True),
+            ("tx:abc", "whatever", False),
+            ("whatever", "tx:xyz", False),
+            ("whatever", "whoever", False),
+        ],
     )
     def test_und_predicate(
         self,
@@ -283,13 +281,13 @@ class TestLogicalVariantPredicate:
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'left,right,expected',
+        "left,right,expected",
         [
-            ('tx:abc', 'tx:xyz', True),
-            ('tx:abc', 'whatever', True),
-            ('whatever', 'tx:xyz', True),
-            ('whatever', 'whoever', False),
-        ]
+            ("tx:abc", "tx:xyz", True),
+            ("tx:abc", "whatever", True),
+            ("whatever", "tx:xyz", True),
+            ("whatever", "whoever", False),
+        ],
     )
     def test_or_predicate(
         self,
@@ -299,15 +297,15 @@ class TestLogicalVariantPredicate:
         expected: bool,
     ):
         predicate = vp.transcript(tx_id=left) | vp.transcript(tx_id=right)
-        
+
         assert predicate.test(missense_variant) == expected
 
     @pytest.mark.parametrize(
-        'tx_id,expected',
+        "tx_id,expected",
         [
-            ('tx:abc', False),
-            ('whatever', True),
-        ]
+            ("tx:abc", False),
+            ("whatever", True),
+        ],
     )
     def test_inv_predicate(
         self,
@@ -318,12 +316,12 @@ class TestLogicalVariantPredicate:
         predicate = ~vp.transcript(tx_id)
 
         assert predicate.test(missense_variant) == expected
-    
+
     def test_no_double_inv_happens(
         self,
     ):
-        predicate = vp.gene('FBN1')
-        
+        predicate = vp.gene("FBN1")
+
         # Inverting a predicate must produce a new predicate.
         inv_predicate = ~predicate
         assert inv_predicate is not predicate
@@ -338,19 +336,19 @@ class TestLogicalVariantPredicate:
         with pytest.raises(ValueError) as e:
             empty = ()
             vp.allof(empty)
-        assert e.value.args[0] == 'Predicates must not be empty!'
-    
+        assert e.value.args[0] == "Predicates must not be empty!"
+
     def test_empty_any_predicate_raises_error(
         self,
     ):
         with pytest.raises(ValueError) as e:
             empty = ()
             vp.anyof(empty)
-        assert e.value.args[0] == 'Predicates must not be empty!'
+        assert e.value.args[0] == "Predicates must not be empty!"
 
     def test_logical_predicates_are_hashable(self):
-        a = vp.gene(symbol='A')
-        b = vp.gene(symbol='B')
+        a = vp.gene(symbol="A")
+        b = vp.gene(symbol="B")
 
         a_and_b = a & b
         assert isinstance(hash(a_and_b), int)

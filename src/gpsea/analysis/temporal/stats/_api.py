@@ -24,12 +24,12 @@ class SurvivalStatistic(Statistic, metaclass=abc.ABCMeta):
         Compute p value for the collection of survivals being sampled from
         the same source distribution.
 
-        Raises an error 
+        Raises an error
         """
         pass
 
     def __eq__(self, value: object) -> bool:
         return super().__eq__(value)
-    
+
     def __hash__(self) -> int:
         return super().__hash__()

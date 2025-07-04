@@ -133,9 +133,7 @@ class TestIfHpoFilter:
                 hpo=hpo,
                 annotation_frequency_threshold=1.1,
             )
-        assert e.value.args == (
-            "The annotation_frequency_threshold must be in the range (0, 1]",
-        )
+        assert e.value.args == ("The annotation_frequency_threshold must be in the range (0, 1]",)
 
 
 class TestSpecifyTermsMtcFilter:

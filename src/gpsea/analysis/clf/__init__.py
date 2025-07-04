@@ -22,7 +22,7 @@ __all__ = [
     "Classifier",
     "PatientCategory",
     "Categorization",
-    "GenotypeClassifier", 
+    "GenotypeClassifier",
     "C",
     "AlleleCounter",
     "sex_classifier",

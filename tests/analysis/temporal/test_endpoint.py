@@ -28,14 +28,11 @@ def deceased() -> Patient:
     return Patient.from_raw_parts(
         labels="D",
         age=Age.postnatal_days(days=60),
-        vital_status=VitalStatus(
-            status=Status.DECEASED, age_of_death=Age.postnatal_days(60)
-        ),
+        vital_status=VitalStatus(status=Status.DECEASED, age_of_death=Age.postnatal_days(60)),
     )
 
 
 class TestDeath:
-
     def test_compute_survival__alive(
         self,
         alive: Patient,
@@ -76,13 +73,12 @@ class TestDeath:
         lines = endpoint.summary().splitlines()
 
         assert lines == [
-            'Age of death',
-            'Compute time until postnatal death',
+            "Age of death",
+            "Compute time until postnatal death",
         ]
 
 
 class TestDiseaseOnset:
-    
     @pytest.fixture(scope="class")
     def with_disease(self):
         return Patient.from_raw_parts(
@@ -114,13 +110,13 @@ class TestDiseaseOnset:
         with_disease: Patient,
     ):
         endpoint = disease_onset(disease_id="OMIM:123456")
-        
+
         survival = endpoint.compute_survival(with_disease)
-        
+
         assert survival is not None
         assert not survival.is_censored
-        assert survival.value == pytest.approx(40.)
-    
+        assert survival.value == pytest.approx(40.0)
+
     def test_compute_survival__off_target_disease(
         self,
         with_disease: Patient,
@@ -133,17 +129,16 @@ class TestDiseaseOnset:
 
     def test_summarize(self):
         endpoint = disease_onset(disease_id="OMIM:100000")
-        
+
         lines = endpoint.summary().splitlines()
 
         assert lines == [
-            'Onset of OMIM:100000',
-            'Compute time until OMIM:100000 onset',
+            "Onset of OMIM:100000",
+            "Compute time until OMIM:100000 onset",
         ]
 
 
 class TestPhenotypeOnset:
-
     @pytest.fixture
     def phenotyped(self) -> Patient:
         return Patient.from_raw_parts(
@@ -165,8 +160,8 @@ class TestPhenotypeOnset:
                     "HP:0011153",  # Focal motor seizure
                     is_observed=False,
                     onset=Age.postnatal_days(25),
-                )
-            )
+                ),
+            ),
         )
 
     def test_compute_survival__alive(
@@ -177,10 +172,10 @@ class TestPhenotypeOnset:
         endpoint = hpo_onset(hpo, term_id="HP:0001250")  # Seizure
 
         survival = endpoint.compute_survival(alive)
-        
+
         assert survival is not None
         assert survival.is_censored
-        assert survival.value == pytest.approx(40.)
+        assert survival.value == pytest.approx(40.0)
 
     def test_compute_survival__phenotyped(
         self,
@@ -193,7 +188,7 @@ class TestPhenotypeOnset:
 
         assert survival is not None
         assert not survival.is_censored
-        assert survival.value == pytest.approx(20.)  # Focal-onset seizure has the earliest onset
+        assert survival.value == pytest.approx(20.0)  # Focal-onset seizure has the earliest onset
 
     def test_summarize(
         self,
@@ -204,6 +199,6 @@ class TestPhenotypeOnset:
         lines = endpoint.summary().splitlines()
 
         assert lines == [
-            'Onset of Seizure',
-            'Compute time until onset of Seizure',
+            "Onset of Seizure",
+            "Compute time until onset of Seizure",
         ]

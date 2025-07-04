@@ -37,15 +37,11 @@ from gpsea.model.genome import GRCh38, GenomicRegion, Region, Strand, GenomeBuil
 
 
 def pytest_addoption(parser):
-    parser.addoption(
-        "--runonline", action="store_true", default=False, help="run online tests"
-    )
+    parser.addoption("--runonline", action="store_true", default=False, help="run online tests")
 
 
 def pytest_configure(config):
-    config.addinivalue_line(
-        "markers", "online: mark test that require internet access to run"
-    )
+    config.addinivalue_line("markers", "online: mark test that require internet access to run")
 
 
 def pytest_collection_modifyitems(config, items):
@@ -161,9 +157,7 @@ def suox_gt_clf(
 ) -> GenotypeClassifier:
     return allele_count(
         counts=((0,), (1,)),
-        target=variant_effect(
-            effect=VariantEffect.MISSENSE_VARIANT, tx_id=suox_mane_tx_id
-        ),
+        target=variant_effect(effect=VariantEffect.MISSENSE_VARIANT, tx_id=suox_mane_tx_id),
     )
 
 
@@ -300,9 +294,7 @@ def toy_cohort(
                 Region(2230, 2231),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HetSingleVar"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HetSingleVar"): Genotype.HETEROZYGOUS}),
     )
     indel = Variant(
         variant_info=VariantInfo(
@@ -326,9 +318,7 @@ def toy_cohort(
                 Region(646, 647),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HetDoubleVar1"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HetDoubleVar1"): Genotype.HETEROZYGOUS}),
     )
     snv_stop_gain = Variant(
         variant_info=VariantInfo(
@@ -352,9 +342,7 @@ def toy_cohort(
                 Region(1929, 1930),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HetDoubleVar1"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HetDoubleVar1"): Genotype.HETEROZYGOUS}),
     )
     snv_missense = Variant(
         variant_info=VariantInfo(
@@ -378,9 +366,7 @@ def toy_cohort(
                 Region(2511, 2512),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HetDoubleVar2"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HetDoubleVar2"): Genotype.HETEROZYGOUS}),
     )
     del_frameshift = Variant(
         variant_info=VariantInfo(
@@ -404,9 +390,7 @@ def toy_cohort(
                 Region(2272, 2278),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HetDoubleVar2"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HetDoubleVar2"): Genotype.HETEROZYGOUS}),
     )
     del_small = Variant(
         variant_info=VariantInfo(
@@ -430,9 +414,7 @@ def toy_cohort(
                 Region(2360, 2362),
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("HomoVar"): Genotype.HOMOZYGOUS_ALTERNATE}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("HomoVar"): Genotype.HOMOZYGOUS_ALTERNATE}),
     )
     del_large = Variant(
         variant_info=VariantInfo(
@@ -463,9 +445,7 @@ def toy_cohort(
                 None,
             )
         ],
-        genotypes=Genotypes.from_mapping(
-            {SampleLabels("LargeCNV"): Genotype.HETEROZYGOUS}
-        ),
+        genotypes=Genotypes.from_mapping({SampleLabels("LargeCNV"): Genotype.HETEROZYGOUS}),
     )
 
     patients = (
@@ -547,28 +527,16 @@ def toy_cohort(
 @pytest.fixture(scope="session")
 def test_phenotypes() -> typing.Mapping[str, Phenotype]:
     return {
-        "arachnodactyly_T": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001166"), True
-        ),
-        "seizure_T": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001250"), True
-        ),
+        "arachnodactyly_T": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001166"), True),
+        "seizure_T": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001250"), True),
         "focal_clonic_seizure_T": Phenotype.from_raw_parts(
             hpotk.TermId.from_curie("HP:0002266"),
             True,
         ),
-        "spasticity_T": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001257"), True
-        ),
-        "arachnodactyly_F": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001166"), False
-        ),
-        "seizure_F": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001250"), False
-        ),
-        "spasticity_F": Phenotype.from_raw_parts(
-            hpotk.TermId.from_curie("HP:0001257"), False
-        ),
+        "spasticity_T": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001257"), True),
+        "arachnodactyly_F": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001166"), False),
+        "seizure_F": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001250"), False),
+        "spasticity_F": Phenotype.from_raw_parts(hpotk.TermId.from_curie("HP:0001257"), False),
         "focal_clonic_seizure_F": Phenotype.from_raw_parts(
             hpotk.TermId.from_curie("HP:0002266"),
             False,
@@ -579,12 +547,8 @@ def test_phenotypes() -> typing.Mapping[str, Phenotype]:
 @pytest.fixture(scope="session")
 def test_diseases() -> typing.Mapping[str, Disease]:
     return {
-        "KBG_T": Disease.from_raw_parts(
-            hpotk.TermId.from_curie("OMIM:148050"), "KBG syndrome", True
-        ),
-        "KBG_F": Disease.from_raw_parts(
-            hpotk.TermId.from_curie("OMIM:148050"), "KBG syndrome", False
-        ),
+        "KBG_T": Disease.from_raw_parts(hpotk.TermId.from_curie("OMIM:148050"), "KBG syndrome", True),
+        "KBG_F": Disease.from_raw_parts(hpotk.TermId.from_curie("OMIM:148050"), "KBG syndrome", False),
     }
 
 

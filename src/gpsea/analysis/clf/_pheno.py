@@ -71,7 +71,8 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
         return self._categorizations
 
     def test(
-        self, patient: Patient,
+        self,
+        patient: Patient,
     ) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
         self._check_patient(patient)
 
@@ -81,8 +82,7 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
         for phenotype in patient.phenotypes:
             if phenotype.is_present:
                 if self._query == phenotype.identifier or any(
-                    self._query == anc
-                    for anc in self._hpo.graph.get_ancestors(phenotype)
+                    self._query == anc for anc in self._hpo.graph.get_ancestors(phenotype)
                 ):
                     return self._phenotype_observed
             else:
@@ -90,19 +90,20 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
                     return self._phenotype_excluded
                 else:
                     if phenotype.identifier == self._query or any(
-                        phenotype.identifier == anc
-                        for anc in self._hpo.graph.get_ancestors(self._query)
+                        phenotype.identifier == anc for anc in self._hpo.graph.get_ancestors(self._query)
                     ):
                         return self._phenotype_excluded
 
         return None
 
     def __eq__(self, value: object) -> bool:
-        return isinstance(value, HpoClassifier) \
-            and self._hpo.version == value._hpo.version \
-            and self._query == value._query \
+        return (
+            isinstance(value, HpoClassifier)
+            and self._hpo.version == value._hpo.version
+            and self._query == value._query
             and self._missing_implies_phenotype_excluded == value._missing_implies_phenotype_excluded
-    
+        )
+
     def __hash__(self) -> int:
         return hash((self._hpo.version, self._query, self._missing_implies_phenotype_excluded))
 
@@ -163,9 +164,7 @@ class DiseasePresenceClassifier(PhenotypeClassifier[hpotk.TermId]):
     ) -> typing.Sequence[PhenotypeCategorization[hpotk.TermId]]:
         return self._diagnosis_present, self._diagnosis_excluded
 
-    def test(
-        self, patient: Patient
-    ) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
+    def test(self, patient: Patient) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
         self._check_patient(patient)
 
         for dis in patient.diseases:
@@ -175,9 +174,8 @@ class DiseasePresenceClassifier(PhenotypeClassifier[hpotk.TermId]):
         return self._diagnosis_excluded
 
     def __eq__(self, value: object) -> bool:
-        return isinstance(value, DiseasePresenceClassifier) \
-            and self._query == value._query
-    
+        return isinstance(value, DiseasePresenceClassifier) and self._query == value._query
+
     def __hash__(self) -> int:
         return hash((self._query,))
 

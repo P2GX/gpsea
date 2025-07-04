@@ -5,26 +5,42 @@ from .genome import Contig, GenomicRegion, Strand
 
 
 class TestTranscriptCoordinates:
-
     @pytest.fixture
     def contig(self) -> Contig:
-        return Contig('a', 'b', 'c', 'd', 100)
+        return Contig("a", "b", "c", "d", 100)
 
     @pytest.fixture
     def simple_tx(self, contig: Contig) -> TranscriptCoordinates:
-        return TranscriptCoordinates('some_id', region=GenomicRegion(contig, 20, 80, Strand.POSITIVE), exons=(
-            GenomicRegion(contig, 20, 30, Strand.POSITIVE), GenomicRegion(contig, 50, 60, Strand.POSITIVE),
-            GenomicRegion(contig, 70, 80, Strand.POSITIVE)), cds_start=25, cds_end=76)
+        return TranscriptCoordinates(
+            "some_id",
+            region=GenomicRegion(contig, 20, 80, Strand.POSITIVE),
+            exons=(
+                GenomicRegion(contig, 20, 30, Strand.POSITIVE),
+                GenomicRegion(contig, 50, 60, Strand.POSITIVE),
+                GenomicRegion(contig, 70, 80, Strand.POSITIVE),
+            ),
+            cds_start=25,
+            cds_end=76,
+        )
 
     @pytest.fixture
     def noncoding_exons_tx(self, contig: Contig) -> TranscriptCoordinates:
         """
         Transcript coordinates with the same coding regions as above, but with extra non-coding exons for UTRs.
         """
-        return TranscriptCoordinates('some_id', region=GenomicRegion(contig, 5, 95, Strand.POSITIVE), exons=(
-            GenomicRegion(contig, 5, 10, Strand.POSITIVE), GenomicRegion(contig, 20, 30, Strand.POSITIVE),
-            GenomicRegion(contig, 50, 60, Strand.POSITIVE), GenomicRegion(contig, 70, 80, Strand.POSITIVE),
-            GenomicRegion(contig, 88, 95, Strand.POSITIVE),), cds_start=25, cds_end=76)
+        return TranscriptCoordinates(
+            "some_id",
+            region=GenomicRegion(contig, 5, 95, Strand.POSITIVE),
+            exons=(
+                GenomicRegion(contig, 5, 10, Strand.POSITIVE),
+                GenomicRegion(contig, 20, 30, Strand.POSITIVE),
+                GenomicRegion(contig, 50, 60, Strand.POSITIVE),
+                GenomicRegion(contig, 70, 80, Strand.POSITIVE),
+                GenomicRegion(contig, 88, 95, Strand.POSITIVE),
+            ),
+            cds_start=25,
+            cds_end=76,
+        )
 
     def test_simple_tx_compute_n_codons(self, simple_tx: TranscriptCoordinates):
         assert simple_tx.get_coding_base_count() == 18

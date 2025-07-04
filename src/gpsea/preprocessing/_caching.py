@@ -41,7 +41,6 @@ class Cache(typing.Generic[T], metaclass=abc.ABCMeta):
 
 
 class FilesystemCache(typing.Generic[T], Cache[T], metaclass=abc.ABCMeta):
-
     def __init__(
         self,
         data_dir: str,
@@ -81,7 +80,6 @@ class FilesystemCache(typing.Generic[T], Cache[T], metaclass=abc.ABCMeta):
 
 
 class PicklingCache(typing.Generic[T], FilesystemCache[T]):
-
     def _prepare_resource_path(self, identifier: str) -> str:
         return os.path.join(self._datadir, f"{identifier}.pickle")
 
@@ -93,7 +91,6 @@ class PicklingCache(typing.Generic[T], FilesystemCache[T]):
 
 
 class JsonCache(typing.Generic[T], FilesystemCache[T]):
-
     def __init__(
         self,
         data_dir: str,

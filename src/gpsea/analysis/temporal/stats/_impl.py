@@ -49,6 +49,6 @@ class LogRankTest(SurvivalStatistic):
 
     def __eq__(self, value: object) -> bool:
         return isinstance(value, LogRankTest)
-    
+
     def __hash__(self) -> int:
         return 37

@@ -211,18 +211,12 @@ def protein_region(
     """
     if isinstance(region, Region):
         pass
-    elif (
-        isinstance(region, tuple)
-        and len(region) == 2
-        and all(isinstance(r, int) and r > 0 for r in region)
-    ):
+    elif isinstance(region, tuple) and len(region) == 2 and all(isinstance(r, int) and r > 0 for r in region):
         start = region[0] - 1  # Convert to 0-based
         end = region[1]
         region = Region(start=start, end=end)
     else:
-        raise ValueError(
-            f"region must be a `Region` or a tuple with two positive `int`s, but got {region}"
-        )
+        raise ValueError(f"region must be a `Region` or a tuple with two positive `int`s, but got {region}")
 
     return ProteinRegionPredicate(region, tx_id)
 
@@ -252,12 +246,7 @@ def is_structural_variant(
         threshold: a non-negative `int` with the number of base pairs that must be affected
     """
     assert threshold >= 0, "`threshold` must be non-negative!"
-    return (
-        change_length("<=", -threshold)
-        | change_length(">=", threshold)
-        | is_large_imprecise_sv()
-        | IS_TRANSLOCATION
-    )
+    return change_length("<=", -threshold) | change_length(">=", threshold) | is_large_imprecise_sv() | IS_TRANSLOCATION
 
 
 def structural_type(
@@ -397,9 +386,7 @@ def is_structural_deletion(
             (-50 bp by default).
     """
     chromosomal_deletion = "SO:1000029"
-    return structural_type(chromosomal_deletion) | (
-        variant_class(VariantClass.DEL) & change_length("<=", threshold)
-    )
+    return structural_type(chromosomal_deletion) | (variant_class(VariantClass.DEL) & change_length("<=", threshold))
 
 
 def protein_feature_type(

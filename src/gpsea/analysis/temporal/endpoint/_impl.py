@@ -9,7 +9,6 @@ from .._base import Survival
 
 
 class EndpointBase(Endpoint, metaclass=abc.ABCMeta):
-
     def __init__(
         self,
         timeline: Timeline,
@@ -31,7 +30,6 @@ class EndpointBase(Endpoint, metaclass=abc.ABCMeta):
 
 
 class Death(EndpointBase):
-
     @property
     def name(self) -> str:
         return "Age of death"
@@ -66,7 +64,7 @@ class Death(EndpointBase):
                 age=patient.age,
                 is_censored=True,
             )
-        
+
     def question_base(self) -> str:
         return f"time until {self._timeline.name.lower()} death"
 
@@ -84,7 +82,6 @@ class Death(EndpointBase):
 
 
 class PhenotypicFeatureOnset(EndpointBase):
-
     def __init__(
         self,
         timeline: Timeline,
@@ -128,8 +125,7 @@ class PhenotypicFeatureOnset(EndpointBase):
             if present.onset is not None and present.onset.timeline == self._timeline:
                 # ... and if the individual is annotated with the target HPO or its descendant.
                 if present.identifier == self._term_id or any(
-                    anc == self._term_id
-                    for anc in self._hpo.graph.get_ancestors(present)
+                    anc == self._term_id for anc in self._hpo.graph.get_ancestors(present)
                 ):
                     if earliest_onset is None:
                         earliest_onset = present.onset
@@ -161,19 +157,13 @@ class PhenotypicFeatureOnset(EndpointBase):
         return hash((self._timeline, self._term_id, self._hpo.version))
 
     def __str__(self) -> str:
-        return (
-            "PhenotypicFeatureOnset("
-            f"timeline={self._timeline}, "
-            f"onset={self._term_id}, "
-            f"hpo={self._hpo.version})"
-        )
+        return f"PhenotypicFeatureOnset(timeline={self._timeline}, onset={self._term_id}, hpo={self._hpo.version})"
 
     def __repr__(self) -> str:
         return str(self)
 
 
 class DiseaseOnset(EndpointBase):
-
     def __init__(
         self,
         timeline: Timeline,
@@ -211,7 +201,7 @@ class DiseaseOnset(EndpointBase):
             age=patient.age,
             is_censored=True,
         )
-        
+
     def question_base(self) -> str:
         return f"time until {self._timeline.name.lower()} diagnosis of {self._disease_id.value}"
 
@@ -226,9 +216,7 @@ class DiseaseOnset(EndpointBase):
         return hash((self._timeline, self._disease_id))
 
     def __str__(self) -> str:
-        return "DiseaseOnset(" \
-            f"timeline={self._timeline}, " \
-            f"disease_id={self._disease_id})"
+        return f"DiseaseOnset(timeline={self._timeline}, disease_id={self._disease_id})"
 
     def __repr__(self) -> str:
         return str(self)
@@ -247,7 +235,7 @@ def death(
     without knowing about the time of death.
 
     The time of death is computed from individual's vital status with the following rules:
-     
+
     * If the individual is labeled as :attr:`~gpsea.model.Status.DECEASED`,
       we compute the survival from the age of death.
     * If the individual is :attr:`~gpsea.model.Status.ALIVE` or the status is missing,
@@ -275,7 +263,7 @@ def disease_onset(
 
     The onset of diagnosis is computed from the onset field of
     a :class:`~gpsea.model.Disease` with the following rules:
-     
+
     * If the individual is diagnosed with the target disease and its onset is known,
       then the survival is computed from the disease onset.
     * If the individual is *not* diagnosed with the disease and the age at last encounter is known,
@@ -304,7 +292,7 @@ def hpo_onset(
 
     The HPO term onset is computed from the onset field of
     a :class:`~gpsea.model.Phenotype` with the following rules:
-     
+
     * If the individual is annotated with the target HPO term and its onset is known,
       then the survival is computed from the term's onset.
     * If the individual is *not* diagnosed with the term and the age at last encounter is known,
@@ -342,6 +330,4 @@ def _validate_term_id(
     elif isinstance(term_id, hpotk.TermId):
         return term_id
     else:
-        raise ValueError(
-            f"`term_id` must be a `str` or `hpotk.TermId` but was {term_id}"
-        )
+        raise ValueError(f"`term_id` must be a `str` or `hpotk.TermId` but was {term_id}")

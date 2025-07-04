@@ -18,7 +18,6 @@ T = typing.TypeVar("T")
 
 
 class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
-
     @abc.abstractmethod
     def find_coordinates(self, item: T) -> typing.Optional[VariantCoordinates]:
         """
@@ -34,11 +33,8 @@ class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
 
 
 class FunctionalAnnotator(metaclass=abc.ABCMeta):
-
     @abc.abstractmethod
-    def annotate(
-        self, variant_coordinates: VariantCoordinates
-    ) -> typing.Sequence[TranscriptAnnotation]:
+    def annotate(self, variant_coordinates: VariantCoordinates) -> typing.Sequence[TranscriptAnnotation]:
         """
         Compute functional annotations for the variant coordinates. The annotations can be empty.
 
@@ -96,7 +92,7 @@ class TranscriptCoordinateService(metaclass=abc.ABCMeta):
         elif isinstance(tx, TranscriptInfoAware):
             return tx.transcript_id
         else:
-            raise ValueError(f'Expected a `str` or `TranscriptInfoAware` but got {type(tx)}: {tx}')
+            raise ValueError(f"Expected a `str` or `TranscriptInfoAware` but got {type(tx)}: {tx}")
 
 
 class GeneCoordinateService(metaclass=abc.ABCMeta):
@@ -170,16 +166,16 @@ class PreprocessingValidationResult:
 
         :returns: `True` if the analysis can proceed or `False` if errors/warnings were found.
         """
-        if self._policy == 'permissive':
+        if self._policy == "permissive":
             # No validation
             return True
-        elif self._policy == 'lenient':
+        elif self._policy == "lenient":
             return not self._notepad.has_errors(include_subsections=True)
-        elif self._policy == 'strict':
+        elif self._policy == "strict":
             return not self._notepad.has_errors_or_warnings(include_subsections=True)
         else:
             # Bug, please report to the developers.
-            raise ValueError(f'Unexpected policy {self._policy}')
+            raise ValueError(f"Unexpected policy {self._policy}")
 
     def summarize(
         self,
@@ -214,20 +210,14 @@ class PreprocessingValidationResult:
                         file.write(l_pad + " errors:")
                         file.write(os.linesep)
                         for error in node.errors():
-                            file.write(
-                                l_pad + " ·" + error.message + (
-                                    f". {error.solution}" if error.solution else ""
-                                )
-                            )
+                            file.write(l_pad + " ·" + error.message + (f". {error.solution}" if error.solution else ""))
                             file.write(os.linesep)
                     if node.has_warnings():
                         file.write(l_pad + " warnings:")
                         file.write(os.linesep)
                         for warning in node.warnings():
                             file.write(
-                                l_pad + " ·" + warning.message + (
-                                    f". {warning.solution}" if warning.solution else ""
-                                )
+                                l_pad + " ·" + warning.message + (f". {warning.solution}" if warning.solution else "")
                             )
                             file.write(os.linesep)
         else:

@@ -75,9 +75,7 @@ class PhenopacketGenotypeParser:
             raise ValueError(f"Unknown genotype {genotype}")
 
 
-class PhenopacketVariantCoordinateFinder(
-    VariantCoordinateFinder[GenomicInterpretation]
-):
+class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpretation]):
     """
     `PhenopacketVariantCoordinateFinder` figures out :class:`~gpsea.model.VariantCoordinates`
     and :class:`~gpsea.model.Genotype` from `GenomicInterpretation` element of Phenopacket Schema.
@@ -111,17 +109,13 @@ class PhenopacketVariantCoordinateFinder(
             typing.Optional[VariantCoordinates]: variant coordinates
         """
         if not isinstance(item, GenomicInterpretation):
-            raise ValueError(
-                f"item must be a Phenopacket GenomicInterpretation but was type {type(item)}"
-            )
+            raise ValueError(f"item must be a Phenopacket GenomicInterpretation but was type {type(item)}")
 
         variation_descriptor = item.variant_interpretation.variation_descriptor
 
         if self._vcf_is_available(variation_descriptor.vcf_record):
             # We have a VCF record.
-            if not self._check_assembly(
-                variation_descriptor.vcf_record.genome_assembly
-            ):
+            if not self._check_assembly(variation_descriptor.vcf_record.genome_assembly):
                 raise ValueError(
                     f"Variant id {variation_descriptor.id} for patient {item.subject_or_biosample_id} "
                     "has a different Genome Assembly than what was given. "
@@ -158,9 +152,7 @@ class PhenopacketVariantCoordinateFinder(
                 alt = "<DUP>"
                 change_length = end - start
             else:
-                raise ValueError(
-                    f"The copy number of {number} is not supported. Supported values: {{1, 3}}"
-                )
+                raise ValueError(f"The copy number of {number} is not supported. Supported values: {{1, 3}}")
 
             region = GenomicRegion(contig, start, end, Strand.POSITIVE)
             return VariantCoordinates(region, ref, alt, change_length)
@@ -178,9 +170,7 @@ class PhenopacketVariantCoordinateFinder(
     def _check_assembly(self, genome_assembly: str) -> bool:
         if "38" in genome_assembly and self._build.identifier == "GRCh38.p13":
             return True
-        elif (
-            "37" in genome_assembly or "19" in genome_assembly
-        ) and self._build.identifier == "GRCh37.p13":
+        elif ("37" in genome_assembly or "19" in genome_assembly) and self._build.identifier == "GRCh37.p13":
             return True
         else:
             return False
@@ -213,15 +203,9 @@ class PhenopacketVariantCoordinateFinder(
         variation_descriptor: VariationDescriptor,
     ) -> bool:
         structural_type = (
-            variation_descriptor.structural_type
-            if variation_descriptor.HasField("structural_type")
-            else None
+            variation_descriptor.structural_type if variation_descriptor.HasField("structural_type") else None
         )
-        gene_context = (
-            variation_descriptor.gene_context
-            if variation_descriptor.HasField("gene_context")
-            else None
-        )
+        gene_context = variation_descriptor.gene_context if variation_descriptor.HasField("gene_context") else None
 
         # If we have these fields, we seem to have all information
         # to parse the variation descriptor elsewhere.
@@ -238,37 +222,33 @@ class PhenopacketOntologyTermOnsetParser:
     Use `default_parser` to create the parser for parsing current HPO
     or provide the curie -> :class:`~gpsea.model.Age` mapping via `__init__`.
     """
-    
+
     @staticmethod
     def default_parser() -> "PhenopacketOntologyTermOnsetParser":
         # These ranges are horribly general.
         # Assuming 40 weeks as birth date and 80 years as age of death.
         weeks_at_birth = 40
         age_at_death = 80
-        term_id_to_range={
-            'HP:0030674': (Age.last_menstrual_period(), Age.gestational(weeks=weeks_at_birth)),  # Antenatal onset
-            'HP:0011460': (Age.last_menstrual_period(), Age.gestational(weeks=11)),  # Embryonal onset
-            'HP:0011461': (Age.gestational(weeks=11), Age.gestational(weeks=weeks_at_birth)),  # Fetal onset
-            'HP:0034199': (Age.gestational(weeks=11), Age.gestational(weeks=14)),  # Late first trimester onset
-            'HP:0034198': (Age.gestational(weeks=14), Age.gestational(weeks=28)),  # Second trimester onset
-            'HP:0034197': (Age.gestational(weeks=28), Age.gestational(weeks=weeks_at_birth)),  # Third trimester onset
-            
-            'HP:0003577': (Age.birth(), Age.birth()),  # Congenital onset
-            'HP:0003623': (Age.birth(), Age.postnatal_days(29)),  # Neonatal onset
-
-            'HP:0410280': (Age.postnatal_days(29), Age.postnatal_years(16)),  # Pediatric onset
-            'HP:0003593': (Age.postnatal_days(29), Age.postnatal_years(1)),  # Infantile onset
-            'HP:0011463': (Age.postnatal_years(1), Age.postnatal_years(5)),  # Childhood onset
-            'HP:0003621': (Age.postnatal_years(5), Age.postnatal_years(16)),  # Juvenile onset
-
-            'HP:0003581': (Age.postnatal_years(16), Age.postnatal_years(age_at_death)),  # Adult onset
-            'HP:0011462': (Age.postnatal_years(16), Age.postnatal_years(40)),  # Young adult onset
-            'HP:0025708': (Age.postnatal_years(16), Age.postnatal_years(19)),  # Early young adult onset
-            'HP:0025709': (Age.postnatal_years(19), Age.postnatal_years(25)),  # Intermediate young adult onset
-            'HP:0025710': (Age.postnatal_years(25), Age.postnatal_years(40)),  # Late young adult onset
-            
-            'HP:0003596': (Age.postnatal_years(40), Age.postnatal_years(60)),  # Middle age onset
-            'HP:0003584': (Age.postnatal_years(60), Age.postnatal_years(age_at_death)),  # Late onset
+        term_id_to_range = {
+            "HP:0030674": (Age.last_menstrual_period(), Age.gestational(weeks=weeks_at_birth)),  # Antenatal onset
+            "HP:0011460": (Age.last_menstrual_period(), Age.gestational(weeks=11)),  # Embryonal onset
+            "HP:0011461": (Age.gestational(weeks=11), Age.gestational(weeks=weeks_at_birth)),  # Fetal onset
+            "HP:0034199": (Age.gestational(weeks=11), Age.gestational(weeks=14)),  # Late first trimester onset
+            "HP:0034198": (Age.gestational(weeks=14), Age.gestational(weeks=28)),  # Second trimester onset
+            "HP:0034197": (Age.gestational(weeks=28), Age.gestational(weeks=weeks_at_birth)),  # Third trimester onset
+            "HP:0003577": (Age.birth(), Age.birth()),  # Congenital onset
+            "HP:0003623": (Age.birth(), Age.postnatal_days(29)),  # Neonatal onset
+            "HP:0410280": (Age.postnatal_days(29), Age.postnatal_years(16)),  # Pediatric onset
+            "HP:0003593": (Age.postnatal_days(29), Age.postnatal_years(1)),  # Infantile onset
+            "HP:0011463": (Age.postnatal_years(1), Age.postnatal_years(5)),  # Childhood onset
+            "HP:0003621": (Age.postnatal_years(5), Age.postnatal_years(16)),  # Juvenile onset
+            "HP:0003581": (Age.postnatal_years(16), Age.postnatal_years(age_at_death)),  # Adult onset
+            "HP:0011462": (Age.postnatal_years(16), Age.postnatal_years(40)),  # Young adult onset
+            "HP:0025708": (Age.postnatal_years(16), Age.postnatal_years(19)),  # Early young adult onset
+            "HP:0025709": (Age.postnatal_years(19), Age.postnatal_years(25)),  # Intermediate young adult onset
+            "HP:0025710": (Age.postnatal_years(25), Age.postnatal_years(40)),  # Late young adult onset
+            "HP:0003596": (Age.postnatal_years(40), Age.postnatal_years(60)),  # Middle age onset
+            "HP:0003584": (Age.postnatal_years(60), Age.postnatal_years(age_at_death)),  # Late onset
         }
         return PhenopacketOntologyTermOnsetParser(
             term_id_to_age={
@@ -280,13 +260,15 @@ class PhenopacketOntologyTermOnsetParser:
     @staticmethod
     def _median_age(left: Age, right: Age) -> Age:
         # Assuming right is at or after left
-        days = left.days + ((right.days - left.days) / 2) 
+        days = left.days + ((right.days - left.days) / 2)
         if left.is_gestational and right.is_gestational:
             return Age.gestational_days(days=days)
         elif left.is_postnatal and right.is_postnatal:
             return Age.postnatal_days(days=days)
         else:
-            raise ValueError(f'`left` and `right` must be on the same timeline, but left={left.timeline}, right={right.timeline}`')
+            raise ValueError(
+                f"`left` and `right` must be on the same timeline, but left={left.timeline}, right={right.timeline}`"
+            )
 
     def __init__(
         self,
@@ -304,19 +286,19 @@ class PhenopacketOntologyTermOnsetParser:
         ontology_class: PPOntologyClass,
         notepad: Notepad,
     ) -> typing.Optional[Age]:
-        curie = ontology_class.id       
-        if curie.startswith('HP:'):
+        curie = ontology_class.id
+        if curie.startswith("HP:"):
             age = self._term_id_to_age.get(curie, None)
             if age is None:
                 notepad.add_warning(
-                    f'Unknown onset term {curie}',
-                    solution='Use a term from HPO\'s Onset [HP:0003674] module',
+                    f"Unknown onset term {curie}",
+                    solution="Use a term from HPO's Onset [HP:0003674] module",
                 )
             return age
         else:
             notepad.add_warning(
-                f'Unsupported ontology class {curie}',
-                solution='Use a term from HPO\'s Onset [HP:0003674] module',
+                f"Unsupported ontology class {curie}",
+                solution="Use a term from HPO's Onset [HP:0003674] module",
             )
             return None
 
@@ -346,16 +328,14 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
     ):
         self._logger = logging.getLogger(__name__)
         # Violates DI, but it is specific to this class, so I'll leave it "as is".
-        self._coord_finder = PhenopacketVariantCoordinateFinder(
-            build, hgvs_coordinate_finder
-        )
+        self._coord_finder = PhenopacketVariantCoordinateFinder(build, hgvs_coordinate_finder)
         self._gt_parser = PhenopacketGenotypeParser()
-        self._validator = validate_instance(validator, ValidationRunner, 'validator')
+        self._validator = validate_instance(validator, ValidationRunner, "validator")
         if term_onset_parser is not None:
             assert isinstance(term_onset_parser, PhenopacketOntologyTermOnsetParser)
         self._term_onset_parser = term_onset_parser
         self._phenotype_creator = PhenopacketPhenotypicFeatureCreator(
-            hpo=validate_instance(hpo, hpotk.MinimalOntology, 'hpo'),
+            hpo=validate_instance(hpo, hpotk.MinimalOntology, "hpo"),
             term_onset_parser=term_onset_parser,
         )
         self._functional_annotator = validate_instance(
@@ -451,7 +431,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
             variants=variants,
             diseases=diseases,
         )
-    
+
     def _add_phenotypes(
         self,
         pfs: typing.Iterable[PPPhenotypicFeature],
@@ -474,15 +454,13 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
             level = PhenopacketPatientCreator._translate_level(result.level)
             if level is None:
                 # Should not happen. Please let the developers know about this issue!
-                raise ValueError(f'Unknown result validation level {result.level}')
+                raise ValueError(f"Unknown result validation level {result.level}")
 
             notepad.add_issue(level, result.message)
-        
+
         return phenotypes
 
-    def _add_diseases(
-        self, diseases: typing.Sequence[PPDisease], notepad: Notepad
-    ) -> typing.Sequence[Disease]:
+    def _add_diseases(self, diseases: typing.Sequence[PPDisease], notepad: Notepad) -> typing.Sequence[Disease]:
         """Creates a list of Disease objects from the data in a given Phenopacket
 
         Args:
@@ -503,7 +481,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                 continue
             else:
                 term_id = hpotk.TermId.from_curie(dis.term.id)
-            
+
             if dis.HasField("onset"):
                 onset = parse_onset_element(
                     time_element=dis.onset,
@@ -512,7 +490,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                 )
             else:
                 onset = None
-            
+
             # Do not include excluded diseases if we decide to assume excluded if not included
             final_diseases.append(
                 Disease.from_raw_parts(
@@ -583,7 +561,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
         elif sex == ppi.OTHER_SEX or sex == ppi.UNKNOWN_SEX:
             return Sex.UNKNOWN_SEX
         else:
-            notepad.add_warning(f'Unknown sex type: {sex}')
+            notepad.add_warning(f"Unknown sex type: {sex}")
             return Sex.UNKNOWN_SEX
 
     @staticmethod
@@ -594,7 +572,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
         if individual.HasField("time_at_last_encounter"):
             tale = individual.time_at_last_encounter
             return parse_age_element(
-                'time_at_last_encounter',
+                "time_at_last_encounter",
                 tale,
                 notepad,
             )
@@ -607,7 +585,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
     ) -> typing.Optional[VitalStatus]:
         if individual.HasField("vital_status"):
             vital_status = individual.vital_status
-            
+
             if vital_status.status == vital_status.UNKNOWN_STATUS:
                 status = Status.UNKNOWN
             elif vital_status.status == vital_status.ALIVE:
@@ -617,10 +595,10 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
             else:
                 notepad.add_warning(f"Unexpected vital status value {vital_status}")
                 status = Status.UNKNOWN
-            
+
             if vital_status.HasField("time_of_death"):
                 age_of_death = parse_age_element(
-                    'time_of_death',
+                    "time_of_death",
                     time_element=vital_status.time_of_death,
                     notepad=notepad,
                 )
@@ -632,7 +610,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                 status=status,
                 age_of_death=age_of_death,
             )
-                
+
         return None
 
     def _add_variants(
@@ -654,9 +632,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
         for i, interpretation in enumerate(pp.interpretations):
             sub_note = notepad.add_subsection(f"#{i}")
             if interpretation.HasField("diagnosis"):
-                for (
-                    genomic_interpretation
-                ) in interpretation.diagnosis.genomic_interpretations:
+                for genomic_interpretation in interpretation.diagnosis.genomic_interpretations:
                     gt = self._gt_parser.find_genotype(genomic_interpretation)
                     if gt is None:
                         sub_note.add_warning(
@@ -665,9 +641,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                         )
                         continue
 
-                    variant_info = self._extract_variant_info(
-                        genomic_interpretation, sub_note
-                    )
+                    variant_info = self._extract_variant_info(genomic_interpretation, sub_note)
                     if variant_info is None:
                         # We already complained in the extract function
                         continue
@@ -685,10 +659,8 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                             continue
                     elif variant_info.has_sv_info():
                         try:
-                            tx_annotations = (
-                                self._imprecise_sv_functional_annotator.annotate(
-                                    item=variant_info.sv_info,
-                                )
+                            tx_annotations = self._imprecise_sv_functional_annotator.annotate(
+                                item=variant_info.sv_info,
                             )
                         except ValueError as error:
                             sub_note.add_warning(
@@ -728,13 +700,10 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
         sv_info = None
 
         try:
-            variant_coordinates = self._coord_finder.find_coordinates(
-                genomic_interpretation
-            )
+            variant_coordinates = self._coord_finder.find_coordinates(genomic_interpretation)
         except ValueError as e:
             notepad.add_warning(
-                "Expected a VCF record, a VRS CNV, or an expression with `hgvs.c` "
-                f"but encountered an error {e.args}",
+                f"Expected a VCF record, a VRS CNV, or an expression with `hgvs.c` but encountered an error {e.args}",
                 "Remove variant from testing",
             )
             return None
@@ -767,21 +736,17 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                 variation_descriptor = variant_interpretation.variation_descriptor
 
                 structural_type = (
-                    variation_descriptor.structural_type
-                    if variation_descriptor.HasField("structural_type")
-                    else None
+                    variation_descriptor.structural_type if variation_descriptor.HasField("structural_type") else None
                 )
                 gene_context = (
-                    variation_descriptor.gene_context
-                    if variation_descriptor.HasField("gene_context")
-                    else None
+                    variation_descriptor.gene_context if variation_descriptor.HasField("gene_context") else None
                 )
 
                 if structural_type is not None and gene_context is not None:
                     st = hpotk.TermId.from_curie(curie=structural_type.id)
                     variant_class = self._map_structural_type_to_variant_class(st)
                     if variant_class is None:
-                        notepad.add_warning(f'Unknown structural type {structural_type.id}')
+                        notepad.add_warning(f"Unknown structural type {structural_type.id}")
                     else:
                         return ImpreciseSvInfo(
                             structural_type=st,
@@ -791,9 +756,9 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                         )
                 else:
                     if structural_type is None:
-                        notepad.add_warning('Missing required `structural_type` field')
+                        notepad.add_warning("Missing required `structural_type` field")
                     if gene_context is None:
-                        notepad.add_warning('Missing required `gene_context` field')
+                        notepad.add_warning("Missing required `gene_context` field")
 
         return None
 
@@ -831,7 +796,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
 
 class PhenopacketPhenotypicFeatureCreator:
     # NOT PART OF THE PUBLIC API
-    
+
     def __init__(
         self,
         hpo: hpotk.MinimalOntology,
@@ -854,17 +819,17 @@ class PhenopacketPhenotypicFeatureCreator:
             term_id = hpotk.TermId.from_curie(curie=pf.type.id)
         except ValueError as ve:
             notepad.add_warning(
-                f'{ve.args[0]}',
-                'Ensure the term ID consists of a prefix (e.g. `HP`) '
-                'and id (e.g. `0001250`) joined by colon `:` or underscore `_`',
+                f"{ve.args[0]}",
+                "Ensure the term ID consists of a prefix (e.g. `HP`) "
+                "and id (e.g. `0001250`) joined by colon `:` or underscore `_`",
             )
             return None
 
         # Check the term is an HPO concept
-        if term_id.prefix != 'HP':
+        if term_id.prefix != "HP":
             notepad.add_warning(
-                f'{term_id} is not an HPO term',
-                'Remove non-HPO concepts from the analysis input',
+                f"{term_id} is not an HPO term",
+                "Remove non-HPO concepts from the analysis input",
             )
             return None
 
@@ -872,20 +837,20 @@ class PhenopacketPhenotypicFeatureCreator:
         term = self._hpo.get_term(term_id)
         if term is None:
             notepad.add_warning(
-                f'{term_id} is not in HPO version `{self._hpo.version}`',
-                'Correct the HPO term or use the latest HPO for the analysis',
+                f"{term_id} is not in HPO version `{self._hpo.version}`",
+                "Correct the HPO term or use the latest HPO for the analysis",
             )
             return None
-        
+
         assert term is not None
         if term.identifier != term_id:
             # Input includes an obsolete term ID. We emit a warning and update the term ID behind the scenes,
             # since `term.identifier` always returns the primary term ID.
             notepad.add_warning(
-                f'{term_id} is an obsolete identifier for {term.name}',
-                f'Replace {term_id} with the primary term ID {term.identifier}',
+                f"{term_id} is an obsolete identifier for {term.name}",
+                f"Replace {term_id} with the primary term ID {term.identifier}",
             )
-        
+
         if pf.HasField("onset"):
             onset = parse_onset_element(
                 time_element=pf.onset,
@@ -900,6 +865,7 @@ class PhenopacketPhenotypicFeatureCreator:
             is_observed=not pf.excluded,
             onset=onset,
         )
+
 
 def parse_onset_element(
     time_element: PPTimeElement,
@@ -929,7 +895,7 @@ def parse_onset_element(
             return term_onset_parser.process(
                 ontology_class=time_element.ontology_class,
                 notepad=notepad,
-            )    
+            )
     else:
         notepad.add_warning(f"`time_element` is in currently unsupported format `{case}`")
     return None
@@ -959,6 +925,6 @@ def parse_age_element(
     else:
         notepad.add_warning(
             f"{case} of the {field} field cannot be parsed into age",
-            "Consider formatting the age as ISO8601 duration (e.g., \"P31Y2M\" for 31 years and 2 months)"
+            'Consider formatting the age as ISO8601 duration (e.g., "P31Y2M" for 31 years and 2 months)',
         )
     return None

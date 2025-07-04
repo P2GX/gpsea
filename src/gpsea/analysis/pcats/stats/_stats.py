@@ -18,7 +18,7 @@ class CountStatistic(Statistic, metaclass=abc.ABCMeta):
     `CountStatistic` calculates a p value for a contingency table
     produced by a pair of discrete random variables.
 
-    
+
     Supports shape
     ^^^^^^^^^^^^^^
 
@@ -69,7 +69,7 @@ class CountStatistic(Statistic, metaclass=abc.ABCMeta):
 
     def __eq__(self, value: object) -> bool:
         return super().__eq__(value)
-    
+
     def __hash__(self) -> int:
         return super().__hash__()
 
@@ -82,7 +82,7 @@ class FisherExactTest(CountStatistic):
     while the `2x3` variant is implemented in Python.
     In both variants, the two-sided :math:`H_1` is considered.
     """
-    
+
     def __init__(self):
         super().__init__(
             name="Fisher's Exact Test",
@@ -112,7 +112,7 @@ class FisherExactTest(CountStatistic):
                 pval=pval,
             )
         else:
-            raise ValueError(f'Unsupported counts shape {counts.shape}')
+            raise ValueError(f"Unsupported counts shape {counts.shape}")
 
     def _fisher_exact(
         self,
@@ -159,7 +159,6 @@ class FisherExactTest(CountStatistic):
 
     @staticmethod
     def _dfs(mat, pos, r_sum, c_sum, p_0, p):
-
         (xx, yy) = pos
         (r, c) = (len(r_sum), len(c_sum))
 
@@ -226,6 +225,6 @@ class FisherExactTest(CountStatistic):
 
     def __eq__(self, value: object) -> bool:
         return isinstance(value, FisherExactTest)
-    
+
     def __hash__(self) -> int:
         return 17

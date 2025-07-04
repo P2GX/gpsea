@@ -132,9 +132,7 @@ def structural_variant(
     return Variant(
         variant_info=VariantInfo(
             sv_info=ImpreciseSvInfo(
-                structural_type=hpotk.TermId.from_curie(
-                    "SO:1000029"
-                ),  # chromosomal_deletion
+                structural_type=hpotk.TermId.from_curie("SO:1000029"),  # chromosomal_deletion
                 variant_class=VariantClass.DEL,
                 gene_id="HGNC:21316",
                 gene_symbol="ANKRD11",

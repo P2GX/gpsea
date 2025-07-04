@@ -59,9 +59,7 @@ class TestVVTranscriptCoordinateServiceProcessResponse:
         assert tx_coordinates.region.end == end
         assert tx_coordinates.region.strand == strand
 
-    @pytest.mark.skip(
-        "Run to regenerate the response JSON files if the response format changed"
-    )
+    @pytest.mark.skip("Run to regenerate the response JSON files if the response format changed")
     @pytest.mark.parametrize(
         "tx_id",
         [
@@ -289,9 +287,7 @@ class TestVVTranscriptCoordinateServiceOffline:
     ):
         tx_id = "NM_002834.5"
 
-        response_fpath = os.path.join(
-            fpath_vv_response_dir, "txid-NM_002834.5-PTPN11.json"
-        )
+        response_fpath = os.path.join(fpath_vv_response_dir, "txid-NM_002834.5-PTPN11.json")
         response = load_response_json(response_fpath)
 
         tc = vv_multi_coordinate_service.parse_response(tx_id, response)
@@ -324,9 +320,7 @@ class TestVVTranscriptCoordinateServiceOffline:
     ):
         tx_id = "NM_000518.4"
 
-        response_fpath = os.path.join(
-            fpath_vv_response_dir, "txid-NM_000518.4-HBB.json"
-        )
+        response_fpath = os.path.join(fpath_vv_response_dir, "txid-NM_000518.4-HBB.json")
         response = load_response_json(response_fpath)
 
         tc = vv_multi_coordinate_service.parse_response(tx_id, response)

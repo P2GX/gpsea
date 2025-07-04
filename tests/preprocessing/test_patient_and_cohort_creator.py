@@ -15,7 +15,6 @@ from gpsea.preprocessing import configure_default_functional_annotator
 
 
 class TestPhenopacketCohortCreator:
-
     @pytest.fixture
     def functional_annotator(
         self,
@@ -77,12 +76,12 @@ class TestPhenopacketCohortCreator:
         fpath_test_dir: str,
         phenopacket_cohort_creator: CohortCreator,
     ):
-        folder = os.path.join(fpath_test_dir, 'preprocessing', 'data', 'dup_id_test_data')
+        folder = os.path.join(fpath_test_dir, "preprocessing", "data", "dup_id_test_data")
         _, results = load_phenopacket_folder(folder, phenopacket_cohort_creator)
-        
+
         outfile = io.StringIO()
         results.summarize(outfile)
-        
+
         actual_lines = outfile.getvalue().splitlines(keepends=False)
 
         expected = (

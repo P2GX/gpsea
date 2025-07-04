@@ -108,9 +108,7 @@ class SurvivalAnalysisResult(MonoPhenotypeAnalysisResult):
         :param plot_kwargs: keyword arguments passed directly to :func:`matplotlib.axes.Axes.step`.
             Unless overridden, ``where='post'``.
         """
-        col_idxs = self._choose_palette_idxs(
-            n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors)
-        )
+        col_idxs = self._choose_palette_idxs(n_categories=self._gt_clf.n_categorizations(), n_colors=len(colors))
 
         for pat_cat, color_idx in zip(self._gt_clf.get_categories(), col_idxs):
             survivals = self._data.loc[
@@ -132,9 +130,7 @@ class SurvivalAnalysisResult(MonoPhenotypeAnalysisResult):
         ax.legend()
 
     def __eq__(self, value: object) -> bool:
-        return isinstance(value, SurvivalAnalysisResult) and super(
-            MonoPhenotypeAnalysisResult, self
-        ).__eq__(value)
+        return isinstance(value, SurvivalAnalysisResult) and super(MonoPhenotypeAnalysisResult, self).__eq__(value)
 
     def __hash__(self) -> int:
         return super(MonoPhenotypeAnalysisResult, self).__hash__()
@@ -199,9 +195,7 @@ class SurvivalAnalysis:
             if gt_cat is None:
                 data.loc[patient.patient_id, MonoPhenotypeAnalysisResult.GT_COL] = None
             else:
-                data.loc[patient.patient_id, MonoPhenotypeAnalysisResult.GT_COL] = (
-                    gt_cat.category.cat_id
-                )
+                data.loc[patient.patient_id, MonoPhenotypeAnalysisResult.GT_COL] = gt_cat.category.cat_id
 
             survival = endpoint.compute_survival(patient)
             data.loc[patient.patient_id, MonoPhenotypeAnalysisResult.PH_COL] = survival  # type: ignore

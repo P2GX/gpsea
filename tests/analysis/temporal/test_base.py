@@ -4,7 +4,6 @@ from gpsea.analysis.temporal import Survival
 
 
 class TestSurvival:
-
     def test_format_survival(self):
         s = Survival(value=123.4, is_censored=False)
 

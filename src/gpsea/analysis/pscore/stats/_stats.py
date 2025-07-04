@@ -48,7 +48,7 @@ class MannWhitneyStatistic(PhenotypeScoreStatistic):
         self,
         scores: typing.Collection[typing.Sequence[float]],
     ) -> StatisticResult:
-        assert len(scores) == 2, 'Mann-Whitney U rank test only supports 2 categories at this time'
+        assert len(scores) == 2, "Mann-Whitney U rank test only supports 2 categories at this time"
 
         x, y = scores
         x = MannWhitneyStatistic._remove_nans(x)
@@ -56,7 +56,7 @@ class MannWhitneyStatistic(PhenotypeScoreStatistic):
         statistic, pval = mannwhitneyu(
             x=x,
             y=y,
-            alternative='two-sided',
+            alternative="two-sided",
         )
 
         return StatisticResult(
@@ -101,12 +101,13 @@ class TTestStatistic(PhenotypeScoreStatistic):
         :Returns:
             a tuple with the p-value and the t-statistic
         """
-        assert len(scores) == 2, 'T test only supports 2 categories at this time'
+        assert len(scores) == 2, "T test only supports 2 categories at this time"
 
         x, y = scores
         res = ttest_ind(
-            a=x, b=y,
-            alternative='two-sided',
+            a=x,
+            b=y,
+            alternative="two-sided",
             nan_policy="omit",
         )
 

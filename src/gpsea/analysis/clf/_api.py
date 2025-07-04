@@ -28,9 +28,7 @@ class PatientCategory:
     ):
         self._cat_id = hpotk.util.validate_instance(cat_id, int, "cat_id")
         self._name = hpotk.util.validate_instance(name, str, "name")
-        self._description = hpotk.util.validate_optional_instance(
-            description, str, "description"
-        )
+        self._description = hpotk.util.validate_optional_instance(description, str, "description")
 
     @property
     def cat_id(self) -> int:
@@ -54,11 +52,7 @@ class PatientCategory:
         return self._description
 
     def __repr__(self) -> str:
-        return (
-            f"PatientCategory(cat_id={self.cat_id}, "
-            f"name={self.name}, "
-            f"description={self.description})"
-        )
+        return f"PatientCategory(cat_id={self.cat_id}, name={self.name}, description={self.description})"
 
     def __str__(self) -> str:
         return self._name
@@ -101,9 +95,7 @@ class Categorization:
         self,
         category: PatientCategory,
     ):
-        self._category = hpotk.util.validate_instance(
-            category, PatientCategory, "category"
-        )
+        self._category = hpotk.util.validate_instance(category, PatientCategory, "category")
 
     @property
     def category(self) -> PatientCategory:
@@ -262,12 +254,12 @@ However, phenotype entity can be anything as long as it is :class:`~typing.Hasha
 (have `__eq__` and `__lt__` magic methods).
 """
 
-YES = PatientCategory(1, 'Yes', 'The patient belongs to the group.')
+YES = PatientCategory(1, "Yes", "The patient belongs to the group.")
 """
 Category for a patient who *belongs* to the tested group.
 """
 
-NO = PatientCategory(0, 'No', 'The patient does not belong to the group.')
+NO = PatientCategory(0, "No", "The patient does not belong to the group.")
 """
 Category for a patient who does *not* belong to the tested group.
 """
@@ -291,26 +283,25 @@ class PhenotypeCategorization(typing.Generic[P], Categorization):
         return self._phenotype
 
     def __repr__(self) -> str:
-        return (
-            "PhenotypeCategorization("
-            f"category={self._category}, "
-            f"phenotype={self._phenotype})"
-        )
+        return f"PhenotypeCategorization(category={self._category}, phenotype={self._phenotype})"
 
     def __str__(self) -> str:
         return repr(self)
 
     def __eq__(self, other) -> bool:
-        return isinstance(other, PhenotypeCategorization) \
-            and self._category == other._category \
+        return (
+            isinstance(other, PhenotypeCategorization)
+            and self._category == other._category
             and self._phenotype == other._phenotype
+        )
 
     def __hash__(self) -> int:
         return hash((self._category, self._phenotype))
 
 
 class PhenotypeClassifier(
-    typing.Generic[P], Classifier[PhenotypeCategorization[P]], 
+    typing.Generic[P],
+    Classifier[PhenotypeCategorization[P]],
     metaclass=abc.ABCMeta,
 ):
     """

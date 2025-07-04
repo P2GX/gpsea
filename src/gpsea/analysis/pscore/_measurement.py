@@ -12,7 +12,7 @@ class MeasurementPhenotypeScorer(PhenotypeScorer):
 
     For instance, the amount of `Testosterone [Mass/volume] in Serum or Plasma <https://loinc.org/2986-8/>`_.
 
-    
+
     Example
     ^^^^^^^
 
@@ -55,10 +55,8 @@ class MeasurementPhenotypeScorer(PhenotypeScorer):
         elif isinstance(term_id, hpotk.TermId):
             self._identifier = term_id
         else:
-            raise ValueError(
-                f"`term_id` must be a `str` or a `hpotk.TermId` but was {type(term_id)}"
-            )
-        
+            raise ValueError(f"`term_id` must be a `str` or a `hpotk.TermId` but was {type(term_id)}")
+
         assert isinstance(label, str)
         self._label = label
 
@@ -77,7 +75,7 @@ class MeasurementPhenotypeScorer(PhenotypeScorer):
     @property
     def term_id(self) -> hpotk.TermId:
         return self._identifier
-    
+
     @property
     def label(self) -> str:
         return self._label
