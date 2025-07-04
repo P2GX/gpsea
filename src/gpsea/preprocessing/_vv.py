@@ -61,7 +61,7 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
 
         :param item: a hgvs string
         :return: variant coordinates
-        :raises ValueError: if 
+        :raises ValueError: for an error of any kind
         """
         matcher = self._hgvs_pattern.match(item)
         if matcher:
