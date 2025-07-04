@@ -81,7 +81,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">ratelimit</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -100,7 +99,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_response</span><span class="p">(</span>
     <span class="n">url</span><span class="p">,</span> 
     <span class="n">headers</span><span class="p">,</span> 
-    <span class="n">timeout</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="c1"># This is the only place we interact with the Variant validator REST API.</span>
     <span class="c1"># Per documentation at `https://rest.variantvalidator.org/`,</span>
@@ -123,8 +122,14 @@
 <span class="sd">    :param timeout: the REST API request timeout</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genome_build</span><span class="p">:</span> <span class="n">GenomeBuild</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_build</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">genome_build</span><span class="p">,</span> <span class="n">GenomeBuild</span><span class="p">,</span> <span class="s1">&#39;genome_build&#39;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">genome_build</span><span class="p">:</span> <span class="n">GenomeBuild</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">genome_build</span><span class="p">,</span> <span class="n">GenomeBuild</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build</span> <span class="o">=</span> <span class="n">genome_build</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">timeout</span> <span class="o">&gt;</span> <span class="mf">0.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s1">&#39;https://rest.variantvalidator.org/VariantValidator/variantvalidator/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
@@ -138,6 +143,7 @@
 
 <span class="sd">        :param item: a hgvs string</span>
 <span class="sd">        :return: variant coordinates</span>
+<span class="sd">        :raises ValueError: for an error of any kind</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">matcher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hgvs_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">matcher</span><span class="p">:</span>
@@ -146,16 +152,23 @@
 
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">response</span> <span class="o">=</span> <span class="n">fetch_response</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span><span class="p">)</span>
-                <span class="n">variant_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_variant_coordinates</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+                <span class="k">match</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;flag&#39;</span><span class="p">]:</span>
+                    <span class="k">case</span> <span class="s2">&quot;warning&quot;</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot find genomic coordinates for </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">. See URL for more info: </span><span class="si">{</span><span class="n">request_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">case</span> <span class="s2">&quot;gene_variant&quot;</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_variant_coordinates</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+                    <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                        <span class="c1"># Variant Validator API response includes an unexpected flag.</span>
+                        <span class="c1"># Please submit an issue to our GitHub tracker if you believe</span>
+                        <span class="c1"># there is nothing wrong with the HGVS input.</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got unexpected flag: </span><span class="si">{</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;flag&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">. Open a ticket on our issue tracker&quot;</span><span class="p">)</span>
             <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span><span class="p">,</span> <span class="n">VariantValidatorDecodeException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error processing </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Error processing </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># The HGVS did not pass validation by a regular expression.</span>
             <span class="c1"># Please submit an issue to our GitHub tracker if you believe</span>
             <span class="c1"># the HGVS expression is correct.</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid HGVS string: </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">variant_coordinates</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid HGVS string: </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_extract_variant_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">VariantCoordinates</span><span class="p">]:</span>
@@ -238,11 +251,10 @@
         <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_genome_build</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">genome_build</span><span class="p">,</span> <span class="n">GenomeBuild</span><span class="p">,</span> <span class="s1">&#39;genome_build&#39;</span><span class="p">)</span>
-
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">genome_build</span><span class="p">,</span> <span class="n">GenomeBuild</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_genome_build</span> <span class="o">=</span> <span class="n">genome_build</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">timeout</span> <span class="o">&gt;</span> <span class="mf">0.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`timeout` must be a positive `float` but got </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s2">&quot;https://rest.variantvalidator.org/VariantValidator/tools/gene2transcripts/</span><span class="si">%s</span><span class="s2">&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
