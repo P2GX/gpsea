@@ -50,9 +50,7 @@ class VariantPredicate(Partitioning, metaclass=abc.ABCMeta):
             if self == other:
                 return self
 
-            if isinstance(self, AllVariantPredicate) and isinstance(
-                other, AllVariantPredicate
-            ):
+            if isinstance(self, AllVariantPredicate) and isinstance(other, AllVariantPredicate):
                 # Merging two *all* variant predicates is equivalent
                 # to chaining their predicates
                 return AllVariantPredicate(*self.predicates, *other.predicates)
@@ -69,9 +67,7 @@ class VariantPredicate(Partitioning, metaclass=abc.ABCMeta):
             if self == other:
                 return self
 
-            if isinstance(self, AnyVariantPredicate) and isinstance(
-                other, AnyVariantPredicate
-            ):
+            if isinstance(self, AnyVariantPredicate) and isinstance(other, AnyVariantPredicate):
                 # Merging two any variant predicates is equivalent
                 # to chaining their predicates
                 return AnyVariantPredicate(*self.predicates, *other.predicates)

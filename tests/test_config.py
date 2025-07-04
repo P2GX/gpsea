@@ -7,7 +7,6 @@ from gpsea.config import get_cache_dir_path, CACHE_ENV, DEFAULT_CACHE_PATH
 
 
 class TestCacheDir:
-
     @pytest.mark.skipif(
         condition=CACHE_ENV in os.environ,
         reason="We cannot test default behavior under non-default condition (a variable is set)",

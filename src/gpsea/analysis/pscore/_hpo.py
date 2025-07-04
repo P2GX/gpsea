@@ -42,9 +42,7 @@ class CountingPhenotypeScorer(PhenotypeScorer):
             elif isinstance(q, hpotk.TermId):
                 pass
             else:
-                raise ValueError(
-                    f"query argument must be iterable of hpotk TermId's or strings but we found {type(q)}"
-                )
+                raise ValueError(f"query argument must be iterable of hpotk TermId's or strings but we found {type(q)}")
 
             # Now check that the term IDs are HPO term IDs.
             if q not in hpo:
@@ -69,9 +67,9 @@ class CountingPhenotypeScorer(PhenotypeScorer):
         )
 
     def __init__(
-            self,
-            hpo: hpotk.MinimalOntology,
-            query: typing.Iterable[hpotk.TermId],
+        self,
+        hpo: hpotk.MinimalOntology,
+        query: typing.Iterable[hpotk.TermId],
     ):
         self._hpo = hpo
         self._query = set(query)
@@ -93,8 +91,8 @@ class CountingPhenotypeScorer(PhenotypeScorer):
         return "HPO group count"
 
     def score(
-            self,
-            patient: Patient,
+        self,
+        patient: Patient,
     ) -> float:
         """
         Get the count (number) of terms in the query set
@@ -106,9 +104,7 @@ class CountingPhenotypeScorer(PhenotypeScorer):
         for q in self._query:
             for pf in patient.present_phenotypes():
                 hpo_id = pf.identifier
-                if hpo_id == q or any(
-                        anc == q for anc in self._hpo.graph.get_ancestors(hpo_id)
-                ):
+                if hpo_id == q or any(anc == q for anc in self._hpo.graph.get_ancestors(hpo_id)):
                     count += 1
                     # We break the inner loop to continue the outer.
                     break
@@ -135,15 +131,21 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
 
         # severe and profound GDD
         self._gdd_tids = {
-            'HP:0011344': 2, 'HP:0012736': 2,
-            'HP:0011342': 1, 'HP:0011343': 1, 'HP:0001263': 1,
+            "HP:0011344": 2,
+            "HP:0012736": 2,
+            "HP:0011342": 1,
+            "HP:0011343": 1,
+            "HP:0001263": 1,
         }
 
         # mild, moderate, and unspecified GDD (borderline has 0.5)
         self._idd_tids = {
-            'HP:0010864': 2, 'HP:0002187': 2,
-            'HP:0001256': 1, 'HP:0002342': 1, 'HP:0001249': 1,
-            'HP:0006889': 0.5,
+            "HP:0010864": 2,
+            "HP:0002187": 2,
+            "HP:0001256": 1,
+            "HP:0002342": 1,
+            "HP:0001249": 1,
+            "HP:0006889": 0.5,
         }
 
     @property
@@ -152,9 +154,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
 
     @property
     def description(self) -> str:
-        return (
-            "A phenotypic severity score for individuals with intellectual disability"
-        )
+        return "A phenotypic severity score for individuals with intellectual disability"
 
     @property
     def variable_name(self) -> str:
@@ -215,10 +215,10 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
 
         Returns: an `int` (between 0 and 2)
         """
-        microcephaly = 'HP:0000252'
-        short_stature = 'HP:0004322'
-        macrocephaly = 'HP:0000256'
-        tall_stature = 'HP:0000098'
+        microcephaly = "HP:0000252"
+        short_stature = "HP:0004322"
+        macrocephaly = "HP:0000256"
+        tall_stature = "HP:0000098"
         total_count = 0
         for tid in (microcephaly, short_stature, macrocephaly, tall_stature):
             total_count += self._term_or_descendant_count(tid, observed_term_ids)
@@ -242,13 +242,13 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Returns: facial dysmorphism score (between 0 and 2)
 
         """
-        globe_location = 'HP:0100886'  # include Hypertelorism and others
-        lip = 'HP:0000159' # Abnormal lip morphology HP:0000159
-        external_nose = 'HP:0010938'
-        pinna_morphology = 'HP:0000377'
-        facial_shape = 'HP:0001999'  # Abnormal facial shape
-        midface = 'HP:0000309'  # Abnormal midface morphology
-        chin = 'HP:0000306'  # Abnormality of the chin
+        globe_location = "HP:0100886"  # include Hypertelorism and others
+        lip = "HP:0000159"  # Abnormal lip morphology HP:0000159
+        external_nose = "HP:0010938"
+        pinna_morphology = "HP:0000377"
+        facial_shape = "HP:0001999"  # Abnormal facial shape
+        midface = "HP:0000309"  # Abnormal midface morphology
+        chin = "HP:0000306"  # Abnormality of the chin
 
         total_count = self._term_or_descendant_count(target_tid=globe_location, observed_term_ids=observed_term_ids)
         total_count += self._term_or_descendant_count(target_tid=lip, observed_term_ids=observed_term_ids)
@@ -277,13 +277,20 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Returns:   Non-facial dysmorphism and congenital abnormalities score (between 0 and 2)
 
         """
-        abn_external_genitalia = 'HP:0000811'  # Abnormal external genitalia
-        abnormal_hand_morphology = 'HP:0005922'
-        abnormal_heart_morphology = 'HP:0001627'
+        abn_external_genitalia = "HP:0000811"  # Abnormal external genitalia
+        abnormal_hand_morphology = "HP:0005922"
+        abnormal_heart_morphology = "HP:0001627"
 
-        total_count = self._term_or_descendant_count(target_tid=abn_external_genitalia, observed_term_ids=observed_term_ids,)
-        total_count += self._term_or_descendant_count(target_tid=abnormal_hand_morphology, observed_term_ids=observed_term_ids)
-        total_count += self._term_or_descendant_count(target_tid=abnormal_heart_morphology, observed_term_ids=observed_term_ids)
+        total_count = self._term_or_descendant_count(
+            target_tid=abn_external_genitalia,
+            observed_term_ids=observed_term_ids,
+        )
+        total_count += self._term_or_descendant_count(
+            target_tid=abnormal_hand_morphology, observed_term_ids=observed_term_ids
+        )
+        total_count += self._term_or_descendant_count(
+            target_tid=abnormal_heart_morphology, observed_term_ids=observed_term_ids
+        )
         return min(2, total_count)
 
     def _prenatal_growth_score(
@@ -299,8 +306,8 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Returns: score between 0 and 2
 
         """
-        small_for_gestational_age = 'HP:0001518'
-        intrauterine_growth_retardation = 'HP:0001511'
+        small_for_gestational_age = "HP:0001518"
+        intrauterine_growth_retardation = "HP:0001511"
         targets = (small_for_gestational_age, intrauterine_growth_retardation)
         for tid in observed_term_ids:
             if tid in targets:

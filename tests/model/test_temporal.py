@@ -6,7 +6,6 @@ from gpsea.model import Age
 
 
 class TestAge:
-
     @pytest.mark.parametrize(
         "weeks, days, expected",
         [
@@ -29,7 +28,7 @@ class TestAge:
         "days, expected",
         [
             (6, 6.0),
-            (10., 10.),  # input as `float` is also OK.
+            (10.0, 10.0),  # input as `float` is also OK.
         ],
     )
     def test_gestational_days(
@@ -41,11 +40,10 @@ class TestAge:
         assert age.days == expected
         assert age.is_gestational
 
-
     @pytest.mark.parametrize(
         "years, expected",
         [
-            (0, 0.),
+            (0, 0.0),
             (1, 365.25),
             (10, 3652.5),
         ],
@@ -61,10 +59,10 @@ class TestAge:
     @pytest.mark.parametrize(
         "days, expected",
         [
-            (0, 0.),
-            (1, 1.),
-            (10, 10.),
-            (10., 10.),  # input as `float` is also OK.
+            (0, 0.0),
+            (1, 1.0),
+            (10, 10.0),
+            (10.0, 10.0),  # input as `float` is also OK.
         ],
     )
     def test_postnatal_days(
@@ -78,11 +76,11 @@ class TestAge:
     @pytest.mark.parametrize(
         "value, is_postnatal, days",
         [
-            ("P1D", True, 1.),
+            ("P1D", True, 1.0),
             ("P1Y", True, 365.25),
-            ("P0W6D", False, 6.),
-            ("P4W2D", False, 30.),
-        ]
+            ("P0W6D", False, 6.0),
+            ("P4W2D", False, 30.0),
+        ],
     )
     def test_from_iso8601_period(
         self,
@@ -100,7 +98,7 @@ class TestAge:
             ("P", "At least one of year, month, week or day fields must provided"),
             ("P4M1W1D", "Year and month must not be provided for gestational age: P4M1W1D"),
             ("Whatever", "'Whatever' did not match ISO8601 pattern"),
-        ]
+        ],
     )
     def test_from_iso8601_period__errors(
         self,

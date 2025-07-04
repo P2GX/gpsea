@@ -77,15 +77,11 @@ def apply_classifiers_on_individuals(
             geno_cat = gt_clf.test(patient)
 
             if pheno_cat is not None and geno_cat is not None:
-                count_dict[pheno_cat.phenotype].loc[
-                    pheno_cat.category, geno_cat.category
-                ] += 1
+                count_dict[pheno_cat.phenotype].loc[pheno_cat.category, geno_cat.category] += 1
                 n_usable_patient_counter[pheno_cat.phenotype] += 1
 
     # Convert dicts to numpy arrays
-    n_usable_patients = [
-        n_usable_patient_counter[ph_predicate.phenotype] for ph_predicate in pheno_clfs
-    ]
+    n_usable_patients = [n_usable_patient_counter[ph_predicate.phenotype] for ph_predicate in pheno_clfs]
 
     counts = [count_dict[ph_predicate.phenotype] for ph_predicate in pheno_clfs]
 
@@ -110,9 +106,7 @@ class MultiPhenotypeAnalysis(typing.Generic[P], metaclass=abc.ABCMeta):
             (e.g. Bonferroni MTC) or false discovery rate for the FDR procedures (e.g. Benjamini-Hochberg).
         """
         assert isinstance(count_statistic, CountStatistic)
-        assert (
-            len(count_statistic.supports_shape) == 2
-        ), "The statistic must support 2D contingency tables"
+        assert len(count_statistic.supports_shape) == 2, "The statistic must support 2D contingency tables"
         self._count_statistic = count_statistic
         self._mtc_correction = mtc_correction
         assert isinstance(mtc_alpha, float) and 0.0 <= mtc_alpha <= 1.0
@@ -184,13 +178,9 @@ class MultiPhenotypeAnalysis(typing.Generic[P], metaclass=abc.ABCMeta):
         elif isinstance(geno, typing.Sequence):
             geno_accepted = geno
         elif pheno is None:
-            raise ValueError(
-                "Cannot use a count statistic that does not check genotypes"
-            )
+            raise ValueError("Cannot use a count statistic that does not check genotypes")
         else:
-            raise ValueError(
-                f"Cannot use a count statistic that supports shape {pheno, geno}"
-            )
+            raise ValueError(f"Cannot use a count statistic that supports shape {pheno, geno}")
 
         if gt_clf.n_categorizations() not in geno_accepted:
             issues.append("Genotype predicate is incompatible with the count statistic")

@@ -2,19 +2,18 @@ import enum
 import typing
 
 
-
 class Sex(enum.Enum):
     """
     `Sex` represents typical “phenotypic sex”, as would be determined by a midwife or physician at birth.
-    
+
     The definition is aligned with `Phenopacket Schema <https://phenopacket-schema.readthedocs.io/en/2.0.0/sex.html>`_
     """
-    
+
     UNKNOWN_SEX = 0
     """
     Not assessed or not available. Maps to ``NCIT:C17998``.
     """
-    
+
     FEMALE = 1
     """
     Female sex. Maps to ``NCIT:C46113``.
@@ -59,8 +58,7 @@ class SampleLabels:
     The identifiers support natural ordering, equality tests, and are hashable.
     """
 
-    def __init__(self, label: str,
-                 meta_label: typing.Optional[str] = None):
+    def __init__(self, label: str, meta_label: typing.Optional[str] = None):
         assert isinstance(label, str)
         self._label = label
         if meta_label is not None:
@@ -79,7 +77,7 @@ class SampleLabels:
         """
         Summarize `label` and `meta_label` into a `str` where the sub-parts are inserted as ``<label>[<meta_label>]``.
         """
-        return self._label if self._meta_label is None else f'{self._label}[{self._meta_label}]'
+        return self._label if self._meta_label is None else f"{self._label}[{self._meta_label}]"
 
     def __eq__(self, other):
         return isinstance(other, SampleLabels) and self._label == other.label and self._meta_label == other._meta_label
@@ -107,4 +105,4 @@ class SampleLabels:
         return self.label_summary()
 
     def __repr__(self):
-        return f'SampleLabels(label={self._label}, meta_label={self._meta_label})'
+        return f"SampleLabels(label={self._label}, meta_label={self._meta_label})"

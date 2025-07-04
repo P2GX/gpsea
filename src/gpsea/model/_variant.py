@@ -53,21 +53,15 @@ class TranscriptAnnotation(TranscriptInfoAware):
     ):
         self._gene_id = hpotk.util.validate_instance(gene_id, str, "gene_id")
         self._tx_id = hpotk.util.validate_instance(tx_id, str, "tx_id")
-        self._hgvs_cdna = hpotk.util.validate_optional_instance(
-            hgvs_cdna, str, "hgvs_cdna"
-        )
-        self._is_preferred = hpotk.util.validate_instance(
-            is_preferred, bool, "is_preferred"
-        )
+        self._hgvs_cdna = hpotk.util.validate_optional_instance(hgvs_cdna, str, "hgvs_cdna")
+        self._is_preferred = hpotk.util.validate_instance(is_preferred, bool, "is_preferred")
         self._variant_effects = tuple(variant_effects)
         if affected_exons is not None:
             self._affected_exons = tuple(affected_exons)
         else:
             self._affected_exons = None
         if protein_id is not None:
-            self._protein_id = hpotk.util.validate_instance(
-                protein_id, str, "protein_id"
-            )
+            self._protein_id = hpotk.util.validate_instance(protein_id, str, "protein_id")
         else:
             self._protein_id = None
         if hgvsp is not None:
@@ -385,9 +379,7 @@ class VariantCoordinates:
         self._region = hpotk.util.validate_instance(region, GenomicRegion, "region")
         self._ref = hpotk.util.validate_instance(ref, str, "ref")
         self._alt = hpotk.util.validate_instance(alt, str, "alt")
-        self._change_length = hpotk.util.validate_instance(
-            change_length, int, "change_length"
-        )
+        self._change_length = hpotk.util.validate_instance(change_length, int, "change_length")
 
     @property
     def chrom(self) -> str:
@@ -511,11 +503,7 @@ class VariantCoordinates:
 
         :return: `True` if the variant coordinates use structural variant notation.
         """
-        return (
-            len(self._alt) != 0
-            and self._alt.startswith("<")
-            and self._alt.endswith(">")
-        )
+        return len(self._alt) != 0 and self._alt.startswith("<") and self._alt.endswith(">")
 
     def __len__(self):
         """
@@ -558,12 +546,8 @@ class ImpreciseSvInfo:
         gene_id: str,
         gene_symbol: str,
     ):
-        self._structural_type = hpotk.util.validate_instance(
-            structural_type, hpotk.TermId, "structural_type"
-        )
-        self._variant_class = hpotk.util.validate_instance(
-            variant_class, VariantClass, "variant_class"
-        )
+        self._structural_type = hpotk.util.validate_instance(structural_type, hpotk.TermId, "structural_type")
+        self._variant_class = hpotk.util.validate_instance(variant_class, VariantClass, "variant_class")
         self._gene_id = gene_id
         self._gene_symbol = gene_symbol
 
@@ -651,9 +635,7 @@ class VariantInfo:
             self._variant_coordinates = variant_coordinates
             self._sv_info = sv_info
         else:
-            raise ValueError(
-                f"Only one field can be set: variant_coordinates={variant_coordinates}, sv_info={sv_info}"
-            )
+            raise ValueError(f"Only one field can be set: variant_coordinates={variant_coordinates}, sv_info={sv_info}")
 
     @property
     def variant_coordinates(self) -> typing.Optional[VariantCoordinates]:
@@ -721,9 +703,7 @@ class VariantInfo:
             self._handle_missing_state()
 
     def _handle_missing_state(self):
-        raise ValueError(
-            "VariantInfo should have either variant coordinates or SV info!"
-        )
+        raise ValueError("VariantInfo should have either variant coordinates or SV info!")
 
     def __eq__(self, value: object) -> bool:
         return (
@@ -736,11 +716,7 @@ class VariantInfo:
         return hash((self._variant_coordinates, self._sv_info))
 
     def __str__(self) -> str:
-        return (
-            f"VariantInfo("
-            f"variant_coordinates={self._variant_coordinates}, "
-            f"sv_info={self._sv_info})"
-        )
+        return f"VariantInfo(variant_coordinates={self._variant_coordinates}, sv_info={self._sv_info})"
 
     def __repr__(self) -> str:
         return str(self)
@@ -761,15 +737,12 @@ class VariantInfoAware(metaclass=abc.ABCMeta):
 
 
 class FunctionalAnnotationAware(metaclass=abc.ABCMeta):
-
     @property
     @abc.abstractmethod
     def tx_annotations(self) -> typing.Sequence[TranscriptAnnotation]:
         pass
 
-    def get_tx_anno_by_tx_id(
-        self, transcript_id: str
-    ) -> typing.Optional[TranscriptAnnotation]:
+    def get_tx_anno_by_tx_id(self, transcript_id: str) -> typing.Optional[TranscriptAnnotation]:
         """Given a transcript ID, this will return the `TranscriptAnnotation` associated with that
         variant and transcript.
 
@@ -869,7 +842,7 @@ class Variant(VariantInfoAware, FunctionalAnnotationAware, Genotyped):
     @property
     def variant_info(self) -> VariantInfo:
         """
-        Get the representation of the variant data for sequence and symbolic variants, 
+        Get the representation of the variant data for sequence and symbolic variants,
         as well as for large imprecise SVs.
         """
         return self._variant_info
@@ -904,7 +877,5 @@ class Variant(VariantInfoAware, FunctionalAnnotationAware, Genotyped):
 
     def __str__(self) -> str:
         return (
-            f"Variant(variant_info={self._variant_info}, "
-            f"tx_annotations={self._tx_annotations}, "
-            f"genotypes={self._gts})"
+            f"Variant(variant_info={self._variant_info}, tx_annotations={self._tx_annotations}, genotypes={self._gts})"
         )

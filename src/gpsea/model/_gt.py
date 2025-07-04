@@ -14,11 +14,11 @@ class Genotype(enum.Enum):
     `Genotype` represents state of a variable locus in a diploid genome.
     """
 
-    NO_CALL = ('.',)
-    HOMOZYGOUS_REFERENCE = ('0/0',)
-    HETEROZYGOUS = ('0/1',)
-    HOMOZYGOUS_ALTERNATE = ('1/1',)
-    HEMIZYGOUS = ('1',)
+    NO_CALL = (".",)
+    HOMOZYGOUS_REFERENCE = ("0/0",)
+    HETEROZYGOUS = ("0/1",)
+    HOMOZYGOUS_ALTERNATE = ("1/1",)
+    HEMIZYGOUS = ("1",)
 
     def __init__(self, code: str):
         self._code = code
@@ -41,7 +41,7 @@ class Genotypes(typing.Sized, typing.Iterable):
     >>> b = SampleLabels('B')
 
     We can use one of the static methods to create an instance. Either a single genotype:
-    
+
     >>> gt = Genotypes.single(a, Genotype.HETEROZYGOUS)
 
     or genotypes of several samples:
@@ -104,7 +104,9 @@ class Genotypes(typing.Sized, typing.Iterable):
         return Genotypes(*Genotypes._preprocess_mapping(mapping))
 
     @staticmethod
-    def _preprocess_mapping(genotypes: typing.Mapping[SampleLabels, Genotype]) -> typing.Tuple[typing.Sequence[str], typing.Sequence[Genotype]]:
+    def _preprocess_mapping(
+        genotypes: typing.Mapping[SampleLabels, Genotype],
+    ) -> typing.Tuple[typing.Sequence[str], typing.Sequence[Genotype]]:
         samples = np.empty(shape=(len(genotypes),), dtype=object)
         gts = np.empty(shape=(len(genotypes),), dtype=object)
 
@@ -120,7 +122,9 @@ class Genotypes(typing.Sized, typing.Iterable):
         self._samples = tuple(samples)
         self._gts = tuple(genotypes)
         if len(self._samples) != len(self._gts):
-            raise ValueError(f'Mismatch between the sample and genotype count: {len(self._samples)} != {len(self._gts)}')
+            raise ValueError(
+                f"Mismatch between the sample and genotype count: {len(self._samples)} != {len(self._gts)}"
+            )
 
     def for_sample(self, sample_id: SampleLabels) -> typing.Optional[Genotype]:
         """
@@ -143,15 +147,13 @@ class Genotypes(typing.Sized, typing.Iterable):
         return hash((self._samples, self._gts))
 
     def __eq__(self, other):
-        return (isinstance(other, Genotypes)
-                and self._samples == other._samples
-                and self._gts == other._gts)
+        return isinstance(other, Genotypes) and self._samples == other._samples and self._gts == other._gts
 
     def __str__(self):
-        return f'Genotypes({["{}={}".format(sid, gt) for sid, gt in zip(self._samples, self._gts)]})'
+        return f"Genotypes({['{}={}'.format(sid, gt) for sid, gt in zip(self._samples, self._gts)]})"
 
     def __repr__(self):
-        return f'Genotypes(samples={self._samples}, genotypes={self._gts})'
+        return f"Genotypes(samples={self._samples}, genotypes={self._gts})"
 
 
 EMPTY = Genotypes((), ())

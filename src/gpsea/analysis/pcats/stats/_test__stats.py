@@ -6,7 +6,6 @@ from ._stats import FisherExactTest
 
 
 class TestPythonMultiFisherExact:
-
     @pytest.fixture
     def fisher_exact(self) -> FisherExactTest:
         return FisherExactTest()

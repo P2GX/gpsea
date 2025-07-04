@@ -22,7 +22,6 @@ def fpath_doc_data_dir(
 
 @pytest.mark.skip("Run only to update cohorts")
 class TestGenerateCohortsForDocumentation:
-
     PHENOPACKET_STORE_VERSION = "0.1.20"
 
     @pytest.fixture(scope="class")

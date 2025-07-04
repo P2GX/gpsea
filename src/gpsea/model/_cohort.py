@@ -13,20 +13,21 @@ from ._temporal import Age
 from ._variant import Variant, VariantInfo
 
 
-IDENTIFIED = typing.TypeVar('IDENTIFIED', bound=hpotk.model.Identified)
+IDENTIFIED = typing.TypeVar("IDENTIFIED", bound=hpotk.model.Identified)
 """
 Anything that extends `Identified` (e.g. `Disease`, `Phenotype`, `Measurement`).
 """
 
-T = typing.TypeVar('T')
+T = typing.TypeVar("T")
 """
 Whatever.
 """
 
-U = typing.TypeVar('U')
+U = typing.TypeVar("U")
 """
 Whatever else.
 """
+
 
 class Status(enum.Enum):
     UNKNOWN = 0
@@ -115,7 +116,7 @@ class Patient:
         phenotypes: typing.Iterable[Phenotype],
         measurements: typing.Iterable[Measurement],
         diseases: typing.Iterable[Disease],
-        variants: typing.Iterable[Variant]
+        variants: typing.Iterable[Variant],
     ):
         assert isinstance(labels, SampleLabels)
         self._labels = labels
@@ -177,7 +178,7 @@ class Patient:
         Get the phenotypes observed and excluded in the patient.
         """
         return self._phenotypes
-    
+
     def phenotype_by_id(
         self,
         term_id: typing.Union[str, hpotk.TermId],
@@ -187,7 +188,7 @@ class Patient:
         """
         term_id = Patient._check_id(term_id)
         return Patient._find_first_by_id(term_id, self.phenotypes)
-    
+
     def count_unique_phenotypes(self) -> int:
         """
         Get the count of unique HPO terms (present or excluded) in this individual.
@@ -284,8 +285,8 @@ class Patient:
         elif isinstance(term_id, hpotk.TermId):
             return term_id
         else:
-            raise ValueError(f'`term_id` must be a `str` or `hpotk.TermId` but was {type(term_id)}')
-        
+            raise ValueError(f"`term_id` must be a `str` or `hpotk.TermId` but was {type(term_id)}")
+
     @staticmethod
     def _find_first_by_id(
         term_id: hpotk.TermId,
@@ -296,7 +297,7 @@ class Patient:
                 return m
 
         return None
-    
+
     @staticmethod
     def _unique_identifiers_of_identified(
         items: typing.Iterable[IDENTIFIED],
@@ -310,37 +311,47 @@ class Patient:
         return len(Patient._unique_identifiers_of_identified(items))
 
     def __str__(self) -> str:
-        return (f"Patient("
-                f"labels:{self._labels}, "
-                f"sex:{self._sex}, "
-                f"age:{self._age}, "
-                f"vital_status:{self._vital_status}, "
-                f"variants:{self._variants}, "
-                f"phenotypes:{[pheno.identifier for pheno in self._phenotypes]}, "
-                f"measurements:{[m.name for m in self._measurements]}, "
-                f"diseases:{[dis.identifier for dis in self._diseases]}")
+        return (
+            f"Patient("
+            f"labels:{self._labels}, "
+            f"sex:{self._sex}, "
+            f"age:{self._age}, "
+            f"vital_status:{self._vital_status}, "
+            f"variants:{self._variants}, "
+            f"phenotypes:{[pheno.identifier for pheno in self._phenotypes]}, "
+            f"measurements:{[m.name for m in self._measurements]}, "
+            f"diseases:{[dis.identifier for dis in self._diseases]}"
+        )
 
     def __repr__(self) -> str:
         return str(self)
 
     def __eq__(self, other) -> bool:
-        return (isinstance(other, Patient)
-                and self._labels == other._labels
-                and self._sex == other._sex
-                and self._age == other._age
-                and self._vital_status == other._vital_status
-                and self._variants == other._variants
-                and self._phenotypes == other._phenotypes
-                and self._measurements == other._measurements
-                and self._diseases == other._diseases)
+        return (
+            isinstance(other, Patient)
+            and self._labels == other._labels
+            and self._sex == other._sex
+            and self._age == other._age
+            and self._vital_status == other._vital_status
+            and self._variants == other._variants
+            and self._phenotypes == other._phenotypes
+            and self._measurements == other._measurements
+            and self._diseases == other._diseases
+        )
 
     def __hash__(self) -> int:
-        return hash((
-            self._labels, self._sex, self._age,
-            self._vital_status,
-            self._variants, self._phenotypes,
-            self._measurements, self._diseases,
-        ))
+        return hash(
+            (
+                self._labels,
+                self._sex,
+                self._age,
+                self._vital_status,
+                self._variants,
+                self._phenotypes,
+                self._measurements,
+                self._diseases,
+            )
+        )
 
 
 class Cohort(typing.Sized, typing.Iterable[Patient]):
@@ -382,7 +393,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         Get a set of all phenotypes (observed or excluded) in the cohort members.
         """
         return set(self._iterate_through_items(lambda p: p.phenotypes))
-    
+
     def count_distinct_hpo_terms(self) -> int:
         """
         Get count of distinct HPO terms (either in present or excluded state) seen in the cohort members.
@@ -406,7 +417,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         Get a set of all diseases (observed or excluded) in the cohort members.
         """
         return set(self._iterate_through_items(lambda p: p.diseases))
-    
+
     def count_distinct_diseases(self) -> int:
         """
         Get count of distinct disease diagnoses of the cohort members.
@@ -544,8 +555,8 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         )
 
     def list_all_proteins(
-            self,
-            top=None,
+        self,
+        top=None,
     ) -> typing.Sequence[typing.Tuple[str, int]]:
         """
         Args:
@@ -615,9 +626,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         """
         Get the number of individuals reported to be alive at the time of last encounter.
         """
-        return self._count_individuals_with_condition(
-            lambda i: i.vital_status is not None and i.vital_status.is_alive
-        )
+        return self._count_individuals_with_condition(lambda i: i.vital_status is not None and i.vital_status.is_alive)
 
     def count_deceased(self) -> int:
         """
@@ -626,14 +635,12 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         return self._count_individuals_with_condition(
             lambda i: i.vital_status is not None and i.vital_status.is_deceased
         )
-    
+
     def count_unknown_vital_status(self) -> int:
         """
         Get the number of individuals with unknown or no reported vital status.
         """
-        return self._count_individuals_with_condition(
-            lambda i: i.vital_status is None or i.vital_status.is_unknown
-        )
+        return self._count_individuals_with_condition(lambda i: i.vital_status is None or i.vital_status.is_unknown)
 
     def count_with_age_of_last_encounter(self) -> int:
         """
@@ -647,25 +654,48 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         self,
         predicate: typing.Callable[[Patient], bool],
     ) -> int:
-        return sum(predicate(individual) for individual in self._members)    
+        return sum(predicate(individual) for individual in self._members)
 
     def _iterate_through_items(
         self,
-        extract_items: typing.Callable[[Patient,], typing.Iterable[IDENTIFIED]],
+        extract_items: typing.Callable[
+            [
+                Patient,
+            ],
+            typing.Iterable[IDENTIFIED],
+        ],
     ) -> typing.Iterator[IDENTIFIED]:
         return itertools.chain(item for individual in self._members for item in extract_items(individual))
 
     def _get_most_common(
         self,
-        extract_identified_items: typing.Callable[[Patient,], typing.Iterable[T]],
-        extract_key: typing.Callable[[T,], U],
-        item_filter: typing.Optional[typing.Callable[[T,], bool]] = None,
+        extract_identified_items: typing.Callable[
+            [
+                Patient,
+            ],
+            typing.Iterable[T],
+        ],
+        extract_key: typing.Callable[
+            [
+                T,
+            ],
+            U,
+        ],
+        item_filter: typing.Optional[
+            typing.Callable[
+                [
+                    T,
+                ],
+                bool,
+            ]
+        ] = None,
         top: typing.Optional[int] = None,
     ) -> typing.Sequence[typing.Tuple[U, int]]:
         counter = Counter()
         for individual in self._members:
             counter.update(
-                extract_key(item) for item in extract_identified_items(individual)
+                extract_key(item)
+                for item in extract_identified_items(individual)
                 if item_filter is None or item_filter(item)
             )
         return counter.most_common(top)
@@ -686,7 +716,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         return len(self._members)
 
     def __repr__(self):
-        return f'Cohort(members={self._members})'
+        return f"Cohort(members={self._members})"
 
     def __str__(self):
         return repr(self)

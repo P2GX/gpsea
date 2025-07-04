@@ -68,7 +68,6 @@ def test_viewer(
 
 
 class TestMtcStatsViewer:
-
     @pytest.fixture
     def stats_viewer(self) -> MtcStatsViewer:
         return MtcStatsViewer()
@@ -85,7 +84,6 @@ class TestMtcStatsViewer:
 
 
 class TestProteinVariantViewer:
-
     @pytest.fixture(scope="class")
     def protein_variant_viewer(
         self,

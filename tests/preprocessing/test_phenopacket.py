@@ -30,7 +30,6 @@ from gpsea.preprocessing import VVMultiCoordinateService
 
 
 class TestPhenopacketVariantCoordinateFinder:
-
     @pytest.fixture(scope="class")
     def fpath_test_genomic_interpretations(
         self,
@@ -59,35 +58,75 @@ class TestPhenopacketVariantCoordinateFinder:
         [
             (
                 "deletion_test.json",
-                "16", 89284128, 89284134, "CTTTTT", "C", -5,
+                "16",
+                89284128,
+                89284134,
+                "CTTTTT",
+                "C",
+                -5,
             ),
             (
                 "insertion_test.json",
-                "16", 89280828, 89280829, "C", "CA", 1,
+                "16",
+                89280828,
+                89280829,
+                "C",
+                "CA",
+                1,
             ),
             (
                 "missense_test.json",
-                "16", 89279134, 89279135, "G", "C", 0,
+                "16",
+                89279134,
+                89279135,
+                "G",
+                "C",
+                0,
             ),
             (
                 "missense_hgvs_test.json",
-                "16", 89279134, 89279135, "G", "C", 0,
+                "16",
+                89279134,
+                89279135,
+                "G",
+                "C",
+                0,
             ),
             (
                 "duplication_test.json",
-                "16", 89279849, 89279850, "G", "GC", 1,
+                "16",
+                89279849,
+                89279850,
+                "G",
+                "GC",
+                1,
             ),
             (
                 "delinsert_test.json",
-                "16", 89284600, 89284602, "GG", "A", -1,
+                "16",
+                89284600,
+                89284602,
+                "GG",
+                "A",
+                -1,
             ),
             (
                 "CVDup_test.json",
-                "16", 89_284_522, 89_373_231, "N", "<DUP>", 88_709,
+                "16",
+                89_284_522,
+                89_373_231,
+                "N",
+                "<DUP>",
+                88_709,
             ),
             (
                 "CVDel_test.json",
-                "16", 89_217_280, 89_506_042, "N", "<DEL>", -288_762,
+                "16",
+                89_217_280,
+                89_506_042,
+                "N",
+                "<DEL>",
+                -288_762,
             ),
         ],
     )
@@ -123,9 +162,7 @@ class TestPhenopacketVariantCoordinateFinder:
         fpath_test_genomic_interpretations: str,
         pp_vc_finder: PhenopacketVariantCoordinateFinder,
     ):
-        fpath_pp = os.path.join(
-            fpath_test_genomic_interpretations, "chromosomal_deletion.ANKRD11.json"
-        )
+        fpath_pp = os.path.join(fpath_test_genomic_interpretations, "chromosomal_deletion.ANKRD11.json")
         gi = read_genomic_interpretation_json(fpath_pp)
 
         vc = pp_vc_finder.find_coordinates(gi)
@@ -138,7 +175,6 @@ def read_genomic_interpretation_json(fpath: str) -> GenomicInterpretation:
 
 
 class TestPhenopacketPatientCreator:
-
     @pytest.fixture(scope="class")
     def functional_annotator(
         self,
@@ -172,8 +208,8 @@ class TestPhenopacketPatientCreator:
         return VVHgvsVariantCoordinateFinder(
             genome_build=genome_build,
         )
-    
-    @pytest.fixture(scope='class')
+
+    @pytest.fixture(scope="class")
     def onset_term_parser(self) -> PhenopacketOntologyTermOnsetParser:
         return PhenopacketOntologyTermOnsetParser.default_parser()
 
@@ -203,9 +239,7 @@ class TestPhenopacketPatientCreator:
         self,
         fpath_phenopacket_dir: str,
     ) -> Phenopacket:
-        fpath_pp = os.path.join(
-            fpath_phenopacket_dir, "PMID_30968594_individual_1.json"
-        )
+        fpath_pp = os.path.join(fpath_phenopacket_dir, "PMID_30968594_individual_1.json")
 
         with open(fpath_pp) as fh:
             return Parse(fh.read(), Phenopacket())
@@ -217,16 +251,14 @@ class TestPhenopacketPatientCreator:
     ):
         notepad = create_notepad("A phenopacket")
         patient = patient_creator.process(phenopacket, notepad)
-        
+
         assert patient is not None
 
         # No issues
         assert not notepad.has_errors_or_warnings(include_subsections=True)
 
         # Individual credentials are OK
-        assert (
-            patient.labels.label_summary() == "individual 1[PMID_30968594_individual_1]"
-        )
+        assert patient.labels.label_summary() == "individual 1[PMID_30968594_individual_1]"
         assert patient.sex.is_male()
         assert patient.age is not None
         assert patient.age.days == pytest.approx(334.8125)
@@ -257,12 +289,12 @@ class TestPhenopacketPatientCreator:
             False,
         )
         # Check onset of Hyperpigmentation of the skin `HP:0000953`
-        hyperpigmentation_of_the_skin = patient.phenotype_by_id('HP:0000953')
+        hyperpigmentation_of_the_skin = patient.phenotype_by_id("HP:0000953")
         assert hyperpigmentation_of_the_skin is not None
         # Expecting congenital onset
         onset = hyperpigmentation_of_the_skin.onset
         assert onset is not None
-        assert onset.days == pytest.approx(0.)
+        assert onset.days == pytest.approx(0.0)
         assert onset.is_postnatal
 
         # 6 measurements
@@ -291,14 +323,14 @@ class TestPhenopacketPatientCreator:
 
         # a disease
         assert len(patient.diseases) == 1
-        
+
         disease = patient.diseases[0]
         assert disease.identifier.value == "OMIM:201910"
         assert disease.is_present is True
-        
+
         assert disease.onset is not None
         assert disease.onset.is_postnatal is True
-        assert disease.onset.days == pytest.approx(20.)
+        assert disease.onset.days == pytest.approx(20.0)
 
         # variants
         assert len(patient.variants) == 3
@@ -332,7 +364,6 @@ class TestPhenopacketPatientCreator:
         assert tra_vi.structural_type.value == "SO:1000044"  # `chromosomal_translocation`
         assert tra_vi.variant_class == VariantClass.TRANSLOCATION
 
-
     def test_individual_with_no_genotype(
         self,
         phenopacket: Phenopacket,
@@ -346,11 +377,11 @@ class TestPhenopacketPatientCreator:
         del pp.interpretations[:]  # clear variants
 
         notepad = create_notepad("no-gt")
-        
+
         _ = patient_creator.process(pp=pp, notepad=notepad)
-        
+
         errors = tuple(notepad.errors())
-        
+
         assert len(errors) == 1
         error = errors[0]
         assert error.level == Level.ERROR
@@ -373,13 +404,18 @@ class TestPhenopacketPatientCreator:
         del pp.measurements[:]
 
         notepad = create_notepad("no-gt")
-        
+
         _ = patient_creator.process(pp=pp, notepad=notepad)
-        
+
         errors = tuple(notepad.errors())
-        
+
         assert len(errors) == 1
         error = errors[0]
         assert error.level == Level.ERROR
-        assert error.message == "Individual PMID_30968594_individual_1 has no phenotype data (HPO, a diagnosis, measurement) to work with"
-        assert error.solution == "Add HPO terms, a diagnosis, or measurements, or remove the individual from the analysis"
+        assert (
+            error.message
+            == "Individual PMID_30968594_individual_1 has no phenotype data (HPO, a diagnosis, measurement) to work with"
+        )
+        assert (
+            error.solution == "Add HPO terms, a diagnosis, or measurements, or remove the individual from the analysis"
+        )

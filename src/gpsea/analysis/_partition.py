@@ -12,7 +12,7 @@ class Partitioning(Summarizable, metaclass=abc.ABCMeta):
     `Partitioning` is a superclass of all classes that assign a group,
     compute a score or survival for an individual.
     """
-    
+
     @property
     @abc.abstractmethod
     def name(self) -> str:
@@ -66,4 +66,5 @@ class ContinuousPartitioning(Partitioning, metaclass=abc.ABCMeta):
 
     The class is just a marker class at this time.
     """
+
     pass

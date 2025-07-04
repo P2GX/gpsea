@@ -8,7 +8,7 @@ def test_bytes():
     with open_text_io_handle_for_reading(buf) as fh:
         data = fh.read()
 
-    assert data == 'some binary data: 123'
+    assert data == "some binary data: 123"
 
 
 def test_text():
@@ -16,4 +16,4 @@ def test_text():
     with open_text_io_handle_for_reading(buf) as fh:
         data = fh.read()
 
-    assert data == 'some text data: 123'
+    assert data == "some text data: 123"

@@ -269,9 +269,7 @@ class GpseaJSONDecoder(JSONDecoder):
             )
         elif GpseaJSONDecoder._has_any_field(obj, _VARIANT_INFO_FIELDS):
             return VariantInfo(
-                variant_coordinates=(
-                    obj["variant_coordinates"] if "variant_coordinates" in obj else None
-                ),
+                variant_coordinates=(obj["variant_coordinates"] if "variant_coordinates" in obj else None),
                 sv_info=obj["sv_info"] if "sv_info" in obj else None,
             )
         elif GpseaJSONDecoder._has_all_fields(obj, _VARIANT_COORDINATES_FIELDS):

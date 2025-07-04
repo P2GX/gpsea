@@ -6,7 +6,6 @@ from gpsea.analysis import StatisticResult
 
 
 class TestStatisticResult:
-
     @pytest.mark.parametrize(
         "statistic,pval",
         [
@@ -26,14 +25,13 @@ class TestStatisticResult:
         assert result.pval == pytest.approx(pval)
 
     @pytest.mark.parametrize(
-        'statistic,pval',
+        "statistic,pval",
         [
-            ('12', .5),
-            (12, '.5'),
-            
+            ("12", 0.5),
+            (12, ".5"),
             (12, 1.00000001),
-            (12, -.00000001),
-        ]
+            (12, -0.00000001),
+        ],
     )
     def test_create_from_invalid(
         self,

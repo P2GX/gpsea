@@ -66,11 +66,7 @@ class FeatureInfo:
         return len(self._region)
 
     def __eq__(self, other) -> bool:
-        return (
-            isinstance(other, FeatureInfo)
-            and self.name == other.name
-            and self.region == other.region
-        )
+        return isinstance(other, FeatureInfo) and self.name == other.name and self.region == other.region
 
     def __hash__(self):
         return hash((self._name, self._region))
@@ -81,11 +77,12 @@ class FeatureInfo:
     def __repr__(self) -> str:
         return str(self)
 
+
 def _deprecation_warning():
     warnings.warn(
-            "`FeatureType` was deprecated and will be removed prior `v1.0.0`. Use a `str` instead!",
-            DeprecationWarning,
-        )
+        "`FeatureType` was deprecated and will be removed prior `v1.0.0`. Use a `str` instead!",
+        DeprecationWarning,
+    )
 
 
 class FeatureType(enum.Enum):
@@ -182,14 +179,13 @@ class FeatureType(enum.Enum):
             return FeatureType.DNA_BINDING
         else:
             raise ValueError(f'Unrecognized protein feature type: "{category}"')
-        
+
     @staticmethod
     def deprecation_warning():
         _deprecation_warning()
 
 
 class ProteinFeature(metaclass=abc.ABCMeta):
-
     @staticmethod
     def create(
         info: FeatureInfo,
@@ -250,17 +246,13 @@ class SimpleProteinFeature(ProteinFeature):
         return self._type
 
     def __str__(self) -> str:
-        return f"SimpleProteinFeature(type={self._type}, " f"info={self._info})"
+        return f"SimpleProteinFeature(type={self._type}, info={self._info})"
 
     def __repr__(self) -> str:
         return str(self)
 
     def __eq__(self, other) -> bool:
-        return (
-            isinstance(other, SimpleProteinFeature)
-            and self._type == other._type
-            and self._info == other._info
-        )
+        return isinstance(other, SimpleProteinFeature) and self._type == other._type and self._info == other._info
 
     def __hash__(self) -> int:
         return hash((self._type, self._info))
@@ -360,8 +352,7 @@ class ProteinMetadata:
         if any(col_name not in features.columns for col_name in expected_headers):
             missing_cols = ", ".join(set(expected_headers).difference(features.columns))
             raise ValueError(
-                f"The column(s) {{{missing_cols}}} are missing from the `features` DataFrame: "
-                f"{tuple(features.columns)}"
+                f"The column(s) {{{missing_cols}}} are missing from the `features` DataFrame: {tuple(features.columns)}"
             )
         region_list = list()
         for _, row in features.iterrows():
@@ -369,9 +360,7 @@ class ProteinMetadata:
             region_start = row["start"] - 1  # convert to 0-based coordinates
             region_end = row["end"]
             feature_type = row["category"]
-            finfo = FeatureInfo(
-                name=region_name, region=Region(start=region_start, end=region_end)
-            )
+            finfo = FeatureInfo(name=region_name, region=Region(start=region_start, end=region_end))
             pfeature = ProteinFeature.create(info=finfo, feature_type=feature_type)
             region_list.append(pfeature)
 
@@ -412,14 +401,10 @@ class ProteinMetadata:
         for feature in data["features"]:
             region_name = feature["description"]
             locus = feature["location"]
-            region_start = (
-                int(locus["start"]["value"]) - 1
-            )  # convert to 0-based coordinates
+            region_start = int(locus["start"]["value"]) - 1  # convert to 0-based coordinates
             region_end = int(locus["end"]["value"])
             feature_type = feature["type"]
-            finfo = FeatureInfo(
-                name=region_name, region=Region(start=region_start, end=region_end)
-            )
+            finfo = FeatureInfo(name=region_name, region=Region(start=region_start, end=region_end))
             pfeature = ProteinFeature.create(info=finfo, feature_type=feature_type)
             regions.append(pfeature)
 
@@ -480,36 +465,28 @@ class ProteinMetadata:
         Returns:
             Iterable[ProteinFeature]: A subgroup of the protein features that correspond to protein domains.
         """
-        return filter(
-            lambda f: f.feature_type.upper() == "DOMAIN", self.protein_features
-        )
+        return filter(lambda f: f.feature_type.upper() == "DOMAIN", self.protein_features)
 
     def repeats(self) -> typing.Iterable[ProteinFeature]:
         """
         Returns:
             Iterable[ProteinFeature]: A subgroup of the protein features that correspond to repeat regions.
         """
-        return filter(
-            lambda f: f.feature_type.upper() == "REPEAT", self.protein_features
-        )
+        return filter(lambda f: f.feature_type.upper() == "REPEAT", self.protein_features)
 
     def regions(self) -> typing.Iterable[ProteinFeature]:
         """
         Returns:
             Iterable[ProteinFeature]: A subgroup of the protein features that correspond to generic regions.
         """
-        return filter(
-            lambda f: f.feature_type.upper() == "REGION", self.protein_features
-        )
+        return filter(lambda f: f.feature_type.upper() == "REGION", self.protein_features)
 
     def motifs(self) -> typing.Iterable[ProteinFeature]:
         """
         Returns:
             Iterable[ProteinFeature]: A subgroup of the protein features that correspond to motifs.
         """
-        return filter(
-            lambda f: f.feature_type.upper() == "MOTIF", self.protein_features
-        )
+        return filter(lambda f: f.feature_type.upper() == "MOTIF", self.protein_features)
 
     def get_features_variant_overlaps(
         self,
@@ -523,18 +500,10 @@ class ProteinMetadata:
         Returns:
             Collection[ProteinFeature]: a collection of overlapping protein features.
         """
-        return tuple(
-            feature
-            for feature in self._features
-            if feature.info.region.overlaps_with(region)
-        )
+        return tuple(feature for feature in self._features if feature.info.region.overlaps_with(region))
 
     def __str__(self) -> str:
-        return (
-            f"ProteinMetadata(id={self.protein_id}, "
-            f"label={self.label}, "
-            f"features={str(self.protein_features)})"
-        )
+        return f"ProteinMetadata(id={self.protein_id}, label={self.label}, features={str(self.protein_features)})"
 
     def __eq__(self, other) -> bool:
         return (

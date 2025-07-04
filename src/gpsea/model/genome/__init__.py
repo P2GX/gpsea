@@ -15,8 +15,15 @@ from ._genome import Contig, GenomeBuild, GenomeBuildIdentifier, Strand, Strande
 from ._genome import transpose_coordinate
 
 __all__ = [
-    "GenomeBuild", "Contig", "GenomeBuildIdentifier", "Region", "GenomicRegion",
-    "Strand", "Stranded", "Transposable",
+    "GenomeBuild",
+    "Contig",
+    "GenomeBuildIdentifier",
+    "Region",
+    "GenomicRegion",
+    "Strand",
+    "Stranded",
+    "Transposable",
     "transpose_coordinate",
-    "GRCh37", "GRCh38",
+    "GRCh37",
+    "GRCh38",
 ]

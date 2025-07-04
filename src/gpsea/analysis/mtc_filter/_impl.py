@@ -51,9 +51,7 @@ class PhenotypeMtcResult:
     def ok() -> "PhenotypeMtcResult":
         # singleton
         if PhenotypeMtcResult.__ok_instance is None:
-            PhenotypeMtcResult.__ok_instance = PhenotypeMtcResult(
-                status=True, issue=None
-            )
+            PhenotypeMtcResult.__ok_instance = PhenotypeMtcResult(status=True, issue=None)
         return PhenotypeMtcResult.__ok_instance
 
     @staticmethod
@@ -72,13 +70,9 @@ class PhenotypeMtcResult:
     ):
         assert isinstance(status, bool)
         if status:
-            assert (
-                issue is None
-            ), "`issue` must NOT be provided if the HPO term passed the MTC filter"
+            assert issue is None, "`issue` must NOT be provided if the HPO term passed the MTC filter"
         else:
-            assert (
-                issue is not None
-            ), "`issue` must be provided if the HPO term failed the MTC filter"
+            assert issue is not None, "`issue` must be provided if the HPO term failed the MTC filter"
 
         self._status = status
         self._issue = issue
@@ -101,11 +95,7 @@ class PhenotypeMtcResult:
             return self.mtc_issue.reason
 
     def __eq__(self, value: object) -> bool:
-        return (
-            isinstance(value, PhenotypeMtcResult)
-            and self._status == value._status
-            and self._issue == value._issue
-        )
+        return isinstance(value, PhenotypeMtcResult) and self._status == value._status and self._issue == value._issue
 
     def __hash__(self) -> int:
         return hash((self._status, self._issue))
@@ -208,7 +198,8 @@ class SpecifiedTermsMtcFilter(PhenotypeMtcFilter[hpotk.TermId]):
     """
 
     NON_SPECIFIED_TERM = PhenotypeMtcResult.fail(
-        code="ST1", reason="Non-specified term",
+        code="ST1",
+        reason="Non-specified term",
         doclink="#specified-terms-mt-filter",
     )
     """
@@ -224,9 +215,7 @@ class SpecifiedTermsMtcFilter(PhenotypeMtcFilter[hpotk.TermId]):
 
         :param terms_to_test: an iterable of items of CURIE `str` or :class:`~hpotk.TermId` representing the terms to test.
         """
-        self._terms_to_test = tuple(
-            SpecifiedTermsMtcFilter.verify_term_id(val) for val in terms_to_test
-        )
+        self._terms_to_test = tuple(SpecifiedTermsMtcFilter.verify_term_id(val) for val in terms_to_test)
 
     @property
     def terms_to_test(self) -> typing.Collection[hpotk.TermId]:
@@ -282,15 +271,18 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
         doclink="#skip-terms-if-all-counts-are-identical-to-counts-for-a-child-term",
     )
     SKIPPING_SINCE_ONE_GENOTYPE_HAD_ZERO_OBSERVATIONS = PhenotypeMtcResult.fail(
-        "HMF05", "Skipping term because one genotype had zero observations",
+        "HMF05",
+        "Skipping term because one genotype had zero observations",
         doclink="#skip-term-if-one-of-the-genotype-groups-has-neither-observed-nor-excluded-observations",
     )
     SKIPPING_NON_PHENOTYPE_TERM = PhenotypeMtcResult.fail(
-        "HMF07", "Skipping terms that are not descendents of Phenotypic abnormality",
+        "HMF07",
+        "Skipping terms that are not descendents of Phenotypic abnormality",
         doclink="#skipping-terms-that-are-not-descendents-of-phenotypic-abnormality",
     )
     SKIPPING_GENERAL_TERM = PhenotypeMtcResult.fail(
-        "HMF08", "Skipping \"general\" level terms",
+        "HMF08",
+        'Skipping "general" level terms',
         doclink="#skipping-general-level-terms",
     )
 
@@ -365,8 +357,7 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
     ):
         self._hpo = hpo
         assert (
-            isinstance(annotation_frequency_threshold, (int, float))
-            and 0.0 < annotation_frequency_threshold <= 1.0
+            isinstance(annotation_frequency_threshold, (int, float)) and 0.0 < annotation_frequency_threshold <= 1.0
         ), "The annotation_frequency_threshold must be in the range (0, 1]"
         self._hpo_annotation_frequency_threshold = annotation_frequency_threshold
 
@@ -417,9 +408,7 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
 
         annotation_count_thr = self._hpo_annotation_frequency_threshold * cohort_size
 
-        results: typing.MutableSequence[typing.Optional[PhenotypeMtcResult]] = [
-            None for _ in range(len(phenotypes))
-        ]
+        results: typing.MutableSequence[typing.Optional[PhenotypeMtcResult]] = [None for _ in range(len(phenotypes))]
         for term_id in self._get_ordered_terms(phenotypes):
             try:
                 idx = p_to_idx[term_id]
@@ -444,16 +433,10 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
                 results[idx] = self._below_annotation_frequency_threshold
                 continue
 
-            if (
-                contingency_matrix.shape == (2, 2)
-                and total_count < self._min_observations_for_2_by_2
-            ):
+            if contingency_matrix.shape == (2, 2) and total_count < self._min_observations_for_2_by_2:
                 results[idx] = self._not_powered_for_2_by_2
                 continue
-            elif (
-                contingency_matrix.shape == (2, 3)
-                and total_count < self._min_observations_for_2_by_3
-            ):
+            elif contingency_matrix.shape == (2, 3) and total_count < self._min_observations_for_2_by_3:
                 results[idx] = self._not_powered_for_2_by_3
                 continue
 
@@ -461,9 +444,7 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
                 counts=contingency_matrix,
                 gt_clf=gt_clf,
             ):
-                results[idx] = (
-                    IfHpoFilter.SKIPPING_SINCE_ONE_GENOTYPE_HAD_ZERO_OBSERVATIONS
-                )
+                results[idx] = IfHpoFilter.SKIPPING_SINCE_ONE_GENOTYPE_HAD_ZERO_OBSERVATIONS
                 continue
 
             # Check if the term has exactly one child with a very similar number of individuals
@@ -482,9 +463,7 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
                         break
 
             if child_contingency_matrix is not None:
-                if (contingency_matrix - child_contingency_matrix).abs().max(
-                    axis=None
-                ) < 1:
+                if (contingency_matrix - child_contingency_matrix).abs().max(axis=None) < 1:
                     # Do not test if the count is exactly the same to the counts in the only child term.
                     results[idx] = IfHpoFilter.SAME_COUNT_AS_THE_ONLY_CHILD
                     continue
@@ -530,14 +509,14 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
         counts_frame: pd.DataFrame,
         ph_clf: PhenotypeClassifier[hpotk.TermId],
     ) -> int:
-        return counts_frame.loc[ph_clf.present_phenotype_category].sum() # type: ignore
+        return counts_frame.loc[ph_clf.present_phenotype_category].sum()  # type: ignore
 
     @staticmethod
     def one_genotype_has_zero_hpo_observations(
         counts: pd.DataFrame,
         gt_clf: GenotypeClassifier,
     ):
-        return any(counts.loc[:, c].sum() == 0 for c in gt_clf.get_categories()) # type: ignore
+        return any(counts.loc[:, c].sum() == 0 for c in gt_clf.get_categories())  # type: ignore
 
     def _get_ordered_terms(
         self,
@@ -561,10 +540,7 @@ class IfHpoFilter(PhenotypeMtcFilter[hpotk.TermId]):
             # get descendants not including original term
             # TODO: would just children work here too?
             # if no descendant is in the set of annotated terms, then the term must be a leaf term
-            if not any(
-                descendant in all_term_ids
-                for descendant in self._hpo.graph.get_descendants(term_id)
-            ):
+            if not any(descendant in all_term_ids for descendant in self._hpo.graph.get_descendants(term_id)):
                 hpo_leaf_term_id_set.add(term_id)
 
         ordered_term_list = list()  # reset, if needed

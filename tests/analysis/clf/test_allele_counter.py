@@ -16,7 +16,6 @@ from gpsea.analysis.clf import AlleleCounter
 import gpsea.analysis.predicate as vp
 
 
-
 @pytest.fixture(scope="module")
 def sample_labels() -> SampleLabels:
     return SampleLabels("A_III-1", meta_label="PMID_10580070_A_III")
@@ -178,7 +177,6 @@ def hemi_dmd(
 
 
 class TestAlleleCounter:
-
     @pytest.fixture
     def patient(
         self,
@@ -225,9 +223,7 @@ class TestAlleleCounter:
             (VariantEffect.MISSENSE_VARIANT, "NM_005572.4", 3),
         ],
     )
-    def test_count_effects(
-        self, patient: Patient, variant_effect: VariantEffect, tx_id: str, expected: int
-    ):
+    def test_count_effects(self, patient: Patient, variant_effect: VariantEffect, tx_id: str, expected: int):
         predicate = vp.variant_effect(effect=variant_effect, tx_id=tx_id)
         counter = AlleleCounter(predicate)
 

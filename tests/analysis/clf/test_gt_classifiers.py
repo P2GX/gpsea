@@ -24,17 +24,11 @@ class TestFrozenClassifier:
         self,
         gt_classifier: GenotypeClassifier,
     ):
-        assert all(
-            cl in gt_classifier.class_labels
-            for cl in ("Saw paradise", "Did not see paradise")
-        )
+        assert all(cl in gt_classifier.class_labels for cl in ("Saw paradise", "Did not see paradise"))
         assert len(gt_classifier.class_labels) == 2
 
         assert gt_classifier.name == "Frozen genotype classifier"
-        assert (
-            gt_classifier.description
-            == "Classify the individuals based on provided genotype codes"
-        )
+        assert gt_classifier.description == "Classify the individuals based on provided genotype codes"
         assert gt_classifier.variable_name == "Genotype code"
 
     def test_test(
@@ -73,12 +67,12 @@ class TestFrozenClassifier:
         cohort = Cohort.from_patients(
             members=genesis_family,
         )
-        
+
         gt_clf = frozen_classifier(
             samples=cohort,
             codes=(0, 0, 1),
         )
-        
+
         assert isinstance(gt_clf, GenotypeClassifier)
 
     def test_reports_code_count_mismatch(self):
@@ -87,5 +81,5 @@ class TestFrozenClassifier:
                 samples=(),
                 codes=(0,),
             )
-        
+
         assert e.value.args == ("Sample count 0 must match the code count 1",)
