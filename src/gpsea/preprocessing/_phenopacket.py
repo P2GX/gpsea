@@ -666,7 +666,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
                         continue
 
                     variant_info = self._extract_variant_info(
-                        sample_id, genomic_interpretation, sub_note
+                        genomic_interpretation, sub_note
                     )
                     if variant_info is None:
                         # We already complained in the extract function
@@ -721,7 +721,6 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
 
     def _extract_variant_info(
         self,
-        sample_id: SampleLabels,
         genomic_interpretation: GenomicInterpretation,
         notepad: Notepad,
     ) -> typing.Optional[VariantInfo]:
@@ -732,10 +731,10 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
             variant_coordinates = self._coord_finder.find_coordinates(
                 genomic_interpretation
             )
-        except ValueError:
+        except ValueError as e:
             notepad.add_warning(
-                "Expected a VCF record, a VRS CNV, or an expression with `hgvs.c`"
-                f"but had an error retrieving any from individual {sample_id}",
+                "Expected a VCF record, a VRS CNV, or an expression with `hgvs.c` "
+                f"but encountered an error {e.args}",
                 "Remove variant from testing",
             )
             return None

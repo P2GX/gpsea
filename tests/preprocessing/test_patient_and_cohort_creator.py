@@ -2,6 +2,7 @@ import os
 import io
 
 import hpotk
+from hpotk.validate import ValidationRunner
 import pytest
 
 from gpsea.model.genome import GenomeBuild
@@ -47,7 +48,7 @@ class TestPhenopacketCohortCreator:
     def patient_creator(
         self,
         hpo: hpotk.MinimalOntology,
-        validation_runner: hpotk.validate.ValidationRunner,
+        validation_runner: ValidationRunner,
         genome_build: GenomeBuild,
         functional_annotator: FunctionalAnnotator,
         imprecise_sv_functional_annotator: ImpreciseSvFunctionalAnnotator,
@@ -70,19 +71,6 @@ class TestPhenopacketCohortCreator:
         return CohortCreator(
             patient_creator=patient_creator,
         )
-
-    @pytest.mark.skip('Skipping online test')
-    def test_load_phenopacket(
-        self,
-        fpath_project_dir: str,
-        phenopacket_cohort_creator: CohortCreator,
-    ):
-        fpath_test_cohort = os.path.join(fpath_project_dir, 'docs', 'data', 'simple_cohort')
-        cohort = load_phenopacket_folder(
-            pp_directory=fpath_test_cohort,
-            cohort_creator=phenopacket_cohort_creator,
-        )
-        print(cohort)
 
     def test_cohort_creator(
         self,
