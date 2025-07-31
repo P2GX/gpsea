@@ -198,6 +198,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -247,7 +260,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -270,7 +283,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -294,7 +307,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -318,7 +331,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -341,7 +354,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -364,7 +377,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -387,7 +400,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -411,7 +424,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -435,7 +448,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -459,7 +472,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -482,7 +495,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -505,7 +518,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -529,7 +542,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -779,6 +792,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -828,7 +854,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -851,7 +877,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -875,7 +901,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -899,7 +925,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -922,7 +948,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -945,7 +971,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -968,7 +994,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -992,7 +1018,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1016,7 +1042,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1040,7 +1066,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1063,7 +1089,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1086,7 +1112,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1110,7 +1136,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1297,6 +1323,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1346,7 +1385,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1369,7 +1408,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1393,7 +1432,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1417,7 +1456,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1440,7 +1479,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1463,7 +1502,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1486,7 +1525,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -1510,7 +1549,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1534,7 +1573,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1558,7 +1597,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1581,7 +1620,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1604,7 +1643,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1628,7 +1667,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1858,6 +1897,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2001,6 +2053,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -2246,6 +2311,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2423,6 +2501,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -2655,6 +2746,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -2897,6 +3001,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3134,6 +3251,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3277,6 +3407,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -3501,6 +3644,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -3744,6 +3900,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3793,7 +3962,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3816,7 +3985,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3840,7 +4009,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3864,7 +4033,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3887,7 +4056,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3910,7 +4079,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3933,7 +4102,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -3957,7 +4126,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3981,7 +4150,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4005,7 +4174,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4028,7 +4197,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4051,7 +4220,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4075,7 +4244,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4295,6 +4464,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -4537,6 +4719,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4768,6 +4963,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -5010,6 +5218,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5059,7 +5280,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5082,7 +5303,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5106,7 +5327,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5130,7 +5351,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5153,7 +5374,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5176,7 +5397,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5199,7 +5420,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -5223,7 +5444,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5247,7 +5468,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5271,7 +5492,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5294,7 +5515,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5317,7 +5538,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5341,7 +5562,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5522,6 +5743,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5665,6 +5899,19 @@
                 "start": 221,
                 "end": 222
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -5905,6 +6152,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6048,6 +6308,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -6288,6 +6561,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6431,6 +6717,19 @@
                 "start": 221,
                 "end": 222
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -6660,6 +6959,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6803,6 +7115,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -7043,6 +7368,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7092,7 +7430,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7115,7 +7453,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7139,7 +7477,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7163,7 +7501,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7186,7 +7524,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7209,7 +7547,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7232,7 +7570,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -7256,7 +7594,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7280,7 +7618,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7304,7 +7642,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7327,7 +7665,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7350,7 +7688,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7374,7 +7712,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7403,512 +7741,6 @@
               {
                 "label": "individual 28",
                 "meta_label": "PMID_30968594_individual_28"
-              }
-            ],
-            "genotypes": [
-              "HETEROZYGOUS"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "labels": {
-        "label": "individual 29",
-        "meta_label": "PMID_30968594_individual_29"
-      },
-      "sex": "MALE",
-      "age": null,
-      "vital_status": null,
-      "phenotypes": [],
-      "measurements": [
-        {
-          "test_term_id": "LOINC:1668-3",
-          "test_name": "17-Hydroxyprogesterone[Mass/Vol]",
-          "test_result": 238.0,
-          "unit": "UCUM:ng/dL"
-        }
-      ],
-      "diseases": [
-        {
-          "term_id": "OMIM:201910",
-          "name": "Adrenal hyperplasia, congenital, due to 21-hydroxylase deficiency",
-          "is_observed": true,
-          "onset": {
-            "days": 30.4375,
-            "timeline": "POSTNATAL"
-          }
-        }
-      ],
-      "variants": [
-        {
-          "variant_info": {
-            "variant_coordinates": {
-              "region": {
-                "start": 32039080,
-                "end": 32039081,
-                "contig": {
-                  "name": "6",
-                  "genbank_acc": "CM000668.2",
-                  "refseq_name": "NC_000006.12",
-                  "ucsc_name": "chr6",
-                  "length": 170805979
-                },
-                "strand": "POSITIVE"
-              },
-              "ref": "C",
-              "alt": "G",
-              "change_length": 0
-            },
-            "sv_info": null
-          },
-          "tx_annotations": [
-            {
-              "gene_id": "CYP21A2",
-              "transcript_id": "NM_000500.9",
-              "hgvs_cdna": "NM_000500.9:c.293-13C>G",
-              "is_preferred": true,
-              "variant_effects": [
-                "SPLICE_POLYPYRIMIDINE_TRACT_VARIANT",
-                "INTRON_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_000491.4",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "C4B",
-              "transcript_id": "NM_001002029.4",
-              "hgvs_cdna": null,
-              "is_preferred": true,
-              "variant_effects": [
-                "DOWNSTREAM_GENE_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_001002029.3",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "CYP21A2",
-              "transcript_id": "NM_001128590.4",
-              "hgvs_cdna": "NM_001128590.4:c.203-13C>G",
-              "is_preferred": false,
-              "variant_effects": [
-                "SPLICE_POLYPYRIMIDINE_TRACT_VARIANT",
-                "INTRON_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_001122062.3",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "TNXB",
-              "transcript_id": "NM_001365276.2",
-              "hgvs_cdna": null,
-              "is_preferred": true,
-              "variant_effects": [
-                "DOWNSTREAM_GENE_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_001352205.1",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "CYP21A2",
-              "transcript_id": "NM_001368143.2",
-              "hgvs_cdna": "NM_001368143.2:c.-126C>G",
-              "is_preferred": false,
-              "variant_effects": [
-                "FIVE_PRIME_UTR_VARIANT"
-              ],
-              "overlapping_exons": [
-                3
-              ],
-              "protein_id": "NP_001355072.1",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "CYP21A2",
-              "transcript_id": "NM_001368144.2",
-              "hgvs_cdna": "NM_001368144.2:c.-126C>G",
-              "is_preferred": false,
-              "variant_effects": [
-                "FIVE_PRIME_UTR_VARIANT"
-              ],
-              "overlapping_exons": [
-                2
-              ],
-              "protein_id": "NP_001355073.1",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "TNXB",
-              "transcript_id": "NM_019105.8",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "DOWNSTREAM_GENE_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_061978.6",
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "TNXB",
-              "transcript_id": "NM_032470.4",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "DOWNSTREAM_GENE_VARIANT"
-              ],
-              "overlapping_exons": null,
-              "protein_id": "NP_115859.2",
-              "hgvsp": null,
-              "protein_effect_location": null
-            }
-          ],
-          "genotypes": {
-            "samples": [
-              {
-                "label": "individual 29",
-                "meta_label": "PMID_30968594_individual_29"
-              }
-            ],
-            "genotypes": [
-              "HETEROZYGOUS"
-            ]
-          }
-        },
-        {
-          "variant_info": {
-            "variant_coordinates": null,
-            "sv_info": {
-              "structural_type": "SO:1000029",
-              "variant_class": "DEL",
-              "gene_id": "HGNC:2600",
-              "gene_symbol": "CYP21A2"
-            }
-          },
-          "tx_annotations": [
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001128590.4",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_000500.6",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001368143.2",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001128590.2",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001368144.2",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001128590.1",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_000500.9",
-              "hgvs_cdna": null,
-              "is_preferred": true,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_000500.8",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001368143.1",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001368144.1",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_001128590.3",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_000500.7",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            },
-            {
-              "gene_id": "HGNC:2600",
-              "transcript_id": "NM_000500.5",
-              "hgvs_cdna": null,
-              "is_preferred": false,
-              "variant_effects": [
-                "TRANSCRIPT_ABLATION"
-              ],
-              "overlapping_exons": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9
-              ],
-              "protein_id": null,
-              "hgvsp": null,
-              "protein_effect_location": null
-            }
-          ],
-          "genotypes": {
-            "samples": [
-              {
-                "label": "individual 29",
-                "meta_label": "PMID_30968594_individual_29"
               }
             ],
             "genotypes": [
@@ -8129,6 +7961,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8178,7 +8023,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8201,7 +8046,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8225,7 +8070,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8249,7 +8094,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8272,7 +8117,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8295,7 +8140,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8318,7 +8163,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -8342,7 +8187,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8366,7 +8211,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8390,7 +8235,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8413,7 +8258,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8436,7 +8281,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8460,7 +8305,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8674,6 +8519,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -8822,6 +8680,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -9048,6 +8919,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9191,6 +9075,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -9436,6 +9333,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9672,6 +9582,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9721,7 +9644,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9744,7 +9667,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9768,7 +9691,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9792,7 +9715,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9815,7 +9738,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9838,7 +9761,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9861,7 +9784,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -9885,7 +9808,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9909,7 +9832,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9933,7 +9856,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9956,7 +9879,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -9979,7 +9902,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10003,7 +9926,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10239,6 +10162,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10382,6 +10318,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -10567,6 +10516,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -10809,6 +10771,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10858,7 +10833,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10881,7 +10856,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10905,7 +10880,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10929,7 +10904,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10952,7 +10927,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10975,7 +10950,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -10998,7 +10973,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -11022,7 +10997,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11046,7 +11021,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11070,7 +11045,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11093,7 +11068,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11116,7 +11091,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11140,7 +11115,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11343,6 +11318,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11486,6 +11474,19 @@
                 "start": 348,
                 "end": 349
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -11664,6 +11665,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -11807,6 +11821,19 @@
                 "start": 221,
                 "end": 222
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -12061,6 +12088,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12110,7 +12150,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12133,7 +12173,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12157,7 +12197,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12181,7 +12221,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12204,7 +12244,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12227,7 +12267,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12250,7 +12290,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -12274,7 +12314,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12298,7 +12338,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12322,7 +12362,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12345,7 +12385,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12368,7 +12408,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12392,7 +12432,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12620,6 +12660,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12669,7 +12722,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12692,7 +12745,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12716,7 +12769,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12740,7 +12793,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12763,7 +12816,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12786,7 +12839,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12809,7 +12862,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -12833,7 +12886,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12857,7 +12910,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12881,7 +12934,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12904,7 +12957,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12927,7 +12980,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -12951,7 +13004,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13201,6 +13254,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13250,7 +13316,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13273,7 +13339,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13297,7 +13363,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13321,7 +13387,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13344,7 +13410,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13367,7 +13433,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13390,7 +13456,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -13414,7 +13480,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13438,7 +13504,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13462,7 +13528,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13485,7 +13551,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13508,7 +13574,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13532,7 +13598,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13777,6 +13843,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13826,7 +13905,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13849,7 +13928,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13873,7 +13952,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13897,7 +13976,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13920,7 +13999,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13943,7 +14022,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -13966,7 +14045,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -13990,7 +14069,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14014,7 +14093,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14038,7 +14117,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14061,7 +14140,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14084,7 +14163,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14108,7 +14187,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14362,6 +14441,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14502,6 +14594,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -14768,6 +14873,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -14908,6 +15026,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -15164,6 +15295,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -15304,6 +15448,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -15560,6 +15717,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -15700,6 +15870,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -15945,6 +16128,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -15994,7 +16190,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16017,7 +16213,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16041,7 +16237,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16065,7 +16261,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16088,7 +16284,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16111,7 +16307,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16134,7 +16330,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -16158,7 +16354,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16182,7 +16378,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16206,7 +16402,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16229,7 +16425,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16252,7 +16448,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16276,7 +16472,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16525,6 +16721,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16668,6 +16877,19 @@
                 "start": 183,
                 "end": 184
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -16927,6 +17149,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16976,7 +17211,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -16999,7 +17234,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17023,7 +17258,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17047,7 +17282,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17070,7 +17305,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17093,7 +17328,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17116,7 +17351,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -17140,7 +17375,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17164,7 +17399,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17188,7 +17423,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17211,7 +17446,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17234,7 +17469,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17258,7 +17493,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17455,6 +17690,19 @@
                 "start": 37,
                 "end": 38
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -17696,6 +17944,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17745,7 +18006,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17768,7 +18029,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17792,7 +18053,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17816,7 +18077,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17839,7 +18100,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17862,7 +18123,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17885,7 +18146,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -17909,7 +18170,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17933,7 +18194,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17957,7 +18218,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -17980,7 +18241,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -18003,7 +18264,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -18027,7 +18288,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -18243,6 +18504,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -18450,6 +18724,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -18590,6 +18877,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -18799,6 +19099,19 @@
                 "start": 37,
                 "end": 38
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -19047,6 +19360,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -19289,6 +19615,19 @@
                 "start": 37,
                 "end": 38
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -19537,6 +19876,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -19693,6 +20045,19 @@
                 "start": 170,
                 "end": 171
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -19936,6 +20301,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20076,6 +20454,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -20332,6 +20723,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20572,6 +20976,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20621,7 +21038,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20644,7 +21061,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20668,7 +21085,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20692,7 +21109,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20715,7 +21132,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20738,7 +21155,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20761,7 +21178,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -20785,7 +21202,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20809,7 +21226,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20833,7 +21250,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20856,7 +21273,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20879,7 +21296,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -20903,7 +21320,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21129,6 +21546,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -21361,6 +21791,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21410,7 +21853,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21433,7 +21876,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21457,7 +21900,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21481,7 +21924,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21504,7 +21947,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21527,7 +21970,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21550,7 +21993,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -21574,7 +22017,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21598,7 +22041,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21622,7 +22065,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21645,7 +22088,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21668,7 +22111,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21692,7 +22135,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -21907,6 +22350,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22047,6 +22503,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -22318,6 +22787,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22367,7 +22849,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22390,7 +22872,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22414,7 +22896,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22438,7 +22920,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22461,7 +22943,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22484,7 +22966,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22507,7 +22989,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -22531,7 +23013,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22555,7 +23037,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22579,7 +23061,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22602,7 +23084,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22625,7 +23107,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22649,7 +23131,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22898,6 +23380,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22947,7 +23442,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22970,7 +23465,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -22994,7 +23489,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23018,7 +23513,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23041,7 +23536,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23064,7 +23559,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23087,7 +23582,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -23111,7 +23606,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23135,7 +23630,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23159,7 +23654,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23182,7 +23677,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23205,7 +23700,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23229,7 +23724,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23451,6 +23946,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23607,6 +24115,19 @@
                 "start": 37,
                 "end": 38
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -23858,6 +24379,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23907,7 +24441,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23930,7 +24464,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23954,7 +24488,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -23978,7 +24512,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24001,7 +24535,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24024,7 +24558,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24047,7 +24581,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -24071,7 +24605,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24095,7 +24629,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24119,7 +24653,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24142,7 +24676,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24165,7 +24699,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24189,7 +24723,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24324,7 +24858,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24347,7 +24881,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24371,7 +24905,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24395,7 +24929,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24418,7 +24952,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24441,7 +24975,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24464,7 +24998,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -24488,7 +25022,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24512,7 +25046,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24536,7 +25070,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24559,7 +25093,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24582,7 +25116,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24606,7 +25140,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24788,6 +25322,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24837,7 +25384,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24860,7 +25407,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24884,7 +25431,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24908,7 +25455,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24931,7 +25478,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24954,7 +25501,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -24977,7 +25524,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -25001,7 +25548,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25025,7 +25572,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25049,7 +25596,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25072,7 +25619,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25095,7 +25642,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25119,7 +25666,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25345,6 +25892,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25501,6 +26061,19 @@
                 "start": 170,
                 "end": 171
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -25760,6 +26333,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -25900,6 +26486,19 @@
                 2
               ],
               "protein_id": "NP_001355073.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
               "hgvsp": null,
               "protein_effect_location": null
             },
@@ -26148,6 +26747,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -26304,6 +26916,19 @@
                 "start": 37,
                 "end": 38
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -26544,6 +27169,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -26687,6 +27325,19 @@
                 "start": 221,
                 "end": 222
               }
+            },
+            {
+              "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
             },
             {
               "gene_id": "TNXB",
@@ -26930,6 +27581,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -26979,7 +27643,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27002,7 +27666,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27026,7 +27690,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27050,7 +27714,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27073,7 +27737,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27096,7 +27760,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27119,7 +27783,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -27143,7 +27807,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27167,7 +27831,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27191,7 +27855,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27214,7 +27878,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27237,7 +27901,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27261,7 +27925,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27516,6 +28180,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27565,7 +28242,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27588,7 +28265,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27612,7 +28289,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27636,7 +28313,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27659,7 +28336,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27682,7 +28359,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27705,7 +28382,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -27729,7 +28406,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27753,7 +28430,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27777,7 +28454,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27800,7 +28477,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27823,7 +28500,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -27847,7 +28524,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28089,6 +28766,19 @@
             },
             {
               "gene_id": "TNXB",
+              "transcript_id": "NM_001428335.1",
+              "hgvs_cdna": null,
+              "is_preferred": false,
+              "variant_effects": [
+                "DOWNSTREAM_GENE_VARIANT"
+              ],
+              "overlapping_exons": null,
+              "protein_id": "NP_001415264.1",
+              "hgvsp": null,
+              "protein_effect_location": null
+            },
+            {
+              "gene_id": "TNXB",
               "transcript_id": "NM_019105.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28138,7 +28828,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28161,7 +28851,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.6",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28185,7 +28875,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28209,7 +28899,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28232,7 +28922,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28255,7 +28945,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28278,7 +28968,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.9",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -28302,7 +28992,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.8",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28326,7 +29016,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368143.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28350,7 +29040,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001368144.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28373,7 +29063,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_001128590.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28396,7 +29086,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.7",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28420,7 +29110,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:2600",
+              "gene_id": "CYP21A2",
               "transcript_id": "NM_000500.5",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -28458,6 +29148,5 @@
         }
       ]
     }
-  ],
-  "excluded_patient_count": 1
+  ]
 }

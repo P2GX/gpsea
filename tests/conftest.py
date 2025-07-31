@@ -226,6 +226,25 @@ def suox_protein_metadata(
 
 
 @pytest.fixture(scope="session")
+def suox_variant_coordinates(
+    genome_build: GenomeBuild,
+) -> VariantCoordinates:
+    chr12 = genome_build.contig_by_name("12")
+    assert chr12 is not None
+    return VariantCoordinates(
+        region=GenomicRegion(
+            chr12,
+            56004472,
+            56004473,
+            Strand.POSITIVE,
+        ),
+        ref="G",
+        alt="A",
+        change_length=0,
+    )
+
+
+@pytest.fixture(scope="session")
 def fpath_cyp21a2_cohort(
     fpath_test_data_dir: str,
 ) -> str:
