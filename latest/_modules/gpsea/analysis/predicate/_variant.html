@@ -228,8 +228,11 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prepare a :class:`VariantPredicate` that tests if the variant affects a given gene.</span>
 
+<span class="sd">    We recommend to consult the `HUGO Gene Name Nomenclature Committee &lt;https://www.genenames.org/&gt;`_</span>
+<span class="sd">    website to obtain the approved symbol for the gene of interest.</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        symbol: a `str` with the gene symbol (e.g. ``&#39;FBN1&#39;``).</span>
+<span class="sd">        symbol: a `str` with the approved gene symbol (e.g. ``FBN1``).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">VariantGenePredicate</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></div>
 

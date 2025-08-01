@@ -80,7 +80,8 @@ Builtin predicates
 
 Let's use builtin predicates to verify the properties of the variant ``1_8358231_8358231_T_C``.
 
-We can check that the variant overlaps with *RERE*
+We can check that the variant has a functional annotation
+with respect to *RERE*
 
 >>> import gpsea.analysis.predicate as vp
 >>> gene = vp.gene('RERE')

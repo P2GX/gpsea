@@ -106,7 +106,7 @@
             <span class="c1"># We assume all exons are affected</span>
             <span class="n">affected_exons</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">txc</span><span class="o">.</span><span class="n">exons</span><span class="p">))</span>
             <span class="n">annotation</span> <span class="o">=</span> <span class="n">TranscriptAnnotation</span><span class="p">(</span>
-                <span class="n">gene_id</span><span class="o">=</span><span class="n">gene_id</span><span class="p">,</span>
+                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>  <span class="c1"># ! we use symbol, not gene id!</span>
                 <span class="n">tx_id</span><span class="o">=</span><span class="n">txc</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
                 <span class="n">hgvs_cdna</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># We can&#39;t provide this here at this time.</span>
                 <span class="n">is_preferred</span><span class="o">=</span><span class="n">is_preferred</span><span class="p">,</span>
