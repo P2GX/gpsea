@@ -2,7 +2,9 @@
 GPSEA is a library for finding genotype-phenotype associations.
 """
 
-__version__ = "0.9.11.dev0"
+from importlib.metadata import version
+
+__version__ = version("gpsea")
 
 _overwrite = False
 """
