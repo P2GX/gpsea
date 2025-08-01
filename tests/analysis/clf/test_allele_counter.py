@@ -56,7 +56,7 @@ def het_lmna(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="LMNA",
+                gene_symbol="LMNA",
                 tx_id="NM_170707.4",
                 hgvs_cdna="NM_170707.4:c.1698+13C>A",
                 is_preferred=True,
@@ -67,7 +67,7 @@ def het_lmna(
                 protein_effect_coordinates=None,
             ),
             TranscriptAnnotation(
-                gene_id="LMNA",
+                gene_symbol="LMNA",
                 tx_id="NM_005572.4",
                 hgvs_cdna="NM_005572.4:c.1711C>A",
                 is_preferred=False,
@@ -103,7 +103,7 @@ def hom_alt_lmna(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="LMNA",
+                gene_symbol="LMNA",
                 tx_id="NM_170707.4",
                 hgvs_cdna="NM_170707.4:c.688G>A",
                 is_preferred=True,
@@ -114,7 +114,7 @@ def hom_alt_lmna(
                 protein_effect_coordinates=Region(229, 230),
             ),
             TranscriptAnnotation(
-                gene_id="LMNA",
+                gene_symbol="LMNA",
                 tx_id="NM_005572.4",
                 hgvs_cdna="NM_005572.4:c.688G>A",
                 is_preferred=False,
@@ -150,7 +150,7 @@ def hemi_dmd(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="DMD",
+                gene_symbol="DMD",
                 tx_id="NM_000109.4",
                 hgvs_cdna="NM_000109.4:c.9995G>A",
                 is_preferred=False,
@@ -161,7 +161,7 @@ def hemi_dmd(
                 protein_effect_coordinates=Region(start=3331, end=3332),
             ),
             TranscriptAnnotation(
-                gene_id="DMD",
+                gene_symbol="DMD",
                 tx_id="NM_004006.3",
                 hgvs_cdna="NM_004006.3:c.10019G>A",
                 is_preferred=True,

@@ -48,7 +48,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1084G>A",
               "is_preferred": false,
@@ -66,7 +66,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1084G>A",
               "is_preferred": true,
@@ -84,7 +84,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1084G>A",
               "is_preferred": false,
@@ -102,7 +102,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -115,7 +115,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -190,7 +190,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1097G>A",
               "is_preferred": false,
@@ -208,7 +208,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1097G>A",
               "is_preferred": true,
@@ -226,7 +226,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1097G>A",
               "is_preferred": false,
@@ -244,7 +244,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -257,7 +257,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -305,7 +305,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1187A>G",
               "is_preferred": false,
@@ -323,7 +323,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1187A>G",
               "is_preferred": true,
@@ -341,7 +341,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1187A>G",
               "is_preferred": false,
@@ -359,7 +359,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -372,7 +372,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -447,7 +447,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1136A>G",
               "is_preferred": false,
@@ -465,7 +465,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1136A>G",
               "is_preferred": true,
@@ -483,7 +483,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1136A>G",
               "is_preferred": false,
@@ -501,7 +501,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -514,7 +514,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -589,7 +589,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1348T>C",
               "is_preferred": false,
@@ -607,7 +607,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1348T>C",
               "is_preferred": true,
@@ -625,7 +625,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1348T>C",
               "is_preferred": false,
@@ -643,7 +643,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -656,7 +656,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -784,7 +784,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.650G>A",
               "is_preferred": false,
@@ -802,7 +802,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.650G>A",
               "is_preferred": true,
@@ -820,7 +820,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.650G>A",
               "is_preferred": false,
@@ -838,7 +838,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -851,7 +851,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -959,7 +959,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.400_403del",
               "is_preferred": false,
@@ -977,7 +977,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.400_403del",
               "is_preferred": true,
@@ -995,7 +995,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.400_403del",
               "is_preferred": false,
@@ -1013,7 +1013,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1026,7 +1026,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1144,7 +1144,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -1162,7 +1162,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -1180,7 +1180,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -1198,7 +1198,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1211,7 +1211,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1259,7 +1259,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.650G>A",
               "is_preferred": false,
@@ -1277,7 +1277,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.650G>A",
               "is_preferred": true,
@@ -1295,7 +1295,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.650G>A",
               "is_preferred": false,
@@ -1313,7 +1313,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1326,7 +1326,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1454,7 +1454,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.520del",
               "is_preferred": false,
@@ -1472,7 +1472,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.520del",
               "is_preferred": true,
@@ -1490,7 +1490,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.520del",
               "is_preferred": false,
@@ -1508,7 +1508,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1521,7 +1521,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1654,7 +1654,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.427C>A",
               "is_preferred": false,
@@ -1672,7 +1672,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.427C>A",
               "is_preferred": true,
@@ -1690,7 +1690,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.427C>A",
               "is_preferred": false,
@@ -1708,7 +1708,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1721,7 +1721,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1864,7 +1864,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.182T>C",
               "is_preferred": false,
@@ -1882,7 +1882,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.182T>C",
               "is_preferred": true,
@@ -1900,7 +1900,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.182T>C",
               "is_preferred": false,
@@ -1918,7 +1918,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -1931,7 +1931,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2054,7 +2054,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.433del",
               "is_preferred": false,
@@ -2072,7 +2072,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.433del",
               "is_preferred": true,
@@ -2090,7 +2090,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.433del",
               "is_preferred": false,
@@ -2108,7 +2108,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2121,7 +2121,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2224,7 +2224,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -2242,7 +2242,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -2260,7 +2260,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -2278,7 +2278,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2291,7 +2291,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2339,7 +2339,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1355G>A",
               "is_preferred": false,
@@ -2357,7 +2357,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1355G>A",
               "is_preferred": true,
@@ -2375,7 +2375,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1355G>A",
               "is_preferred": false,
@@ -2393,7 +2393,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2406,7 +2406,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2529,7 +2529,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.884G>A",
               "is_preferred": false,
@@ -2547,7 +2547,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.884G>A",
               "is_preferred": true,
@@ -2565,7 +2565,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.884G>A",
               "is_preferred": false,
@@ -2583,7 +2583,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2596,7 +2596,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2719,7 +2719,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.884G>A",
               "is_preferred": false,
@@ -2737,7 +2737,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.884G>A",
               "is_preferred": true,
@@ -2755,7 +2755,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.884G>A",
               "is_preferred": false,
@@ -2773,7 +2773,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2786,7 +2786,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2904,7 +2904,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.352C>T",
               "is_preferred": false,
@@ -2922,7 +2922,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.352C>T",
               "is_preferred": true,
@@ -2940,7 +2940,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.352C>T",
               "is_preferred": false,
@@ -2958,7 +2958,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -2971,7 +2971,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3019,7 +3019,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.649C>G",
               "is_preferred": false,
@@ -3037,7 +3037,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.649C>G",
               "is_preferred": true,
@@ -3055,7 +3055,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.649C>G",
               "is_preferred": false,
@@ -3073,7 +3073,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3086,7 +3086,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3204,7 +3204,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -3222,7 +3222,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -3240,7 +3240,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -3258,7 +3258,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3271,7 +3271,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3389,7 +3389,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1096C>T",
               "is_preferred": false,
@@ -3407,7 +3407,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1096C>T",
               "is_preferred": true,
@@ -3425,7 +3425,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1096C>T",
               "is_preferred": false,
@@ -3443,7 +3443,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3456,7 +3456,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3504,7 +3504,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1376G>A",
               "is_preferred": false,
@@ -3522,7 +3522,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1376G>A",
               "is_preferred": true,
@@ -3540,7 +3540,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1376G>A",
               "is_preferred": false,
@@ -3558,7 +3558,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3571,7 +3571,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3689,7 +3689,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1096C>T",
               "is_preferred": false,
@@ -3707,7 +3707,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1096C>T",
               "is_preferred": true,
@@ -3725,7 +3725,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1096C>T",
               "is_preferred": false,
@@ -3743,7 +3743,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3756,7 +3756,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3804,7 +3804,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1376G>A",
               "is_preferred": false,
@@ -3822,7 +3822,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1376G>A",
               "is_preferred": true,
@@ -3840,7 +3840,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1376G>A",
               "is_preferred": false,
@@ -3858,7 +3858,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3871,7 +3871,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -3989,7 +3989,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1096C>T",
               "is_preferred": false,
@@ -4007,7 +4007,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1096C>T",
               "is_preferred": true,
@@ -4025,7 +4025,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1096C>T",
               "is_preferred": false,
@@ -4043,7 +4043,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4056,7 +4056,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4104,7 +4104,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1376G>A",
               "is_preferred": false,
@@ -4122,7 +4122,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1376G>A",
               "is_preferred": true,
@@ -4140,7 +4140,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1376G>A",
               "is_preferred": false,
@@ -4158,7 +4158,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4171,7 +4171,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4294,7 +4294,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1521_1524del",
               "is_preferred": false,
@@ -4312,7 +4312,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1521_1524del",
               "is_preferred": true,
@@ -4330,7 +4330,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1521_1524del",
               "is_preferred": false,
@@ -4348,7 +4348,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4361,7 +4361,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4489,7 +4489,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1521_1524del",
               "is_preferred": false,
@@ -4507,7 +4507,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1521_1524del",
               "is_preferred": true,
@@ -4525,7 +4525,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1521_1524del",
               "is_preferred": false,
@@ -4543,7 +4543,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4556,7 +4556,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4679,7 +4679,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.650G>A",
               "is_preferred": false,
@@ -4697,7 +4697,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.650G>A",
               "is_preferred": true,
@@ -4715,7 +4715,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.650G>A",
               "is_preferred": false,
@@ -4733,7 +4733,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4746,7 +4746,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4889,7 +4889,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1382A>T",
               "is_preferred": false,
@@ -4907,7 +4907,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1382A>T",
               "is_preferred": true,
@@ -4925,7 +4925,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1382A>T",
               "is_preferred": false,
@@ -4943,7 +4943,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -4956,7 +4956,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5099,7 +5099,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1382A>T",
               "is_preferred": false,
@@ -5117,7 +5117,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1382A>T",
               "is_preferred": true,
@@ -5135,7 +5135,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1382A>T",
               "is_preferred": false,
@@ -5153,7 +5153,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5166,7 +5166,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5289,7 +5289,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.475G>T",
               "is_preferred": false,
@@ -5307,7 +5307,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.475G>T",
               "is_preferred": true,
@@ -5325,7 +5325,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.475G>T",
               "is_preferred": false,
@@ -5343,7 +5343,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5356,7 +5356,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5404,7 +5404,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1201A>G",
               "is_preferred": false,
@@ -5422,7 +5422,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1201A>G",
               "is_preferred": true,
@@ -5440,7 +5440,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1201A>G",
               "is_preferred": false,
@@ -5458,7 +5458,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5471,7 +5471,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5574,7 +5574,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -5592,7 +5592,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -5610,7 +5610,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -5628,7 +5628,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5641,7 +5641,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5689,7 +5689,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1549_1574dup",
               "is_preferred": false,
@@ -5707,7 +5707,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1549_1574dup",
               "is_preferred": true,
@@ -5725,7 +5725,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1549_1574dup",
               "is_preferred": false,
@@ -5743,7 +5743,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5756,7 +5756,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5859,7 +5859,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -5877,7 +5877,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -5895,7 +5895,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -5913,7 +5913,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5926,7 +5926,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5974,7 +5974,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1549_1574dup",
               "is_preferred": false,
@@ -5992,7 +5992,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1549_1574dup",
               "is_preferred": true,
@@ -6010,7 +6010,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1549_1574dup",
               "is_preferred": false,
@@ -6028,7 +6028,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6041,7 +6041,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6176,7 +6176,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.205G>C",
               "is_preferred": false,
@@ -6194,7 +6194,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.205G>C",
               "is_preferred": true,
@@ -6212,7 +6212,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.205G>C",
               "is_preferred": false,
@@ -6230,7 +6230,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6243,7 +6243,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6291,7 +6291,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -6309,7 +6309,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -6327,7 +6327,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -6345,7 +6345,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6358,7 +6358,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6486,7 +6486,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.794C>A",
               "is_preferred": false,
@@ -6504,7 +6504,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.794C>A",
               "is_preferred": true,
@@ -6522,7 +6522,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.794C>A",
               "is_preferred": false,
@@ -6540,7 +6540,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6553,7 +6553,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6601,7 +6601,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1280C>A",
               "is_preferred": false,
@@ -6619,7 +6619,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1280C>A",
               "is_preferred": true,
@@ -6637,7 +6637,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1280C>A",
               "is_preferred": false,
@@ -6655,7 +6655,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6668,7 +6668,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6743,7 +6743,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.734_737del",
               "is_preferred": false,
@@ -6761,7 +6761,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.734_737del",
               "is_preferred": true,
@@ -6779,7 +6779,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.734_737del",
               "is_preferred": false,
@@ -6797,7 +6797,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6810,7 +6810,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6885,7 +6885,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.287dup",
               "is_preferred": false,
@@ -6903,7 +6903,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.287dup",
               "is_preferred": true,
@@ -6921,7 +6921,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.287dup",
               "is_preferred": false,
@@ -6939,7 +6939,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -6952,7 +6952,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7000,7 +7000,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1126C>T",
               "is_preferred": false,
@@ -7018,7 +7018,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1126C>T",
               "is_preferred": true,
@@ -7036,7 +7036,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1126C>T",
               "is_preferred": false,
@@ -7054,7 +7054,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7067,7 +7067,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7142,7 +7142,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.772A>C",
               "is_preferred": false,
@@ -7160,7 +7160,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.772A>C",
               "is_preferred": true,
@@ -7178,7 +7178,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.772A>C",
               "is_preferred": false,
@@ -7196,7 +7196,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7209,7 +7209,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7284,7 +7284,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.803G>A",
               "is_preferred": false,
@@ -7302,7 +7302,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.803G>A",
               "is_preferred": true,
@@ -7320,7 +7320,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.803G>A",
               "is_preferred": false,
@@ -7338,7 +7338,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7351,7 +7351,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7426,7 +7426,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1200C>G",
               "is_preferred": false,
@@ -7444,7 +7444,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1200C>G",
               "is_preferred": true,
@@ -7462,7 +7462,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1200C>G",
               "is_preferred": false,
@@ -7480,7 +7480,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7493,7 +7493,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7568,7 +7568,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_000456.3",
               "hgvs_cdna": "NM_000456.3:c.1261C>T",
               "is_preferred": false,
@@ -7586,7 +7586,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032386.2",
               "hgvs_cdna": "NM_001032386.2:c.1261C>T",
               "is_preferred": true,
@@ -7604,7 +7604,7 @@
               }
             },
             {
-              "gene_id": "SUOX",
+              "gene_symbol": "SUOX",
               "transcript_id": "NM_001032387.2",
               "hgvs_cdna": "NM_001032387.2:c.1261C>T",
               "is_preferred": false,
@@ -7622,7 +7622,7 @@
               }
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351089.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7635,7 +7635,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "IKZF4",
+              "gene_symbol": "IKZF4",
               "transcript_id": "NM_001351091.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -7662,6 +7662,5 @@
         }
       ]
     }
-  ],
-  "excluded_patient_count": 0
+  ]
 }

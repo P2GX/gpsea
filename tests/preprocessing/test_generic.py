@@ -57,7 +57,7 @@ class TestDefaultImpreciseSvFunctionalAnnotator:
 
         ta = tas[0]
 
-        assert ta.gene_id == "SUOX"
+        assert ta.gene_symbol == "SUOX"
         assert ta.transcript_id == "NM_001032386.2"
         assert ta.hgvs_cdna is None
         assert not ta.is_preferred

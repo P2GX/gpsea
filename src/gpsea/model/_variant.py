@@ -1,6 +1,7 @@
 import abc
 import enum
 import typing
+import warnings
 
 import hpotk
 
@@ -16,12 +17,25 @@ class TranscriptInfoAware(metaclass=abc.ABCMeta):
 
     @property
     @abc.abstractmethod
-    def gene_id(self) -> str:
+    def gene_symbol(self) -> str:
         """
         Returns:
             string: The gene symbol (e.g. SURF1)
         """
         pass
+
+    @property
+    def gene_id(self) -> str:
+        """
+        Get the HGVS symbol of the affected gene (e.g. *SURF1*).
+        """
+        # TODO(1.0.0) - remove
+        warnings.warn(
+            "`gene_id` property is deprecated and will be removed in `1.0.0`. Use `gene_symbol` instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return self.gene_symbol
 
     @property
     @abc.abstractmethod
@@ -41,7 +55,7 @@ class TranscriptAnnotation(TranscriptInfoAware):
 
     def __init__(
         self,
-        gene_id: str,
+        gene_symbol: str,
         tx_id: str,
         hgvs_cdna: typing.Optional[str],
         is_preferred: bool,
@@ -51,8 +65,8 @@ class TranscriptAnnotation(TranscriptInfoAware):
         hgvsp: typing.Optional[str],
         protein_effect_coordinates: typing.Optional[Region],
     ):
-        assert isinstance(gene_id, str)
-        self._gene_id = gene_id
+        assert isinstance(gene_symbol, str)
+        self._gene_symbol = gene_symbol
         assert isinstance(tx_id, str)
         self._tx_id = tx_id
         if hgvs_cdna is not None:
@@ -80,11 +94,11 @@ class TranscriptAnnotation(TranscriptInfoAware):
         self._protein_effect_location = protein_effect_coordinates
 
     @property
-    def gene_id(self) -> str:
+    def gene_symbol(self) -> str:
         """
         Get the HGVS symbol of the affected gene (e.g. *SURF1*).
         """
-        return self._gene_id
+        return self._gene_symbol
 
     @property
     def transcript_id(self) -> str:
@@ -150,7 +164,7 @@ class TranscriptAnnotation(TranscriptInfoAware):
 
     def __str__(self) -> str:
         return (
-            f"TranscriptAnnotation(gene_id:{self._gene_id},"
+            f"TranscriptAnnotation(gene_symbol:{self._gene_symbol},"
             f"transcript_id:{self._tx_id},"
             f"hgvs_cdna:{self._hgvs_cdna},"
             f"is_preferred:{self._is_preferred},"
@@ -164,7 +178,7 @@ class TranscriptAnnotation(TranscriptInfoAware):
     def __eq__(self, other) -> bool:
         return (
             isinstance(other, TranscriptAnnotation)
-            and self._gene_id == other._gene_id
+            and self._gene_symbol == other._gene_symbol
             and self._tx_id == other._tx_id
             and self._hgvs_cdna == other._hgvs_cdna
             and self._is_preferred == other._is_preferred
@@ -181,7 +195,7 @@ class TranscriptAnnotation(TranscriptInfoAware):
     def __hash__(self) -> int:
         return hash(
             (
-                self._gene_id,
+                self._gene_symbol,
                 self._tx_id,
                 self._hgvs_cdna,
                 self._is_preferred,
@@ -840,8 +854,11 @@ class Variant(VariantInfoAware, FunctionalAnnotationAware, Genotyped):
         tx_annotations: typing.Iterable[TranscriptAnnotation],
         genotypes: Genotypes,
     ):
+        assert isinstance(variant_info, VariantInfo)
         self._variant_info = variant_info
+        assert all(isinstance(txa, TranscriptAnnotation) for txa in tx_annotations)
         self._tx_annotations = tuple(tx_annotations)
+        assert isinstance(genotypes, Genotypes)
         self._gts = genotypes
 
     @property

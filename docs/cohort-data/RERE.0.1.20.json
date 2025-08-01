@@ -381,7 +381,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.2278C>T",
               "is_preferred": true,
@@ -399,7 +399,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.616C>T",
               "is_preferred": false,
@@ -417,7 +417,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.2278C>T",
               "is_preferred": false,
@@ -919,7 +919,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.3466G>A",
               "is_preferred": true,
@@ -937,7 +937,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.1804G>A",
               "is_preferred": false,
@@ -955,7 +955,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.3466G>A",
               "is_preferred": false,
@@ -1430,7 +1430,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4313_4318dup",
               "is_preferred": true,
@@ -1448,7 +1448,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2651_2656dup",
               "is_preferred": false,
@@ -1466,7 +1466,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4313_4318dup",
               "is_preferred": false,
@@ -1954,7 +1954,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.3785C>G",
               "is_preferred": true,
@@ -1972,7 +1972,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2123C>G",
               "is_preferred": false,
@@ -1990,7 +1990,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.3785C>G",
               "is_preferred": false,
@@ -2446,7 +2446,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4293C>G",
               "is_preferred": true,
@@ -2464,7 +2464,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2631C>G",
               "is_preferred": false,
@@ -2482,7 +2482,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4293C>G",
               "is_preferred": false,
@@ -2973,7 +2973,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4293C>A",
               "is_preferred": true,
@@ -2991,7 +2991,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2631C>A",
               "is_preferred": false,
@@ -3009,7 +3009,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4293C>A",
               "is_preferred": false,
@@ -3435,7 +3435,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.3122del",
               "is_preferred": true,
@@ -3453,7 +3453,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.1460del",
               "is_preferred": false,
@@ -3471,7 +3471,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.3122del",
               "is_preferred": false,
@@ -3942,7 +3942,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.1411G>A",
               "is_preferred": true,
@@ -3960,7 +3960,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.-252G>A",
               "is_preferred": false,
@@ -3975,7 +3975,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.1411G>A",
               "is_preferred": false,
@@ -4451,7 +4451,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.1104del",
               "is_preferred": true,
@@ -4470,7 +4470,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.1104del",
               "is_preferred": false,
@@ -4937,7 +4937,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.2249_2270dup",
               "is_preferred": true,
@@ -4955,7 +4955,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.587_608dup",
               "is_preferred": false,
@@ -4973,7 +4973,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.2249_2270dup",
               "is_preferred": false,
@@ -5253,7 +5253,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5291,7 +5291,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5329,7 +5329,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.3",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5367,7 +5367,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5404,7 +5404,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.1",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5431,7 +5431,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": null,
               "is_preferred": true,
@@ -5468,7 +5468,7 @@
               "protein_effect_location": null
             },
             {
-              "gene_id": "HGNC:9965",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": null,
               "is_preferred": false,
@@ -5786,7 +5786,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.248dup",
               "is_preferred": true,
@@ -5804,7 +5804,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.248dup",
               "is_preferred": false,
@@ -6130,7 +6130,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4300T>C",
               "is_preferred": true,
@@ -6148,7 +6148,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2638T>C",
               "is_preferred": false,
@@ -6166,7 +6166,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4300T>C",
               "is_preferred": false,
@@ -6462,7 +6462,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4303C>T",
               "is_preferred": true,
@@ -6480,7 +6480,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2641C>T",
               "is_preferred": false,
@@ -6498,7 +6498,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4303C>T",
               "is_preferred": false,
@@ -6819,7 +6819,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4304A>G",
               "is_preferred": true,
@@ -6837,7 +6837,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2642A>G",
               "is_preferred": false,
@@ -6855,7 +6855,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4304A>G",
               "is_preferred": false,
@@ -7179,7 +7179,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4304A>T",
               "is_preferred": true,
@@ -7197,7 +7197,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2642A>T",
               "is_preferred": false,
@@ -7215,7 +7215,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4304A>T",
               "is_preferred": false,
@@ -7531,7 +7531,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4313_4318dup",
               "is_preferred": true,
@@ -7549,7 +7549,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2651_2656dup",
               "is_preferred": false,
@@ -7567,7 +7567,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4313_4318dup",
               "is_preferred": false,
@@ -7878,7 +7878,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4313_4318dup",
               "is_preferred": true,
@@ -7896,7 +7896,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2651_2656dup",
               "is_preferred": false,
@@ -7914,7 +7914,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4313_4318dup",
               "is_preferred": false,
@@ -8215,7 +8215,7 @@
           },
           "tx_annotations": [
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042681.2",
               "hgvs_cdna": "NM_001042681.2:c.4391A>G",
               "is_preferred": true,
@@ -8233,7 +8233,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_001042682.2",
               "hgvs_cdna": "NM_001042682.2:c.2729A>G",
               "is_preferred": false,
@@ -8251,7 +8251,7 @@
               }
             },
             {
-              "gene_id": "RERE",
+              "gene_symbol": "RERE",
               "transcript_id": "NM_012102.4",
               "hgvs_cdna": "NM_012102.4:c.4391A>G",
               "is_preferred": false,

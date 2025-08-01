@@ -24,7 +24,7 @@ class DefaultImpreciseSvFunctionalAnnotator(ImpreciseSvFunctionalAnnotator):
             # We assume all exons are affected
             affected_exons = range(len(txc.exons))
             annotation = TranscriptAnnotation(
-                gene_id=item.gene_symbol,  # ! we use symbol, not gene id!
+                gene_symbol=item.gene_symbol,  # ! we use symbol, not gene id!
                 tx_id=txc.identifier,
                 hgvs_cdna=None,  # We can't provide this here at this time.
                 is_preferred=is_preferred,

@@ -47,7 +47,7 @@ def missense_variant(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=False,
@@ -61,7 +61,7 @@ def missense_variant(
                 protein_effect_coordinates=Region(40, 41),
             ),
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:abc",
                 hgvs_cdna=None,
                 is_preferred=False,
@@ -99,7 +99,7 @@ def frameshift_variant(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=False,
@@ -110,7 +110,7 @@ def frameshift_variant(
                 protein_effect_coordinates=Region(43, 44),
             ),
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:abc",
                 hgvs_cdna=None,
                 is_preferred=False,
@@ -140,7 +140,7 @@ def structural_variant(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="ANKRD11",
+                gene_symbol="ANKRD11",
                 tx_id="NM_013275.6",
                 hgvs_cdna=None,
                 is_preferred=True,

@@ -1,6 +1,6 @@
 [
   {
-    "gene_id": "TBX5",
+    "gene_symbol": "TBX5",
     "transcript_id": "NM_000192.3",
     "hgvs_cdna": "NM_000192.3:c.755+2T>C",
     "is_preferred": false,
@@ -13,7 +13,7 @@
     "protein_effect_location": null
   },
   {
-    "gene_id": "TBX5",
+    "gene_symbol": "TBX5",
     "transcript_id": "NM_080717.4",
     "hgvs_cdna": "NM_080717.4:c.605+2T>C",
     "is_preferred": false,
@@ -26,7 +26,7 @@
     "protein_effect_location": null
   },
   {
-    "gene_id": "TBX5",
+    "gene_symbol": "TBX5",
     "transcript_id": "NM_181486.4",
     "hgvs_cdna": "NM_181486.4:c.755+2T>C",
     "is_preferred": true,
