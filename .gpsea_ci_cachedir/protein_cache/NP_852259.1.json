@@ -44,6 +44,16 @@
     },
     {
       "info": {
+        "name": "Low complexity",
+        "region": {
+          "start": 34,
+          "end": 45
+        }
+      },
+      "feature_type": "Compositional bias"
+    },
+    {
+      "info": {
         "name": "Polar residues",
         "region": {
           "start": 262,

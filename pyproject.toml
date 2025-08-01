@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpsea"
+version = "0.9.11.dev0"
 authors = [
     {name = "Lauren Rekerle", email="lauren.rekerle@jax.org"},
     {name = "Daniel Danis", email="daniel.danis@bih-charite.de"},
@@ -46,7 +47,6 @@ dependencies = [
     "ratelimit>=2.2.1,<3",
     "tqdm>=4.60",
 ]
-dynamic = ["version"]
 
 [project.optional-dependencies]
 test = [

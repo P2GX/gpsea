@@ -1,6 +1,6 @@
 [
   {
-    "gene_id": "RERE",
+    "gene_symbol": "RERE",
     "transcript_id": "NM_001042681.2",
     "hgvs_cdna": "NM_001042681.2:c.1104del",
     "is_preferred": true,
@@ -19,7 +19,7 @@
     }
   },
   {
-    "gene_id": "RERE",
+    "gene_symbol": "RERE",
     "transcript_id": "NM_012102.4",
     "hgvs_cdna": "NM_012102.4:c.1104del",
     "is_preferred": false,

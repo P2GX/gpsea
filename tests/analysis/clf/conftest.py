@@ -67,7 +67,7 @@ def genesis_missense_mutation(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=False,
@@ -116,7 +116,7 @@ def genesis_synonymous_mutation(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=True,
@@ -251,7 +251,7 @@ def white_missense_mutation(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=True,
@@ -302,7 +302,7 @@ def white_synonymous_mutation(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=True,
@@ -464,7 +464,7 @@ def skywalker_mutation(
         ),
         tx_annotations=(
             TranscriptAnnotation(
-                gene_id="a_gene",
+                gene_symbol="a_gene",
                 tx_id="tx:xyz",
                 hgvs_cdna=None,
                 is_preferred=False,

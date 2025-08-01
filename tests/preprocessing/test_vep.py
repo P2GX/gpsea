@@ -58,6 +58,8 @@ def test_verify_start_end_coordinates(
     genome_build: GenomeBuild,
 ):
     contig = genome_build.contig_by_name(contig_name)
+    assert contig is not None
+
     region = GenomicRegion(contig, start, end, Strand.POSITIVE)
     vc = VariantCoordinates(region, ref, alt, chlen)
     out = VepFunctionalAnnotator.format_coordinates_for_vep_query(vc)
@@ -82,6 +84,16 @@ class TestVepFunctionalAnnotator:
         self,
     ) -> VepFunctionalAnnotator:
         return VepFunctionalAnnotator()
+
+    @pytest.mark.online
+    def test_annotate(
+        self,
+        suox_variant_coordinates: VariantCoordinates,
+        variant_annotator: VepFunctionalAnnotator,
+    ):
+        tas = variant_annotator.annotate(suox_variant_coordinates)
+
+        assert len(tas) == 5
 
     def test_process_response_missense(
         self,
@@ -195,6 +207,8 @@ class TestVepFunctionalAnnotator:
         exp_protein_end: int,
     ):
         contig = genome_build.contig_by_name(contig_name)
+        assert contig is not None
+
         region = GenomicRegion(contig, start, end, Strand.POSITIVE)
         vc = VariantCoordinates(region, ref, alt, chlen)
         fpath_response = os.path.join(fpath_vep_response_dir, f"{vc.variant_key}.json")
@@ -275,6 +289,8 @@ class TestVepFunctionalAnnotator:
         chlen: int,
     ):
         contig = genome_build.contig_by_name(contig_name)
+        assert contig is not None
+
         region = GenomicRegion(contig, start, end, Strand.POSITIVE)
         vc = VariantCoordinates(region, ref, alt, chlen)
 
