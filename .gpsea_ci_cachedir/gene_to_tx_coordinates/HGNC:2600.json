@@ -1,0 +1,1737 @@
+[
+  {
+    "identifier": "NM_001128590.4",
+    "region": {
+      "start": 32038414,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_000500.6",
+    "region": {
+      "start": 32038264,
+      "end": 32041670,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038264,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041670,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041131
+  },
+  {
+    "identifier": "NM_001368143.2",
+    "region": {
+      "start": 32038414,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039074,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32039206,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_001128590.2",
+    "region": {
+      "start": 32038414,
+      "end": 32041670,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041670,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041131
+  },
+  {
+    "identifier": "NM_001368144.2",
+    "region": {
+      "start": 32038414,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039074,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32039206,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_001128590.1",
+    "region": {
+      "start": 32038304,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038304,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_000500.9",
+    "region": {
+      "start": 32038414,
+      "end": 32041644,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041644,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_000500.8",
+    "region": {
+      "start": 32038414,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038414,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_001368143.1",
+    "region": {
+      "start": 32038305,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038305,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039074,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32039206,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_001368144.1",
+    "region": {
+      "start": 32038305,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038305,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039074,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32039206,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_001128590.3",
+    "region": {
+      "start": 32038315,
+      "end": 32041670,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038315,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041670,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_000500.7",
+    "region": {
+      "start": 32038315,
+      "end": 32041670,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038315,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041670,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  },
+  {
+    "identifier": "NM_000500.5",
+    "region": {
+      "start": 32038304,
+      "end": 32041642,
+      "contig": {
+        "name": "6",
+        "genbank_acc": "CM000668.2",
+        "refseq_name": "NC_000006.12",
+        "ucsc_name": "chr6",
+        "length": 170805979
+      },
+      "strand": "POSITIVE"
+    },
+    "exons": [
+      {
+        "start": 32038304,
+        "end": 32038624,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32038721,
+        "end": 32038811,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039093,
+        "end": 32039248,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039355,
+        "end": 32039457,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039545,
+        "end": 32039647,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32039748,
+        "end": 32039835,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040004,
+        "end": 32040205,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040405,
+        "end": 32040584,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040667,
+        "end": 32040771,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      },
+      {
+        "start": 32040868,
+        "end": 32041642,
+        "contig": {
+          "name": "6",
+          "genbank_acc": "CM000668.2",
+          "refseq_name": "NC_000006.12",
+          "ucsc_name": "chr6",
+          "length": 170805979
+        },
+        "strand": "POSITIVE"
+      }
+    ],
+    "cds_start": 32038422,
+    "cds_end": 32041134
+  }
+]

@@ -88,7 +88,7 @@ Load phenopackets
 We can create a cohort starting from a collection of `Phenopacket` objects
 provided by Python `Phenopackets <https://pypi.org/project/phenopackets>`_ library.
 For the purpose of this example, we will load a cohort of patients with pathogenic mutations in *RERE* gene
-which are included in the release `0.1.18` of `Phenopacket Store <https://github.com/monarch-initiative/phenopacket-store>`_.
+which are included in the release `0.1.19` of `Phenopacket Store <https://github.com/monarch-initiative/phenopacket-store>`_.
 We use `Phenopacket Store Toolkit <https://github.com/monarch-initiative/phenopacket-store-toolkit>`_
 (``ppktstore`` in the code) to reduce the boilerplate code
 associated with extracting phenopacket data from Phenopacket Store release:

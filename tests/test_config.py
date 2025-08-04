@@ -28,3 +28,6 @@ class TestCacheDir:
         cd = get_cache_dir_path()
 
         assert cd == target
+
+        # Clean up the side effect
+        del os.environ[CACHE_ENV]
