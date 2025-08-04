@@ -73,7 +73,7 @@ def fpath_cache_dir(
         cache_dir = os.environ[CACHE_ENV]
     else:
         cache_dir = os.path.join(fpath_project_dir, DEFAULT_CACHE_PATH)
-    
+
     assert os.path.isdir(cache_dir), "Cache dir with test responses should already exist!"
 
     return str(cache_dir)
