@@ -68,6 +68,8 @@ def fpath_project_dir(fpath_test_dir: str) -> str:
 def fpath_cache_dir(
     fpath_project_dir: str,
 ) -> str:
+    e = list(os.environ.keys())
+    print(f"Env: {e}")
     if CACHE_ENV in os.environ:
         # The variable may be set e.g. on GitHub action runner
         cache_dir = os.environ[CACHE_ENV]
