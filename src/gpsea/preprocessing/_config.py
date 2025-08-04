@@ -286,6 +286,7 @@ def configure_default_imprecise_sv_functional_annotator(
         timeout=timeout,
     )
 
+
 def _configure_protein_service(
     protein_fallback: str,
     cache_dir: str,
@@ -465,6 +466,7 @@ def _configure_fallback_gene_coordinate_service(
         )
     else:
         raise ValueError(f"Unknown transcript coordinate source {tx_coord_source}")
+
 
 def _configure_imprecise_sv_annotator(
     genome_build: GenomeBuild,

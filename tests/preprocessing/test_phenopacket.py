@@ -23,7 +23,7 @@ from gpsea.preprocessing import (
     FunctionalAnnotator,
     ImpreciseSvFunctionalAnnotator,
     configure_default_functional_annotator,
-    configure_default_imprecise_sv_functional_annotator
+    configure_default_imprecise_sv_functional_annotator,
 )
 from gpsea.preprocessing import PhenopacketPatientCreator, PhenopacketOntologyTermOnsetParser
 
@@ -174,7 +174,6 @@ def read_genomic_interpretation_json(fpath: str) -> GenomicInterpretation:
 
 
 class TestPhenopacketPatientCreator:
-
     @pytest.fixture(scope="class")
     def functional_annotator(
         self,
