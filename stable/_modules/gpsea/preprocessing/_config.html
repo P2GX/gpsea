@@ -101,6 +101,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model.genome</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRCh37</span><span class="p">,</span> <span class="n">GRCh38</span><span class="p">,</span> <span class="n">GenomeBuild</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">._api</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">FunctionalAnnotator</span><span class="p">,</span>
+    <span class="n">GeneCoordinateService</span><span class="p">,</span>
+    <span class="n">ImpreciseSvFunctionalAnnotator</span><span class="p">,</span>
     <span class="n">ProteinMetadataService</span><span class="p">,</span>
     <span class="n">PreprocessingValidationResult</span><span class="p">,</span>
     <span class="n">TranscriptCoordinateService</span><span class="p">,</span>
@@ -112,6 +114,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">._caching</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">JsonCache</span><span class="p">,</span>
     <span class="n">CachingFunctionalAnnotator</span><span class="p">,</span>
+    <span class="n">CachingGeneCoordinateService</span><span class="p">,</span>
     <span class="n">CachingProteinMetadataService</span><span class="p">,</span>
     <span class="n">CachingTranscriptCoordinateService</span><span class="p">,</span>
 <span class="p">)</span>
@@ -130,7 +133,8 @@
     <span class="n">validation_runner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">ValidationRunner</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">include_ontology_class_onsets</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">variant_fallback</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;VEP&quot;</span><span class="p">,</span>
+    <span class="n">variant_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VEP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;VEP&quot;</span><span class="p">,</span>
+    <span class="n">tx_coord_source_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;VV&quot;</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CohortCreator</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -147,7 +151,9 @@
 <span class="sd">    :param include_ontology_class_onsets: `True` if onsets in the ontology class format</span>
 <span class="sd">        (e.g. `HP:0003621` for Juvenile onset) should be included (default `True`).</span>
 <span class="sd">    :param variant_fallback: the fallback variant annotator to use if we cannot find the annotation locally.</span>
-<span class="sd">     Choose from ``{&#39;VEP&#39;}`` (just one fallback implementation is available at the moment).</span>
+<span class="sd">        Choose from ``{&#39;VEP&#39;}`` (just one fallback implementation is available at the moment).</span>
+<span class="sd">    :param tx_coord_source_fallback: the fallback source of transcript coordinates.</span>
+<span class="sd">        Choose from ``{&#39;VV&#39;}`` (only one fallback implementation is available at the moment).</span>
 <span class="sd">    :param timeout: timeout in seconds for the REST APIs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cache_dir</span> <span class="o">=</span> <span class="n">_configure_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
@@ -155,8 +161,17 @@
 
     <span class="n">build</span> <span class="o">=</span> <span class="n">_configure_build</span><span class="p">(</span><span class="n">genome_build</span><span class="p">)</span>
     <span class="n">validator</span> <span class="o">=</span> <span class="n">_setup_hpo_validator</span><span class="p">(</span><span class="n">hpo</span><span class="p">,</span> <span class="n">validation_runner</span><span class="p">)</span>
-    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_functional_annotator</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">,</span> <span class="n">variant_fallback</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-    <span class="n">imprecise_sv_functional_annotator</span> <span class="o">=</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span><span class="n">build</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_functional_annotator</span><span class="p">(</span>
+        <span class="n">cache_dir</span><span class="p">,</span>
+        <span class="n">variant_fallback</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">imprecise_sv_functional_annotator</span> <span class="o">=</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span>
+        <span class="n">build</span><span class="p">,</span>
+        <span class="n">tx_coord_source_fallback</span><span class="p">,</span>
+        <span class="n">cache_dir</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">hgvs_annotator</span> <span class="o">=</span> <span class="n">VVHgvsVariantCoordinateFinder</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
     <span class="n">term_onset_parser</span> <span class="o">=</span> <span class="n">PhenopacketOntologyTermOnsetParser</span><span class="o">.</span><span class="n">default_parser</span><span class="p">()</span> <span class="k">if</span> <span class="n">include_ontology_class_onsets</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">pc</span> <span class="o">=</span> <span class="n">PhenopacketPatientCreator</span><span class="p">(</span>
@@ -180,7 +195,8 @@
     <span class="n">genome_build</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;GRCh37.p13&quot;</span><span class="p">,</span> <span class="s2">&quot;GRCh38.p13&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;GRCh38.p13&quot;</span><span class="p">,</span>
     <span class="n">validation_runner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">ValidationRunner</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">include_ontology_class_onsets</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">variant_fallback</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;VEP&quot;</span><span class="p">,</span>
+    <span class="n">variant_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VEP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;VEP&quot;</span><span class="p">,</span>
+    <span class="n">tx_coord_source_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;VV&quot;</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CohortCreator</span><span class="p">[</span><span class="n">Phenopacket</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -197,15 +213,21 @@
 <span class="sd">        (e.g. `HP:0003621` for Juvenile onset) should be included (default `True`).</span>
 <span class="sd">    :param variant_fallback: the fallback variant annotator to use if we cannot find the annotation locally.</span>
 <span class="sd">     Choose from ``{&#39;VEP&#39;}`` (just one fallback implementation is available at the moment).</span>
+<span class="sd">    :param tx_coord_source_fallback: the fallback source of transcript coordinates.</span>
+<span class="sd">        Choose from ``{&#39;VV&#39;}`` (only one fallback implementation is available at the moment).</span>
 <span class="sd">    :param timeout: timeout in seconds for the VEP API</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">build</span> <span class="o">=</span> <span class="n">_configure_build</span><span class="p">(</span><span class="n">genome_build</span><span class="p">)</span>
     <span class="n">timeout</span> <span class="o">=</span> <span class="n">_normalize_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
 
     <span class="n">validator</span> <span class="o">=</span> <span class="n">_setup_hpo_validator</span><span class="p">(</span><span class="n">hpo</span><span class="p">,</span> <span class="n">validation_runner</span><span class="p">)</span>
-    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_fallback_functional</span><span class="p">(</span><span class="n">variant_fallback</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+    <span class="n">functional_annotator</span> <span class="o">=</span> <span class="n">_configure_fallback_functional</span><span class="p">(</span>
+        <span class="n">variant_fallback</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span>
     <span class="n">imprecise_sv_functional_annotator</span> <span class="o">=</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span>
         <span class="n">build</span><span class="p">,</span>
+        <span class="n">tx_coord_source_fallback</span><span class="o">=</span><span class="n">tx_coord_source_fallback</span><span class="p">,</span>
         <span class="n">cache_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
     <span class="p">)</span>
@@ -289,6 +311,14 @@
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TranscriptCoordinateService</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the default implementation of the :class:`~gpsea.preprocessing.TranscriptCoordinateService`.</span>
+
+<span class="sd">    :param tx_source: the source of transcript coordinates (VV - variant validator REST API by default).</span>
+<span class="sd">    :param genome_build: the genome build to use.</span>
+<span class="sd">    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.</span>
+<span class="sd">    :param timeout: the timeout in seconds to use for interacting with REST APIs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cache_dir</span> <span class="o">=</span> <span class="n">_configure_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
     <span class="n">timeout</span> <span class="o">=</span> <span class="n">_normalize_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
     <span class="n">build</span> <span class="o">=</span> <span class="n">_configure_build</span><span class="p">(</span><span class="n">genome_build</span><span class="p">)</span>
@@ -309,11 +339,47 @@
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionalAnnotator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the default implementation of the :class:`~gpsea.preprocessing.FunctionalAnnotator`.</span>
+
+<span class="sd">    :param ann_source: the source of transcript coordinates (VV - variant validator REST API by default).</span>
+<span class="sd">    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.</span>
+<span class="sd">    :param timeout: the timeout in seconds to use for interacting with REST APIs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cache_dir</span> <span class="o">=</span> <span class="n">_configure_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
     <span class="n">timeout</span> <span class="o">=</span> <span class="n">_normalize_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">_configure_func_annotator</span><span class="p">(</span>
-        <span class="n">ann_source</span><span class="o">=</span><span class="n">ann_source</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">_configure_functional_annotator</span><span class="p">(</span>
+        <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
+        <span class="n">variant_fallback</span><span class="o">=</span><span class="n">ann_source</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="configure_default_imprecise_sv_functional_annotator">
+<a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.configure_default_imprecise_sv_functional_annotator">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">configure_default_imprecise_sv_functional_annotator</span><span class="p">(</span>
+    <span class="n">genome_build</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">GenomeBuild</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;hg19&quot;</span><span class="p">,</span> <span class="s2">&quot;hg38&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;hg38&quot;</span><span class="p">,</span>
+    <span class="n">tx_coord_source</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;VV&quot;</span><span class="p">,</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImpreciseSvFunctionalAnnotator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the default implementation of the :class:`~gpsea.preprocessing.ImpreciseSvFunctionalAnnotator`.</span>
+
+<span class="sd">    :param genome_build: the genome build to use.</span>
+<span class="sd">    :param ann_source: the source of transcript coordinates (VV - variant validator REST API by default).</span>
+<span class="sd">    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.</span>
+<span class="sd">    :param timeout: the timeout in seconds to use for interacting with REST APIs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cache_dir</span> <span class="o">=</span> <span class="n">_configure_cache_dir</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">)</span>
+    <span class="n">timeout</span> <span class="o">=</span> <span class="n">_normalize_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+    <span class="n">build</span> <span class="o">=</span> <span class="n">_configure_build</span><span class="p">(</span><span class="n">genome_build</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_configure_imprecise_sv_annotator</span><span class="p">(</span>
+        <span class="n">genome_build</span><span class="o">=</span><span class="n">build</span><span class="p">,</span>
+        <span class="n">tx_coord_source_fallback</span><span class="o">=</span><span class="n">tx_coord_source</span><span class="p">,</span>
         <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
     <span class="p">)</span></div>
@@ -376,25 +442,6 @@
     <span class="k">return</span> <span class="n">CachingTranscriptCoordinateService</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">tx_cache</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_configure_func_annotator</span><span class="p">(</span>
-    <span class="n">ann_source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">cache_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionalAnnotator</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">ann_source</span> <span class="o">==</span> <span class="s2">&quot;VEP&quot;</span><span class="p">:</span>
-        <span class="n">fallback</span> <span class="o">=</span> <span class="n">VepFunctionalAnnotator</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown functional annotation source </span><span class="si">{</span><span class="n">ann_source</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="c1"># Setup cache</span>
-    <span class="n">tx_cache_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">,</span> <span class="s2">&quot;tx_cache&quot;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">tx_cache_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">tx_cache</span> <span class="o">=</span> <span class="n">JsonCache</span><span class="p">(</span>
-        <span class="n">data_dir</span><span class="o">=</span><span class="n">tx_cache_dir</span><span class="p">,</span>
-        <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">return</span> <span class="n">CachingFunctionalAnnotator</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">tx_cache</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">)</span>
-
-
 <span class="k">def</span><span class="w"> </span><span class="nf">_configure_cache_dir</span><span class="p">(</span>
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -447,7 +494,7 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_configure_functional_annotator</span><span class="p">(</span>
     <span class="n">cache_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">variant_fallback</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VEP&quot;</span><span class="p">],</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionalAnnotator</span><span class="p">:</span>
     <span class="c1"># (2) FunctionalAnnotator</span>
@@ -462,11 +509,14 @@
         <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">CachingFunctionalAnnotator</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CachingFunctionalAnnotator</span><span class="p">(</span>
+        <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
+        <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">,</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_configure_fallback_functional</span><span class="p">(</span>
-    <span class="n">variant_fallback</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VEP&quot;</span><span class="p">],</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FunctionalAnnotator</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">variant_fallback</span> <span class="o">==</span> <span class="s2">&quot;VEP&quot;</span><span class="p">:</span>
@@ -476,23 +526,63 @@
     <span class="k">return</span> <span class="n">fallback</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">_configure_imprecise_sv_annotator</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_configure_gene_coordinate_service</span><span class="p">(</span>
     <span class="n">genome_build</span><span class="p">:</span> <span class="n">GenomeBuild</span><span class="p">,</span>
-    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tx_coord_source_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">],</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="c1"># Setup cache for SVs</span>
-    <span class="k">if</span> <span class="n">cache_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">_sv_cache_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">,</span> <span class="s2">&quot;sv_cache&quot;</span><span class="p">)</span>
-        <span class="c1"># TODO: implement the cache.</span>
-        <span class="c1"># os.makedirs(sv_cache_dir, exist_ok=True)</span>
-        <span class="c1"># var_cache = VariantAnnotationCache(sv_cache_dir)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GeneCoordinateService</span><span class="p">:</span>
+    <span class="n">fallback</span> <span class="o">=</span> <span class="n">_configure_fallback_gene_coordinate_service</span><span class="p">(</span>
+        <span class="n">genome_build</span><span class="o">=</span><span class="n">genome_build</span><span class="p">,</span>
+        <span class="n">tx_coord_source</span><span class="o">=</span><span class="n">tx_coord_source_fallback</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">DefaultImpreciseSvFunctionalAnnotator</span><span class="p">(</span>
-        <span class="n">gene_coordinate_service</span><span class="o">=</span><span class="n">VVMultiCoordinateService</span><span class="p">(</span>
+    <span class="k">if</span> <span class="n">cache_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fallback</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">gene_cache_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cache_dir</span><span class="p">,</span> <span class="s2">&quot;gene_to_tx_coordinates&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">gene_cache_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cache</span> <span class="o">=</span> <span class="n">JsonCache</span><span class="p">(</span>
+            <span class="n">gene_cache_dir</span><span class="p">,</span>
+            <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">CachingGeneCoordinateService</span><span class="p">(</span>
+            <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
+            <span class="n">fallback</span><span class="o">=</span><span class="n">fallback</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_configure_fallback_gene_coordinate_service</span><span class="p">(</span>
+    <span class="n">genome_build</span><span class="p">:</span> <span class="n">GenomeBuild</span><span class="p">,</span>
+    <span class="n">tx_coord_source</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">],</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GeneCoordinateService</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tx_coord_source</span> <span class="o">==</span> <span class="s2">&quot;VV&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">VVMultiCoordinateService</span><span class="p">(</span>
             <span class="n">genome_build</span><span class="o">=</span><span class="n">genome_build</span><span class="p">,</span>
             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
         <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown transcript coordinate source </span><span class="si">{</span><span class="n">tx_coord_source</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_configure_imprecise_sv_annotator</span><span class="p">(</span>
+    <span class="n">genome_build</span><span class="p">:</span> <span class="n">GenomeBuild</span><span class="p">,</span>
+    <span class="n">tx_coord_source_fallback</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;VV&quot;</span><span class="p">],</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ImpreciseSvFunctionalAnnotator</span><span class="p">:</span>
+    <span class="c1"># TODO: setup cache for SVs</span>
+    <span class="n">gene_coordinate_service</span> <span class="o">=</span> <span class="n">_configure_gene_coordinate_service</span><span class="p">(</span>
+        <span class="n">genome_build</span><span class="o">=</span><span class="n">genome_build</span><span class="p">,</span>
+        <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
+        <span class="n">tx_coord_source_fallback</span><span class="o">=</span><span class="n">tx_coord_source_fallback</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">DefaultImpreciseSvFunctionalAnnotator</span><span class="p">(</span>
+        <span class="n">gene_coordinate_service</span><span class="o">=</span><span class="n">gene_coordinate_service</span><span class="p">,</span>
     <span class="p">)</span>
 
 
