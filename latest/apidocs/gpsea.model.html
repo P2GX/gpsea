@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.model package &mdash; GPSEA 0.9.11 documentation</title>
+  <title>gpsea.model package &mdash; GPSEA 0.9.12.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=88b3baf9"></script>
+      <script src="../_static/documentation_options.js?v=0325466d"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -108,8 +108,8 @@ and we follow with data classes for phenotype, genotype, transcript, and protein
 <p>Cohort is a collection of individuals that have been preprocessed
 and are ready for genotype-phenotype association analysis.</p>
 <p>Note: the constructor is for <em>internal</em> use only.
-Use the static constructors (static methods that start with “<a href="#id1"><span class="problematic" id="id2">Cohort.from_</span></a>”,
-such as <a class="reference internal" href="#gpsea.model.Cohort.from_patients" title="gpsea.model.Cohort.from_patients"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_patients()</span></code></a>) to create a cohort.</p>
+Use the static constructors (static methods that start with “Cohort.from_”)
+to create a cohort.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Cohort.all_diseases">
 <span class="sig-name descname"><span class="pre">all_diseases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Set" title="(in Python v3.13)"><span class="pre">Set</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Disease" title="gpsea.model._phenotype.Disease"><span class="pre">Disease</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Cohort.all_diseases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Cohort.all_diseases" title="Link to this definition"></a></dt>
