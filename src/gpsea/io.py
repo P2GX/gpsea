@@ -87,7 +87,7 @@ class GpseaJSONEncoder(JSONEncoder):
             }
         elif isinstance(o, TranscriptAnnotation):
             return {
-                "gene_id": o.gene_id,
+                "gene_symbol": o.gene_symbol,
                 "transcript_id": o.transcript_id,
                 "hgvs_cdna": o.hgvs_cdna,
                 "is_preferred": o.is_preferred,
@@ -204,7 +204,7 @@ _CONTIG_FIELDS = ("name", "genbank_acc", "refseq_name", "ucsc_name", "length")
 _SAMPLE_LABELS_FIELDS = ("label", "meta_label")
 _GENOTYPES_FIELDS = ("samples", "genotypes")
 _TX_ANNOTATION_FIELDS = (
-    "gene_id",
+    "gene_symbol",
     "transcript_id",
     "hgvs_cdna",
     "is_preferred",
@@ -319,7 +319,7 @@ class GpseaJSONDecoder(JSONDecoder):
             )
         elif GpseaJSONDecoder._has_all_fields(obj, _TX_ANNOTATION_FIELDS):
             return TranscriptAnnotation(
-                gene_id=obj["gene_id"],
+                gene_symbol=obj["gene_symbol"],
                 tx_id=obj["transcript_id"],
                 hgvs_cdna=obj["hgvs_cdna"],
                 is_preferred=obj["is_preferred"],

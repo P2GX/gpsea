@@ -454,13 +454,38 @@ class TestVVMultiCoordinateService_as_GeneCoordinateService:
             False,
         ]
 
+    @pytest.mark.online
+    def test_fetch_for_gene(
+        self,
+        vv_multi_coordinate_service: VVMultiCoordinateService,
+    ):
+        tcs = vv_multi_coordinate_service.fetch_for_gene("HGNC:13575")  # BRD4
+
+        assert len(tcs) == 10
+
+        tcs = sorted(tcs, key=lambda ta: ta.identifier)
+
+        first = tcs[0]
+
+        assert first.identifier == "NM_001330384.1"
+
+        assert first.region.contig.name == "19"
+        assert first.region.start == 43_285_073
+        assert first.region.end == 43_364_622
+        assert first.region.strand.is_negative()
+
+        assert not first.is_preferred
+        assert len(first.exons) == 12
+        assert first.cds_start is not None and first.cds_start == 43_344_517
+        assert first.cds_end is not None and first.cds_end == 43_364_060
+
 
 def load_response_json(path: str):
     with open(path) as fh:
         return json.load(fh)
 
 
-# @pytest.mark.online
+@pytest.mark.online
 class TestVVHgvsVariantCoordinateFinder:
     @pytest.fixture(scope="class")
     def coordinate_finder(

@@ -133,8 +133,11 @@ def gene(symbol: str) -> VariantPredicate:
     """
     Prepare a :class:`VariantPredicate` that tests if the variant affects a given gene.
 
+    We recommend to consult the `HUGO Gene Name Nomenclature Committee <https://www.genenames.org/>`_
+    website to obtain the approved symbol for the gene of interest.
+
     Args:
-        symbol: a `str` with the gene symbol (e.g. ``'FBN1'``).
+        symbol: a `str` with the approved gene symbol (e.g. ``FBN1``).
     """
     return VariantGenePredicate(symbol)
 

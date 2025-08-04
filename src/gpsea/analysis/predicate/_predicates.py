@@ -169,7 +169,7 @@ class VariantGenePredicate(VariantPredicate):
 
     def test(self, variant: Variant) -> bool:
         for tx in variant.tx_annotations:
-            if tx.gene_id == self._symbol:
+            if tx.gene_symbol == self._symbol:
                 return True
         return False
 
