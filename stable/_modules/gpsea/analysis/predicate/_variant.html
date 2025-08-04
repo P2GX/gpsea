@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.analysis.predicate._variant &mdash; GPSEA 0.9.10 documentation</title>
+  <title>gpsea.analysis.predicate._variant &mdash; GPSEA 0.9.11 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=2ccb3ee0"></script>
+      <script src="../../../../_static/documentation_options.js?v=88b3baf9"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -228,8 +228,11 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prepare a :class:`VariantPredicate` that tests if the variant affects a given gene.</span>
 
+<span class="sd">    We recommend to consult the `HUGO Gene Name Nomenclature Committee &lt;https://www.genenames.org/&gt;`_</span>
+<span class="sd">    website to obtain the approved symbol for the gene of interest.</span>
+
 <span class="sd">    Args:</span>
-<span class="sd">        symbol: a `str` with the gene symbol (e.g. ``&#39;FBN1&#39;``).</span>
+<span class="sd">        symbol: a `str` with the approved gene symbol (e.g. ``FBN1``).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">VariantGenePredicate</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></div>
 

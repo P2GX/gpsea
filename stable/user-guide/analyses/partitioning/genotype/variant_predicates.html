@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Variant Predicates &mdash; GPSEA 0.9.10 documentation</title>
+  <title>Variant Predicates &mdash; GPSEA 0.9.11 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=2ccb3ee0"></script>
+      <script src="../../../../_static/documentation_options.js?v=88b3baf9"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -169,7 +169,8 @@ We can retrieve the variant by querying the cohort by the variant key:</p>
 <section id="builtin-predicates">
 <h3>Builtin predicates<a class="headerlink" href="#builtin-predicates" title="Link to this heading"></a></h3>
 <p>Let’s use builtin predicates to verify the properties of the variant <code class="docutils literal notranslate"><span class="pre">1_8358231_8358231_T_C</span></code>.</p>
-<p>We can check that the variant overlaps with <em>RERE</em></p>
+<p>We can check that the variant has a functional annotation
+with respect to <em>RERE</em></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">gpsea.analysis.predicate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">gene</span><span class="p">(</span><span class="s1">&#39;RERE&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gene</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>

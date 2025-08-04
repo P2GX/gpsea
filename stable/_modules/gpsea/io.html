@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>gpsea.io &mdash; GPSEA 0.9.10 documentation</title>
+  <title>gpsea.io &mdash; GPSEA 0.9.11 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=2ccb3ee0"></script>
+      <script src="../../_static/documentation_options.js?v=88b3baf9"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -169,7 +169,7 @@
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">TranscriptAnnotation</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;gene_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_id</span><span class="p">,</span>
+                <span class="s2">&quot;gene_symbol&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>
                 <span class="s2">&quot;transcript_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">transcript_id</span><span class="p">,</span>
                 <span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">hgvs_cdna</span><span class="p">,</span>
                 <span class="s2">&quot;is_preferred&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_preferred</span><span class="p">,</span>
@@ -288,7 +288,7 @@
 <span class="n">_SAMPLE_LABELS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;meta_label&quot;</span><span class="p">)</span>
 <span class="n">_GENOTYPES_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;samples&quot;</span><span class="p">,</span> <span class="s2">&quot;genotypes&quot;</span><span class="p">)</span>
 <span class="n">_TX_ANNOTATION_FIELDS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;gene_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gene_symbol&quot;</span><span class="p">,</span>
     <span class="s2">&quot;transcript_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">,</span>
     <span class="s2">&quot;is_preferred&quot;</span><span class="p">,</span>
@@ -407,7 +407,7 @@
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_TX_ANNOTATION_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">TranscriptAnnotation</span><span class="p">(</span>
-                <span class="n">gene_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;gene_id&quot;</span><span class="p">],</span>
+                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">],</span>
                 <span class="n">tx_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;transcript_id&quot;</span><span class="p">],</span>
                 <span class="n">hgvs_cdna</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">],</span>
                 <span class="n">is_preferred</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;is_preferred&quot;</span><span class="p">],</span>

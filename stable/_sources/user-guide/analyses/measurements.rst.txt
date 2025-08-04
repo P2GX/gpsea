@@ -35,7 +35,7 @@ and then serialized as a JSON file following the instructions in :ref:`cohort-pe
 >>> with open(fpath_cohort_json) as fh:
 ...     cohort = json.load(fh, cls=GpseaJSONDecoder)
 >>> len(cohort)
-69
+68
 
 
 Configure analysis
