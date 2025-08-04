@@ -23,9 +23,11 @@ jobs:
         run: python3 -m pip install --editable .[test]
       - name: Run tests
         env:
-          GPSEA_CACHEDIR: ".gpsea_ci_cachedir"
           MPLBACKEND: "Agg"
-        run: pytest
+          # GPSEA_CACHEDIR: ".gpsea_ci_cachedir"
+        run: |
+          export GPSEA_CACHEDIR=my_funky_thing
+          pytest
   
   formatting:
     name: Check code formatting
