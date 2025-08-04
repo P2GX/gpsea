@@ -360,8 +360,8 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
     and are ready for genotype-phenotype association analysis.
 
     Note: the constructor is for *internal* use only.
-    Use the static constructors (static methods that start with "Cohort.from_",
-    such as :meth:`~gpsea.model.Cohort.from_patients`) to create a cohort.
+    Use the static constructors (static methods that start with "Cohort.from\_")
+    to create a cohort.
     """
 
     @staticmethod
