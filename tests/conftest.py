@@ -70,7 +70,7 @@ def fpath_cache_dir(
 ) -> str:
     if CACHE_ENV in os.environ:
         # The variable may be set e.g. on GitHub action runner
-        cache_dir = os.environ[CACHE_ENV]
+        cache_dir = os.path.join(fpath_project_dir, os.environ[CACHE_ENV])
     else:
         cache_dir = os.path.join(fpath_project_dir, DEFAULT_CACHE_PATH)
 
