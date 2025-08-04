@@ -70,10 +70,14 @@ def fpath_cache_dir(
 ) -> str:
     if CACHE_ENV in os.environ:
         # The variable may be set e.g. on GitHub action runner
-        cache_dir = os.path.join(fpath_project_dir, os.environ[CACHE_ENV])
+        cache_dir = os.environ[CACHE_ENV]
+        print(f"Using environ: {cache_dir}")
     else:
-        cache_dir = os.path.join(fpath_project_dir, DEFAULT_CACHE_PATH)
-
+        cache_dir = DEFAULT_CACHE_PATH
+        print(f"Using default: {cache_dir}")
+    cache_dir = os.path.join(fpath_project_dir, cache_dir)
+    print(os.listdir(fpath_project_dir))
+    
     assert os.path.isdir(cache_dir), "Cache dir with test responses should already exist!"
 
     return str(cache_dir)
