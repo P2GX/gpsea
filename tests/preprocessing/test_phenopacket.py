@@ -22,11 +22,10 @@ from gpsea.preprocessing import (
 from gpsea.preprocessing import (
     FunctionalAnnotator,
     ImpreciseSvFunctionalAnnotator,
-    DefaultImpreciseSvFunctionalAnnotator,
     configure_default_functional_annotator,
+    configure_default_imprecise_sv_functional_annotator,
 )
 from gpsea.preprocessing import PhenopacketPatientCreator, PhenopacketOntologyTermOnsetParser
-from gpsea.preprocessing import VVMultiCoordinateService
 
 
 class TestPhenopacketVariantCoordinateFinder:
@@ -178,26 +177,22 @@ class TestPhenopacketPatientCreator:
     @pytest.fixture(scope="class")
     def functional_annotator(
         self,
-        fpath_project_dir: str,
+        fpath_cache_dir: str,
     ) -> FunctionalAnnotator:
-        fpath_cache_dir = os.path.join(fpath_project_dir, ".gpsea_cache")
-        fpath_variant_cache_dir = os.path.join(fpath_cache_dir, "variant_cache")
-        os.makedirs(fpath_variant_cache_dir, exist_ok=True)
-
         return configure_default_functional_annotator(
             ann_source="VEP",
-            cache_dir=fpath_variant_cache_dir,
+            cache_dir=fpath_cache_dir,
         )
 
     @pytest.fixture(scope="class")
     def imprecise_sv_functional_annotator(
         self,
         genome_build: GenomeBuild,
+        fpath_cache_dir: str,
     ) -> ImpreciseSvFunctionalAnnotator:
-        return DefaultImpreciseSvFunctionalAnnotator(
-            gene_coordinate_service=VVMultiCoordinateService(
-                genome_build=genome_build,
-            ),
+        return configure_default_imprecise_sv_functional_annotator(
+            genome_build=genome_build,
+            cache_dir=fpath_cache_dir,
         )
 
     @pytest.fixture(scope="class")

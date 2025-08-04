@@ -2,39 +2,44 @@ import os
 import io
 
 import hpotk
-from hpotk.validate import ValidationRunner
 import pytest
+
+from hpotk.validate import ValidationRunner
 
 from gpsea.model.genome import GenomeBuild
 from gpsea.preprocessing import FunctionalAnnotator, ImpreciseSvFunctionalAnnotator, VariantCoordinateFinder
-from gpsea.preprocessing import VVHgvsVariantCoordinateFinder, DefaultImpreciseSvFunctionalAnnotator
+from gpsea.preprocessing import VVHgvsVariantCoordinateFinder
 from gpsea.preprocessing import PhenopacketPatientCreator
-from gpsea.preprocessing import VVMultiCoordinateService
 from gpsea.preprocessing import CohortCreator, load_phenopacket_folder
-from gpsea.preprocessing import configure_default_functional_annotator
+from gpsea.preprocessing import (
+    configure_default_functional_annotator,
+    configure_default_imprecise_sv_functional_annotator,
+)
 
 
 class TestPhenopacketCohortCreator:
-    @pytest.fixture
+    @pytest.fixture(scope="class")
     def functional_annotator(
         self,
+        fpath_cache_dir: str,
     ) -> FunctionalAnnotator:
         return configure_default_functional_annotator(
             ann_source="VEP",
+            cache_dir=fpath_cache_dir,
         )
 
-    @pytest.fixture
+    @pytest.fixture(scope="class")
     def imprecise_sv_functional_annotator(
         self,
         genome_build: GenomeBuild,
+        fpath_cache_dir: str,
     ) -> ImpreciseSvFunctionalAnnotator:
-        return DefaultImpreciseSvFunctionalAnnotator(
-            gene_coordinate_service=VVMultiCoordinateService(
-                genome_build=genome_build,
-            ),
+        return configure_default_imprecise_sv_functional_annotator(
+            genome_build=genome_build,
+            cache_dir=fpath_cache_dir,
         )
 
-    @pytest.fixture
+    @pytest.fixture(scope="class")
     def variant_coordinate_finder(
         self,
         genome_build: GenomeBuild,
@@ -43,7 +48,7 @@ class TestPhenopacketCohortCreator:
             genome_build=genome_build,
         )
 
-    @pytest.fixture
+    @pytest.fixture(scope="class")
     def patient_creator(
         self,
         hpo: hpotk.MinimalOntology,
@@ -62,7 +67,7 @@ class TestPhenopacketCohortCreator:
             hgvs_coordinate_finder=variant_coordinate_finder,
         )
 
-    @pytest.fixture
+    @pytest.fixture(scope="class")
     def phenopacket_cohort_creator(
         self,
         patient_creator: PhenopacketPatientCreator,

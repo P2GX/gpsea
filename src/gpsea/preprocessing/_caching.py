@@ -17,6 +17,7 @@ from gpsea.io import GpseaJSONDecoder, GpseaJSONEncoder
 
 from ._api import (
     FunctionalAnnotator,
+    GeneCoordinateService,
     ProteinMetadataService,
     TranscriptCoordinateService,
 )
@@ -218,3 +219,32 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
             self._cache.store_item(cache_key, annotations)
 
         return annotations
+
+
+class CachingGeneCoordinateService(GeneCoordinateService):
+    # NOT PART OF THE PUBLIC API
+
+    def __init__(
+        self,
+        cache: Cache[typing.Sequence[TranscriptCoordinates]],
+        fallback: GeneCoordinateService,
+    ) -> None:
+        assert isinstance(cache, Cache)
+        self._cache = cache
+
+        assert isinstance(fallback, GeneCoordinateService)
+        self._fallback = fallback
+
+    def fetch_for_gene(
+        self,
+        gene: str,
+    ) -> typing.Sequence[TranscriptCoordinates]:
+        assert isinstance(gene, str)
+
+        # `gene` may be treated as a file name by the cache.
+        item = self._cache.load_item(gene)
+        if item is None:  # cache miss
+            item = self._fallback.fetch_for_gene(gene)
+            self._cache.store_item(gene, item)
+
+        return item
