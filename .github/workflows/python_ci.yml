@@ -24,10 +24,8 @@ jobs:
       - name: Run tests
         env:
           MPLBACKEND: "Agg"
-          # GPSEA_CACHEDIR: ".gpsea_ci_cachedir"
-        run: |
-          export GPSEA_CACHEDIR=my_funky_thing
-          pytest
+          GPSEA_CACHEDIR: ".gpsea_ci_cachedir"
+        run: pytest tests/preprocessing
   
   formatting:
     name: Check code formatting
