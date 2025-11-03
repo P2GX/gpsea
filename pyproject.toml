@@ -38,7 +38,6 @@ dependencies = [
     "Jinja2>=3.1.4,<4.0.0",
     "phenopackets>=2.0.2.post4",
     "pandas>=2.0.0,<3.0.0",
-    "phenopacket-store-toolkit>=0.1.2",
     "requests>=2.25.0,<3.0",
     "scipy>=1.10,<2.0",
     "statsmodels>=0.13.0",
@@ -50,6 +49,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = [
+    "phenopacket-store-toolkit>=0.1.2",
     "pytest>=7.0.0,<8.0.0",
     "ruff==0.12.1",
 ]
