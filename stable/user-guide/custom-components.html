@@ -100,8 +100,8 @@ as a set of loosely coupled components. As a rule of thumb, each component corre
 to a Python abstract base class which is then extended by the builtin components
 and can also be extended by the future components, to serve both common or exotic use cases.</p>
 <p>The abstract base classes define the component API.
-Per guidelines in Python’s <a class="reference external" href="https://docs.python.org/3/library/abc.html#module-abc" title="(in Python v3.13)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code></a> module, the abstract classes use <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABCMeta" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></a> as a metaclass
-and the class API consists of methods annotated with the <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.abstractmethod" title="(in Python v3.13)"><code class="xref py py-func docutils literal notranslate"><span class="pre">abc.abstractmethod()</span></code></a> decorator.
+Per guidelines in Python’s <a class="reference external" href="https://docs.python.org/3/library/abc.html#module-abc" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code></a> module, the abstract classes use <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABCMeta" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABCMeta</span></code></a> as a metaclass
+and the class API consists of methods annotated with the <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.abstractmethod" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">abc.abstractmethod()</span></code></a> decorator.
 These decorated methods must be overridden in the subclasses.</p>
 <p>The following sections provide guidance for customizing the most commonly used GPSEA components.</p>
 <section id="phenotype-scorer">
