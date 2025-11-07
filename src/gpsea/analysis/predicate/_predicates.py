@@ -194,7 +194,7 @@ class VariantTranscriptPredicate(VariantPredicate):
     is annotated to affect a transcript with `tx_id` accession.
 
     Args:
-        tx_id (str): the accessiono of the transcript of interest, e.g. `NM_123456.7`
+        tx_id (str): the accession of the transcript of interest, e.g. `NM_123456.7`
     """
 
     def __init__(self, tx_id: str) -> None:
