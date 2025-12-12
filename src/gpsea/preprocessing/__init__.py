@@ -4,6 +4,7 @@ from ._api import VariantCoordinateFinder, FunctionalAnnotator, ImpreciseSvFunct
 from ._config import load_phenopacket_folder, load_phenopacket_files, load_phenopackets
 from ._config import configure_caching_cohort_creator, configure_cohort_creator
 from ._config import configure_default_tx_coordinate_service, configure_default_functional_annotator
+from ._config import configure_default_imprecise_sv_functional_annotator
 from ._config import configure_default_protein_metadata_service, configure_protein_metadata_service
 from ._generic import DefaultImpreciseSvFunctionalAnnotator
 from ._patient import PatientCreator, CohortCreator, CohortCreatorOptions
@@ -21,6 +22,7 @@ __all__ = [
     "configure_cohort_creator",
     "configure_default_tx_coordinate_service",
     "configure_default_functional_annotator",
+    "configure_default_imprecise_sv_functional_annotator",
     "configure_default_protein_metadata_service",
     "configure_protein_metadata_service",
     "VariantCoordinateFinder",

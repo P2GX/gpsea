@@ -21,8 +21,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install package
         run: python3 -m pip install --editable .[test]
-      - name: Run pytest tests
-        run: MPLBACKEND=Agg GPSEA_CACHEDIR=.gpsea_ci_cachedir pytest
+      - name: Run tests
+        env:
+          MPLBACKEND: "Agg"
+          GPSEA_CACHEDIR: ".gpsea_ci_cachedir"
+        run: pytest
   
   formatting:
     name: Check code formatting

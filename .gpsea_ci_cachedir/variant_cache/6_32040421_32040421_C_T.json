@@ -1,0 +1,126 @@
+[
+  {
+    "gene_symbol": "CYP21A2",
+    "transcript_id": "NM_000500.9",
+    "hgvs_cdna": "NM_000500.9:c.955C>T",
+    "is_preferred": true,
+    "variant_effects": [
+      "STOP_GAINED"
+    ],
+    "overlapping_exons": [
+      8
+    ],
+    "protein_id": "NP_000491.4",
+    "hgvsp": "NP_000491.4:p.Gln319Ter",
+    "protein_effect_location": {
+      "start": 318,
+      "end": 319
+    }
+  },
+  {
+    "gene_symbol": "CYP21A2",
+    "transcript_id": "NM_001128590.4",
+    "hgvs_cdna": "NM_001128590.4:c.865C>T",
+    "is_preferred": false,
+    "variant_effects": [
+      "STOP_GAINED"
+    ],
+    "overlapping_exons": [
+      7
+    ],
+    "protein_id": "NP_001122062.3",
+    "hgvsp": "NP_001122062.3:p.Gln289Ter",
+    "protein_effect_location": {
+      "start": 288,
+      "end": 289
+    }
+  },
+  {
+    "gene_symbol": "TNXB",
+    "transcript_id": "NM_001365276.2",
+    "hgvs_cdna": null,
+    "is_preferred": true,
+    "variant_effects": [
+      "DOWNSTREAM_GENE_VARIANT"
+    ],
+    "overlapping_exons": null,
+    "protein_id": "NP_001352205.1",
+    "hgvsp": null,
+    "protein_effect_location": null
+  },
+  {
+    "gene_symbol": "CYP21A2",
+    "transcript_id": "NM_001368143.2",
+    "hgvs_cdna": "NM_001368143.2:c.550C>T",
+    "is_preferred": false,
+    "variant_effects": [
+      "STOP_GAINED"
+    ],
+    "overlapping_exons": [
+      8
+    ],
+    "protein_id": "NP_001355072.1",
+    "hgvsp": "NP_001355072.1:p.Gln184Ter",
+    "protein_effect_location": {
+      "start": 183,
+      "end": 184
+    }
+  },
+  {
+    "gene_symbol": "CYP21A2",
+    "transcript_id": "NM_001368144.2",
+    "hgvs_cdna": "NM_001368144.2:c.550C>T",
+    "is_preferred": false,
+    "variant_effects": [
+      "STOP_GAINED"
+    ],
+    "overlapping_exons": [
+      7
+    ],
+    "protein_id": "NP_001355073.1",
+    "hgvsp": "NP_001355073.1:p.Gln184Ter",
+    "protein_effect_location": {
+      "start": 183,
+      "end": 184
+    }
+  },
+  {
+    "gene_symbol": "TNXB",
+    "transcript_id": "NM_001428335.1",
+    "hgvs_cdna": null,
+    "is_preferred": false,
+    "variant_effects": [
+      "DOWNSTREAM_GENE_VARIANT"
+    ],
+    "overlapping_exons": null,
+    "protein_id": "NP_001415264.1",
+    "hgvsp": null,
+    "protein_effect_location": null
+  },
+  {
+    "gene_symbol": "TNXB",
+    "transcript_id": "NM_019105.8",
+    "hgvs_cdna": null,
+    "is_preferred": false,
+    "variant_effects": [
+      "DOWNSTREAM_GENE_VARIANT"
+    ],
+    "overlapping_exons": null,
+    "protein_id": "NP_061978.6",
+    "hgvsp": null,
+    "protein_effect_location": null
+  },
+  {
+    "gene_symbol": "TNXB",
+    "transcript_id": "NM_032470.4",
+    "hgvs_cdna": null,
+    "is_preferred": false,
+    "variant_effects": [
+      "DOWNSTREAM_GENE_VARIANT"
+    ],
+    "overlapping_exons": null,
+    "protein_id": "NP_115859.2",
+    "hgvsp": null,
+    "protein_effect_location": null
+  }
+]

@@ -1,0 +1,506 @@
+{
+  "id": "MT_11778_G/A",
+  "variant_class": "SNV",
+  "input": "MT 11778 11778 G/A 1",
+  "most_severe_consequence": "missense_variant",
+  "transcript_consequences": [
+    {
+      "gene_id": "4508",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "ATP6.1",
+      "strand": 1,
+      "used_ref": "G",
+      "protein_id": "YP_003024031.1",
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 2571,
+      "given_ref": "G",
+      "gene_symbol": "ATP6",
+      "gene_symbol_source": "EntrezGene",
+      "impact": "MODIFIER",
+      "biotype": "protein_coding"
+    },
+    {
+      "given_ref": "G",
+      "gene_symbol": "ATP8",
+      "gene_symbol_source": "EntrezGene",
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "used_ref": "G",
+      "protein_id": "YP_003024030.1",
+      "canonical": 1,
+      "variant_allele": "A",
+      "distance": 3206,
+      "strand": 1,
+      "gene_id": "4509",
+      "transcript_id": "ATP8.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ]
+    },
+    {
+      "transcript_id": "COX1.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4512",
+      "strand": 1,
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 4333,
+      "used_ref": "G",
+      "protein_id": "YP_003024028.1",
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "given_ref": "G",
+      "gene_symbol": "COX1",
+      "gene_symbol_source": "EntrezGene"
+    },
+    {
+      "strand": 1,
+      "gene_id": "4513",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "COX2.1",
+      "gene_symbol": "COX2",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "biotype": "protein_coding",
+      "impact": "MODIFIER",
+      "used_ref": "G",
+      "protein_id": "YP_003024029.1",
+      "distance": 3509,
+      "variant_allele": "A",
+      "canonical": 1
+    },
+    {
+      "strand": 1,
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "COX3.1",
+      "gene_id": "4514",
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "given_ref": "G",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "COX3",
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 1788,
+      "protein_id": "YP_003024032.1",
+      "used_ref": "G"
+    },
+    {
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "CYTB",
+      "given_ref": "G",
+      "biotype": "protein_coding",
+      "impact": "MODIFIER",
+      "protein_id": "YP_003024038.1",
+      "used_ref": "G",
+      "canonical": 1,
+      "variant_allele": "A",
+      "distance": 2969,
+      "strand": 1,
+      "gene_id": "4519",
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "transcript_id": "CYTB.1"
+    },
+    {
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "given_ref": "G",
+      "gene_symbol": "ND3",
+      "gene_symbol_source": "EntrezGene",
+      "distance": 1374,
+      "variant_allele": "A",
+      "canonical": 1,
+      "protein_id": "YP_003024033.1",
+      "used_ref": "G",
+      "strand": 1,
+      "transcript_id": "ND3.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4537"
+    },
+    {
+      "variant_allele": "A",
+      "distance": 1012,
+      "canonical": 1,
+      "protein_id": "YP_003024034.1",
+      "used_ref": "G",
+      "biotype": "protein_coding",
+      "impact": "MODIFIER",
+      "gene_symbol": "ND4L",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "ND4L.1",
+      "gene_id": "4539",
+      "strand": 1
+    },
+    {
+      "variant_allele": "A",
+      "cdna_end": 1019,
+      "protein_id": "YP_003024035.1",
+      "used_ref": "G",
+      "impact": "MODERATE",
+      "cds_start": 1019,
+      "transcript_id": "ND4.1",
+      "sift_prediction": "deleterious_low_confidence",
+      "gene_id": "4538",
+      "codons": "cGc/cAc",
+      "polyphen_score": 0.996,
+      "canonical": 1,
+      "hgvsp": "YP_003024035.1:p.Arg340His",
+      "amino_acids": "R/H",
+      "mutfunc": {
+        "mod": {
+          "dG_mt": 346.5258,
+          "ddG_sd": 0.009126,
+          "dG_mt_sd": 0.095423,
+          "dG_wt_sd": 0.097037,
+          "ddG": 0.3596,
+          "dG_wt": 346.1662
+        }
+      },
+      "protein_end": 340,
+      "cds_end": 1019,
+      "biotype": "protein_coding",
+      "exon": "1/1",
+      "gene_symbol": "ND4",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "sift_score": 0,
+      "consequence_terms": [
+        "missense_variant"
+      ],
+      "hgvsc": "ND4.1:c.1019G>A",
+      "cdna_start": 1019,
+      "polyphen_prediction": "probably_damaging",
+      "protein_start": 340,
+      "strand": 1
+    },
+    {
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "given_ref": "G",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "ND5",
+      "variant_allele": "A",
+      "distance": 559,
+      "canonical": 1,
+      "used_ref": "G",
+      "protein_id": "YP_003024036.1",
+      "strand": 1,
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "transcript_id": "ND5.1",
+      "gene_id": "4540"
+    },
+    {
+      "transcript_id": "ND6.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4541",
+      "strand": -1,
+      "canonical": 1,
+      "variant_allele": "A",
+      "distance": 2371,
+      "used_ref": "G",
+      "protein_id": "YP_003024037.1",
+      "impact": "MODIFIER",
+      "biotype": "protein_coding",
+      "given_ref": "G",
+      "gene_symbol": "ND6",
+      "gene_symbol_source": "EntrezGene"
+    },
+    {
+      "variant_allele": "A",
+      "distance": 4193,
+      "canonical": 1,
+      "used_ref": "G",
+      "biotype": "tRNA",
+      "impact": "MODIFIER",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "TRND",
+      "given_ref": "G",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "TRND.1",
+      "gene_id": "4555",
+      "strand": 1
+    },
+    {
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "given_ref": "G",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "TRNE",
+      "variant_allele": "A",
+      "distance": 2896,
+      "canonical": 1,
+      "used_ref": "G",
+      "strand": -1,
+      "transcript_id": "TRNE.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4556"
+    },
+    {
+      "transcript_id": "TRNG.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4563",
+      "strand": 1,
+      "distance": 1720,
+      "variant_allele": "A",
+      "canonical": 1,
+      "used_ref": "G",
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "given_ref": "G",
+      "gene_symbol": "TRNG",
+      "gene_symbol_source": "EntrezGene"
+    },
+    {
+      "distance": 360,
+      "variant_allele": "A",
+      "canonical": 1,
+      "used_ref": "G",
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "given_ref": "G",
+      "gene_symbol": "TRNH",
+      "gene_symbol_source": "EntrezGene",
+      "transcript_id": "TRNH.1",
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "gene_id": "4564",
+      "strand": 1
+    },
+    {
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "transcript_id": "TRNK.1",
+      "gene_id": "4566",
+      "strand": 1,
+      "canonical": 1,
+      "variant_allele": "A",
+      "distance": 3414,
+      "used_ref": "G",
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "given_ref": "G",
+      "gene_symbol": "TRNK",
+      "gene_symbol_source": "EntrezGene"
+    },
+    {
+      "strand": 1,
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "transcript_id": "TRNL2.1",
+      "gene_id": "4568",
+      "biotype": "tRNA",
+      "impact": "MODIFIER",
+      "gene_symbol": "TRNL2",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 488,
+      "used_ref": "G"
+    },
+    {
+      "biotype": "tRNA",
+      "impact": "MODIFIER",
+      "gene_symbol": "TRNP",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "distance": 4178,
+      "variant_allele": "A",
+      "canonical": 1,
+      "used_ref": "G",
+      "strand": -1,
+      "transcript_id": "TRNP.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4571"
+    },
+    {
+      "biotype": "tRNA",
+      "impact": "MODIFIER",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "TRNR",
+      "given_ref": "G",
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 1309,
+      "used_ref": "G",
+      "strand": 1,
+      "transcript_id": "TRNR.1",
+      "consequence_terms": [
+        "downstream_gene_variant"
+      ],
+      "gene_id": "4573"
+    },
+    {
+      "gene_symbol": "TRNS1",
+      "gene_symbol_source": "EntrezGene",
+      "given_ref": "G",
+      "biotype": "tRNA",
+      "impact": "MODIFIER",
+      "used_ref": "G",
+      "canonical": 1,
+      "variant_allele": "A",
+      "distance": 4264,
+      "strand": -1,
+      "gene_id": "4574",
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "transcript_id": "TRNS1.1"
+    },
+    {
+      "used_ref": "G",
+      "distance": 429,
+      "variant_allele": "A",
+      "canonical": 1,
+      "given_ref": "G",
+      "gene_symbol_source": "EntrezGene",
+      "gene_symbol": "TRNS2",
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "gene_id": "4575",
+      "transcript_id": "TRNS2.1",
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "strand": 1
+    },
+    {
+      "given_ref": "G",
+      "gene_symbol": "TRNT",
+      "gene_symbol_source": "EntrezGene",
+      "impact": "MODIFIER",
+      "biotype": "tRNA",
+      "used_ref": "G",
+      "variant_allele": "A",
+      "canonical": 1,
+      "distance": 4110,
+      "strand": 1,
+      "gene_id": "4576",
+      "consequence_terms": [
+        "upstream_gene_variant"
+      ],
+      "transcript_id": "TRNT.1"
+    }
+  ],
+  "allele_string": "G/A",
+  "start": 11778,
+  "seq_region_name": "MT",
+  "assembly_name": "GRCh38",
+  "strand": 1,
+  "colocated_variants": [
+    {
+      "start": 11778,
+      "id": "rs199476112",
+      "strand": 1,
+      "clin_sig_allele": "A:pathogenic",
+      "end": 11778,
+      "var_synonyms": {
+        "OMIM": [
+          516003.0001
+        ],
+        "UniProt": [
+          "VAR_004760"
+        ],
+        "ClinVar": [
+          "RCV002260593",
+          "RCV002288481",
+          "RCV002285007",
+          "RCV004814876",
+          "RCV004814875",
+          "RCV000010354",
+          "VCV000009708",
+          "RCV000224219"
+        ]
+      },
+      "seq_region_name": "MT",
+      "pubmed": [
+        25741868,
+        1900003,
+        20301353,
+        34002094,
+        12560876,
+        1417830,
+        8755941,
+        19026397,
+        1346348,
+        1352537,
+        1734726,
+        1763894,
+        1770533,
+        1770665,
+        1866007,
+        1937476,
+        1959619,
+        1959931,
+        2039048,
+        2222273,
+        2286378,
+        2346190,
+        2346203,
+        2390098,
+        2566021,
+        2566116,
+        2575667,
+        2817063,
+        3201231,
+        8101084,
+        8240101,
+        8240102,
+        8448903,
+        8449667,
+        8457609,
+        8474822,
+        8489402,
+        8489411,
+        9150158,
+        11169561,
+        11854175,
+        12402249,
+        16431939,
+        16477364,
+        16532388,
+        18771762,
+        29774306,
+        39578757
+      ],
+      "clin_sig": [
+        "pathogenic"
+      ],
+      "allele_string": "G/A",
+      "phenotype_or_disease": 1
+    }
+  ],
+  "end": 11778
+}

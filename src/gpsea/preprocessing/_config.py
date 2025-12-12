@@ -23,6 +23,8 @@ from gpsea.model import Cohort
 from gpsea.model.genome import GRCh37, GRCh38, GenomeBuild
 from ._api import (
     FunctionalAnnotator,
+    GeneCoordinateService,
+    ImpreciseSvFunctionalAnnotator,
     ProteinMetadataService,
     PreprocessingValidationResult,
     TranscriptCoordinateService,
@@ -34,6 +36,7 @@ from ._phenopacket import PhenopacketPatientCreator, PhenopacketOntologyTermOnse
 from ._caching import (
     JsonCache,
     CachingFunctionalAnnotator,
+    CachingGeneCoordinateService,
     CachingProteinMetadataService,
     CachingTranscriptCoordinateService,
 )
@@ -50,7 +53,8 @@ def configure_caching_cohort_creator(
     validation_runner: typing.Optional[ValidationRunner] = None,
     cache_dir: typing.Optional[str] = None,
     include_ontology_class_onsets: bool = True,
-    variant_fallback: str = "VEP",
+    variant_fallback: typing.Literal["VEP"] = "VEP",
+    tx_coord_source_fallback: typing.Literal["VV"] = "VV",
     timeout: typing.Union[float, int] = 30.0,
 ) -> CohortCreator[Phenopacket]:
     """
@@ -67,7 +71,9 @@ def configure_caching_cohort_creator(
     :param include_ontology_class_onsets: `True` if onsets in the ontology class format
         (e.g. `HP:0003621` for Juvenile onset) should be included (default `True`).
     :param variant_fallback: the fallback variant annotator to use if we cannot find the annotation locally.
-     Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
+        Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
+    :param tx_coord_source_fallback: the fallback source of transcript coordinates.
+        Choose from ``{'VV'}`` (only one fallback implementation is available at the moment).
     :param timeout: timeout in seconds for the REST APIs
     """
     cache_dir = _configure_cache_dir(cache_dir)
@@ -75,8 +81,17 @@ def configure_caching_cohort_creator(
 
     build = _configure_build(genome_build)
     validator = _setup_hpo_validator(hpo, validation_runner)
-    functional_annotator = _configure_functional_annotator(cache_dir, variant_fallback, timeout)
-    imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(build, cache_dir, timeout)
+    functional_annotator = _configure_functional_annotator(
+        cache_dir,
+        variant_fallback,
+        timeout,
+    )
+    imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(
+        build,
+        tx_coord_source_fallback,
+        cache_dir,
+        timeout,
+    )
     hgvs_annotator = VVHgvsVariantCoordinateFinder(build)
     term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
@@ -97,7 +112,8 @@ def configure_cohort_creator(
     genome_build: typing.Literal["GRCh37.p13", "GRCh38.p13"] = "GRCh38.p13",
     validation_runner: typing.Optional[ValidationRunner] = None,
     include_ontology_class_onsets: bool = True,
-    variant_fallback: str = "VEP",
+    variant_fallback: typing.Literal["VEP"] = "VEP",
+    tx_coord_source_fallback: typing.Literal["VV"] = "VV",
     timeout: typing.Union[float, int] = 30.0,
 ) -> CohortCreator[Phenopacket]:
     """
@@ -114,15 +130,21 @@ def configure_cohort_creator(
         (e.g. `HP:0003621` for Juvenile onset) should be included (default `True`).
     :param variant_fallback: the fallback variant annotator to use if we cannot find the annotation locally.
      Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
+    :param tx_coord_source_fallback: the fallback source of transcript coordinates.
+        Choose from ``{'VV'}`` (only one fallback implementation is available at the moment).
     :param timeout: timeout in seconds for the VEP API
     """
     build = _configure_build(genome_build)
     timeout = _normalize_timeout(timeout)
 
     validator = _setup_hpo_validator(hpo, validation_runner)
-    functional_annotator = _configure_fallback_functional(variant_fallback, timeout)
+    functional_annotator = _configure_fallback_functional(
+        variant_fallback,
+        timeout,
+    )
     imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(
         build,
+        tx_coord_source_fallback=tx_coord_source_fallback,
         cache_dir=None,
         timeout=timeout,
     )
@@ -197,6 +219,14 @@ def configure_default_tx_coordinate_service(
     cache_dir: typing.Optional[str] = None,
     timeout: typing.Union[float, int] = 30.0,
 ) -> TranscriptCoordinateService:
+    """
+    Get the default implementation of the :class:`~gpsea.preprocessing.TranscriptCoordinateService`.
+
+    :param tx_source: the source of transcript coordinates (VV - variant validator REST API by default).
+    :param genome_build: the genome build to use.
+    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.
+    :param timeout: the timeout in seconds to use for interacting with REST APIs.
+    """
     cache_dir = _configure_cache_dir(cache_dir)
     timeout = _normalize_timeout(timeout)
     build = _configure_build(genome_build)
@@ -214,11 +244,44 @@ def configure_default_functional_annotator(
     cache_dir: typing.Optional[str] = None,
     timeout: typing.Union[float, int] = 30.0,
 ) -> FunctionalAnnotator:
+    """
+    Get the default implementation of the :class:`~gpsea.preprocessing.FunctionalAnnotator`.
+
+    :param ann_source: the source of transcript coordinates (VV - variant validator REST API by default).
+    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.
+    :param timeout: the timeout in seconds to use for interacting with REST APIs.
+    """
     cache_dir = _configure_cache_dir(cache_dir)
     timeout = _normalize_timeout(timeout)
 
-    return _configure_func_annotator(
-        ann_source=ann_source,
+    return _configure_functional_annotator(
+        cache_dir=cache_dir,
+        variant_fallback=ann_source,
+        timeout=timeout,
+    )
+
+
+def configure_default_imprecise_sv_functional_annotator(
+    genome_build: typing.Union[GenomeBuild, typing.Literal["hg19", "hg38"]] = "hg38",
+    tx_coord_source: typing.Literal["VV"] = "VV",
+    cache_dir: typing.Optional[str] = None,
+    timeout: float = 30.0,
+) -> ImpreciseSvFunctionalAnnotator:
+    """
+    Get the default implementation of the :class:`~gpsea.preprocessing.ImpreciseSvFunctionalAnnotator`.
+
+    :param genome_build: the genome build to use.
+    :param ann_source: the source of transcript coordinates (VV - variant validator REST API by default).
+    :param cache_dir: path to top-level cache directory or `None` if no caching should be done.
+    :param timeout: the timeout in seconds to use for interacting with REST APIs.
+    """
+    cache_dir = _configure_cache_dir(cache_dir)
+    timeout = _normalize_timeout(timeout)
+    build = _configure_build(genome_build)
+
+    return _configure_imprecise_sv_annotator(
+        genome_build=build,
+        tx_coord_source_fallback=tx_coord_source,
         cache_dir=cache_dir,
         timeout=timeout,
     )
@@ -280,25 +343,6 @@ def _configure_tx_service(
     return CachingTranscriptCoordinateService(cache=tx_cache, fallback=fallback)
 
 
-def _configure_func_annotator(
-    ann_source: str,
-    cache_dir: str,
-    timeout: float,
-) -> FunctionalAnnotator:
-    if ann_source == "VEP":
-        fallback = VepFunctionalAnnotator(timeout=timeout)
-    else:
-        raise ValueError(f"Unknown functional annotation source {ann_source}")
-    # Setup cache
-    tx_cache_dir = os.path.join(cache_dir, "tx_cache")
-    os.makedirs(tx_cache_dir, exist_ok=True)
-    tx_cache = JsonCache(
-        data_dir=tx_cache_dir,
-        indent=2,
-    )
-    return CachingFunctionalAnnotator(cache=tx_cache, fallback=fallback)
-
-
 def _configure_cache_dir(
     cache_dir: typing.Optional[str] = None,
 ) -> str:
@@ -351,7 +395,7 @@ def _setup_hpo_validator(
 
 def _configure_functional_annotator(
     cache_dir: str,
-    variant_fallback: str,
+    variant_fallback: typing.Literal["VEP"],
     timeout: float,
 ) -> FunctionalAnnotator:
     # (2) FunctionalAnnotator
@@ -366,11 +410,14 @@ def _configure_functional_annotator(
         indent=2,
     )
 
-    return CachingFunctionalAnnotator(cache=cache, fallback=fallback)
+    return CachingFunctionalAnnotator(
+        cache=cache,
+        fallback=fallback,
+    )
 
 
 def _configure_fallback_functional(
-    variant_fallback: str,
+    variant_fallback: typing.Literal["VEP"],
     timeout: float,
 ) -> FunctionalAnnotator:
     if variant_fallback == "VEP":
@@ -380,23 +427,63 @@ def _configure_fallback_functional(
     return fallback
 
 
-def _configure_imprecise_sv_annotator(
+def _configure_gene_coordinate_service(
     genome_build: GenomeBuild,
-    cache_dir: typing.Optional[str] = None,
+    tx_coord_source_fallback: typing.Literal["VV"],
+    cache_dir: typing.Optional[str],
     timeout: float = 30.0,
-):
-    # Setup cache for SVs
-    if cache_dir is not None:
-        _sv_cache_dir = os.path.join(cache_dir, "sv_cache")
-        # TODO: implement the cache.
-        # os.makedirs(sv_cache_dir, exist_ok=True)
-        # var_cache = VariantAnnotationCache(sv_cache_dir)
+) -> GeneCoordinateService:
+    fallback = _configure_fallback_gene_coordinate_service(
+        genome_build=genome_build,
+        tx_coord_source=tx_coord_source_fallback,
+        timeout=timeout,
+    )
 
-    return DefaultImpreciseSvFunctionalAnnotator(
-        gene_coordinate_service=VVMultiCoordinateService(
+    if cache_dir is None:
+        return fallback
+    else:
+        gene_cache_dir = os.path.join(cache_dir, "gene_to_tx_coordinates")
+        os.makedirs(gene_cache_dir, exist_ok=True)
+        cache = JsonCache(
+            gene_cache_dir,
+            indent=2,
+        )
+        return CachingGeneCoordinateService(
+            cache=cache,
+            fallback=fallback,
+        )
+
+
+def _configure_fallback_gene_coordinate_service(
+    genome_build: GenomeBuild,
+    tx_coord_source: typing.Literal["VV"],
+    timeout: float = 30.0,
+) -> GeneCoordinateService:
+    if tx_coord_source == "VV":
+        return VVMultiCoordinateService(
             genome_build=genome_build,
             timeout=timeout,
         )
+    else:
+        raise ValueError(f"Unknown transcript coordinate source {tx_coord_source}")
+
+
+def _configure_imprecise_sv_annotator(
+    genome_build: GenomeBuild,
+    tx_coord_source_fallback: typing.Literal["VV"],
+    cache_dir: typing.Optional[str],
+    timeout: float = 30.0,
+) -> ImpreciseSvFunctionalAnnotator:
+    # TODO: setup cache for SVs
+    gene_coordinate_service = _configure_gene_coordinate_service(
+        genome_build=genome_build,
+        cache_dir=cache_dir,
+        tx_coord_source_fallback=tx_coord_source_fallback,
+        timeout=timeout,
+    )
+
+    return DefaultImpreciseSvFunctionalAnnotator(
+        gene_coordinate_service=gene_coordinate_service,
     )
 
 

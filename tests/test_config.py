@@ -23,8 +23,14 @@ class TestCacheDir:
         target = tmp_path / ".ou_yeah"
         assert not target.exists()
 
+        previous = os.environ.get(CACHE_ENV)
         os.environ[CACHE_ENV] = str(target)
 
         cd = get_cache_dir_path()
 
         assert cd == target
+
+        if previous is None:
+            del os.environ[CACHE_ENV]
+        else:
+            os.environ[CACHE_ENV] = previous

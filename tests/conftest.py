@@ -15,6 +15,7 @@ from hpotk.validate import (
 from gpsea.analysis.clf import GenotypeClassifier, biallelic_classifier, allele_count
 from gpsea.analysis.clf import PhenotypeClassifier, HpoClassifier
 from gpsea.analysis.predicate import variant_effect
+from gpsea.config import CACHE_ENV, DEFAULT_CACHE_PATH
 from gpsea.io import GpseaJSONDecoder
 from gpsea.model import (
     Cohort,
@@ -61,6 +62,21 @@ def fpath_project_dir(fpath_test_dir: str) -> str:
     as well as `src` and `tests` folders are located.
     """
     return os.path.dirname(fpath_test_dir)
+
+
+@pytest.fixture(scope="session")
+def fpath_cache_dir(
+    fpath_project_dir: str,
+) -> str:
+    if CACHE_ENV in os.environ:
+        # The variable may be set e.g. on GitHub action runner
+        cache_dir = os.environ[CACHE_ENV]
+    else:
+        cache_dir = os.path.join(fpath_project_dir, DEFAULT_CACHE_PATH)
+
+    assert os.path.isdir(cache_dir), "Cache dir with test responses should already exist!"
+
+    return str(cache_dir)
 
 
 @pytest.fixture(scope="session")

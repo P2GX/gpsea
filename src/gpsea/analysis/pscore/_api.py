@@ -356,6 +356,7 @@ class PhenotypeScoreAnalysis:
 
         # Sort by PatientCategory.cat_id and unpack.
         # For now, we only allow to have up to 2 groups.
+        # TODO: fails if one of the categories includes no individuals.
         x_key, y_key = sorted(data[MonoPhenotypeAnalysisResult.GT_COL].dropna().unique())
         x = data.loc[
             data[MonoPhenotypeAnalysisResult.GT_COL] == x_key,
