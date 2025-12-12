@@ -33,6 +33,11 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
     Non-coding variant effects where we do not complain if the functional annotation lacks the protein effects.
     """
 
+    _REFSEQ_TX_ID_PREFIXES = (
+        'NM_', 'NR_', 'NC_',
+        'XM_', 'XR_', 'XC_',
+    )
+
     def __init__(self, include_computational_txs: bool = False, timeout: float = 10.0):
         self._logger = logging.getLogger(__name__)
         self._url = (
@@ -203,4 +208,4 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
     
     @staticmethod
     def _seems_like_refseq_tx(tx_id: str) -> bool:
-        return tx_id.startswith('NM_') or tx_id.startswith('XM_')
+        return len(tx_id) >= 3 and tx_id[:3] in VepFunctionalAnnotator._REFSEQ_TX_ID_PREFIXES
