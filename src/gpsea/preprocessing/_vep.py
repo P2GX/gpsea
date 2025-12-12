@@ -34,8 +34,12 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
     """
 
     _REFSEQ_TX_ID_PREFIXES = (
-        'NM_', 'NR_', 'NC_',
-        'XM_', 'XR_', 'XC_',
+        "NM_",
+        "NR_",
+        "NC_",
+        "XM_",
+        "XR_",
+        "XC_",
     )
 
     def __init__(self, include_computational_txs: bool = False, timeout: float = 10.0):
@@ -205,7 +209,7 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
                 # MNV
 
         return f"{chrom}:{start}-{end}/{alt}"
-    
+
     @staticmethod
     def _seems_like_refseq_tx(tx_id: str) -> bool:
         return len(tx_id) >= 3 and tx_id[:3] in VepFunctionalAnnotator._REFSEQ_TX_ID_PREFIXES
