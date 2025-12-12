@@ -30,5 +30,7 @@ class TestCacheDir:
 
         assert cd == target
 
-        if previous is not None:
+        if previous is None:
+            del os.environ[CACHE_ENV]
+        else:
             os.environ[CACHE_ENV] = previous

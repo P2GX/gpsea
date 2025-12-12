@@ -12,6 +12,7 @@ from gpsea.preprocessing import VepFunctionalAnnotator
 
 LMNA_MANE_TX_ID = "NM_170707.4"
 ANKRD11_MANE_TX_ID = "NM_013275.6"
+ND4_TX_ID = "ND4.1"
 
 
 @pytest.mark.parametrize(
@@ -188,6 +189,18 @@ class TestVepFunctionalAnnotator:
                 803,
                 804,
             ),
+            (  # `MT_11778_11778_G_A`
+                "MT",
+                11_777,
+                11_778,
+                "G",
+                "A",
+                0,
+                ND4_TX_ID,
+                "YP_003024035.1",
+                339,
+                340,
+            ),
         ],
     )
     def test_parse_response(
@@ -274,6 +287,14 @@ class TestVepFunctionalAnnotator:
                 "T",
                 0,
             ),  # `X_31180437_31180437_C_T`
+            (
+                "MT",
+                11_777,
+                11_778,
+                "G",
+                "A",
+                0,
+            ),  # `MT_11778_11778_G_A`
         ],
     )
     def test_fetch_response(
