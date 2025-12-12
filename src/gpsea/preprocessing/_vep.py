@@ -85,9 +85,11 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
         Parse one transcript annotation from the JSON response.
         """
         trans_id = item.get("transcript_id")
-        if not self._include_computational_txs and not trans_id.startswith("NM_"):
-            # Skipping a computational transcript
-            return None
+        assert isinstance(trans_id, str)
+        if VepFunctionalAnnotator._seems_like_refseq_tx(trans_id):
+            if not self._include_computational_txs and not trans_id.startswith("NM_"):
+                # Skipping a computational transcript
+                return None
         is_preferred = True if ("canonical" in item and item["canonical"] == 1) else False
         hgvs_cdna = item.get("hgvsc")
         var_effects = []
@@ -97,12 +99,12 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
             if var_effect is not None:
                 var_effects.append(var_effect)
         gene_name = item.get("gene_symbol")
-        exons_effected = item.get("exon")
-        if exons_effected is not None:
-            exons_effected = exons_effected.split("/")[0].split("-")
-            if len(exons_effected) == 2:
-                exons_effected = range(int(exons_effected[0]), int(exons_effected[1]) + 1)
-            exons_effected = (int(x) for x in exons_effected)
+        exons_affected = item.get("exon")
+        if exons_affected is not None:
+            exons_affected = exons_affected.split("/")[0].split("-")
+            if len(exons_affected) == 2:
+                exons_affected = range(int(exons_affected[0]), int(exons_affected[1]) + 1)
+            exons_affected = (int(x) for x in exons_affected)
 
         protein_id = item.get("protein_id")
         hgvsp = item.get("hgvsp")
@@ -123,7 +125,15 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
             protein_effect = Region(protein_effect_start, protein_effect_end)
 
         return TranscriptAnnotation(
-            gene_name, trans_id, hgvs_cdna, is_preferred, var_effects, exons_effected, protein_id, hgvsp, protein_effect
+            gene_name,
+            trans_id,
+            hgvs_cdna,
+            is_preferred,
+            var_effects,
+            exons_affected,
+            protein_id,
+            hgvsp,
+            protein_effect,
         )
 
     def fetch_response(
@@ -190,3 +200,7 @@ class VepFunctionalAnnotator(FunctionalAnnotator):
                 # MNV
 
         return f"{chrom}:{start}-{end}/{alt}"
+    
+    @staticmethod
+    def _seems_like_refseq_tx(tx_id: str) -> bool:
+        return tx_id.startswith('NM_') or tx_id.startswith('XM_')
