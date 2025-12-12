@@ -116,9 +116,9 @@ for using body mass index (BMI) as a phenotype score.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.pscore</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhenotypeScorer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">BmiScorer</span><span class="p">(</span><span class="n">PhenotypeScorer</span><span class="p">):</span>  <span class="c1"># ❶</span>
 <span class="gp">...</span>
-<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span> <span class="c1"># ❷</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="n">id2bmi</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="n">id2bmi</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="c1"># ❷</span>
 <span class="gp">... </span>    <span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_id2bmi</span> <span class="o">=</span> <span class="n">id2bmi</span>
 <span class="gp">...</span>
@@ -141,29 +141,31 @@ for using body mass index (BMI) as a phenotype score.</p>
 <span class="gp">... </span>            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>❶ The <code class="docutils literal notranslate"><span class="pre">BmiScorer</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer" title="gpsea.analysis.pscore.PhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhenotypeScorer</span></code></a>
-to be used as a phenotype scorer.
-❷ The scorer needs a <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <cite>label</cite> → <cite>BMI</cite> for the analyzed individuals.
-We assume the user will pre-compute the corresponding <code class="docutils literal notranslate"><span class="pre">dict</span></code>.</p>
-<p>Then, the scorer must expose several properties, including ❸ <code class="docutils literal notranslate"><span class="pre">name</span></code>, ❹ <code class="docutils literal notranslate"><span class="pre">description</span></code>,
-and the ❺ <code class="docutils literal notranslate"><span class="pre">variable_name</span></code> it operates on.
-The properties provide bookkeeping metadata to use in e.g. visualizations.
-Try to choose short and concise names.</p>
-<p>The most important part of the scorer is the ❻ <cite>score</cite> method
-which retrieves the BMI for an individual or returns <cite>NaN</cite> if the value is not available
-and the individual should be omitted from the analysis.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BmiScorer</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer" title="gpsea.analysis.pscore.PhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhenotypeScorer</span></code></a>
+to be used as a phenotype scorer (❶).
+The scorer needs a mapping (e.g. a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>) with <cite>label</cite> → <cite>BMI</cite> for the analyzed individuals (❷).
+We assume the user will pre-compute the BMI values.</p>
+<p>Then, the scorer must expose several properties, including <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>,
+and the <code class="docutils literal notranslate"><span class="pre">variable_name</span></code> it operates on (❸❹❺).
+GPSEA uses the properties to describe the scorer in reports or visualizations.
+We should always aim for short and concise descriptions.</p>
+<p>The most important part of the scorer is the <cite>score</cite> method (❻).
+As stated above, the scorer is expected to compute a numerical value or <cite>NaN</cite>
+if the individual should be excluded from the analysis.
+In the case of BMI scorer, the BMI is retrieved from the <code class="docutils literal notranslate"><span class="pre">id2bmi</span></code> dictionary.
+If the BMI is missing, <cite>NaN</cite> is returned and the individual is omitted from the analysis.</p>
 </section>
 <section id="variant-predicate">
 <span id="custom-variant-predicate"></span><h2>Variant predicate<a class="headerlink" href="#variant-predicate" title="Link to this heading"></a></h2>
-<p>The purpose of a <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a> is to test
-if a variant meets a certain criterion and GPSEA ships with an array
-of builtin predicates (see <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#module-gpsea.analysis.predicate" title="gpsea.analysis.predicate"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gpsea.analysis.predicate</span></code></a> module).
-However, chances are a custom predicate will be needed in future,
-so we show how to how to extend
-the <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a> class
-to create one’s own predicate.</p>
-<p>Specifically, we show how to create a predicate to test if the variant affects a glycine residue
-of the transcript of interest.</p>
+<p>A <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a> tests
+if a variant meets a certain criterion (e.g. variant is a deletion, variant is annotated wrt. a transcript of interest)
+in order to assign the individual harboring the variant into a genotype class.
+GPSEA ships with an array of builtin predicates (see <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#module-gpsea.analysis.predicate" title="gpsea.analysis.predicate"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gpsea.analysis.predicate</span></code></a> module)
+that should cover the most commonly needed cases.</p>
+<p>However, since it is unlikely that the builtin predicates cover <em>all</em> cases,
+GPSEA allows to define custom variant predicates. Here we show how to create one.</p>
+<p>As an example, we show how to create a predicate for checking if the variant affects a glycine residue
+in a transcript of interest.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Variant</span><span class="p">,</span> <span class="n">VariantEffect</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.predicate</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantPredicate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">AffectsGlycinePredicate</span><span class="p">(</span><span class="n">VariantPredicate</span><span class="p">):</span> <span class="c1"># ❶</span>
@@ -207,13 +209,29 @@ of the transcript of interest.</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;AffectsGlycinePredicate(tx_id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span><span class="si">}</span><span class="s2">)&quot;</span>
 </pre></div>
 </div>
-<p>❶ The <code class="docutils literal notranslate"><span class="pre">AffectsGlycinePredicate</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a>.
-❷ We ask the user to provide the transcript accession <cite>str</cite> and we set the target aminoacid code to glycine <code class="docutils literal notranslate"><span class="pre">Gly</span></code>.
-Like in the <a class="reference internal" href="#custom-phenotype-scorer"><span class="std std-ref">Phenotype scorer</span></a> above, ❸❹❺ provide metadata required for the bookkeeping.
-The ❻ <code class="docutils literal notranslate"><span class="pre">test</span></code> method includes the most interesting part - we retrieve the <a class="reference internal" href="../apidocs/gpsea.model.html#gpsea.model.TranscriptAnnotation" title="gpsea.model.TranscriptAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">TranscriptAnnotation</span></code></a>
-with the functional annotation data for the transcript of interest, and we test if the HGVS protein indicates
-that the reference aminoacid is glycine.
-Last, we override ➐ <code class="docutils literal notranslate"><span class="pre">__eq__()</span></code> and ❽ <code class="docutils literal notranslate"><span class="pre">__hash__()</span></code> (required) as well as ❾ <code class="docutils literal notranslate"><span class="pre">__repr__()</span></code> and ➓ <code class="docutils literal notranslate"><span class="pre">__str__()</span></code> (recommended).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">AffectsGlycinePredicate</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a> to work with GPSEA (❶).
+We ask the user to provide the transcript accession <cite>str</cite> and we set the target aminoacid code to glycine <code class="docutils literal notranslate"><span class="pre">Gly</span></code> (❷).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Clearly, to test for change of <em>any</em> aminoacid
+with only a slight rewrite of the predicate’s constructor.
+We will leave this as an exercise for the interested readers.</p>
+</div>
+<p>Like in the <a class="reference internal" href="#custom-phenotype-scorer"><span class="std std-ref">Phenotype scorer</span></a> above, we provide metadata required for reports and visualizations (❸❹❺).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test</span></code> method includes the most important logic of the predicate (❻).
+In this specific case, we retrieve the <a class="reference internal" href="../apidocs/gpsea.model.html#gpsea.model.TranscriptAnnotation" title="gpsea.model.TranscriptAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">TranscriptAnnotation</span></code></a>
+with the functional annotation data for the transcript of interest,
+and we test if the HGVS protein indicates that the reference aminoacid is glycine.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend using an Integrated Development Environment (IDE) such as PyCharm or VS Code to design the predicate.
+On top of autocompletion and syntax checking features, an IDE simplifies accessing the properties and methods of objects.
+In case of <a class="reference internal" href="../apidocs/gpsea.model.html#gpsea.model.Variant" title="gpsea.model.Variant"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variant</span></code></a>, an IDE will help us discover its <code class="docutils literal notranslate"><span class="pre">get_tx_anno_by_tx_id</span></code> method,
+realize that it returns either <a class="reference internal" href="../apidocs/gpsea.model.html#gpsea.model.TranscriptAnnotation" title="gpsea.model.TranscriptAnnotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">TranscriptAnnotation</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+and retrieve the functional annotation of the variant with respect to transcript’s protein sequence
+from the <code class="docutils literal notranslate"><span class="pre">hgvsp</span></code> field.</p>
+</div>
+<p>Last, we override <code class="docutils literal notranslate"><span class="pre">__eq__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__hash__()</span></code> (required, ➐❽) as well as <code class="docutils literal notranslate"><span class="pre">__repr__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__str__()</span></code> (recommended, ❾➓).</p>
 </section>
 </section>
 

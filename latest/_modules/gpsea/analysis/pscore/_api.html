@@ -459,6 +459,7 @@
 
         <span class="c1"># Sort by PatientCategory.cat_id and unpack.</span>
         <span class="c1"># For now, we only allow to have up to 2 groups.</span>
+        <span class="c1"># TODO: fails if one of the categories includes no individuals.</span>
         <span class="n">x_key</span><span class="p">,</span> <span class="n">y_key</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
             <span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]</span> <span class="o">==</span> <span class="n">x_key</span><span class="p">,</span>
