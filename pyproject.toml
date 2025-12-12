@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpsea"
-version = "v0.9.12.dev0"
+version = "0.9.12"
 authors = [
     {name = "Lauren Rekerle", email="lauren.rekerle@jax.org"},
     {name = "Daniel Danis", email="daniel.danis@bih-charite.de"},
