@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpsea"
-version = "0.9.12"
+version = "0.9.13"
 authors = [
-    {name = "Lauren Rekerle", email="lauren.rekerle@jax.org"},
-    {name = "Daniel Danis", email="daniel.danis@bih-charite.de"},
-    {name = "Peter Robinson", email="peter.robinson@bih-charite.de"},
-     ]
+    { name = "Lauren Rekerle", email = "lauren.rekerle@jax.org" },
+    { name = "Daniel Danis", email = "daniel.danis@bih-charite.de" },
+    { name = "Peter Robinson", email = "peter.robinson@bih-charite.de" },
+]
 description = "Discover genotype-phenotype correlations with GA4GH phenopackets"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -30,7 +30,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Intended Audience :: Science/Research",
-    "Topic :: Scientific/Engineering :: Bio-Informatics"
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
 dependencies = [
     "hpo-toolkit>=0.3.0",
