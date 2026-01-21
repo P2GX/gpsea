@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gpsea.view._protein_visualizer &mdash; GPSEA 0.9.13.dev0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../../../_static/gpsea.css?v=547657ed" />
 
@@ -15,8 +15,8 @@
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../_static/documentation_options.js?v=9c67d2f7"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -86,7 +86,10 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.axes</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">maxs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mptch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npt</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cohort</span><span class="p">,</span> <span class="n">ProteinMetadata</span><span class="p">,</span> <span class="n">TranscriptCoordinates</span><span class="p">,</span> <span class="n">Variant</span><span class="p">,</span> <span class="n">VariantEffect</span>
 
@@ -194,14 +197,28 @@
             <span class="n">pvis</span><span class="o">=</span><span class="n">pvis</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="n">x_ticks</span> <span class="o">=</span> <span class="n">generate_ticks</span><span class="p">(</span><span class="n">apprx_n_ticks</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">)</span>
-        <span class="n">y_ticks</span> <span class="o">=</span> <span class="n">generate_ticks</span><span class="p">(</span><span class="n">apprx_n_ticks</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="n">variant_handler</span><span class="o">.</span><span class="n">max_marker_count</span><span class="p">)</span>
+        <span class="n">x_ticks</span> <span class="o">=</span> <span class="n">generate_ticks</span><span class="p">(</span>
+            <span class="n">apprx_n_ticks</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="nb">max</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">y_ticks</span> <span class="o">=</span> <span class="n">generate_ticks</span><span class="p">(</span>
+            <span class="n">apprx_n_ticks</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="nb">max</span><span class="o">=</span><span class="n">variant_handler</span><span class="o">.</span><span class="n">max_marker_count</span><span class="p">,</span>
+        <span class="p">)</span>
 
         <span class="c1"># normalize into [0, 1], leaving some space on the sides</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature_handler</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
-            <span class="n">cur_limits</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">min_pos_abs</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">max_pos_abs</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">min_pos_plotting</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">max_pos_plotting</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cur_limits</span><span class="p">),</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">min_pos_plotting</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">min_pos_abs</span><span class="p">,</span>
+                <span class="n">min_absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">max_absolute</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
+                <span class="n">min_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_min</span><span class="p">,</span>
+                <span class="n">max_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_max</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">max_pos_plotting</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">max_pos_abs</span><span class="p">,</span>
                 <span class="n">min_absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">max_absolute</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
                 <span class="n">min_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_min</span><span class="p">,</span>
@@ -209,9 +226,8 @@
             <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variant_handler</span><span class="o">.</span><span class="n">variants</span><span class="p">:</span>
-            <span class="n">pos_abs</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">pos_abs</span>
             <span class="n">v</span><span class="o">.</span><span class="n">pos_plotting</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pos_abs</span><span class="p">]),</span>
+                <span class="n">v</span><span class="o">.</span><span class="n">pos_abs</span><span class="p">,</span>
                 <span class="n">min_absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">max_absolute</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
                 <span class="n">min_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_min</span><span class="p">,</span>
@@ -219,12 +235,15 @@
                 <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="n">x_ticks_relative</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
-            <span class="n">x_ticks</span><span class="p">,</span>
-            <span class="n">min_absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">max_absolute</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
-            <span class="n">min_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_min</span><span class="p">,</span>
-            <span class="n">max_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_max</span><span class="p">,</span>
+        <span class="n">x_ticks_relative</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
+                <span class="n">x_tick</span><span class="p">,</span>
+                <span class="n">min_absolute</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">max_absolute</span><span class="o">=</span><span class="n">protein_metadata</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
+                <span class="n">min_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_min</span><span class="p">,</span>
+                <span class="n">max_relative</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">protein_track_x_max</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">x_tick</span> <span class="ow">in</span> <span class="n">x_ticks</span>
         <span class="p">)</span>
 
         <span class="c1"># PLOTTING</span>
@@ -286,9 +305,9 @@
         <span class="n">tx_coordinates</span><span class="p">:</span> <span class="n">TranscriptCoordinates</span><span class="p">,</span>
         <span class="n">protein_metadata</span><span class="p">:</span> <span class="n">ProteinMetadata</span><span class="p">,</span>
         <span class="n">cohort</span><span class="p">:</span> <span class="n">Cohort</span><span class="p">,</span>
-        <span class="n">ax</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">labeling_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;abbreviate&quot;</span><span class="p">,</span> <span class="s2">&quot;enumerate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;abbreviate&quot;</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">&quot;draw_protein_diagram was deprecated and will be removed in `1.0.0`. Use `draw_protein` instead&quot;</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
@@ -316,9 +335,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">draw_fig</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">pvis</span><span class="p">:</span> <span class="n">ProteinVisualizable</span><span class="p">,</span>
-        <span class="n">ax</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">labeling_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;abbreviate&quot;</span><span class="p">,</span> <span class="s2">&quot;enumerate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;abbreviate&quot;</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Visualize the cohort variants on a protein diagram.</span>
 
@@ -328,11 +347,11 @@
 <span class="sd">        Args:</span>
 <span class="sd">             pvis: :class:`ProteinVisualizable` with information about the transcript coordinates, protein metadata,</span>
 <span class="sd">               and the cohort for plotting</span>
-<span class="sd">             ax: a Matplotlib :class:`plt.Axes` to plot on or `None` if a new `Axes` should be created</span>
+<span class="sd">             ax: a Matplotlib :class:`~matplotlib.axes.Axes` to plot on or `None` if a new `Axes` should be created</span>
 <span class="sd">             labeling_method: the strategy for generating labels.</span>
 <span class="sd">               Valid values of labeling_method are `{&#39;abbreviate&#39;, &#39;enumerate&#39;}`</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            `None` if an :class:`plt.Axes` was provided via `ax` argument</span>
+<span class="sd">            `None` if an :class:`~matplotlib.axes.Axes` was provided via `ax` argument</span>
 <span class="sd">            or an `Axes` created by the visualizer if `ax` was `None`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
@@ -362,8 +381,8 @@
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">DrawableProteinFeature</span><span class="p">:</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">min_pos_abs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
-    <span class="n">max_pos_abs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+    <span class="n">min_pos_abs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
+    <span class="n">max_pos_abs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
     <span class="n">label</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">color</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">min_pos_plotting</span><span class="p">:</span> <span class="nb">float</span>
@@ -381,7 +400,13 @@
         <span class="s2">&quot;track&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">features_y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">feature_height</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">feature_outline_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+        <span class="n">features_y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">feature_height</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">feature_outline_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="n">feature_y_max</span> <span class="o">=</span> <span class="n">features_y_max</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">track</span> <span class="o">*</span> <span class="n">feature_height</span>
         <span class="n">feature_y_min</span> <span class="o">=</span> <span class="n">feature_y_max</span> <span class="o">-</span> <span class="n">feature_height</span>
         <span class="n">draw_rectangle</span><span class="p">(</span>
@@ -480,7 +505,13 @@
             <span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_starts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ends</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feature_names</span><span class="p">)</span>
         <span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">draw_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">features_y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">feature_height</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">feature_outline_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_features</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+        <span class="n">features_y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">feature_height</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">feature_outline_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">features_y_max</span><span class="p">,</span> <span class="n">feature_height</span><span class="p">,</span> <span class="n">feature_outline_color</span><span class="p">)</span>
 
@@ -493,14 +524,14 @@
 <span class="nd">@dataclass</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">DrawableProteinVariant</span><span class="p">:</span>
     <span class="n">effect</span><span class="p">:</span> <span class="n">VariantEffect</span>
-    <span class="n">pos_abs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+    <span class="n">pos_abs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span>
     <span class="n">color</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">pos_plotting</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">count</span><span class="p">:</span> <span class="nb">int</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;effect&quot;</span><span class="p">,</span> <span class="s2">&quot;pos_abs&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;pos_plotting&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stem_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stem_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Draw a lollipop representing a variant and the number of counts for the variant effect type</span>
 <span class="sd">        currently putting marker in the middle of start and end, can change this later</span>
@@ -578,7 +609,7 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregation_method</span> <span class="o">==</span> <span class="s2">&quot;disease&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Disease aggregation method not implemented&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_variant_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_variant_markers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">DrawableProteinVariant</span><span class="p">]:</span>
         <span class="n">variants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">vl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pvis</span><span class="o">.</span><span class="n">variant_locations_counted_absolute</span><span class="p">):</span>
             <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pvis</span><span class="o">.</span><span class="n">variant_locations</span> <span class="o">==</span> <span class="n">vl</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -594,7 +625,7 @@
 
         <span class="k">return</span> <span class="n">variants</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">draw_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stem_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_variants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span> <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stem_color</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variants</span><span class="p">:</span>
             <span class="n">v</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">stem_color</span><span class="p">)</span>
 
@@ -607,7 +638,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_rectangle</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
     <span class="n">start_x</span><span class="p">,</span>
     <span class="n">start_y</span><span class="p">,</span>
     <span class="n">end_x</span><span class="p">,</span>
@@ -616,7 +647,7 @@
     <span class="n">fill_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">line_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="n">rect</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
+    <span class="n">rect</span> <span class="o">=</span> <span class="n">mptch</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
         <span class="p">(</span><span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">),</span>
         <span class="n">end_x</span> <span class="o">-</span> <span class="n">start_x</span><span class="p">,</span>
         <span class="n">end_y</span> <span class="o">-</span> <span class="n">start_y</span><span class="p">,</span>
@@ -629,7 +660,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_line</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
     <span class="n">start_x</span><span class="p">,</span>
     <span class="n">start_y</span><span class="p">,</span>
     <span class="n">end_x</span><span class="p">,</span>
@@ -641,7 +672,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_circle</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
     <span class="n">center_x</span><span class="p">,</span>
     <span class="n">center_y</span><span class="p">,</span>
     <span class="n">radius</span><span class="p">,</span>
@@ -649,7 +680,7 @@
     <span class="n">fill_color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">line_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+    <span class="n">circle</span> <span class="o">=</span> <span class="n">mptch</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
         <span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">),</span>
         <span class="n">radius</span><span class="p">,</span>
         <span class="n">edgecolor</span><span class="o">=</span><span class="n">line_color</span><span class="p">,</span>
@@ -661,7 +692,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_string</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
     <span class="n">text</span><span class="p">,</span>
     <span class="n">x</span><span class="p">,</span>
     <span class="n">y</span><span class="p">,</span>
@@ -680,6 +711,28 @@
     <span class="k">return</span> <span class="n">radius</span><span class="p">,</span> <span class="n">length</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_ticks</span><span class="p">(</span>
+    <span class="n">apprx_n_ticks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="nb">min</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="nb">max</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">]:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">/</span> <span class="n">apprx_n_ticks</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">compute_base</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">tick_step_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">base</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">,</span> <span class="p">(</span><span class="nb">min</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">tick_step_size</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">apprx_n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ticks</span> <span class="o">/</span> <span class="n">base</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_base</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">typing</span><span class="o">.</span><span class="n">ArrayLike</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">order_of_magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="mi">10</span><span class="o">**</span><span class="n">order_of_magnitude</span>
+
+
 <span class="k">def</span><span class="w"> </span><span class="nf">round_to_nearest_power_ten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">order_of_magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
@@ -689,20 +742,12 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">base</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generate_ticks</span><span class="p">(</span><span class="n">apprx_n_ticks</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
-    <span class="n">tick_step_size</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">round_to_nearest_power_ten</span><span class="p">((</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">/</span> <span class="n">apprx_n_ticks</span><span class="p">)</span>
-    <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-        <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">,</span> <span class="p">(</span><span class="nb">min</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">tick_step_size</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">apprx_n_ticks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))))</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">round_to_nearest_power_ten</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
-
-
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_axes</span><span class="p">(</span>
     <span class="n">ax</span><span class="p">,</span>
-    <span class="n">x_ticks</span><span class="p">,</span>
-    <span class="n">x_ticks_relative</span><span class="p">,</span>
-    <span class="n">y_ticks</span><span class="p">,</span>
-    <span class="n">max_marker_count</span><span class="p">,</span>
+    <span class="n">x_ticks</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">x_ticks_relative</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="n">y_ticks</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">max_marker_count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">min_aa_pos</span><span class="p">,</span>
     <span class="n">max_aa_pos</span><span class="p">,</span>
     <span class="n">num_tracks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -803,13 +848,6 @@
         <span class="n">y_axis_x</span> <span class="o">=</span> <span class="n">protein_track_x_min</span> <span class="o">-</span> <span class="mf">0.02</span>
         <span class="n">y_axis_min_y</span> <span class="o">=</span> <span class="n">protein_track_y_max</span> <span class="o">+</span> <span class="mf">0.01</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">y_axis_max_y</span> <span class="o">=</span> <span class="n">marker_dim</span><span class="p">(</span><span class="n">max_marker_count</span><span class="p">,</span> <span class="n">protein_track_y_max</span><span class="p">)</span>
-        <span class="n">y_ticks_relative</span> <span class="o">=</span> <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
-            <span class="n">y_ticks</span><span class="p">,</span>
-            <span class="n">min_absolute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">max_absolute</span><span class="o">=</span><span class="n">max_marker_count</span><span class="p">,</span>
-            <span class="n">min_relative</span><span class="o">=</span><span class="n">y_axis_min_y</span><span class="p">,</span>
-            <span class="n">max_relative</span><span class="o">=</span><span class="n">y_axis_max_y</span><span class="p">,</span>
-        <span class="p">)</span>
         <span class="n">draw_line</span><span class="p">(</span>
             <span class="n">ax</span><span class="p">,</span>
             <span class="n">y_axis_x</span><span class="p">,</span>
@@ -867,6 +905,18 @@
             <span class="n">line_color</span><span class="o">=</span><span class="n">axis_color</span><span class="p">,</span>
             <span class="n">line_width</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="p">)</span>
+
+        <span class="n">y_ticks_relative</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">translate_to_ax_coordinates</span><span class="p">(</span>
+                <span class="n">y_tick</span><span class="p">,</span>
+                <span class="n">min_absolute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">max_absolute</span><span class="o">=</span><span class="n">max_marker_count</span><span class="p">,</span>
+                <span class="n">min_relative</span><span class="o">=</span><span class="n">y_axis_min_y</span><span class="p">,</span>
+                <span class="n">max_relative</span><span class="o">=</span><span class="n">y_axis_max_y</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">y_tick</span> <span class="ow">in</span> <span class="n">y_ticks</span>
+        <span class="p">)</span>
+
         <span class="k">for</span> <span class="n">y_tick_relative</span><span class="p">,</span> <span class="n">y_tick_absolute</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y_ticks_relative</span><span class="p">,</span> <span class="n">y_ticks</span><span class="p">):</span>
             <span class="n">draw_line</span><span class="p">(</span>
                 <span class="n">ax</span><span class="p">,</span>
@@ -889,18 +939,18 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">translate_to_ax_coordinates</span><span class="p">(</span>
-    <span class="n">absolute</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-    <span class="n">min_absolute</span><span class="p">,</span>
-    <span class="n">max_absolute</span><span class="p">,</span>
-    <span class="n">min_relative</span><span class="p">,</span>
-    <span class="n">max_relative</span><span class="p">,</span>
+    <span class="n">absolute</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">min_absolute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">max_absolute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">min_relative</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">max_relative</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">clip</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">clip</span><span class="p">:</span>
         <span class="c1"># Put the coordinate of an item located at or after the stop codon to the location of the last AA</span>
-        <span class="n">absolute</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">absolute</span><span class="p">,</span> <span class="n">max_absolute</span><span class="p">)</span>
+        <span class="n">absolute</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">absolute</span><span class="p">,</span> <span class="n">max_absolute</span><span class="p">)</span>
         <span class="c1"># Put the coordinate of an item located at or before the start codon to the location of the first AA</span>
-        <span class="n">absolute</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">absolute</span><span class="p">,</span> <span class="n">min_absolute</span><span class="p">)</span>
+        <span class="n">absolute</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">absolute</span><span class="p">,</span> <span class="n">min_absolute</span><span class="p">)</span>
     <span class="n">shifted_to_0_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">absolute</span> <span class="o">-</span> <span class="n">min_absolute</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_absolute</span> <span class="o">-</span> <span class="n">min_absolute</span><span class="p">)</span>
     <span class="n">relative_scale</span> <span class="o">=</span> <span class="n">max_relative</span> <span class="o">-</span> <span class="n">min_relative</span>
     <span class="k">return</span> <span class="n">shifted_to_0_1</span> <span class="o">*</span> <span class="n">relative_scale</span> <span class="o">+</span> <span class="n">min_relative</span>
@@ -925,7 +975,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_legends</span><span class="p">(</span>
-    <span class="n">ax</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">maxs</span><span class="o">.</span><span class="n">Axes</span><span class="p">,</span>
     <span class="n">feature_handler</span><span class="p">,</span>
     <span class="n">color_box_x_dim</span><span class="p">,</span>
     <span class="n">color_box_y_dim</span><span class="p">,</span>
@@ -1018,7 +1068,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sweep_line</span><span class="p">(</span>
-    <span class="n">intervals</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],],</span>
+    <span class="n">intervals</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">],],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given a list of intervals, find the maximum number of overlapping intervals.</span>
@@ -1038,7 +1088,9 @@
     <span class="k">return</span> <span class="n">max_overlaps</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">resolve_overlap</span><span class="p">(</span><span class="n">intervals</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Collection</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resolve_overlap</span><span class="p">(</span>
+    <span class="n">intervals</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Collection</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given a list of intervals, assign each interval an integer y-position,</span>
 <span class="sd">    such that no two intervals overlap in the x dimension. Return the y-positions.</span>
@@ -1059,7 +1111,7 @@
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span>
     <span class="n">max_y</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">for</span> <span class="n">position</span><span class="p">,</span> <span class="n">event_type</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">event_type</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">event_type</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># Allocate the smallest available y-position</span>
             <span class="k">if</span> <span class="n">available_y_positions</span><span class="p">:</span>
