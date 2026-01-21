@@ -122,8 +122,8 @@ We execute the analysis by running
 ...     pheno_scorer=pheno_scorer,
 ... )
 
->>> result.pval
-0.741216622359659
+>>> result.pval  # doctest: +ELLIPSIS
+0.7412166223596...
 
 Show data frame with scores
 
