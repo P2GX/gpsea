@@ -8,7 +8,10 @@ from itertools import cycle
 
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+import matplotlib.axes as maxs
+import matplotlib.patches as mptch
 import numpy as np
+import numpy.typing as npt
 
 from gpsea.model import Cohort, ProteinMetadata, TranscriptCoordinates, Variant, VariantEffect
 
@@ -112,14 +115,28 @@ class ProteinVisualizer(BaseProteinVisualizer):
             pvis=pvis,
         )
 
-        x_ticks = generate_ticks(apprx_n_ticks=6, min=1, max=protein_metadata.protein_length)
-        y_ticks = generate_ticks(apprx_n_ticks=5, min=0, max=variant_handler.max_marker_count)
+        x_ticks = generate_ticks(
+            apprx_n_ticks=6,
+            min=1,
+            max=protein_metadata.protein_length,
+        )
+        y_ticks = generate_ticks(
+            apprx_n_ticks=5,
+            min=0,
+            max=variant_handler.max_marker_count,
+        )
 
         # normalize into [0, 1], leaving some space on the sides
         for f in feature_handler.features:
-            cur_limits = f.min_pos_abs, f.max_pos_abs
-            f.min_pos_plotting, f.max_pos_plotting = translate_to_ax_coordinates(
-                np.array(cur_limits),
+            f.min_pos_plotting = translate_to_ax_coordinates(
+                f.min_pos_abs,
+                min_absolute=1,
+                max_absolute=protein_metadata.protein_length,
+                min_relative=self.protein_track_x_min,
+                max_relative=self.protein_track_x_max,
+            )
+            f.max_pos_plotting = translate_to_ax_coordinates(
+                f.max_pos_abs,
                 min_absolute=1,
                 max_absolute=protein_metadata.protein_length,
                 min_relative=self.protein_track_x_min,
@@ -127,9 +144,8 @@ class ProteinVisualizer(BaseProteinVisualizer):
             )
 
         for v in variant_handler.variants:
-            pos_abs = v.pos_abs
             v.pos_plotting = translate_to_ax_coordinates(
-                np.array([pos_abs]),
+                v.pos_abs,
                 min_absolute=1,
                 max_absolute=protein_metadata.protein_length,
                 min_relative=self.protein_track_x_min,
@@ -137,12 +153,15 @@ class ProteinVisualizer(BaseProteinVisualizer):
                 clip=True,
             )
 
-        x_ticks_relative = translate_to_ax_coordinates(
-            x_ticks,
-            min_absolute=1,
-            max_absolute=protein_metadata.protein_length,
-            min_relative=self.protein_track_x_min,
-            max_relative=self.protein_track_x_max,
+        x_ticks_relative = (
+            translate_to_ax_coordinates(
+                x_tick,
+                min_absolute=1,
+                max_absolute=protein_metadata.protein_length,
+                min_relative=self.protein_track_x_min,
+                max_relative=self.protein_track_x_max,
+            )
+            for x_tick in x_ticks
         )
 
         # PLOTTING
@@ -201,9 +220,9 @@ class ProteinVisualizer(BaseProteinVisualizer):
         tx_coordinates: TranscriptCoordinates,
         protein_metadata: ProteinMetadata,
         cohort: Cohort,
-        ax: typing.Optional[plt.Axes] = None,
+        ax: typing.Optional[maxs.Axes] = None,
         labeling_method: typing.Literal["abbreviate", "enumerate"] = "abbreviate",
-    ) -> typing.Optional[plt.Axes]:
+    ) -> typing.Optional[maxs.Axes]:
         warnings.warn(
             "draw_protein_diagram was deprecated and will be removed in `1.0.0`. Use `draw_protein` instead",
             DeprecationWarning,
@@ -228,9 +247,9 @@ class ProteinVisualizer(BaseProteinVisualizer):
     def draw_fig(
         self,
         pvis: ProteinVisualizable,
-        ax: typing.Optional[plt.Axes] = None,
+        ax: typing.Optional[maxs.Axes] = None,
         labeling_method: typing.Literal["abbreviate", "enumerate"] = "abbreviate",
-    ) -> typing.Optional[plt.Axes]:
+    ) -> typing.Optional[maxs.Axes]:
         """
         Visualize the cohort variants on a protein diagram.
 
@@ -240,11 +259,11 @@ class ProteinVisualizer(BaseProteinVisualizer):
         Args:
              pvis: :class:`ProteinVisualizable` with information about the transcript coordinates, protein metadata,
                and the cohort for plotting
-             ax: a Matplotlib :class:`plt.Axes` to plot on or `None` if a new `Axes` should be created
+             ax: a Matplotlib :class:`~matplotlib.axes.Axes` to plot on or `None` if a new `Axes` should be created
              labeling_method: the strategy for generating labels.
                Valid values of labeling_method are `{'abbreviate', 'enumerate'}`
         Returns:
-            `None` if an :class:`plt.Axes` was provided via `ax` argument
+            `None` if an :class:`~matplotlib.axes.Axes` was provided via `ax` argument
             or an `Axes` created by the visualizer if `ax` was `None`.
         """
         warnings.warn(
@@ -272,8 +291,8 @@ class ProteinVisualizer(BaseProteinVisualizer):
 @dataclass
 class DrawableProteinFeature:
     name: str
-    min_pos_abs: typing.Union[int, float]
-    max_pos_abs: typing.Union[int, float]
+    min_pos_abs: int | float
+    max_pos_abs: int | float
     label: str
     color: str
     min_pos_plotting: float
@@ -291,7 +310,13 @@ class DrawableProteinFeature:
         "track",
     ]
 
-    def draw(self, ax: plt.Axes, features_y_max: float, feature_height: float, feature_outline_color: str):
+    def draw(
+        self,
+        ax: maxs.Axes,
+        features_y_max: float,
+        feature_height: float,
+        feature_outline_color: str,
+    ):
         feature_y_max = features_y_max - self.track * feature_height
         feature_y_min = feature_y_max - feature_height
         draw_rectangle(
@@ -390,7 +415,13 @@ class DrawableProteinFeatureHandler:
             for start, end, name in zip(self._starts, self._ends, self._feature_names)
         ]
 
-    def draw_features(self, ax: plt.Axes, features_y_max: float, feature_height: float, feature_outline_color: str):
+    def draw_features(
+        self,
+        ax: maxs.Axes,
+        features_y_max: float,
+        feature_height: float,
+        feature_outline_color: str,
+    ):
         for f in self.features:
             f.draw(ax, features_y_max, feature_height, feature_outline_color)
 
@@ -403,14 +434,14 @@ class DrawableProteinFeatureHandler:
 @dataclass
 class DrawableProteinVariant:
     effect: VariantEffect
-    pos_abs: typing.Union[int, float]
+    pos_abs: int | float
     color: str
     pos_plotting: float
     count: int
 
     __slots__ = ["effect", "pos_abs", "color", "pos_plotting", "count"]
 
-    def draw(self, ax: plt.Axes, y_max: float, stem_color: str):
+    def draw(self, ax: maxs.Axes, y_max: float, stem_color: str):
         """
         Draw a lollipop representing a variant and the number of counts for the variant effect type
         currently putting marker in the middle of start and end, can change this later
@@ -488,7 +519,7 @@ class DrawableProteinVariantHandler:
         elif self.aggregation_method == "disease":
             raise NotImplementedError("Disease aggregation method not implemented")
 
-    def _generate_variant_markers(self):
+    def _generate_variant_markers(self) -> typing.Sequence[DrawableProteinVariant]:
         variants = list()
         for j, vl in enumerate(self._pvis.variant_locations_counted_absolute):
             i = np.where(self._pvis.variant_locations == vl)[0][0]
@@ -504,7 +535,7 @@ class DrawableProteinVariantHandler:
 
         return variants
 
-    def draw_variants(self, ax: plt.Axes, y_max: float, stem_color: str):
+    def draw_variants(self, ax: maxs.Axes, y_max: float, stem_color: str):
         for v in self.variants:
             v.draw(ax, y_max, stem_color)
 
@@ -517,7 +548,7 @@ class DrawableProteinVariantHandler:
 
 
 def draw_rectangle(
-    ax: plt.Axes,
+    ax: maxs.Axes,
     start_x,
     start_y,
     end_x,
@@ -526,7 +557,7 @@ def draw_rectangle(
     fill_color=None,
     line_width=1.0,
 ):
-    rect = plt.Rectangle(
+    rect = mptch.Rectangle(
         (start_x, start_y),
         end_x - start_x,
         end_y - start_y,
@@ -539,7 +570,7 @@ def draw_rectangle(
 
 
 def draw_line(
-    ax: plt.Axes,
+    ax: maxs.Axes,
     start_x,
     start_y,
     end_x,
@@ -551,7 +582,7 @@ def draw_line(
 
 
 def draw_circle(
-    ax: plt.Axes,
+    ax: maxs.Axes,
     center_x,
     center_y,
     radius,
@@ -559,7 +590,7 @@ def draw_circle(
     fill_color=None,
     line_width=1.0,
 ):
-    circle = plt.Circle(
+    circle = mptch.Circle(
         (center_x, center_y),
         radius,
         edgecolor=line_color,
@@ -571,7 +602,7 @@ def draw_circle(
 
 
 def draw_string(
-    ax: plt.Axes,
+    ax: maxs.Axes,
     text,
     x,
     y,
@@ -590,6 +621,28 @@ def marker_dim(marker_count, protein_track_y_max, marker_length=0.02, marker_rad
     return radius, length
 
 
+def generate_ticks(
+    apprx_n_ticks: int,
+    min: int,
+    max: int,
+) -> npt.NDArray[np.int64]:
+    x = (max - min) / apprx_n_ticks
+    base = compute_base(x)
+    tick_step_size = (base * np.round(x / base)).astype(int)
+    ticks = np.array(
+        list(filter(lambda x: x < max, (min + i * tick_step_size for i in range(1, apprx_n_ticks + 1))))
+    ).astype(np.int64)
+
+    return (base * np.round(ticks / base)).astype(np.int64)
+
+
+def compute_base(
+    x: np.typing.ArrayLike | float,
+):
+    order_of_magnitude = np.floor(np.log10(np.abs(x)))
+    return 10**order_of_magnitude
+
+
 def round_to_nearest_power_ten(x, base=None):
     if base is None:
         order_of_magnitude = np.floor(np.log10(np.abs(x)))
@@ -599,20 +652,12 @@ def round_to_nearest_power_ten(x, base=None):
         return (base * np.round(x / base)).astype(int)
 
 
-def generate_ticks(apprx_n_ticks, min, max):
-    tick_step_size, base = round_to_nearest_power_ten((max - min) / apprx_n_ticks)
-    ticks = np.array(
-        list(filter(lambda x: x < max, (min + i * tick_step_size for i in range(1, apprx_n_ticks + 1))))
-    ).astype(int)
-    return round_to_nearest_power_ten(ticks, base)
-
-
 def draw_axes(
     ax,
-    x_ticks,
-    x_ticks_relative,
-    y_ticks,
-    max_marker_count,
+    x_ticks: typing.Iterable[int],
+    x_ticks_relative: typing.Iterable[float | int],
+    y_ticks: typing.Iterable[int],
+    max_marker_count: int,
     min_aa_pos,
     max_aa_pos,
     num_tracks: int,
@@ -713,13 +758,6 @@ def draw_axes(
         y_axis_x = protein_track_x_min - 0.02
         y_axis_min_y = protein_track_y_max + 0.01
         _, y_axis_max_y = marker_dim(max_marker_count, protein_track_y_max)
-        y_ticks_relative = translate_to_ax_coordinates(
-            y_ticks,
-            min_absolute=0,
-            max_absolute=max_marker_count,
-            min_relative=y_axis_min_y,
-            max_relative=y_axis_max_y,
-        )
         draw_line(
             ax,
             y_axis_x,
@@ -777,6 +815,18 @@ def draw_axes(
             line_color=axis_color,
             line_width=1.0,
         )
+
+        y_ticks_relative = (
+            translate_to_ax_coordinates(
+                y_tick,
+                min_absolute=0,
+                max_absolute=max_marker_count,
+                min_relative=y_axis_min_y,
+                max_relative=y_axis_max_y,
+            )
+            for y_tick in y_ticks
+        )
+
         for y_tick_relative, y_tick_absolute in zip(y_ticks_relative, y_ticks):
             draw_line(
                 ax,
@@ -799,18 +849,18 @@ def draw_axes(
 
 
 def translate_to_ax_coordinates(
-    absolute: np.ndarray,
-    min_absolute,
-    max_absolute,
-    min_relative,
-    max_relative,
+    absolute: float | int,
+    min_absolute: int,
+    max_absolute: int,
+    min_relative: float,
+    max_relative: float,
     clip: bool = False,
-) -> np.ndarray:
+) -> float:
     if clip:
         # Put the coordinate of an item located at or after the stop codon to the location of the last AA
-        absolute = np.minimum(absolute, max_absolute)
+        absolute = min(absolute, max_absolute)
         # Put the coordinate of an item located at or before the start codon to the location of the first AA
-        absolute = np.maximum(absolute, min_absolute)
+        absolute = max(absolute, min_absolute)
     shifted_to_0_1 = (absolute - min_absolute) / (max_absolute - min_absolute)
     relative_scale = max_relative - min_relative
     return shifted_to_0_1 * relative_scale + min_relative
@@ -835,7 +885,7 @@ def assign_colors(
 
 
 def draw_legends(
-    ax: plt.Axes,
+    ax: maxs.Axes,
     feature_handler,
     color_box_x_dim,
     color_box_y_dim,
@@ -928,7 +978,7 @@ def draw_legends(
 
 
 def sweep_line(
-    intervals: typing.Iterable[typing.Tuple[typing.Union[int, float], typing.Union[int, float]],],
+    intervals: typing.Iterable[typing.Tuple[int | float, int | float],],
 ) -> int:
     """
     Given a list of intervals, find the maximum number of overlapping intervals.
@@ -948,7 +998,9 @@ def sweep_line(
     return max_overlaps
 
 
-def resolve_overlap(intervals: typing.Collection[typing.Tuple[int, int]]) -> typing.Sequence[int]:
+def resolve_overlap(
+    intervals: typing.Collection[typing.Tuple[float | int, float | int]],
+) -> typing.Sequence[int]:
     """
     Given a list of intervals, assign each interval an integer y-position,
     such that no two intervals overlap in the x dimension. Return the y-positions.
@@ -969,7 +1021,7 @@ def resolve_overlap(intervals: typing.Collection[typing.Tuple[int, int]]) -> typ
     result = [0] * len(intervals)
     max_y = 0
 
-    for position, event_type, index in events:
+    for _, event_type, index in events:
         if event_type == 1:
             # Allocate the smallest available y-position
             if available_y_positions:
