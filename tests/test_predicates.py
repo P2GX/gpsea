@@ -69,6 +69,25 @@ class TestHpoPredicate:
 
         assert actual is None
 
+    def test_phenotype_predicate__missing_implies_excluded(
+        self,
+        toy_cohort: Cohort,
+        hpo: hpotk.MinimalOntology,
+    ):
+        # Not Measured and not Observed - 'HP:0006280',  # Chronic pancreatitis
+        patient = find_patient("HetSingleVar", toy_cohort)
+        term_id = hpotk.TermId.from_curie("HP:0006280")
+        predicate = HpoClassifier(
+            hpo=hpo,
+            query=term_id,
+            missing_implies_phenotype_excluded=True,
+        )
+        actual = predicate.test(patient)
+
+        assert actual is not None
+        assert actual.phenotype == term_id
+        assert actual.category.name == "No"
+
 
 class TestDiseasePresencePredicate:
     @pytest.mark.parametrize(
