@@ -70,6 +70,3 @@ bugtracker = "https://github.com/P2GX/gpsea/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
-
-[tool.setuptools.dynamic]
-version = { attr = "gpsea.__version__" }
