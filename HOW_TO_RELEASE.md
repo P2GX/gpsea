@@ -9,7 +9,7 @@ The document describes how to release `gpsea` to *PyPi*.
 - remove deprecated methods targeted for removal in this version. The `TODO` markers are labeled using 
   the target version (e.g. `TODO[v0.3.0]`)
 - bump versions to a release:
-  - `src/gpsea/__init__.py`
+  - `pyproject.toml`
 - ensure the CI passes
 - deploy to PyPi (described below)
 - merge to `main`
