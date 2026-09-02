@@ -145,7 +145,7 @@ in JSON format.</p>
 <p>We start by loading the cohort from the JSON file:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/TBX5.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort</span> <span class="o">=</span> <span class="s1">'docs/cohort-data/TBX5.0.1.20.json'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
@@ -155,9 +155,9 @@ in JSON format.</p>
 <p>Then we choose the transcript and protein identifiers, and we fetch the corresponding data:
 (see <a class="reference internal" href="input-data.html#choose-tx-and-protein"><span class="std std-ref">Choose the transcript and protein of interest</span></a> for more info):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_default_tx_coordinate_service</span><span class="p">,</span> <span class="n">configure_default_protein_metadata_service</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">&quot;NM_181486.4&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">px_id</span> <span class="o">=</span> <span class="s2">&quot;NP_852259.1&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_service</span> <span class="o">=</span> <span class="n">configure_default_tx_coordinate_service</span><span class="p">(</span><span class="n">genome_build</span><span class="o">=</span><span class="s2">&quot;GRCh38.p13&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">"NM_181486.4"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">px_id</span> <span class="o">=</span> <span class="s2">"NP_852259.1"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_service</span> <span class="o">=</span> <span class="n">configure_default_tx_coordinate_service</span><span class="p">(</span><span class="n">genome_build</span><span class="o">=</span><span class="s2">"GRCh38.p13"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span> <span class="o">=</span> <span class="n">tx_service</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">tx_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pm_service</span> <span class="o">=</span> <span class="n">configure_default_protein_metadata_service</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span> <span class="o">=</span> <span class="n">pm_service</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">px_id</span><span class="p">)</span>
@@ -166,7 +166,7 @@ in JSON format.</p>
 <p>Last, we load HPO <cite>v2024-07-01</cite> to use in the exploratory analysis:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="interactive-exploration">

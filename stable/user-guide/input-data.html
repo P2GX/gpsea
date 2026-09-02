@@ -139,7 +139,7 @@ which are transformed into a <a class="reference internal" href="../apidocs/gpse
 the <a class="reference external" href="https://github.com/ielis/hpo-toolkit">hpo-toolkit</a>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The code downloads the HPO data from GitHub and stores it in the user’s home directory,
@@ -149,8 +149,8 @@ The latest HPO can be loaded by leaving out the <code class="docutils literal no
 <p class="admonition-title">Note</p>
 <p>If storing HPO locally is not desired, HPO can also be loaded
 directly from GitHub, at the expense of additional network traffic:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">release</span> <span class="o">=</span> <span class="s1">&#39;v2024-07-01&#39;</span>
-<span class="n">hpo</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">load_minimal_ontology</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://github.com/obophenotype/human-phenotype-ontology/releases/download/</span><span class="si">{</span><span class="n">release</span><span class="si">}</span><span class="s1">/hp.json&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">release</span> <span class="o">=</span> <span class="s1">'v2024-07-01'</span>
+<span class="n">hpo</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">load_minimal_ontology</span><span class="p">(</span><span class="sa">f</span><span class="s1">'https://github.com/obophenotype/human-phenotype-ontology/releases/download/</span><span class="si">{</span><span class="n">release</span><span class="si">}</span><span class="s1">/hp.json'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -185,8 +185,8 @@ We use <a class="reference external" href="https://github.com/monarch-initiative
 associated with extracting phenopacket data from Phenopacket Store release:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ppktstore.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_phenopacket_registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">registry</span> <span class="o">=</span> <span class="n">configure_phenopacket_registry</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">registry</span><span class="o">.</span><span class="n">open_phenopacket_store</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">&quot;0.1.19&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ps</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">phenopackets</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">iter_cohort_phenopackets</span><span class="p">(</span><span class="s1">&#39;RERE&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">registry</span><span class="o">.</span><span class="n">open_phenopacket_store</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s2">"0.1.19"</span><span class="p">)</span> <span class="k">as</span> <span class="n">ps</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">phenopackets</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">iter_cohort_phenopackets</span><span class="p">(</span><span class="s1">'RERE'</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">phenopackets</span><span class="p">)</span>
 <span class="go">19</span>
 </pre></div>
@@ -231,7 +231,7 @@ from a list of JSON files, or from a folder with phenopacket JSON files.</p>
 <p>The <a class="reference internal" href="../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.load_phenopacket_files" title="gpsea.preprocessing.load_phenopacket_files"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_phenopacket_files()</span></code></a> function loads
 phenopackets from one or more paths that point to phenopacket JSON files:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_phenopacket_files</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pp_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;path/to/phenopacket1.json&#39;</span><span class="p">,</span> <span class="s1">&#39;path/to/phenopacket2.json&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp_file_paths</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'path/to/phenopacket1.json'</span><span class="p">,</span> <span class="s1">'path/to/phenopacket2.json'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cohort</span><span class="p">,</span> <span class="n">qc_results</span> <span class="o">=</span> <span class="n">load_phenopacket_files</span><span class="p">(</span><span class="n">pp_file_paths</span><span class="p">,</span> <span class="n">cohort_creator</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -241,7 +241,7 @@ Starting with path to a directory with phenopacket JSON files,
 the loader includes all files that end with <code class="docutils literal notranslate"><span class="pre">*.json</span></code> suffix
 and ignores any other files or sub-directories:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_phenopacket_folder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pp_dir</span> <span class="o">=</span> <span class="s1">&#39;path/to/folder/with/many/phenopacket/json/files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pp_dir</span> <span class="o">=</span> <span class="s1">'path/to/folder/with/many/phenopacket/json/files'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cohort</span><span class="p">,</span> <span class="n">qc_results</span> <span class="o">=</span> <span class="n">load_phenopacket_folder</span><span class="p">(</span><span class="n">pp_dir</span><span class="p">,</span> <span class="n">cohort_creator</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -281,7 +281,7 @@ such as the <a class="reference external" href="https://docs.python.org/3/librar
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cohort</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONEncoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encoded</span><span class="p">[:</span><span class="mi">80</span><span class="p">]</span>
-<span class="go">&#39;{&quot;members&quot;: [{&quot;labels&quot;: {&quot;label&quot;: &quot;Subject 8&quot;, &quot;meta_label&quot;: &quot;PMID_29330883_Subj&#39;</span>
+<span class="go">'{"members": [{"labels": {"label": "Subject 8", "meta_label": "PMID_29330883_Subj'</span>
 </pre></div>
 </div>
 <p>Here we see the first 80 letters of the JSON object.</p>
@@ -314,8 +314,8 @@ and to choose a variant that is specifically located in the gene.
 The MANE transcript will be displayed here
 (e.g., <a class="reference external" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/495227/">NM_181486.4(TBX5):c.1221C&gt;G (p.Tyr407Ter)</a>).
 The RefSeq identifier of the encoded protein (e.g. <cite>NP_852259.1</cite> for <em>TBX5</em>) should be also readily available on the ClinVar website:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">&quot;NM_181486.4&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pt_id</span> <span class="o">=</span> <span class="s2">&quot;NP_852259.1&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">"NM_181486.4"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt_id</span> <span class="o">=</span> <span class="s2">"NP_852259.1"</span>
 </pre></div>
 </div>
 </section>
@@ -339,13 +339,13 @@ with a <a class="reference internal" href="../apidocs/gpsea.preprocessing.html#g
 We use <a class="reference internal" href="../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.configure_default_tx_coordinate_service" title="gpsea.preprocessing.configure_default_tx_coordinate_service"><code class="xref py py-func docutils literal notranslate"><span class="pre">configure_default_tx_coordinate_service()</span></code></a> to get a service
 that caches the response locally to prevent repeated API queries for the same transcript accession:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_default_tx_coordinate_service</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">txc_service</span> <span class="o">=</span> <span class="n">configure_default_tx_coordinate_service</span><span class="p">(</span><span class="n">genome_build</span><span class="o">=</span><span class="s2">&quot;GRCh38.p13&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">txc_service</span> <span class="o">=</span> <span class="n">configure_default_tx_coordinate_service</span><span class="p">(</span><span class="n">genome_build</span><span class="o">=</span><span class="s2">"GRCh38.p13"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we can fetch the coordinates of the MANE transcript of <em>TBX5</em> on GRCh38:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span> <span class="o">=</span> <span class="n">txc_service</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">tx_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span><span class="o">.</span><span class="n">identifier</span>
-<span class="go">&#39;NM_181486.4&#39;</span>
+<span class="go">'NM_181486.4'</span>
 </pre></div>
 </div>
 </section>
@@ -358,13 +358,13 @@ that caches the response locally to prevent repeated API queries for the same tr
 <h3>Showcase transcript data<a class="headerlink" href="#showcase-transcript-data" title="Link to this heading"></a></h3>
 <p>Based on <code class="docutils literal notranslate"><span class="pre">tx_coordinates</span></code>, GPSEA knows about the location of the transcript region in the reference genome:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span>
-<span class="go">&#39;12&#39;</span>
+<span class="go">'12'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">start</span>
 <span class="go">18869165</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">end</span>
 <span class="go">18921399</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx_coordinates</span><span class="o">.</span><span class="n">region</span><span class="o">.</span><span class="n">strand</span><span class="o">.</span><span class="n">symbol</span>
-<span class="go">&#39;-&#39;</span>
+<span class="go">'-'</span>
 </pre></div>
 </div>
 <p>or the count and coordinates of exons:</p>
@@ -433,7 +433,7 @@ to reduce the amount of the associated boiler-plate code:</p>
 is as simple as running:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span> <span class="o">=</span> <span class="n">pms</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">pt_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_id</span>
-<span class="go">&#39;NP_852259.1&#39;</span>
+<span class="go">'NP_852259.1'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_length</span>
 <span class="go">518</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span>
@@ -470,10 +470,10 @@ the <code class="docutils literal notranslate"><span class="pre">ProteinMetadata
 Note that you will need to obtain information about the protein name (<code class="docutils literal notranslate"><span class="pre">label</span></code>)
 and <code class="docutils literal notranslate"><span class="pre">protein_length</span></code>, but these are shown in the UniProt entry:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProteinMetadata</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">downloaded_uniprot_json</span> <span class="o">=</span> <span class="s2">&quot;docs/user-guide/data/Q99593.json&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">downloaded_uniprot_json</span> <span class="o">=</span> <span class="s2">"docs/user-guide/data/Q99593.json"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span> <span class="o">=</span> <span class="n">ProteinMetadata</span><span class="o">.</span><span class="n">from_uniprot_json</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">protein_id</span><span class="o">=</span><span class="s2">&quot;NP_852259.1&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;transforming growth factor beta receptor 2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">protein_id</span><span class="o">=</span><span class="s2">"NP_852259.1"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">"transforming growth factor beta receptor 2"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">uniprot_json</span><span class="o">=</span><span class="n">downloaded_uniprot_json</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">protein_length</span><span class="o">=</span><span class="mi">518</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -487,18 +487,18 @@ Here we show how to enter the same information manually, in a custom protein dat
 <p>The frame can be created e.g. by running:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>   <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Disordered&quot;</span><span class="p">,</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span> <span class="p">},</span>
-<span class="gp">... </span>   <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Disordered&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">356</span><span class="p">,</span> <span class="p">},</span>
-<span class="gp">... </span>   <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Polar residues&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;compositional bias&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">263</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span> <span class="p">},</span>
-<span class="gp">... </span>   <span class="p">{</span><span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Basic and acidic residues&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;compositional bias&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">320</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">346</span><span class="p">,</span> <span class="p">},</span>
+<span class="gp">... </span>   <span class="p">{</span><span class="s2">"region"</span><span class="p">:</span> <span class="s2">"Disordered"</span><span class="p">,</span><span class="s2">"category"</span><span class="p">:</span> <span class="s2">"region"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="mi">46</span><span class="p">,</span> <span class="p">},</span>
+<span class="gp">... </span>   <span class="p">{</span><span class="s2">"region"</span><span class="p">:</span> <span class="s2">"Disordered"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"region"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="mi">356</span><span class="p">,</span> <span class="p">},</span>
+<span class="gp">... </span>   <span class="p">{</span><span class="s2">"region"</span><span class="p">:</span> <span class="s2">"Polar residues"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"compositional bias"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">:</span> <span class="mi">263</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="mi">299</span><span class="p">,</span> <span class="p">},</span>
+<span class="gp">... </span>   <span class="p">{</span><span class="s2">"region"</span><span class="p">:</span> <span class="s2">"Basic and acidic residues"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"compositional bias"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">:</span> <span class="mi">320</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="mi">346</span><span class="p">,</span> <span class="p">},</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <cite>ProteinMetadata</cite> is then created using <a class="reference internal" href="../apidocs/gpsea.model.html#gpsea.model.ProteinMetadata.from_feature_frame" title="gpsea.model.ProteinMetadata.from_feature_frame"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_feature_frame()</span></code></a> function:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span> <span class="o">=</span> <span class="n">ProteinMetadata</span><span class="o">.</span><span class="n">from_feature_frame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">protein_id</span><span class="o">=</span><span class="s2">&quot;NP_852259.1&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;transforming growth factor beta receptor 2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">protein_id</span><span class="o">=</span><span class="s2">"NP_852259.1"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s2">"transforming growth factor beta receptor 2"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">features</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">protein_length</span><span class="o">=</span><span class="mi">518</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>

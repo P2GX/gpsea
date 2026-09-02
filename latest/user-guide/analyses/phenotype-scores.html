@@ -118,7 +118,7 @@ This is a non-parametric test that compares the medians of the two classes to de
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">class1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">class2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">class1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">class2</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s1">&#39;two-sided&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">class1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">class2</span><span class="p">,</span> <span class="n">alternative</span> <span class="o">=</span> <span class="s1">'two-sided'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_value</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">pvalue</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">p_value</span><span class="p">)</span>
 <span class="go">6.348081479150...e-06</span>
@@ -133,9 +133,9 @@ This is a non-parametric test that compares the medians of the two classes to de
 <p>We will start the analysis with loading HPO <cite>v2024-07-01</cite>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span><span class="o">.</span><span class="n">version</span>
-<span class="go">&#39;2024-07-01&#39;</span>
+<span class="go">'2024-07-01'</span>
 </pre></div>
 </div>
 </section>
@@ -150,7 +150,7 @@ The cohort was prepared from phenopackets as described in <a class="reference in
 and then serialized as a JSON file following the instructions in <a class="reference internal" href="../input-data.html#cohort-persistence"><span class="std std-ref">Persist the cohort for later</span></a> section.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/RERE.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">'docs/cohort-data/RERE.0.1.20.json'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort_json</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
@@ -163,7 +163,7 @@ and then serialized as a JSON file following the instructions in <a class="refer
 <p>Now we can set up the analysis of genotype and phenotype.
 We will perform the analysis using the <em>RERE</em> transcript selected
 as the “main” biologically relevant by the <cite>MANE</cite> consortium.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">&#39;NM_001042681.2&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">'NM_001042681.2'</span>
 </pre></div>
 </div>
 <section id="genotype-predicate">
@@ -183,11 +183,11 @@ is a point mutation or a loss of function mutation.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">point_mutation_effects</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>    <span class="n">VariantEffect</span><span class="o">.</span><span class="n">MISSENSE_VARIANT</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">point_mutation</span> <span class="o">=</span> <span class="n">change_length</span><span class="p">(</span><span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="o">&amp;</span> <span class="n">ref_length</span><span class="p">(</span><span class="s1">&#39;==&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">point_mutation</span> <span class="o">=</span> <span class="n">change_length</span><span class="p">(</span><span class="s1">'=='</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">&amp;</span> <span class="n">ref_length</span><span class="p">(</span><span class="s1">'=='</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">&amp;</span> <span class="n">anyof</span><span class="p">(</span><span class="n">variant_effect</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">effect</span> <span class="ow">in</span> <span class="n">point_mutation_effects</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">point_mutation</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;((change length == 0 AND reference allele length == 1) AND MISSENSE_VARIANT on NM_001042681.2)&#39;</span>
+<span class="go">'((change length == 0 AND reference allele length == 1) AND MISSENSE_VARIANT on NM_001042681.2)'</span>
 </pre></div>
 </div>
 <p>For the loss-of-function predicate, the following is a non-exhausting list
@@ -201,7 +201,7 @@ of variant effects considered as a loss-of-function:</p>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lof_mutation</span> <span class="o">=</span> <span class="n">anyof</span><span class="p">(</span><span class="n">variant_effect</span><span class="p">(</span><span class="n">eff</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">eff</span> <span class="ow">in</span> <span class="n">lof_effects</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lof_mutation</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;(TRANSCRIPT_TRANSLOCATION on NM_001042681.2 OR TRANSCRIPT_ABLATION on NM_001042681.2 OR FRAMESHIFT_VARIANT on NM_001042681.2 OR START_LOST on NM_001042681.2 OR STOP_GAINED on NM_001042681.2)&#39;</span>
+<span class="go">'(TRANSCRIPT_TRANSLOCATION on NM_001042681.2 OR TRANSCRIPT_ABLATION on NM_001042681.2 OR FRAMESHIFT_VARIANT on NM_001042681.2 OR START_LOST on NM_001042681.2 OR STOP_GAINED on NM_001042681.2)'</span>
 </pre></div>
 </div>
 <p>The genotype predicate will bin the patient into two classes: a point mutation or the loss of function:</p>
@@ -209,10 +209,10 @@ of variant effects considered as a loss-of-function:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">monoallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">point_mutation</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">b_predicate</span><span class="o">=</span><span class="n">lof_mutation</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;LoF&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Point"</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">"LoF"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Point&#39;, &#39;LoF&#39;)</span>
+<span class="go">('Point', 'LoF')</span>
 </pre></div>
 </div>
 </section>
@@ -269,11 +269,11 @@ a score of 1 (not 2) would be assigned for the heart defect category.</p>
 <p>The <a class="reference internal" href="../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer" title="gpsea.analysis.pscore.CountingPhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CountingPhenotypeScorer</span></code></a> automatizes this scoring method
 by encoding the categories into HPO terms:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">structural_defects</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012443&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal brain morphology (Brain anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012372&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal eye morphology (Eye anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0001627&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal heart morphology (Congenital heart defects)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012210&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal renal morphology (Renal anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0000407&#39;</span><span class="p">,</span>  <span class="c1"># Sensorineural hearing impairment (Sensorineural hearing loss)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012443'</span><span class="p">,</span>  <span class="c1"># Abnormal brain morphology (Brain anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012372'</span><span class="p">,</span>  <span class="c1"># Abnormal eye morphology (Eye anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0001627'</span><span class="p">,</span>  <span class="c1"># Abnormal heart morphology (Congenital heart defects)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012210'</span><span class="p">,</span>  <span class="c1"># Abnormal renal morphology (Renal anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0000407'</span><span class="p">,</span>  <span class="c1"># Sensorineural hearing impairment (Sensorineural hearing loss)</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -290,7 +290,7 @@ or that is its descendant
 <span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="n">structural_defects</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pheno_scorer</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;Assign a phenotype score that is equivalent to the count of present phenotypes that are either an exact match to the query terms or their descendants&#39;</span>
+<span class="go">'Assign a phenotype score that is equivalent to the count of present phenotypes that are either an exact match to the query terms or their descendants'</span>
 </pre></div>
 </div>
 </section>
@@ -352,7 +352,7 @@ with point vs. loss-of-function mutations.</p>
 The genotype category should be interpreted in the context of the genotype predicate:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_id_to_name</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gt_clf</span><span class="o">.</span><span class="n">get_categorizations</span><span class="p">()}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_id_to_name</span>
-<span class="go">{0: &#39;Point&#39;, 1: &#39;LoF&#39;}</span>
+<span class="go">{0: 'Point', 1: 'LoF'}</span>
 </pre></div>
 </div>
 <p>The genotype code <cite>0</cite> is assigned to patients with a point mutation, <cite>1</cite> corresponds to the loss-of-function mutations,
@@ -364,9 +364,9 @@ to visualize the phenotype score distributions:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">plot_boxplots</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Phenotype score&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">structural_defects</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Phenotype score"</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">structural_defects</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>

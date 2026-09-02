@@ -103,7 +103,7 @@
     <span class="p">):</span>
         <span class="c1"># TODO[v1.0.0] - Remove from the public API!</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;ProteinVisualizable was deprecated and will be remove in 1.0.0&quot;</span><span class="p">,</span>
+            <span class="s2">"ProteinVisualizable was deprecated and will be remove in 1.0.0"</span><span class="p">,</span>
             <span class="ne">DeprecationWarning</span><span class="p">,</span>
             <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
         <span class="p">)</span>
@@ -154,8 +154,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_protein_length</span> <span class="o">=</span> <span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_length</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Unable to get protein_length for </span><span class="si">{</span><span class="n">protein_meta</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">. &quot;</span>
-                <span class="s2">&quot;Consider deleting cache and trying again. Also check accession numbers&quot;</span>
+                <span class="sa">f</span><span class="s2">"Unable to get protein_length for </span><span class="si">{</span><span class="n">protein_meta</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">. "</span>
+                <span class="s2">"Consider deleting cache and trying again. Also check accession numbers"</span>
             <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
@@ -163,10 +163,10 @@
         <span class="n">variants</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Variant</span><span class="p">],</span>
         <span class="n">protein_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        By default, the API returns transcript annotations for many transcripts.</span>
 <span class="sd">        We would like to store the annotations only for our protein of interest (protein_id)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">tx_anns</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
             <span class="n">tx_ann</span> <span class="o">=</span> <span class="kc">None</span>
@@ -207,15 +207,15 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protein_length</span>
         <span class="c1"># TODO: ignoring the code below because we check the length in __init__ method.</span>
         <span class="c1">#  Remove the commented code if there are no issues.</span>
-        <span class="c1"># &quot;&quot;&quot;</span>
+        <span class="c1"># """</span>
         <span class="c1"># We try to parse the protein length from the UniProt API. If it worked, then self._protein_length is greater than zero.</span>
         <span class="c1"># If it did not work, then we take the maximum value of the protein features and variants and add 30 amino acids to it so that</span>
         <span class="c1"># the display will show something reasonable. We also print an error.</span>
-        <span class="c1"># &quot;&quot;&quot;</span>
+        <span class="c1"># """</span>
         <span class="c1"># if self._protein_length &gt; 0:</span>
         <span class="c1">#     return self._protein_length</span>
         <span class="c1"># else:</span>
-        <span class="c1">#     print(&quot;There was some problem parsing the protein length; here we estimate the length based on features and variants&quot;)</span>
+        <span class="c1">#     print("There was some problem parsing the protein length; here we estimate the length based on features and variants")</span>
         <span class="c1">#     max_feat = max(self._protein_feature_ends)</span>
         <span class="c1">#     max_var = max(self._variant_locations)</span>
         <span class="c1">#     return  max(max_feat, max_var) + 30</span>
@@ -239,12 +239,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variant_locations</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get an array with 0-based start coordinates of aminoacids that overlap with the variant regions.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">          a 1D array with ints containing a coordinate for each variant</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variant_locations</span></div>
 
 </pre></div>

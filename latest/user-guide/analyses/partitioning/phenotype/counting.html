@@ -132,11 +132,11 @@ a score of 1 (not 2) would be assigned for the heart defect category.</p>
 <p>The <a class="reference internal" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer" title="gpsea.analysis.pscore.CountingPhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CountingPhenotypeScorer</span></code></a> automatizes this scoring method
 by encoding the categories into HPO terms:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">structural_defects</span> <span class="o">=</span> <span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012443&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal brain morphology (Brain anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012372&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal eye morphology (Eye anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0001627&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal heart morphology (Congenital heart defects)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0012210&#39;</span><span class="p">,</span>  <span class="c1"># Abnormal renal morphology (Renal anomalies)</span>
-<span class="gp">... </span>    <span class="s1">&#39;HP:0000407&#39;</span><span class="p">,</span>  <span class="c1"># Sensorineural hearing impairment (Sensorineural hearing loss)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012443'</span><span class="p">,</span>  <span class="c1"># Abnormal brain morphology (Brain anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012372'</span><span class="p">,</span>  <span class="c1"># Abnormal eye morphology (Eye anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0001627'</span><span class="p">,</span>  <span class="c1"># Abnormal heart morphology (Congenital heart defects)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0012210'</span><span class="p">,</span>  <span class="c1"># Abnormal renal morphology (Renal anomalies)</span>
+<span class="gp">... </span>    <span class="s1">'HP:0000407'</span><span class="p">,</span>  <span class="c1"># Sensorineural hearing impairment (Sensorineural hearing loss)</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -149,7 +149,7 @@ or that is its descendant
 We can load HPO using HPO toolkit:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then, we construct the scorer with
@@ -160,7 +160,7 @@ We can load HPO using HPO toolkit:</p>
 <span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="n">structural_defects</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pheno_scorer</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;Assign a phenotype score that is equivalent to the count of present phenotypes that are either an exact match to the query terms or their descendants&#39;</span>
+<span class="go">'Assign a phenotype score that is equivalent to the count of present phenotypes that are either an exact match to the query terms or their descendants'</span>
 </pre></div>
 </div>
 </section>

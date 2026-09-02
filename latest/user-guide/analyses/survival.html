@@ -113,7 +113,7 @@ The cohort was prepared from phenopackets as described in <a class="reference in
 and then serialized as a JSON file following the instructions in <a class="reference internal" href="../input-data.html#cohort-persistence"><span class="std std-ref">Persist the cohort for later</span></a> section.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/UMOD.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">'docs/cohort-data/UMOD.0.1.20.json'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort_json</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
@@ -124,7 +124,7 @@ and then serialized as a JSON file following the instructions in <a class="refer
 <section id="configure-analysis">
 <h3>Configure analysis<a class="headerlink" href="#configure-analysis" title="Link to this heading"></a></h3>
 <p><em>MANE</em> transcript of <em>UMOD</em>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">&#39;NM_003361.4&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">'NM_003361.4'</span>
 </pre></div>
 </div>
 <section id="genotype-classifier">
@@ -133,7 +133,7 @@ and then serialized as a JSON file following the instructions in <a class="refer
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.predicate</span><span class="w"> </span><span class="kn">import</span> <span class="n">exon</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_in_exon3</span> <span class="o">=</span> <span class="n">exon</span><span class="p">(</span><span class="n">exon</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tx_id</span><span class="o">=</span><span class="n">tx_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_in_exon3</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;overlaps with exon 3 of NM_003361.4&#39;</span>
+<span class="go">'overlaps with exon 3 of NM_003361.4'</span>
 </pre></div>
 </div>
 <p>Monoallelic classifier to compare one allele of <em>UMOD</em> exon 3 variant
@@ -142,10 +142,10 @@ versus one allele of other <em>UMOD</em> variant:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">monoallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">is_in_exon3</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">b_predicate</span><span class="o">=~</span><span class="n">is_in_exon3</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Exon 3&quot;</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;Other&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Exon 3"</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">"Other"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Exon 3&#39;, &#39;Other&#39;)</span>
+<span class="go">('Exon 3', 'Other')</span>
 </pre></div>
 </div>
 </section>
@@ -159,16 +159,16 @@ We need to leverage the HPO hierarchy when computing
 the onset of an HPO term. Let’s load HPO:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and now we can create an <a class="reference internal" href="../../apidocs/gpsea.analysis.temporal.html#gpsea.analysis.temporal.Endpoint" title="gpsea.analysis.temporal.Endpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Endpoint</span></code></a>
 to compute the time until an individual develops end stage renal disease:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.temporal.endpoint</span><span class="w"> </span><span class="kn">import</span> <span class="n">hpo_onset</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">term_id</span> <span class="o">=</span> <span class="s2">&quot;HP:0003774&quot;</span>  <span class="c1"># Stage 5 chronic kidney disease</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">term_id</span> <span class="o">=</span> <span class="s2">"HP:0003774"</span>  <span class="c1"># Stage 5 chronic kidney disease</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">hpo_onset</span><span class="p">(</span><span class="n">hpo</span><span class="o">=</span><span class="n">hpo</span><span class="p">,</span> <span class="n">term_id</span><span class="o">=</span><span class="n">term_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">endpoint</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;Compute time until onset of Stage 5 chronic kidney disease&#39;</span>
+<span class="go">'Compute time until onset of Stage 5 chronic kidney disease'</span>
 </pre></div>
 </div>
 </section>
@@ -218,15 +218,15 @@ the genotype groups:</p>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1"># Show X axis in years ...</span>
-<span class="gp">... </span>    <span class="n">major_formatter</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Age</span><span class="o">.</span><span class="n">DAYS_IN_YEAR</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">major_formatter</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Age</span><span class="o">.</span><span class="n">DAYS_IN_YEAR</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="c1"># ... with a tick for every decade</span>
 <span class="gp">... </span>    <span class="n">major_locator</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">Age</span><span class="o">.</span><span class="n">DAYS_IN_YEAR</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">xlabel</span><span class="o">=</span><span class="n">endpoint</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; [years]&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Event-free proportion&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">xlabel</span><span class="o">=</span><span class="n">endpoint</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">" [years]"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Event-free proportion"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../../_images/umod_km_curves.png"><img alt="UMOD Kaplan-Meier curves" class="align-center" src="../../_images/umod_km_curves.png" style="width: 600px;" />
@@ -269,20 +269,20 @@ the identifiers, genotype classes, and survivals of the tested individuals.</p>
 with onset of <a class="reference external" href="https://hpo.jax.org/browse/disease/OMIM:120435">Lynch syndrome I</a>
 (<cite>OMIM:120435</cite>) at 40 years.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cohort</span><span class="p">,</span> <span class="n">Patient</span><span class="p">,</span> <span class="n">Disease</span><span class="p">,</span> <span class="n">Age</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">onset</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">&quot;P40Y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">onset</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">"P40Y"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">individuals</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="n">Patient</span><span class="o">.</span><span class="n">from_raw_parts</span><span class="p">(</span>
 <span class="gp">... </span>        <span class="n">labels</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="n">diseases</span><span class="o">=</span><span class="p">(</span>
 <span class="gp">... </span>            <span class="n">Disease</span><span class="o">.</span><span class="n">from_raw_parts</span><span class="p">(</span>
-<span class="gp">... </span>                <span class="n">term_id</span><span class="o">=</span><span class="s2">&quot;OMIM:120435&quot;</span><span class="p">,</span>
-<span class="gp">... </span>                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Lynch syndrome I&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">term_id</span><span class="o">=</span><span class="s2">"OMIM:120435"</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="n">name</span><span class="o">=</span><span class="s2">"Lynch syndrome I"</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">is_observed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="gp">... </span>                <span class="n">onset</span><span class="o">=</span><span class="n">onset</span><span class="p">,</span>
 <span class="gp">... </span>            <span class="p">),</span>
 <span class="gp">... </span>        <span class="p">),</span>
 <span class="gp">... </span>    <span class="p">)</span>
-<span class="gp">... </span>    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="s2">&quot;ABCDEFGHIJ&quot;</span>  <span class="c1"># 10 individuals</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="s2">"ABCDEFGHIJ"</span>  <span class="c1"># 10 individuals</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cohort</span> <span class="o">=</span> <span class="n">Cohort</span><span class="o">.</span><span class="n">from_patients</span><span class="p">(</span><span class="n">individuals</span><span class="p">)</span>
 </pre></div>
@@ -291,14 +291,14 @@ with onset of <a class="reference external" href="https://hpo.jax.org/browse/dis
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.clf</span><span class="w"> </span><span class="kn">import</span> <span class="n">random_classifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">random_classifier</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;Classify the individual into random classes&#39;</span>
+<span class="go">'Classify the individual into random classes'</span>
 </pre></div>
 </div>
 <p>… using the Lynch syndrome I diagnosis as the endpoint …</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.temporal.endpoint</span><span class="w"> </span><span class="kn">import</span> <span class="n">disease_onset</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">disease_onset</span><span class="p">(</span><span class="n">disease_id</span><span class="o">=</span><span class="s2">&quot;OMIM:120435&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">disease_onset</span><span class="p">(</span><span class="n">disease_id</span><span class="o">=</span><span class="s2">"OMIM:120435"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">endpoint</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;Compute time until OMIM:120435 onset&#39;</span>
+<span class="go">'Compute time until OMIM:120435 onset'</span>
 </pre></div>
 </div>
 <p>… and we will use Logrank test for differences in survival.</p>
@@ -333,8 +333,8 @@ with onset of <a class="reference external" href="https://hpo.jax.org/browse/dis
 <span class="gp">... </span>        <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">... </span><span class="k">except</span> <span class="n">AnalysisException</span> <span class="k">as</span> <span class="n">ae</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="n">genotypes</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;genotype&quot;</span><span class="p">]</span>
-<span class="gp">... </span>    <span class="n">survivals</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;survival&quot;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">genotypes</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"genotype"</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">survivals</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">"survival"</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>and the values can come in handy in troubleshooting:</p>

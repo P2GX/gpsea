@@ -100,13 +100,13 @@
 <div class="viewcode-block" id="Endpoint">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.temporal.html#gpsea.analysis.temporal.Endpoint">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Endpoint</span><span class="p">(</span><span class="n">ContinuousPartitioning</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Endpoint` computes survival for the analyzed individual.</span>
 
 <span class="sd">    Example endpoints include :func:`~gpsea.analysis.temporal.endpoint.death`,</span>
 <span class="sd">    :func:`~gpsea.analysis.temporal.endpoint.disease_onset`,</span>
 <span class="sd">    or onset of a phenotypic feature (:func:`~gpsea.analysis.temporal.endpoint.hpo_onset`).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Endpoint.compute_survival">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.temporal.html#gpsea.analysis.temporal.Endpoint.compute_survival">[docs]</a>
@@ -115,10 +115,10 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Survival</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Compute a survival for a given `patient` or `None` if the `patient` lacks the required</span>
 <span class="sd">        data (e.g. age of death or age at last investigation).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 </div>
 
@@ -127,7 +127,7 @@
 <div class="viewcode-block" id="SurvivalAnalysisResult">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.temporal.html#gpsea.analysis.temporal.SurvivalAnalysisResult">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SurvivalAnalysisResult</span><span class="p">(</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `SurvivalAnalysisResult` includes the results of a :class:`~gpsea.analysis.temporal.SurvivalAnalysis`.</span>
 
 <span class="sd">    The genotype categories and survival are reported in the `data` data frame with the following structure:</span>
@@ -149,7 +149,7 @@
 <span class="sd">    A `genotype` value may be missing (`None`) if the individual cannot be assigned</span>
 <span class="sd">    into a genotype category.</span>
 <span class="sd">    Similarly, a `survival` is `None` if computing the survival for an individual is impossible.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -170,9 +170,9 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">endpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Endpoint</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the endpoint used to compute the survival of the individuals.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># We are sure that `self._phenotype` is assignable to `Endpoint`</span>
         <span class="c1"># because of the instance check in `__init__` and `Endpoint`</span>
         <span class="c1"># being a subclass of `Partitioning`.</span>
@@ -186,7 +186,7 @@
         <span class="n">colors</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">PALETTE_DATA</span><span class="p">,</span>
         <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Plot genotype group survivals on the provided axes.</span>
 
 <span class="sd">        The axes includes legend. However, if no survival is available</span>
@@ -194,8 +194,8 @@
 
 <span class="sd">        :param ax: a Matplotlib `Axes` to draw on.</span>
 <span class="sd">        :param plot_kwargs: keyword arguments passed directly to :func:`matplotlib.axes.Axes.step`.</span>
-<span class="sd">            Unless overridden, ``where=&#39;post&#39;``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">            Unless overridden, ``where='post'``.</span>
+<span class="sd">        """</span>
         <span class="n">col_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_palette_idxs</span><span class="p">(</span><span class="n">n_categories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">(),</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">pat_cat</span><span class="p">,</span> <span class="n">color_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">get_categories</span><span class="p">(),</span> <span class="n">col_idxs</span><span class="p">):</span>
@@ -226,12 +226,12 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="s2">&quot;SurvivalAnalysisResult(&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;gt_clf=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;endpoint=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;statistic=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;data=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;statistic_result=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic_result</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="s2">"SurvivalAnalysisResult("</span>
+            <span class="sa">f</span><span class="s2">"gt_clf=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"endpoint=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"statistic=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"data=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"statistic_result=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic_result</span><span class="si">}</span><span class="s2">)"</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -242,7 +242,7 @@
 <div class="viewcode-block" id="SurvivalAnalysis">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.temporal.html#gpsea.analysis.temporal.SurvivalAnalysis">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SurvivalAnalysis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `SurvivalAnalysis` compares the survivals of genotype groups with respect</span>
 <span class="sd">    to an :class:`~gpsea.analysis.temporal.Endpoint`.</span>
 
@@ -252,7 +252,7 @@
 
 <span class="sd">    The analysis may raise an :class:`~gpsea.analysis.AnalysisException` if issues are encountered.</span>
 <span class="sd">    The exception includes the reason(s) in `args` as well as any partial data, to help with troubleshooting.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -269,9 +269,9 @@
         <span class="n">gt_clf</span><span class="p">:</span> <span class="n">GenotypeClassifier</span><span class="p">,</span>
         <span class="n">endpoint</span><span class="p">:</span> <span class="n">Endpoint</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SurvivalAnalysisResult</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Execute the survival analysis on a given `cohort`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span>
             <span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span> <span class="k">for</span> <span class="n">patient</span> <span class="ow">in</span> <span class="n">cohort</span><span class="p">),</span>
@@ -302,13 +302,13 @@
         <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">pval</span><span class="p">):</span>
             <span class="n">partial</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">SAMPLE_ID</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span>
-                <span class="s2">&quot;genotype&quot;</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]),</span>
-                <span class="s2">&quot;survival&quot;</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">PH_COL</span><span class="p">]),</span>
+                <span class="s2">"genotype"</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">GT_COL</span><span class="p">]),</span>
+                <span class="s2">"survival"</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="o">.</span><span class="n">PH_COL</span><span class="p">]),</span>
             <span class="p">}</span>
 
             <span class="k">raise</span> <span class="n">AnalysisException</span><span class="p">(</span>
                 <span class="n">partial</span><span class="p">,</span>
-                <span class="s2">&quot;The survival values did not meet the expectation of the statistical test!&quot;</span><span class="p">,</span>
+                <span class="s2">"The survival values did not meet the expectation of the statistical test!"</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">SurvivalAnalysisResult</span><span class="p">(</span>

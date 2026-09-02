@@ -113,11 +113,11 @@
 based on a diagnosis presence.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.clf</span><span class="w"> </span><span class="kn">import</span> <span class="n">diagnosis_classifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">diagnosis_classifier</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">diagnoses</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;OMIM:154700&#39;</span><span class="p">,</span> <span class="s1">&#39;OMIM:129600&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Marfan syndrome&#39;</span><span class="p">,</span> <span class="s1">&#39;Ectopia lentis, familial&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">diagnoses</span><span class="o">=</span><span class="p">(</span><span class="s1">'OMIM:154700'</span><span class="p">,</span> <span class="s1">'OMIM:129600'</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">'Marfan syndrome'</span><span class="p">,</span> <span class="s1">'Ectopia lentis, familial'</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;OMIM:154700&#39;, &#39;OMIM:129600&#39;)</span>
+<span class="go">('OMIM:154700', 'OMIM:129600')</span>
 </pre></div>
 </div>
 <p>The classifier takes two or more disease identifiers (<cite>diagnoses</cite>) as well as their names (<cite>labels</cite>),

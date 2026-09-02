@@ -166,7 +166,7 @@ The cohort was prepared from phenopackets as described in <a class="reference in
 and then serialized as a JSON file following the instructions in <a class="reference internal" href="../input-data.html#cohort-persistence"><span class="std std-ref">Persist the cohort for later</span></a> section.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/TBX5.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">'docs/cohort-data/TBX5.0.1.20.json'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort_json</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
@@ -186,7 +186,7 @@ We need to create one genotype classifier and one or more phenotype classifiers.
 <p>We want to separate the patients into two classes: a class <em>with</em> a frameshift variant
 and a class <em>without</em> a frameshift variant (i.e. any other heterozygous variant).
 We will use the <em>MANE</em> transcript for the analysis:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">&#39;NM_181486.4&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">'NM_181486.4'</span>
 </pre></div>
 </div>
 <p>Building a genotype classifier is a two step process.
@@ -196,7 +196,7 @@ to test if the variant is predicted to lead to a frameshift in <cite>NM_181486.4
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.predicate</span><span class="w"> </span><span class="kn">import</span> <span class="n">variant_effect</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_frameshift</span> <span class="o">=</span> <span class="n">variant_effect</span><span class="p">(</span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">FRAMESHIFT_VARIANT</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">is_frameshift</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;FRAMESHIFT_VARIANT on NM_181486.4&#39;</span>
+<span class="go">'FRAMESHIFT_VARIANT on NM_181486.4'</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -211,11 +211,11 @@ or as an individual with one <em>non-frameshift</em> allele (<cite>Other</cite>)
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.clf</span><span class="w"> </span><span class="kn">import</span> <span class="n">monoallelic_classifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">monoallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">is_frameshift</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Frameshift&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;Other&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Frameshift"</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">b_label</span><span class="o">=</span><span class="s2">"Other"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Frameshift&#39;, &#39;Other&#39;)</span>
+<span class="go">('Frameshift', 'Other')</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -234,7 +234,7 @@ utility function to generate phenotype classifiers for all HPO terms.</p>
 <p>The function needs HPO to prepare classifiers, hence we need to load HPO:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>and then we can create the classifiers</p>
@@ -303,7 +303,7 @@ we can configure the analysis manually.</p>
 </div>
 <p>and we finalize the setup by choosing a MTC procedure
 (e.g. <cite>fdr_bh</cite> for Benjamini-Hochberg) along with the MTC alpha:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mtc_correction</span> <span class="o">=</span> <span class="s1">&#39;fdr_bh&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mtc_correction</span> <span class="o">=</span> <span class="s1">'fdr_bh'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mtc_alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 </pre></div>
 </div>
@@ -316,7 +316,7 @@ we can configure the analysis manually.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">analysis</span> <span class="o">=</span> <span class="n">HpoTermAnalysis</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">count_statistic</span><span class="o">=</span><span class="n">count_statistic</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">mtc_filter</span><span class="o">=</span><span class="n">mtc_filter</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">mtc_correction</span><span class="o">=</span><span class="s1">&#39;fdr_bh&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">mtc_correction</span><span class="o">=</span><span class="s1">'fdr_bh'</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">mtc_alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>

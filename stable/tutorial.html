@@ -174,9 +174,9 @@ A good way to find this is to search on the transcript id in <a class="reference
 In our case, search on <cite>NM_181486.4</cite> will bring us to <a class="reference external" href="https://www.ncbi.nlm.nih.gov/nuccore/NM_181486.4">this page</a>.
 If we search within this page for <cite>“NP_”</cite>, this will bring us to the
 corresponding protein accession <cite>NP_852259.1</cite>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_name</span> <span class="o">=</span> <span class="s1">&#39;TBX5&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">&#39;NM_181486.4&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">px_id</span> <span class="o">=</span> <span class="s1">&#39;NP_852259.1&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cohort_name</span> <span class="o">=</span> <span class="s1">'TBX5'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s1">'NM_181486.4'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">px_id</span> <span class="o">=</span> <span class="s1">'NP_852259.1'</span>
 </pre></div>
 </div>
 </section>
@@ -187,7 +187,7 @@ We use <a class="reference external" href="https://ielis.github.io/hpo-toolkit/s
 to load the version <cite>v2024-07-01</cite> of HPO:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">hpotk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">configure_ontology_store</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">&#39;v2024-07-01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hpo</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">load_minimal_hpo</span><span class="p">(</span><span class="n">release</span><span class="o">=</span><span class="s1">'v2024-07-01'</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -202,7 +202,7 @@ whose clinical signs and symptoms were encoded into HPO terms
 and stored in <a class="reference external" href="https://github.com/monarch-initiative/phenopacket-store">Phenopacket Store</a>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ppktstore.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_phenopacket_registry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phenopacket_registry</span> <span class="o">=</span> <span class="n">configure_phenopacket_registry</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">phenopacket_registry</span><span class="o">.</span><span class="n">open_phenopacket_store</span><span class="p">(</span><span class="s2">&quot;0.1.20&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ps</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">phenopacket_registry</span><span class="o">.</span><span class="n">open_phenopacket_store</span><span class="p">(</span><span class="s2">"0.1.20"</span><span class="p">)</span> <span class="k">as</span> <span class="n">ps</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">phenopackets</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">iter_cohort_phenopackets</span><span class="p">(</span><span class="n">cohort_name</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">phenopackets</span><span class="p">)</span>
 <span class="go">156</span>
@@ -1353,10 +1353,10 @@ depending on presence of a single allele of a missense or truncating variant
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">monoallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">is_missense</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">b_predicate</span><span class="o">=</span><span class="n">is_truncating</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Missense&quot;</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;Truncating&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Missense"</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">"Truncating"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Missense&#39;, &#39;Truncating&#39;)</span>
+<span class="go">('Missense', 'Truncating')</span>
 </pre></div>
 </div>
 <p>This is a lot of code, and detailed explanations and examples are available in the <a class="reference internal" href="user-guide/analyses/partitioning/index.html#partitioning"><span class="std std-ref">Partitioning</span></a> section.

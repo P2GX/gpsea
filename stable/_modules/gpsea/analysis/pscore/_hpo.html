@@ -83,15 +83,15 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patient</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">._api</span><span class="w"> </span><span class="kn">import</span> <span class="n">PhenotypeScorer</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">A module with HPO-driven phenotype scores. The score generally work with the phenotypes of an individual</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 <div class="viewcode-block" id="CountingPhenotypeScorer">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CountingPhenotypeScorer</span><span class="p">(</span><span class="n">PhenotypeScorer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `CountingPhenotypeScorer` assigns the patient with a phenotype score</span>
 <span class="sd">    that is equivalent to the count of observed phenotypes that are either</span>
 <span class="sd">    an exact match to the `query` terms or their descendants.</span>
@@ -100,7 +100,7 @@
 <span class="sd">    In the case, the query would include the corresponding terms (e.g., Abnormal brain morphology HP:0012443).</span>
 <span class="sd">    An individual can then have between 0 and 4 phenotype group abnormalities.</span>
 <span class="sd">    This predicate is intended to be used with the Mann Whitney U test.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="CountingPhenotypeScorer.from_query_curies">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer.from_query_curies">[docs]</a>
@@ -109,13 +109,13 @@
         <span class="n">hpo</span><span class="p">:</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">MinimalOntology</span><span class="p">,</span>
         <span class="n">query</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]],</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Create a scorer to test for the number of phenotype terms that fall into the phenotype groups.</span>
 
 <span class="sd">        :param hpo: HPO as represented by :class:`~hpotk.ontology.MinimalOntology` of HPO toolkit.</span>
 <span class="sd">        :param query: an iterable of the top-level terms, either represented as CURIEs (`str`)</span>
 <span class="sd">          or as term IDs.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">query_term_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query</span><span class="p">:</span>
             <span class="c1"># First check if the query items are Term IDs or curies.</span>
@@ -124,23 +124,23 @@
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">):</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;query argument must be iterable of hpotk TermId&#39;s or strings but we found </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"query argument must be iterable of hpotk TermId's or strings but we found </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
             <span class="c1"># Now check that the term IDs are HPO term IDs.</span>
             <span class="k">if</span> <span class="n">q</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hpo</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The query </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2"> was not found in the HPO&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The query </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2"> was not found in the HPO"</span><span class="p">)</span>
             <span class="n">query_term_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query_term_ids</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`query` must not be empty&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"`query` must not be empty"</span><span class="p">)</span>
 
         <span class="c1"># the query terms must not include a term and its ancestor</span>
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">query_term_ids</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">anc</span> <span class="ow">in</span> <span class="n">hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get_ancestors</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">anc</span> <span class="ow">in</span> <span class="n">query_term_ids</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">&quot;Both </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2"> and its ancestor term </span><span class="si">{</span><span class="n">anc</span><span class="si">}</span><span class="s2"> were found in the query, &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;but query terms must not include a term and its ancestor&quot;</span>
+                        <span class="sa">f</span><span class="s2">"Both </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2"> and its ancestor term </span><span class="si">{</span><span class="n">anc</span><span class="si">}</span><span class="s2"> were found in the query, "</span>
+                        <span class="o">+</span> <span class="s2">"but query terms must not include a term and its ancestor"</span>
                     <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">CountingPhenotypeScorer</span><span class="p">(</span>
@@ -159,19 +159,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;HPO Group Count&quot;</span>
+        <span class="k">return</span> <span class="s2">"HPO Group Count"</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="s2">&quot;Assign a phenotype score that is equivalent to the count &quot;</span>
-            <span class="s2">&quot;of present phenotypes that are either an exact match to &quot;</span>
-            <span class="s2">&quot;the query terms or their descendants&quot;</span>
+            <span class="s2">"Assign a phenotype score that is equivalent to the count "</span>
+            <span class="s2">"of present phenotypes that are either an exact match to "</span>
+            <span class="s2">"the query terms or their descendants"</span>
         <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;HPO group count&quot;</span>
+        <span class="k">return</span> <span class="s2">"HPO group count"</span>
 
 <div class="viewcode-block" id="CountingPhenotypeScorer.score">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer.score">[docs]</a>
@@ -179,12 +179,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the count (number) of terms in the query set</span>
 <span class="sd">        that have matching terms (exact matches or descendants) in the affected individual.</span>
 <span class="sd">        Do not double count if the individual has two terms</span>
 <span class="sd">        (e.g., two different descendants) of one of the query terms.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_query</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">pf</span> <span class="ow">in</span> <span class="n">patient</span><span class="o">.</span><span class="n">present_phenotypes</span><span class="p">():</span>
@@ -205,12 +205,12 @@
 <div class="viewcode-block" id="DeVriesPhenotypeScorer">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.DeVriesPhenotypeScorer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DeVriesPhenotypeScorer</span><span class="p">(</span><span class="n">PhenotypeScorer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    `DeVriesPhenotypeScorer` computes &quot;adapted De Vries Score&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    `DeVriesPhenotypeScorer` computes "adapted De Vries Score"</span>
 <span class="sd">    as described in `Feenstra et al. &lt;https://pubmed.ncbi.nlm.nih.gov/21712853&gt;`_.</span>
 
 <span class="sd">    See more in :ref:`devries-scorer` section.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -220,47 +220,47 @@
 
         <span class="c1"># severe and profound GDD</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_gdd_tids</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;HP:0011344&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0012736&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0011342&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0011343&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0001263&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0011344"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"HP:0012736"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"HP:0011342"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0011343"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0001263"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="p">}</span>
 
         <span class="c1"># mild, moderate, and unspecified GDD (borderline has 0.5)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_idd_tids</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;HP:0010864&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0002187&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0001256&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0002342&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0001249&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;HP:0006889&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="s2">"HP:0010864"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"HP:0002187"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"HP:0001256"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0002342"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0001249"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"HP:0006889"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="p">}</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;De Vries Score&quot;</span>
+        <span class="k">return</span> <span class="s2">"De Vries Score"</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;A phenotypic severity score for individuals with intellectual disability&quot;</span>
+        <span class="k">return</span> <span class="s2">"A phenotypic severity score for individuals with intellectual disability"</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;De Vries score&quot;</span>
+        <span class="k">return</span> <span class="s2">"De Vries score"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_developmental_delay_score</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Calculate the dev delay component of the score</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            observed_term_ids: terms observed in patient</span>
 
 <span class="sd">        Returns: a score between 0 and 2</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># Check GDD terms with higher priority than ID terms.</span>
         <span class="c1"># Global developmental delay</span>
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">observed_term_ids</span><span class="p">:</span>
@@ -279,14 +279,14 @@
         <span class="n">target_tid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Args:</span>
 <span class="sd">            target_tid: term of interest</span>
 <span class="sd">            observed_term_ids: all terms observed in patient</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            1 if at least one term is equal to or descending from the target_tid, otherwise 0</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> <span class="n">term_id</span> <span class="ow">in</span> <span class="n">observed_term_ids</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">term_id</span> <span class="o">==</span> <span class="n">target_tid</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hpo</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">is_descendant_of</span><span class="p">(</span><span class="n">term_id</span><span class="p">,</span> <span class="n">target_tid</span><span class="p">):</span>
                 <span class="k">return</span> <span class="mi">1</span>
@@ -296,30 +296,30 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Calculate the postnatal growth component of the score.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            observed_term_ids: terms observed in patient</span>
 
 <span class="sd">        Returns: an `int` (between 0 and 2)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">microcephaly</span> <span class="o">=</span> <span class="s2">&quot;HP:0000252&quot;</span>
-        <span class="n">short_stature</span> <span class="o">=</span> <span class="s2">&quot;HP:0004322&quot;</span>
-        <span class="n">macrocephaly</span> <span class="o">=</span> <span class="s2">&quot;HP:0000256&quot;</span>
-        <span class="n">tall_stature</span> <span class="o">=</span> <span class="s2">&quot;HP:0000098&quot;</span>
+<span class="sd">        """</span>
+        <span class="n">microcephaly</span> <span class="o">=</span> <span class="s2">"HP:0000252"</span>
+        <span class="n">short_stature</span> <span class="o">=</span> <span class="s2">"HP:0004322"</span>
+        <span class="n">macrocephaly</span> <span class="o">=</span> <span class="s2">"HP:0000256"</span>
+        <span class="n">tall_stature</span> <span class="o">=</span> <span class="s2">"HP:0000098"</span>
         <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">microcephaly</span><span class="p">,</span> <span class="n">short_stature</span><span class="p">,</span> <span class="n">macrocephaly</span><span class="p">,</span> <span class="n">tall_stature</span><span class="p">):</span>
             <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">total_count</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inconsistent annotations for postnatal growth score </span><span class="si">{</span><span class="n">total_count</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">observed_term_ids</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Inconsistent annotations for postnatal growth score </span><span class="si">{</span><span class="n">total_count</span><span class="si">}</span><span class="s2">:  </span><span class="si">{</span><span class="n">observed_term_ids</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">total_count</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_facial_dysmorphism_score</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Collection</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        This section assigns two points if two or more anomalies are identified in the following</span>
 <span class="sd">        categories: hypertelorism, nasal anomalies and ear anomalies. Our implementation counts the total</span>
 <span class="sd">        number of terms or descendants of the hypertelorism, Abnormal external nose morphology, and</span>
@@ -330,14 +330,14 @@
 
 <span class="sd">        Returns: facial dysmorphism score (between 0 and 2)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">globe_location</span> <span class="o">=</span> <span class="s2">&quot;HP:0100886&quot;</span>  <span class="c1"># include Hypertelorism and others</span>
-        <span class="n">lip</span> <span class="o">=</span> <span class="s2">&quot;HP:0000159&quot;</span>  <span class="c1"># Abnormal lip morphology HP:0000159</span>
-        <span class="n">external_nose</span> <span class="o">=</span> <span class="s2">&quot;HP:0010938&quot;</span>
-        <span class="n">pinna_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0000377&quot;</span>
-        <span class="n">facial_shape</span> <span class="o">=</span> <span class="s2">&quot;HP:0001999&quot;</span>  <span class="c1"># Abnormal facial shape</span>
-        <span class="n">midface</span> <span class="o">=</span> <span class="s2">&quot;HP:0000309&quot;</span>  <span class="c1"># Abnormal midface morphology</span>
-        <span class="n">chin</span> <span class="o">=</span> <span class="s2">&quot;HP:0000306&quot;</span>  <span class="c1"># Abnormality of the chin</span>
+<span class="sd">        """</span>
+        <span class="n">globe_location</span> <span class="o">=</span> <span class="s2">"HP:0100886"</span>  <span class="c1"># include Hypertelorism and others</span>
+        <span class="n">lip</span> <span class="o">=</span> <span class="s2">"HP:0000159"</span>  <span class="c1"># Abnormal lip morphology HP:0000159</span>
+        <span class="n">external_nose</span> <span class="o">=</span> <span class="s2">"HP:0010938"</span>
+        <span class="n">pinna_morphology</span> <span class="o">=</span> <span class="s2">"HP:0000377"</span>
+        <span class="n">facial_shape</span> <span class="o">=</span> <span class="s2">"HP:0001999"</span>  <span class="c1"># Abnormal facial shape</span>
+        <span class="n">midface</span> <span class="o">=</span> <span class="s2">"HP:0000309"</span>  <span class="c1"># Abnormal midface morphology</span>
+        <span class="n">chin</span> <span class="o">=</span> <span class="s2">"HP:0000306"</span>  <span class="c1"># Abnormality of the chin</span>
 
         <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">globe_location</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
         <span class="n">total_count</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span><span class="n">target_tid</span><span class="o">=</span><span class="n">lip</span><span class="p">,</span> <span class="n">observed_term_ids</span><span class="o">=</span><span class="n">observed_term_ids</span><span class="p">)</span>
@@ -356,7 +356,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Non-facial dysmorphism and congenital abnormalities component.</span>
 <span class="sd">        One point is assigned for either the corresponding HPO terms or any of their descendents up to a maximum of 2.</span>
 
@@ -365,10 +365,10 @@
 
 <span class="sd">        Returns:   Non-facial dysmorphism and congenital abnormalities score (between 0 and 2)</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">abn_external_genitalia</span> <span class="o">=</span> <span class="s2">&quot;HP:0000811&quot;</span>  <span class="c1"># Abnormal external genitalia</span>
-        <span class="n">abnormal_hand_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0005922&quot;</span>
-        <span class="n">abnormal_heart_morphology</span> <span class="o">=</span> <span class="s2">&quot;HP:0001627&quot;</span>
+<span class="sd">        """</span>
+        <span class="n">abn_external_genitalia</span> <span class="o">=</span> <span class="s2">"HP:0000811"</span>  <span class="c1"># Abnormal external genitalia</span>
+        <span class="n">abnormal_hand_morphology</span> <span class="o">=</span> <span class="s2">"HP:0005922"</span>
+        <span class="n">abnormal_heart_morphology</span> <span class="o">=</span> <span class="s2">"HP:0001627"</span>
 
         <span class="n">total_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_term_or_descendant_count</span><span class="p">(</span>
             <span class="n">target_tid</span><span class="o">=</span><span class="n">abn_external_genitalia</span><span class="p">,</span>
@@ -386,7 +386,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">observed_term_ids</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Two points are assigned if Prenatal-onset growth retardation is present.</span>
 
 <span class="sd">        Args:</span>
@@ -394,9 +394,9 @@
 
 <span class="sd">        Returns: score between 0 and 2</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">small_for_gestational_age</span> <span class="o">=</span> <span class="s2">&quot;HP:0001518&quot;</span>
-        <span class="n">intrauterine_growth_retardation</span> <span class="o">=</span> <span class="s2">&quot;HP:0001511&quot;</span>
+<span class="sd">        """</span>
+        <span class="n">small_for_gestational_age</span> <span class="o">=</span> <span class="s2">"HP:0001518"</span>
+        <span class="n">intrauterine_growth_retardation</span> <span class="o">=</span> <span class="s2">"HP:0001511"</span>
         <span class="n">targets</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_for_gestational_age</span><span class="p">,</span> <span class="n">intrauterine_growth_retardation</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="n">observed_term_ids</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">tid</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
@@ -406,7 +406,7 @@
 <div class="viewcode-block" id="DeVriesPhenotypeScorer.score">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.DeVriesPhenotypeScorer.score">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Calculate score based on list of strings with term identifiers or observed HPO terms.</span>
 
 <span class="sd">        Args:</span>
@@ -414,7 +414,7 @@
 
 <span class="sd">        Returns: de Vries score between 0 and 10</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">observed_term_ids</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tid</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="n">patient</span><span class="o">.</span><span class="n">present_phenotypes</span><span class="p">())</span>
 
         <span class="n">delay_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_developmental_delay_score</span><span class="p">(</span><span class="n">observed_term_ids</span><span class="p">)</span>

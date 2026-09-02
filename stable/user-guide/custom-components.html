@@ -124,21 +124,21 @@ for using body mass index (BMI) as a phenotype score.</p>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❸</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;BMI phenotype scorer&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"BMI phenotype scorer"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❹</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;Body mass index used as a phenotype score&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"Body mass index used as a phenotype score"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❺</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;BMI&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"BMI"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span> <span class="c1"># ❻</span>
 <span class="gp">... </span>        <span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id2bmi</span><span class="p">[</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">label</span><span class="p">]</span>
 <span class="gp">... </span>        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'nan'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">BmiScorer</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer" title="gpsea.analysis.pscore.PhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhenotypeScorer</span></code></a>
@@ -174,26 +174,26 @@ in a transcript of interest.</p>
 <span class="gp">... </span>        <span class="n">tx_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span> <span class="o">=</span> <span class="n">tx_id</span>
-<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_aa_code</span> <span class="o">=</span> <span class="s2">&quot;Gly&quot;</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_aa_code</span> <span class="o">=</span> <span class="s2">"Gly"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❸</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;Affects Glycine&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"Affects Glycine"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❹</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;affects a glycine residue&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"affects a glycine residue"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="nd">@property</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ❺</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;affected aminoacid residue&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"affected aminoacid residue"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variant</span><span class="p">:</span> <span class="n">Variant</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="c1"># ❻</span>
 <span class="gp">... </span>        <span class="n">tx_ann</span> <span class="o">=</span> <span class="n">variant</span><span class="o">.</span><span class="n">get_tx_anno_by_tx_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="k">if</span> <span class="n">tx_ann</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 <span class="gp">... </span>           <span class="n">hgvsp</span> <span class="o">=</span> <span class="n">tx_ann</span><span class="o">.</span><span class="n">hgvsp</span>
 <span class="gp">... </span>           <span class="k">if</span> <span class="n">hgvsp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="gp">... </span>               <span class="k">return</span> <span class="n">hgvsp</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_aa_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>               <span class="k">return</span> <span class="n">hgvsp</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">"p.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_aa_code</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="kc">False</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="c1"># ➐</span>
@@ -206,7 +206,7 @@ in a transcript of interest.</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="c1"># ➓</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;AffectsGlycinePredicate(tx_id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="sa">f</span><span class="s2">"AffectsGlycinePredicate(tx_id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_tx_id</span><span class="si">}</span><span class="s2">)"</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">AffectsGlycinePredicate</span></code> must extend <a class="reference internal" href="../apidocs/gpsea.analysis.predicate.html#gpsea.analysis.predicate.VariantPredicate" title="gpsea.analysis.predicate.VariantPredicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariantPredicate</span></code></a> to work with GPSEA (❶).

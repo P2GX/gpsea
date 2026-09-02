@@ -114,70 +114,70 @@
 <div class="viewcode-block" id="GpseaJSONEncoder">
 <a class="viewcode-back" href="../../apidocs/gpsea.io.html#gpsea.io.GpseaJSONEncoder">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GpseaJSONEncoder</span><span class="p">(</span><span class="n">JSONEncoder</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    `GpseaJSONEncoder` encodes gpsea&#39;s types into a JSON message.</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    `GpseaJSONEncoder` encodes gpsea's types into a JSON message.</span>
 
-<span class="sd">    The encoder is supposed to be used along with Python&#39;s `json` module via the `cls` parameter of :func:`json.dump`</span>
+<span class="sd">    The encoder is supposed to be used along with Python's `json` module via the `cls` parameter of :func:`json.dump`</span>
 <span class="sd">    or :func:`json.dumps`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="GpseaJSONEncoder.default">
 <a class="viewcode-back" href="../../apidocs/gpsea.io.html#gpsea.io.GpseaJSONEncoder.default">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Variant</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;variant_info&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_info</span><span class="p">,</span>
-                <span class="s2">&quot;tx_annotations&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">tx_annotations</span><span class="p">,</span>
-                <span class="s2">&quot;genotypes&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">genotypes</span><span class="p">,</span>
+                <span class="s2">"variant_info"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_info</span><span class="p">,</span>
+                <span class="s2">"tx_annotations"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">tx_annotations</span><span class="p">,</span>
+                <span class="s2">"genotypes"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">genotypes</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">VariantInfo</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;variant_coordinates&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_coordinates</span><span class="p">,</span>
-                <span class="s2">&quot;sv_info&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">sv_info</span><span class="p">,</span>
+                <span class="s2">"variant_coordinates"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_coordinates</span><span class="p">,</span>
+                <span class="s2">"sv_info"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">sv_info</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">VariantCoordinates</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
-                <span class="s2">&quot;ref&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
-                <span class="s2">&quot;alt&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
-                <span class="s2">&quot;change_length&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">change_length</span><span class="p">,</span>
+                <span class="s2">"region"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
+                <span class="s2">"ref"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
+                <span class="s2">"alt"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
+                <span class="s2">"change_length"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">change_length</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">ImpreciseSvInfo</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;structural_type&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">structural_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                <span class="s2">&quot;variant_class&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_class</span><span class="p">,</span>
-                <span class="s2">&quot;gene_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_id</span><span class="p">,</span>
-                <span class="s2">&quot;gene_symbol&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>
+                <span class="s2">"structural_type"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">structural_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">"variant_class"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_class</span><span class="p">,</span>
+                <span class="s2">"gene_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_id</span><span class="p">,</span>
+                <span class="s2">"gene_symbol"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Region</span><span class="p">):</span>
             <span class="n">val</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
-                <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                <span class="s2">"start"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                <span class="s2">"end"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
             <span class="p">}</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">):</span>
-                <span class="n">val</span><span class="p">[</span><span class="s2">&quot;contig&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">contig</span>
-                <span class="n">val</span><span class="p">[</span><span class="s2">&quot;strand&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">strand</span>
+                <span class="n">val</span><span class="p">[</span><span class="s2">"contig"</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">contig</span>
+                <span class="n">val</span><span class="p">[</span><span class="s2">"strand"</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">strand</span>
 
             <span class="k">return</span> <span class="n">val</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Contig</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;genbank_acc&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">genbank_acc</span><span class="p">,</span>
-                <span class="s2">&quot;refseq_name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">refseq_name</span><span class="p">,</span>
-                <span class="s2">&quot;ucsc_name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">ucsc_name</span><span class="p">,</span>
-                <span class="s2">&quot;length&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">o</span><span class="p">),</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">"genbank_acc"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">genbank_acc</span><span class="p">,</span>
+                <span class="s2">"refseq_name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">refseq_name</span><span class="p">,</span>
+                <span class="s2">"ucsc_name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">ucsc_name</span><span class="p">,</span>
+                <span class="s2">"length"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">o</span><span class="p">),</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">TranscriptAnnotation</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;gene_symbol&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>
-                <span class="s2">&quot;transcript_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">transcript_id</span><span class="p">,</span>
-                <span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">hgvs_cdna</span><span class="p">,</span>
-                <span class="s2">&quot;is_preferred&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_preferred</span><span class="p">,</span>
-                <span class="s2">&quot;variant_effects&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_effects</span><span class="p">,</span>
-                <span class="s2">&quot;overlapping_exons&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">overlapping_exons</span><span class="p">,</span>
-                <span class="s2">&quot;protein_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_id</span><span class="p">,</span>
-                <span class="s2">&quot;hgvsp&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">hgvsp</span><span class="p">,</span>
-                <span class="s2">&quot;protein_effect_location&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_effect_location</span><span class="p">,</span>
+                <span class="s2">"gene_symbol"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">gene_symbol</span><span class="p">,</span>
+                <span class="s2">"transcript_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">transcript_id</span><span class="p">,</span>
+                <span class="s2">"hgvs_cdna"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">hgvs_cdna</span><span class="p">,</span>
+                <span class="s2">"is_preferred"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_preferred</span><span class="p">,</span>
+                <span class="s2">"variant_effects"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variant_effects</span><span class="p">,</span>
+                <span class="s2">"overlapping_exons"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">overlapping_exons</span><span class="p">,</span>
+                <span class="s2">"protein_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_id</span><span class="p">,</span>
+                <span class="s2">"hgvsp"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">hgvsp</span><span class="p">,</span>
+                <span class="s2">"protein_effect_location"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_effect_location</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Genotypes</span><span class="p">):</span>
             <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
@@ -186,86 +186,86 @@
                 <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
                 <span class="n">genotypes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;samples&quot;</span><span class="p">:</span> <span class="n">samples</span><span class="p">,</span>
-                <span class="s2">&quot;genotypes&quot;</span><span class="p">:</span> <span class="n">genotypes</span><span class="p">,</span>
+                <span class="s2">"samples"</span><span class="p">:</span> <span class="n">samples</span><span class="p">,</span>
+                <span class="s2">"genotypes"</span><span class="p">:</span> <span class="n">genotypes</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">SampleLabels</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                <span class="s2">&quot;meta_label&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">meta_label</span><span class="p">,</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                <span class="s2">"meta_label"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">meta_label</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">(</span><span class="n">Sex</span><span class="p">,</span> <span class="n">Timeline</span><span class="p">,</span> <span class="n">Genotype</span><span class="p">,</span> <span class="n">VariantEffect</span><span class="p">,</span> <span class="n">Strand</span><span class="p">,</span> <span class="n">VariantClass</span><span class="p">,</span> <span class="n">Status</span><span class="p">)):</span>
             <span class="c1"># enums</span>
             <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Phenotype</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;term_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                <span class="s2">&quot;is_present&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span>
-                <span class="s2">&quot;onset&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span>
+                <span class="s2">"term_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">"is_present"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span>
+                <span class="s2">"onset"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Age</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;days&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">days</span><span class="p">,</span>
-                <span class="s2">&quot;timeline&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">timeline</span><span class="p">,</span>
+                <span class="s2">"days"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">days</span><span class="p">,</span>
+                <span class="s2">"timeline"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">timeline</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Disease</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;term_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;is_observed&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span>
-                <span class="s2">&quot;onset&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span>
+                <span class="s2">"term_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">"is_observed"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span>
+                <span class="s2">"onset"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Measurement</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;test_term_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                <span class="s2">&quot;test_name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;test_result&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">test_result</span><span class="p">,</span>
-                <span class="s2">&quot;unit&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">"test_term_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                <span class="s2">"test_name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">"test_result"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">test_result</span><span class="p">,</span>
+                <span class="s2">"unit"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Patient</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
-                <span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span>
-                <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
-                <span class="s2">&quot;vital_status&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">vital_status</span><span class="p">,</span>
-                <span class="s2">&quot;phenotypes&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">phenotypes</span><span class="p">,</span>
-                <span class="s2">&quot;measurements&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">measurements</span><span class="p">,</span>
-                <span class="s2">&quot;diseases&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">diseases</span><span class="p">,</span>
-                <span class="s2">&quot;variants&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variants</span><span class="p">,</span>
+                <span class="s2">"labels"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
+                <span class="s2">"sex"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">sex</span><span class="p">,</span>
+                <span class="s2">"age"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
+                <span class="s2">"vital_status"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">vital_status</span><span class="p">,</span>
+                <span class="s2">"phenotypes"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">phenotypes</span><span class="p">,</span>
+                <span class="s2">"measurements"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">measurements</span><span class="p">,</span>
+                <span class="s2">"diseases"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">diseases</span><span class="p">,</span>
+                <span class="s2">"variants"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">variants</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">VitalStatus</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-                <span class="s2">&quot;age_of_death&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">age_of_death</span><span class="p">,</span>
+                <span class="s2">"status"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+                <span class="s2">"age_of_death"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">age_of_death</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Cohort</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">all_patients</span><span class="p">,</span>
+                <span class="s2">"members"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">all_patients</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">TranscriptCoordinates</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
-                <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
-                <span class="s2">&quot;exons&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">exons</span><span class="p">,</span>
-                <span class="s2">&quot;cds_start&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">cds_start</span><span class="p">,</span>
-                <span class="s2">&quot;cds_end&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">cds_end</span><span class="p">,</span>
+                <span class="s2">"identifier"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
+                <span class="s2">"region"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
+                <span class="s2">"exons"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">exons</span><span class="p">,</span>
+                <span class="s2">"cds_start"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">cds_start</span><span class="p">,</span>
+                <span class="s2">"cds_end"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">cds_end</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">ProteinMetadata</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;protein_id&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_id</span><span class="p">,</span>
-                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                <span class="s2">&quot;protein_features&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_features</span><span class="p">,</span>
-                <span class="s2">&quot;protein_length&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
+                <span class="s2">"protein_id"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_id</span><span class="p">,</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                <span class="s2">"protein_features"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_features</span><span class="p">,</span>
+                <span class="s2">"protein_length"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">protein_length</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">ProteinFeature</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
-                <span class="s2">&quot;feature_type&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">feature_type</span><span class="p">,</span>
+                <span class="s2">"info"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
+                <span class="s2">"feature_type"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">feature_type</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">FeatureInfo</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">"region"</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="n">o</span><span class="p">)</span></div>
@@ -273,52 +273,52 @@
 
 
 
-<span class="n">_VARIANT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;variant_info&quot;</span><span class="p">,</span> <span class="s2">&quot;tx_annotations&quot;</span><span class="p">,</span> <span class="s2">&quot;genotypes&quot;</span><span class="p">)</span>
-<span class="n">_VARIANT_INFO_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;variant_coordinates&quot;</span><span class="p">,</span> <span class="s2">&quot;sv_info&quot;</span><span class="p">)</span>
+<span class="n">_VARIANT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"variant_info"</span><span class="p">,</span> <span class="s2">"tx_annotations"</span><span class="p">,</span> <span class="s2">"genotypes"</span><span class="p">)</span>
+<span class="n">_VARIANT_INFO_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"variant_coordinates"</span><span class="p">,</span> <span class="s2">"sv_info"</span><span class="p">)</span>
 <span class="n">_IMPRECISE_SV_INFO_FIELDS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;structural_type&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;variant_class&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gene_id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gene_symbol&quot;</span><span class="p">,</span>
+    <span class="s2">"structural_type"</span><span class="p">,</span>
+    <span class="s2">"variant_class"</span><span class="p">,</span>
+    <span class="s2">"gene_id"</span><span class="p">,</span>
+    <span class="s2">"gene_symbol"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">_VARIANT_COORDINATES_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;ref&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="p">,</span> <span class="s2">&quot;change_length&quot;</span><span class="p">)</span>
-<span class="n">_REGION_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
-<span class="n">_GENOMIC_REGION_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;contig&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="s2">&quot;strand&quot;</span><span class="p">)</span>
-<span class="n">_CONTIG_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank_acc&quot;</span><span class="p">,</span> <span class="s2">&quot;refseq_name&quot;</span><span class="p">,</span> <span class="s2">&quot;ucsc_name&quot;</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">)</span>
-<span class="n">_SAMPLE_LABELS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;meta_label&quot;</span><span class="p">)</span>
-<span class="n">_GENOTYPES_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;samples&quot;</span><span class="p">,</span> <span class="s2">&quot;genotypes&quot;</span><span class="p">)</span>
+<span class="n">_VARIANT_COORDINATES_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"region"</span><span class="p">,</span> <span class="s2">"ref"</span><span class="p">,</span> <span class="s2">"alt"</span><span class="p">,</span> <span class="s2">"change_length"</span><span class="p">)</span>
+<span class="n">_REGION_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"start"</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">)</span>
+<span class="n">_GENOMIC_REGION_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"contig"</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">,</span> <span class="s2">"strand"</span><span class="p">)</span>
+<span class="n">_CONTIG_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"genbank_acc"</span><span class="p">,</span> <span class="s2">"refseq_name"</span><span class="p">,</span> <span class="s2">"ucsc_name"</span><span class="p">,</span> <span class="s2">"length"</span><span class="p">)</span>
+<span class="n">_SAMPLE_LABELS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"label"</span><span class="p">,</span> <span class="s2">"meta_label"</span><span class="p">)</span>
+<span class="n">_GENOTYPES_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"samples"</span><span class="p">,</span> <span class="s2">"genotypes"</span><span class="p">)</span>
 <span class="n">_TX_ANNOTATION_FIELDS</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;gene_symbol&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;transcript_id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;is_preferred&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;variant_effects&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;overlapping_exons&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;protein_id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;protein_effect_location&quot;</span><span class="p">,</span>
+    <span class="s2">"gene_symbol"</span><span class="p">,</span>
+    <span class="s2">"transcript_id"</span><span class="p">,</span>
+    <span class="s2">"hgvs_cdna"</span><span class="p">,</span>
+    <span class="s2">"is_preferred"</span><span class="p">,</span>
+    <span class="s2">"variant_effects"</span><span class="p">,</span>
+    <span class="s2">"overlapping_exons"</span><span class="p">,</span>
+    <span class="s2">"protein_id"</span><span class="p">,</span>
+    <span class="s2">"protein_effect_location"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">_TX_COORDINATES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;identifier&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;exons&quot;</span><span class="p">,</span> <span class="s2">&quot;cds_start&quot;</span><span class="p">,</span> <span class="s2">&quot;cds_end&quot;</span><span class="p">)</span>
-<span class="n">_PROTEIN_METADATA</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;protein_id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;protein_features&quot;</span><span class="p">,</span> <span class="s2">&quot;protein_length&quot;</span><span class="p">)</span>
-<span class="n">_PROTEIN_FEATURE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="s2">&quot;feature_type&quot;</span><span class="p">)</span>
-<span class="n">_FEATURE_INFO</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">)</span>
-<span class="n">_PHENOTYPE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;term_id&quot;</span><span class="p">,</span> <span class="s2">&quot;is_present&quot;</span><span class="p">,</span> <span class="s2">&quot;onset&quot;</span><span class="p">)</span>
-<span class="n">_AGE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;days&quot;</span><span class="p">,</span> <span class="s2">&quot;timeline&quot;</span><span class="p">)</span>
-<span class="n">_DISEASE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;term_id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;is_observed&quot;</span><span class="p">,</span> <span class="s2">&quot;onset&quot;</span><span class="p">)</span>
-<span class="n">_MEASUREMENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;test_term_id&quot;</span><span class="p">,</span> <span class="s2">&quot;test_name&quot;</span><span class="p">,</span> <span class="s2">&quot;test_result&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">)</span>
-<span class="n">_PATIENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;vital_status&quot;</span><span class="p">,</span> <span class="s2">&quot;phenotypes&quot;</span><span class="p">,</span> <span class="s2">&quot;diseases&quot;</span><span class="p">,</span> <span class="s2">&quot;variants&quot;</span><span class="p">)</span>
-<span class="n">_VITAL_STATUS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="s2">&quot;age_of_death&quot;</span><span class="p">)</span>
-<span class="n">_COHORT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;members&quot;</span><span class="p">,)</span>
+<span class="n">_TX_COORDINATES</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"identifier"</span><span class="p">,</span> <span class="s2">"region"</span><span class="p">,</span> <span class="s2">"exons"</span><span class="p">,</span> <span class="s2">"cds_start"</span><span class="p">,</span> <span class="s2">"cds_end"</span><span class="p">)</span>
+<span class="n">_PROTEIN_METADATA</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"protein_id"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">,</span> <span class="s2">"protein_features"</span><span class="p">,</span> <span class="s2">"protein_length"</span><span class="p">)</span>
+<span class="n">_PROTEIN_FEATURE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"info"</span><span class="p">,</span> <span class="s2">"feature_type"</span><span class="p">)</span>
+<span class="n">_FEATURE_INFO</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"region"</span><span class="p">)</span>
+<span class="n">_PHENOTYPE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"term_id"</span><span class="p">,</span> <span class="s2">"is_present"</span><span class="p">,</span> <span class="s2">"onset"</span><span class="p">)</span>
+<span class="n">_AGE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"days"</span><span class="p">,</span> <span class="s2">"timeline"</span><span class="p">)</span>
+<span class="n">_DISEASE_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"term_id"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">,</span> <span class="s2">"is_observed"</span><span class="p">,</span> <span class="s2">"onset"</span><span class="p">)</span>
+<span class="n">_MEASUREMENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"test_term_id"</span><span class="p">,</span> <span class="s2">"test_name"</span><span class="p">,</span> <span class="s2">"test_result"</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">)</span>
+<span class="n">_PATIENT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"labels"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">,</span> <span class="s2">"age"</span><span class="p">,</span> <span class="s2">"vital_status"</span><span class="p">,</span> <span class="s2">"phenotypes"</span><span class="p">,</span> <span class="s2">"diseases"</span><span class="p">,</span> <span class="s2">"variants"</span><span class="p">)</span>
+<span class="n">_VITAL_STATUS_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"status"</span><span class="p">,</span> <span class="s2">"age_of_death"</span><span class="p">)</span>
+<span class="n">_COHORT_FIELDS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"members"</span><span class="p">,)</span>
 
 
 <div class="viewcode-block" id="GpseaJSONDecoder">
 <a class="viewcode-back" href="../../apidocs/gpsea.io.html#gpsea.io.GpseaJSONDecoder">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GpseaJSONDecoder</span><span class="p">(</span><span class="n">JSONDecoder</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    `GpseaJSONDecoder` decodes gpsea&#39;s types from a JSON message.</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    `GpseaJSONDecoder` decodes gpsea's types from a JSON message.</span>
 
-<span class="sd">    The decoder is supposed to be used along with Python&#39;s `json` module via the `cls` parameter of :func:`json.load`</span>
+<span class="sd">    The decoder is supposed to be used along with Python's `json` module via the `cls` parameter of :func:`json.load`</span>
 <span class="sd">    or :func:`json.loads`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -328,7 +328,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="o">*</span><span class="n">args</span><span class="p">,</span>
             <span class="n">object_hook</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">object_hook</span><span class="p">,</span>
-            <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">&quot;object_hook&quot;</span><span class="p">},</span>
+            <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s2">"object_hook"</span><span class="p">},</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
@@ -351,141 +351,141 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">object_hook</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VARIANT_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Variant</span><span class="p">(</span>
-                <span class="n">variant_info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_info&quot;</span><span class="p">],</span>
-                <span class="n">tx_annotations</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;tx_annotations&quot;</span><span class="p">],</span>
-                <span class="n">genotypes</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;genotypes&quot;</span><span class="p">],</span>
+                <span class="n">variant_info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"variant_info"</span><span class="p">],</span>
+                <span class="n">tx_annotations</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"tx_annotations"</span><span class="p">],</span>
+                <span class="n">genotypes</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"genotypes"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_any_field</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VARIANT_INFO_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">VariantInfo</span><span class="p">(</span>
-                <span class="n">variant_coordinates</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_coordinates&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;variant_coordinates&quot;</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
-                <span class="n">sv_info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;sv_info&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;sv_info&quot;</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="n">variant_coordinates</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"variant_coordinates"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"variant_coordinates"</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">sv_info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"sv_info"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"sv_info"</span> <span class="ow">in</span> <span class="n">obj</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VARIANT_COORDINATES_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">VariantCoordinates</span><span class="p">(</span>
-                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">],</span>
-                <span class="n">ref</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;ref&quot;</span><span class="p">],</span>
-                <span class="n">alt</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;alt&quot;</span><span class="p">],</span>
-                <span class="n">change_length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;change_length&quot;</span><span class="p">],</span>
+                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"region"</span><span class="p">],</span>
+                <span class="n">ref</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"ref"</span><span class="p">],</span>
+                <span class="n">alt</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"alt"</span><span class="p">],</span>
+                <span class="n">change_length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"change_length"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_IMPRECISE_SV_INFO_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">ImpreciseSvInfo</span><span class="p">(</span>
-                <span class="n">structural_type</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;structural_type&quot;</span><span class="p">]),</span>
-                <span class="n">variant_class</span><span class="o">=</span><span class="n">VariantClass</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_class&quot;</span><span class="p">]],</span>
-                <span class="n">gene_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;gene_id&quot;</span><span class="p">],</span>
-                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">],</span>
+                <span class="n">structural_type</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"structural_type"</span><span class="p">]),</span>
+                <span class="n">variant_class</span><span class="o">=</span><span class="n">VariantClass</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">"variant_class"</span><span class="p">]],</span>
+                <span class="n">gene_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"gene_id"</span><span class="p">],</span>
+                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"gene_symbol"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_REGION_FIELDS</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_GENOMIC_REGION_FIELDS</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">GenomicRegion</span><span class="p">(</span>
-                    <span class="n">contig</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;contig&quot;</span><span class="p">],</span>
-                    <span class="n">start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span>
-                    <span class="n">end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">],</span>
-                    <span class="n">strand</span><span class="o">=</span><span class="n">Strand</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;strand&quot;</span><span class="p">]],</span>
+                    <span class="n">contig</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"contig"</span><span class="p">],</span>
+                    <span class="n">start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"start"</span><span class="p">],</span>
+                    <span class="n">end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"end"</span><span class="p">],</span>
+                    <span class="n">strand</span><span class="o">=</span><span class="n">Strand</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">"strand"</span><span class="p">]],</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">Region</span><span class="p">(</span>
-                    <span class="n">start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span>
-                    <span class="n">end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">],</span>
+                    <span class="n">start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"start"</span><span class="p">],</span>
+                    <span class="n">end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"end"</span><span class="p">],</span>
                 <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_CONTIG_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Contig</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                <span class="n">gb_acc</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;genbank_acc&quot;</span><span class="p">],</span>
-                <span class="n">refseq_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;refseq_name&quot;</span><span class="p">],</span>
-                <span class="n">ucsc_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;ucsc_name&quot;</span><span class="p">],</span>
-                <span class="n">length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">],</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span>
+                <span class="n">gb_acc</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"genbank_acc"</span><span class="p">],</span>
+                <span class="n">refseq_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"refseq_name"</span><span class="p">],</span>
+                <span class="n">ucsc_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"ucsc_name"</span><span class="p">],</span>
+                <span class="n">length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"length"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_SAMPLE_LABELS_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">SampleLabels</span><span class="p">(</span>
-                <span class="n">label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
-                <span class="n">meta_label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;meta_label&quot;</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span>
+                <span class="n">meta_label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"meta_label"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_GENOTYPES_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Genotypes</span><span class="p">(</span>
-                <span class="n">samples</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">],</span>
-                <span class="n">genotypes</span><span class="o">=</span><span class="p">(</span><span class="n">Genotype</span><span class="p">[</span><span class="n">gt</span><span class="p">]</span> <span class="k">for</span> <span class="n">gt</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;genotypes&quot;</span><span class="p">]),</span>
+                <span class="n">samples</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"samples"</span><span class="p">],</span>
+                <span class="n">genotypes</span><span class="o">=</span><span class="p">(</span><span class="n">Genotype</span><span class="p">[</span><span class="n">gt</span><span class="p">]</span> <span class="k">for</span> <span class="n">gt</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s2">"genotypes"</span><span class="p">]),</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_TX_ANNOTATION_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">TranscriptAnnotation</span><span class="p">(</span>
-                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">],</span>
-                <span class="n">tx_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;transcript_id&quot;</span><span class="p">],</span>
-                <span class="n">hgvs_cdna</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;hgvs_cdna&quot;</span><span class="p">],</span>
-                <span class="n">is_preferred</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;is_preferred&quot;</span><span class="p">],</span>
-                <span class="n">variant_effects</span><span class="o">=</span><span class="p">(</span><span class="n">VariantEffect</span><span class="p">[</span><span class="n">ve</span><span class="p">]</span> <span class="k">for</span> <span class="n">ve</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variant_effects&quot;</span><span class="p">]),</span>
-                <span class="n">affected_exons</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;overlapping_exons&quot;</span><span class="p">],</span>
-                <span class="n">protein_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;protein_id&quot;</span><span class="p">],</span>
-                <span class="n">hgvsp</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;hgvsp&quot;</span><span class="p">],</span>
-                <span class="n">protein_effect_coordinates</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;protein_effect_location&quot;</span><span class="p">],</span>
+                <span class="n">gene_symbol</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"gene_symbol"</span><span class="p">],</span>
+                <span class="n">tx_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"transcript_id"</span><span class="p">],</span>
+                <span class="n">hgvs_cdna</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"hgvs_cdna"</span><span class="p">],</span>
+                <span class="n">is_preferred</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"is_preferred"</span><span class="p">],</span>
+                <span class="n">variant_effects</span><span class="o">=</span><span class="p">(</span><span class="n">VariantEffect</span><span class="p">[</span><span class="n">ve</span><span class="p">]</span> <span class="k">for</span> <span class="n">ve</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">[</span><span class="s2">"variant_effects"</span><span class="p">]),</span>
+                <span class="n">affected_exons</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"overlapping_exons"</span><span class="p">],</span>
+                <span class="n">protein_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"protein_id"</span><span class="p">],</span>
+                <span class="n">hgvsp</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"hgvsp"</span><span class="p">],</span>
+                <span class="n">protein_effect_coordinates</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"protein_effect_location"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_PHENOTYPE_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Phenotype</span><span class="p">(</span>
-                <span class="n">term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;term_id&quot;</span><span class="p">]),</span>
-                <span class="n">is_observed</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;is_present&quot;</span><span class="p">],</span>
-                <span class="n">onset</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">],</span>
+                <span class="n">term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"term_id"</span><span class="p">]),</span>
+                <span class="n">is_observed</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"is_present"</span><span class="p">],</span>
+                <span class="n">onset</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"onset"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_AGE_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Age</span><span class="p">(</span>
-                <span class="n">days</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;days&quot;</span><span class="p">],</span>
-                <span class="n">timeline</span><span class="o">=</span><span class="n">Timeline</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;timeline&quot;</span><span class="p">]],</span>
+                <span class="n">days</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"days"</span><span class="p">],</span>
+                <span class="n">timeline</span><span class="o">=</span><span class="n">Timeline</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">"timeline"</span><span class="p">]],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_DISEASE_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Disease</span><span class="p">(</span>
-                <span class="n">term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;term_id&quot;</span><span class="p">]),</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                <span class="n">is_observed</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;is_observed&quot;</span><span class="p">],</span>
-                <span class="n">onset</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">],</span>
+                <span class="n">term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"term_id"</span><span class="p">]),</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span>
+                <span class="n">is_observed</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"is_observed"</span><span class="p">],</span>
+                <span class="n">onset</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"onset"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_MEASUREMENT_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Measurement</span><span class="p">(</span>
-                <span class="n">test_term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;test_term_id&quot;</span><span class="p">]),</span>
-                <span class="n">test_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;test_name&quot;</span><span class="p">],</span>
-                <span class="n">test_result</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;test_result&quot;</span><span class="p">],</span>
-                <span class="n">unit</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;unit&quot;</span><span class="p">]),</span>
+                <span class="n">test_term_id</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"test_term_id"</span><span class="p">]),</span>
+                <span class="n">test_name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"test_name"</span><span class="p">],</span>
+                <span class="n">test_result</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"test_result"</span><span class="p">],</span>
+                <span class="n">unit</span><span class="o">=</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="o">.</span><span class="n">from_curie</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">"unit"</span><span class="p">]),</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_PATIENT_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Patient</span><span class="p">(</span>
-                <span class="n">labels</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">],</span>
-                <span class="n">sex</span><span class="o">=</span><span class="n">Sex</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]],</span>
-                <span class="n">age</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span>
-                <span class="n">vital_status</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;vital_status&quot;</span><span class="p">],</span>
-                <span class="n">phenotypes</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;phenotypes&quot;</span><span class="p">],</span>
-                <span class="n">measurements</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;measurements&quot;</span><span class="p">],</span>
-                <span class="n">diseases</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;diseases&quot;</span><span class="p">],</span>
-                <span class="n">variants</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;variants&quot;</span><span class="p">],</span>
+                <span class="n">labels</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"labels"</span><span class="p">],</span>
+                <span class="n">sex</span><span class="o">=</span><span class="n">Sex</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">"sex"</span><span class="p">]],</span>
+                <span class="n">age</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"age"</span><span class="p">],</span>
+                <span class="n">vital_status</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"vital_status"</span><span class="p">],</span>
+                <span class="n">phenotypes</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"phenotypes"</span><span class="p">],</span>
+                <span class="n">measurements</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"measurements"</span><span class="p">],</span>
+                <span class="n">diseases</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"diseases"</span><span class="p">],</span>
+                <span class="n">variants</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"variants"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_VITAL_STATUS_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">VitalStatus</span><span class="p">(</span>
-                <span class="n">status</span><span class="o">=</span><span class="n">Status</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]],</span>
-                <span class="n">age_of_death</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;age_of_death&quot;</span><span class="p">],</span>
+                <span class="n">status</span><span class="o">=</span><span class="n">Status</span><span class="p">[</span><span class="n">obj</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]],</span>
+                <span class="n">age_of_death</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"age_of_death"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_TX_COORDINATES</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">TranscriptCoordinates</span><span class="p">(</span>
-                <span class="n">identifier</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;identifier&quot;</span><span class="p">],</span>
-                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">],</span>
-                <span class="n">exons</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;exons&quot;</span><span class="p">],</span>
-                <span class="n">cds_start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;cds_start&quot;</span><span class="p">],</span>
-                <span class="n">cds_end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;cds_end&quot;</span><span class="p">],</span>
+                <span class="n">identifier</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"identifier"</span><span class="p">],</span>
+                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"region"</span><span class="p">],</span>
+                <span class="n">exons</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"exons"</span><span class="p">],</span>
+                <span class="n">cds_start</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"cds_start"</span><span class="p">],</span>
+                <span class="n">cds_end</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"cds_end"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_PROTEIN_METADATA</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">ProteinMetadata</span><span class="p">(</span>
-                <span class="n">protein_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;protein_id&quot;</span><span class="p">],</span>
-                <span class="n">label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
-                <span class="n">protein_features</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;protein_features&quot;</span><span class="p">],</span>
-                <span class="n">protein_length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;protein_length&quot;</span><span class="p">],</span>
+                <span class="n">protein_id</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"protein_id"</span><span class="p">],</span>
+                <span class="n">label</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"label"</span><span class="p">],</span>
+                <span class="n">protein_features</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"protein_features"</span><span class="p">],</span>
+                <span class="n">protein_length</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"protein_length"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_PROTEIN_FEATURE</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">ProteinFeature</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-                <span class="n">info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;info&quot;</span><span class="p">],</span>
-                <span class="n">feature_type</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;feature_type&quot;</span><span class="p">],</span>
+                <span class="n">info</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"info"</span><span class="p">],</span>
+                <span class="n">feature_type</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"feature_type"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_FEATURE_INFO</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">FeatureInfo</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;region&quot;</span><span class="p">],</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"name"</span><span class="p">],</span>
+                <span class="n">region</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"region"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="n">GpseaJSONDecoder</span><span class="o">.</span><span class="n">_has_all_fields</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_COHORT_FIELDS</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">Cohort</span><span class="p">(</span>
-                <span class="n">members</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;members&quot;</span><span class="p">],</span>
+                <span class="n">members</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s2">"members"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">obj</span></div>

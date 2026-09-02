@@ -150,7 +150,7 @@ a <a class="reference external" href="https://github.com/P2GX/gpsea/tree/main/do
 following the instructions in <a class="reference internal" href="../../../input-data.html#cohort-persistence"><span class="std std-ref">Persist the cohort for later</span></a> section.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GpseaJSONDecoder</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">&#39;docs/cohort-data/RERE.0.1.20.json&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath_cohort_json</span> <span class="o">=</span> <span class="s1">'docs/cohort-data/RERE.0.1.20.json'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fpath_cohort_json</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">cohort</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">GpseaJSONDecoder</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">cohort</span><span class="p">)</span>
@@ -161,7 +161,7 @@ following the instructions in <a class="reference internal" href="../../../input
 to a pathogenic mutation <a class="reference external" href="https://www.ncbi.nlm.nih.gov/clinvar/variation/522858/">VCV000522858.5</a>
 that replaces the histidine encoded by the 1435th codon of <cite>NM_001042681.2</cite> with arginine: <code class="docutils literal notranslate"><span class="pre">NM_001042681.2(RERE):c.4304A&gt;G</span> <span class="pre">(p.His1435Arg)</span></code>.
 We can retrieve the variant by querying the cohort by the variant key:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">variant_key_of_interest</span> <span class="o">=</span> <span class="s1">&#39;1_8358231_8358231_T_C&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">variant_key_of_interest</span> <span class="o">=</span> <span class="s1">'1_8358231_8358231_T_C'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">variant</span> <span class="o">=</span> <span class="n">cohort</span><span class="o">.</span><span class="n">get_variant_by_key</span><span class="p">(</span><span class="n">variant_key_of_interest</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -172,13 +172,13 @@ We can retrieve the variant by querying the cohort by the variant key:</p>
 <p>We can check that the variant has a functional annotation
 with respect to <em>RERE</em></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">gpsea.analysis.predicate</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">gene</span><span class="p">(</span><span class="s1">&#39;RERE&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">gene</span><span class="p">(</span><span class="s1">'RERE'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gene</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 <p>it overlaps with the <em>MANE</em> transcript</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rere_mane_tx_id</span> <span class="o">=</span> <span class="s1">&#39;NM_001042681.2&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rere_mane_tx_id</span> <span class="o">=</span> <span class="s1">'NM_001042681.2'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">transcript</span><span class="p">(</span><span class="n">rere_mane_tx_id</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tx</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>
 <span class="go">True</span>
@@ -227,10 +227,10 @@ and <code class="xref py py-func docutils literal notranslate"><span class="pre"
 <p>Therefore, there is nothing that prevents us to combine the predicates into multi-level tests,
 e.g. to test if the variant is a <em>“chromosomal deletion” or a deletion which removes at least 50 bp</em>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantClass</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chromosomal_deletion</span> <span class="o">=</span> <span class="s2">&quot;SO:1000029&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">predicate</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">structural_type</span><span class="p">(</span><span class="n">chromosomal_deletion</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">vp</span><span class="o">.</span><span class="n">variant_class</span><span class="p">(</span><span class="n">VariantClass</span><span class="o">.</span><span class="n">DEL</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">vp</span><span class="o">.</span><span class="n">change_length</span><span class="p">(</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chromosomal_deletion</span> <span class="o">=</span> <span class="s2">"SO:1000029"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">predicate</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">structural_type</span><span class="p">(</span><span class="n">chromosomal_deletion</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">vp</span><span class="o">.</span><span class="n">variant_class</span><span class="p">(</span><span class="n">VariantClass</span><span class="o">.</span><span class="n">DEL</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">vp</span><span class="o">.</span><span class="n">change_length</span><span class="p">(</span><span class="s2">"&lt;="</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">predicate</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;(structural type is SO:1000029 OR (variant class is DEL AND change length &lt;= -50))&#39;</span>
+<span class="go">'(structural type is SO:1000029 OR (variant class is DEL AND change length &lt;= -50))'</span>
 </pre></div>
 </div>
 </section>
@@ -255,7 +255,7 @@ and results in an inverted predicate.</p>
 <p>This is how we can use the predicate inversion to build the predicate for non-frameshift deletions:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">non_frameshift_del</span> <span class="o">=</span> <span class="o">~</span><span class="n">vp</span><span class="o">.</span><span class="n">variant_effect</span><span class="p">(</span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">FRAMESHIFT_VARIANT</span><span class="p">,</span> <span class="n">tx_id</span><span class="o">=</span><span class="n">rere_mane_tx_id</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">vp</span><span class="o">.</span><span class="n">variant_class</span><span class="p">(</span><span class="n">VariantClass</span><span class="o">.</span><span class="n">DEL</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">non_frameshift_del</span><span class="o">.</span><span class="n">description</span>
-<span class="go">&#39;(NOT FRAMESHIFT_VARIANT on NM_001042681.2 AND variant class is DEL)&#39;</span>
+<span class="go">'(NOT FRAMESHIFT_VARIANT on NM_001042681.2 AND variant class is DEL)'</span>
 </pre></div>
 </div>
 <p>Note the presence of a tilde <code class="docutils literal notranslate"><span class="pre">~</span></code> before the variant effect predicate and resulting <code class="docutils literal notranslate"><span class="pre">NOT</span></code> in the predicate question.</p>

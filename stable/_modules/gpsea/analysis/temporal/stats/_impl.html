@@ -89,16 +89,16 @@
 <div class="viewcode-block" id="LogRankTest">
 <a class="viewcode-back" href="../../../../../apidocs/gpsea.analysis.temporal.stats.html#gpsea.analysis.temporal.stats.LogRankTest">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LogRankTest</span><span class="p">(</span><span class="n">SurvivalStatistic</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Log Rank test compares survivals of individual groups.</span>
 
-<span class="sd">    The class is a wrapper around Scipy&#39;s :func:`~scipy.stats.logrank` function.</span>
+<span class="sd">    The class is a wrapper around Scipy's :func:`~scipy.stats.logrank` function.</span>
 <span class="sd">    A two-sided alternative hypothesis is tested.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Logrank test&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"Logrank test"</span><span class="p">,</span>
         <span class="p">)</span>
 
 <div class="viewcode-block" id="LogRankTest.compute_pval">
@@ -107,12 +107,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">scores</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Collection</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Survival</span><span class="p">]],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StatisticResult</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Compute p value for survivals being sourced from the same distribution.</span>
 
 <span class="sd">        :param scores: a pair of survival groups</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Logrank test only supports 2 groups at this time&quot;</span>
+<span class="sd">        """</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"Logrank test only supports 2 groups at this time"</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 
         <span class="n">xc</span> <span class="o">=</span> <span class="n">prepare_censored_data</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -121,7 +121,7 @@
         <span class="n">result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">logrank</span><span class="p">(</span>
             <span class="n">x</span><span class="o">=</span><span class="n">xc</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">yc</span><span class="p">,</span>
-            <span class="n">alternative</span><span class="o">=</span><span class="s2">&quot;two-sided&quot;</span><span class="p">,</span>
+            <span class="n">alternative</span><span class="o">=</span><span class="s2">"two-sided"</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">StatisticResult</span><span class="p">(</span>

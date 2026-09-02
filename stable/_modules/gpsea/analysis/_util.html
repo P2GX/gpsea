@@ -84,9 +84,9 @@
 <div class="viewcode-block" id="Summarizable">
 <a class="viewcode-back" href="../../../apidocs/gpsea.analysis.html#gpsea.analysis.Summarizable">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Summarizable</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A mixin for entities that can summarize themselves into a provided IO handle.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Summarizable.summarize">
 <a class="viewcode-back" href="../../../apidocs/gpsea.analysis.html#gpsea.analysis.Summarizable.summarize">[docs]</a>
@@ -95,20 +95,20 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">out</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">TextIO</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Summarize the item into the provided IO handle.</span>
 
 <span class="sd">        :param out: an IO handle to write into.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="Summarizable.summary">
 <a class="viewcode-back" href="../../../apidocs/gpsea.analysis.html#gpsea.analysis.Summarizable.summary">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the summary.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">buf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">summarize</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">buf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span></div>

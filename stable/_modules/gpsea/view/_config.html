@@ -98,12 +98,12 @@
 <div class="viewcode-block" id="configure_default_cohort_artist">
 <a class="viewcode-back" href="../../../apidocs/gpsea.view.html#gpsea.view.configure_default_cohort_artist">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">configure_default_cohort_artist</span><span class="p">(</span>
-    <span class="n">protein_source</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;UNIPROT&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;UNIPROT&quot;</span><span class="p">,</span>
+    <span class="n">protein_source</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">"UNIPROT"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"UNIPROT"</span><span class="p">,</span>
     <span class="n">cache_dir</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">timeout</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
     <span class="n">random_seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CohortArtist</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get the default :class:`~gpsea.view.CohortArtist`.</span>
 
 <span class="sd">    :param protein_source: a `str` with the code of the protein data sources (currently accepting just `UNIPROT`).</span>
@@ -111,7 +111,7 @@
 <span class="sd">        if the data should be cached as described by :func:`~gpsea.config.get_cache_dir_path` function.</span>
 <span class="sd">        In any case, the directory will be created if it does not exist (including any non-existing parents).</span>
 <span class="sd">    :param timeout: a `float` or an `int` for the timeout in seconds for the REST APIs.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">protein_visualizer</span> <span class="o">=</span> <span class="n">configure_default_protein_visualizer</span><span class="p">(</span>
         <span class="n">random_seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">,</span>
     <span class="p">)</span>

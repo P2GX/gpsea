@@ -740,13 +740,13 @@ at the same time or if the <cite>value</cite> is not a valid ISO8601 string.</p>
 <p class="rubric">Examples</p>
 <p>Parse gestational age:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Age</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gestational</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">&quot;P2W6D&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gestational</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">"P2W6D"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gestational</span>
 <span class="go">Age(days=20.0, timeline=Timeline.GESTATIONAL)</span>
 </pre></div>
 </div>
 <p>Parse postnatal age:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">postnatal</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">&quot;P10Y&quot;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">postnatal</span> <span class="o">=</span> <span class="n">Age</span><span class="o">.</span><span class="n">from_iso8601_period</span><span class="p">(</span><span class="s2">"P10Y"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">postnatal</span>
 <span class="go">Age(days=3652.5, timeline=Timeline.POSTNATAL)</span>
 </pre></div>
@@ -1082,19 +1082,19 @@ Use <a class="reference internal" href="#gpsea.model.VariantCoordinates.from_vcf
 </pre></div>
 </div>
 <p>Then, we access the contig for <code class="docutils literal notranslate"><span class="pre">'chr1'</span></code>:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chr1</span> <span class="o">=</span> <span class="n">build</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s1">&#39;chr1&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chr1</span> <span class="o">=</span> <span class="n">build</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s1">'chr1'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Last, we create the variant coordinates:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantCoordinates</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">vc</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_literal</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">contig</span><span class="o">=</span><span class="n">chr1</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">contig</span><span class="o">=</span><span class="n">chr1</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="s1">'C'</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">'T'</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now can test the properties:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vc</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="p">),</span> <span class="n">vc</span><span class="o">.</span><span class="n">change_length</span>
-<span class="go">(1000, 1001, &#39;C&#39;, &#39;T&#39;, 1, 0)</span>
+<span class="go">(1000, 1001, 'C', 'T', 1, 0)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1123,19 +1123,19 @@ Use <a class="reference internal" href="#gpsea.model.VariantCoordinates.from_vcf
 <span class="pre">`</span></code></p>
 <p>We first must decide on the genome build. Most of the time, we should use GRCh38:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model.genome</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRCh38</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">contig</span> <span class="o">=</span> <span class="n">GRCh38</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contig</span> <span class="o">=</span> <span class="n">GRCh38</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s1">'2'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, we create the coordinates as:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vc</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_symbolic</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">contig</span><span class="o">=</span><span class="n">contig</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">321682</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">321887</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">ref</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">&#39;&lt;DEL&gt;&#39;</span><span class="p">,</span> <span class="n">svlen</span><span class="o">=-</span><span class="mi">205</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ref</span><span class="o">=</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">'&lt;DEL&gt;'</span><span class="p">,</span> <span class="n">svlen</span><span class="o">=-</span><span class="mi">205</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now can test the properties:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vc</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span> <span class="n">vc</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="p">),</span> <span class="n">vc</span><span class="o">.</span><span class="n">change_length</span>
-<span class="go">(321681, 321887, &#39;T&#39;, &#39;&lt;DEL&gt;&#39;, 206, -205)</span>
+<span class="go">(321681, 321887, 'T', '&lt;DEL&gt;', 206, -205)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1386,8 +1386,8 @@ or if the variant is large imprecise SV.</p>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sized" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sized</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a></p>
 <p><cite>Genotypes</cite> is a container for mapping between sample ID and its genotype.</p>
 <p>Let’s consider a pair of samples:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can use one of the static methods to create an instance. Either a single genotype:</p>
@@ -1406,11 +1406,11 @@ or if the variant is large imprecise SV.</p>
 <p>You can get a genotype for a sample ID:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">gts</span><span class="o">.</span><span class="n">for_sample</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">code</span>
-<span class="go">&#39;0/1&#39;</span>
+<span class="go">'0/1'</span>
 </pre></div>
 </div>
 <p>You will get <cite>None</cite> if the sample is not present:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gts</span><span class="o">.</span><span class="n">for_sample</span><span class="p">(</span><span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;UNKNOWN&#39;</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gts</span><span class="o">.</span><span class="n">for_sample</span><span class="p">(</span><span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'UNKNOWN'</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can iterate over sample-genotype pairs:</p>
@@ -1429,7 +1429,7 @@ or if the variant is large imprecise SV.</p>
 <dt class="sig sig-object py" id="gpsea.model.Genotypes.single">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gpsea.model.SampleLabels" title="gpsea.model._base.SampleLabels"><span class="pre">SampleLabels</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">genotype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gpsea.model.Genotype" title="gpsea.model._gt.Genotype"><span class="pre">Genotype</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gpsea.model.Genotypes" title="gpsea.model._gt.Genotypes"><span class="pre">Genotypes</span></a></span></span><a class="reference internal" href="../_modules/gpsea/model/_gt.html#Genotypes.single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Genotypes.single" title="Link to this definition"></a></dt>
 <dd><p>A shortcut for creating <cite>Genotypes</cite> for a single sample:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gts</span> <span class="o">=</span> <span class="n">Genotypes</span><span class="o">.</span><span class="n">single</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">Genotype</span><span class="o">.</span><span class="n">HOMOZYGOUS_ALTERNATE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1443,8 +1443,8 @@ or if the variant is large imprecise SV.</p>
 <dt class="sig sig-object py" id="gpsea.model.Genotypes.from_mapping">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Mapping" title="(in Python v3.14)"><span class="pre">Mapping</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.SampleLabels" title="gpsea.model._base.SampleLabels"><span class="pre">SampleLabels</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#gpsea.model.Genotype" title="gpsea.model._gt.Genotype"><span class="pre">Genotype</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#gpsea.model.Genotypes" title="gpsea.model._gt.Genotypes"><span class="pre">Genotypes</span></a></span></span><a class="reference internal" href="../_modules/gpsea/model/_gt.html#Genotypes.from_mapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Genotypes.from_mapping" title="Link to this definition"></a></dt>
 <dd><p>Create <cite>Genotypes</cite> from mapping between sample IDs and genotypes.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">SampleLabels</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gts</span> <span class="o">=</span> <span class="n">Genotypes</span><span class="o">.</span><span class="n">from_mapping</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">Genotype</span><span class="o">.</span><span class="n">HETEROZYGOUS</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Genotype</span><span class="o">.</span><span class="n">HOMOZYGOUS_ALTERNATE</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -1571,7 +1571,7 @@ affected by the variant.</p>
 <p>The <cite>VariantEffect</cite> has a <a class="reference internal" href="#gpsea.model.VariantEffect.curie" title="gpsea.model.VariantEffect.curie"><code class="xref py py-attr docutils literal notranslate"><span class="pre">curie</span></code></a> attribute that represents the ontology class from
 <a class="reference external" href="http://www.sequenceontology.org/">Sequence Ontology</a>.</p>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">missense</span><span class="o">.</span><span class="n">curie</span>
-<span class="go">&#39;SO:0001583&#39;</span>
+<span class="go">'SO:0001583'</span>
 </pre></div>
 </div>
 <dl class="py attribute">
@@ -1786,9 +1786,9 @@ affected by the variant.</p>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantEffect</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">MISSENSE_VARIANT</span><span class="o">.</span><span class="n">to_display</span><span class="p">()</span>
-<span class="go">&#39;missense&#39;</span>
+<span class="go">'missense'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">SPLICE_DONOR_5TH_BASE_VARIANT</span><span class="o">.</span><span class="n">to_display</span><span class="p">()</span>
-<span class="go">&#39;splice donor 5th base&#39;</span>
+<span class="go">'splice donor 5th base'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1804,8 +1804,8 @@ affected by the variant.</p>
 <dd><p>Get a <cite>str</cite> with a concise name for representing a Sequence Ontology (SO) term identifier.</p>
 <p class="rubric">Example</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantEffect</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">structural_so_id_to_display</span><span class="p">(</span><span class="s1">&#39;SO:1000029&#39;</span><span class="p">)</span>
-<span class="go">&#39;chromosomal deletion&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">VariantEffect</span><span class="o">.</span><span class="n">structural_so_id_to_display</span><span class="p">(</span><span class="s1">'SO:1000029'</span><span class="p">)</span>
+<span class="go">'chromosomal deletion'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -2025,8 +2025,8 @@ but it can also be created manually using <a class="reference internal" href="#g
 <p class="rubric">Example</p>
 <p>Let’s create a protein info with a domain and a region. We must provide protein accession ID,
 a label, a data frame with protein features, and the number of aminoacids of the protein sequence:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_id</span> <span class="o">=</span> <span class="s1">&#39;NP_000129.3&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;fibrillin-1 isoform a preproprotein&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_id</span> <span class="o">=</span> <span class="s1">'NP_000129.3'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">label</span> <span class="o">=</span> <span class="s1">'fibrillin-1 isoform a preproprotein'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_length</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
 </div>
@@ -2034,16 +2034,16 @@ a label, a data frame with protein features, and the number of aminoacids of the
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span>
 <span class="gp">... </span>    <span class="p">{</span>
-<span class="gp">... </span>        <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Suppresor domain&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;domain&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">223</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"region"</span><span class="p">:</span> <span class="s2">"Suppresor domain"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"domain"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"start"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"end"</span><span class="p">:</span> <span class="mi">223</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">},</span>
 <span class="gp">... </span>    <span class="p">{</span>
-<span class="gp">... </span>        <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;IP3 binding&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">224</span><span class="p">,</span>
-<span class="gp">... </span>        <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">578</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"region"</span><span class="p">:</span> <span class="s2">"IP3 binding"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"category"</span><span class="p">:</span> <span class="s2">"region"</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"start"</span><span class="p">:</span> <span class="mi">224</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">"end"</span><span class="p">:</span> <span class="mi">578</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="p">},</span>
 <span class="gp">... </span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
@@ -2061,9 +2061,9 @@ a label, a data frame with protein features, and the number of aminoacids of the
 </div>
 <p>and get the expected protein info:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_id</span>
-<span class="go">&#39;NP_000129.3&#39;</span>
+<span class="go">'NP_000129.3'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">protein_meta</span><span class="o">.</span><span class="n">label</span>
-<span class="go">&#39;fibrillin-1 isoform a preproprotein&#39;</span>
+<span class="go">'fibrillin-1 isoform a preproprotein'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">protein_meta</span><span class="o">.</span><span class="n">protein_features</span><span class="p">)</span>
 <span class="go">2</span>
 </pre></div>
@@ -2305,10 +2305,10 @@ Region: a protein region spanned by the feature.</p>
 <p>An enum representing the protein feature types supported in GPSEA.</p>
 <p>Use <a class="reference internal" href="#gpsea.model.FeatureType.from_string" title="gpsea.model.FeatureType.from_string"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_string()</span></code></a> to parse a feature from Uniprot:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureType</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">val</span> <span class="o">=</span> <span class="s2">&quot;Dna Binding&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">val</span> <span class="o">=</span> <span class="s2">"Dna Binding"</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feature_type</span> <span class="o">=</span> <span class="n">FeatureType</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feature_type</span><span class="o">.</span><span class="n">name</span>
-<span class="go">&#39;DNA_BINDING&#39;</span>
+<span class="go">'DNA_BINDING'</span>
 </pre></div>
 </div>
 <dl class="py attribute">

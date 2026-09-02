@@ -76,7 +76,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for gpsea.preprocessing._vep</h1><div class="highlight"><pre>
-<span></span><span class="c1"># A module with classes that interact with Ensembl&#39;s REST API to fetch required data.</span>
+<span></span><span class="c1"># A module with classes that interact with Ensembl's REST API to fetch required data.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">typing</span>
 
@@ -90,10 +90,10 @@
 <div class="viewcode-block" id="VepFunctionalAnnotator">
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.VepFunctionalAnnotator">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">VepFunctionalAnnotator</span><span class="p">(</span><span class="n">FunctionalAnnotator</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `VepFunctionalAnnotator` uses the Variant Effect Predictor (VEP) REST API</span>
 <span class="sd">    to perform functional variant annotation.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">NONCODING_EFFECTS</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">VariantEffect</span><span class="o">.</span><span class="n">UPSTREAM_GENE_VARIANT</span><span class="p">,</span>
@@ -109,26 +109,26 @@
         <span class="n">VariantEffect</span><span class="o">.</span><span class="n">DOWNSTREAM_GENE_VARIANT</span><span class="p">,</span>
         <span class="n">VariantEffect</span><span class="o">.</span><span class="n">INTERGENIC_VARIANT</span><span class="p">,</span>
     <span class="p">}</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Non-coding variant effects where we do not complain if the functional annotation lacks the protein effects.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">_REFSEQ_TX_ID_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s2">&quot;NM_&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;NR_&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;NC_&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;XM_&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;XR_&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;XC_&quot;</span><span class="p">,</span>
+        <span class="s2">"NM_"</span><span class="p">,</span>
+        <span class="s2">"NR_"</span><span class="p">,</span>
+        <span class="s2">"NC_"</span><span class="p">,</span>
+        <span class="s2">"XM_"</span><span class="p">,</span>
+        <span class="s2">"XR_"</span><span class="p">,</span>
+        <span class="s2">"XC_"</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_computational_txs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;https://rest.ensembl.org/vep/human/region/</span><span class="si">%s</span><span class="s2">?LoF=1&amp;canonical=1&quot;</span>
-            <span class="s2">&quot;&amp;domains=1&amp;hgvs=1&quot;</span>
-            <span class="s2">&quot;&amp;mutfunc=1&amp;numbers=1&amp;protein=1&amp;refseq=1&amp;mane=1&quot;</span>
-            <span class="s2">&quot;&amp;transcript_version=1&amp;variant_class=1&quot;</span>
+            <span class="s2">"https://rest.ensembl.org/vep/human/region/</span><span class="si">%s</span><span class="s2">?LoF=1&amp;canonical=1"</span>
+            <span class="s2">"&amp;domains=1&amp;hgvs=1"</span>
+            <span class="s2">"&amp;mutfunc=1&amp;numbers=1&amp;protein=1&amp;refseq=1&amp;mane=1"</span>
+            <span class="s2">"&amp;transcript_version=1&amp;variant_class=1"</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_include_computational_txs</span> <span class="o">=</span> <span class="n">include_computational_txs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
@@ -148,13 +148,13 @@
         <span class="n">response</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
         <span class="n">annotations</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="s2">&quot;transcript_consequences&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">"transcript_consequences"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;The VEP response for `</span><span class="si">%s</span><span class="s2">` lacked the required `transcript_consequences` field. </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"The VEP response for `</span><span class="si">%s</span><span class="s2">` lacked the required `transcript_consequences` field. </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="n">variant_key</span><span class="p">,</span>
                 <span class="n">response</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">for</span> <span class="n">trans</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">trans</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s2">"transcript_consequences"</span><span class="p">]:</span>
             <span class="n">annotation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_item</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">annotation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">annotations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
@@ -164,51 +164,51 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_parse_variant_effect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">effect</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">VariantEffect</span><span class="p">]:</span>
         <span class="n">effect</span> <span class="o">=</span> <span class="n">effect</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">effect</span> <span class="o">==</span> <span class="s2">&quot;5_PRIME_UTR_VARIANT&quot;</span><span class="p">:</span>
-            <span class="n">effect</span> <span class="o">=</span> <span class="s2">&quot;FIVE_PRIME_UTR_VARIANT&quot;</span>
-        <span class="k">elif</span> <span class="n">effect</span> <span class="o">==</span> <span class="s2">&quot;3_PRIME_UTR_VARIANT&quot;</span><span class="p">:</span>
-            <span class="n">effect</span> <span class="o">=</span> <span class="s2">&quot;THREE_PRIME_UTR_VARIANT&quot;</span>
+        <span class="k">if</span> <span class="n">effect</span> <span class="o">==</span> <span class="s2">"5_PRIME_UTR_VARIANT"</span><span class="p">:</span>
+            <span class="n">effect</span> <span class="o">=</span> <span class="s2">"FIVE_PRIME_UTR_VARIANT"</span>
+        <span class="k">elif</span> <span class="n">effect</span> <span class="o">==</span> <span class="s2">"3_PRIME_UTR_VARIANT"</span><span class="p">:</span>
+            <span class="n">effect</span> <span class="o">=</span> <span class="s2">"THREE_PRIME_UTR_VARIANT"</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var_effect</span> <span class="o">=</span> <span class="n">VariantEffect</span><span class="p">[</span><span class="n">effect</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="c1"># A missing variant effect, pls submit an issue to the GPSEA GitHub repository.</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;VariantEffect </span><span class="si">%s</span><span class="s2"> was not found in our record of possible effects.&quot;</span><span class="p">,</span> <span class="n">effect</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"VariantEffect </span><span class="si">%s</span><span class="s2"> was not found in our record of possible effects."</span><span class="p">,</span> <span class="n">effect</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">var_effect</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">TranscriptAnnotation</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Parse one transcript annotation from the JSON response.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">trans_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;transcript_id&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">trans_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"transcript_id"</span><span class="p">)</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trans_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">VepFunctionalAnnotator</span><span class="o">.</span><span class="n">_seems_like_refseq_tx</span><span class="p">(</span><span class="n">trans_id</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_computational_txs</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">trans_id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;NM_&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_include_computational_txs</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">trans_id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"NM_"</span><span class="p">):</span>
                 <span class="c1"># Skipping a computational transcript</span>
                 <span class="k">return</span> <span class="kc">None</span>
-        <span class="n">is_preferred</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;canonical&quot;</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;canonical&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span>
-        <span class="n">hgvs_cdna</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hgvsc&quot;</span><span class="p">)</span>
+        <span class="n">is_preferred</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="p">(</span><span class="s2">"canonical"</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="s2">"canonical"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">hgvs_cdna</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"hgvsc"</span><span class="p">)</span>
         <span class="n">var_effects</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">consequences</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;consequence_terms&quot;</span><span class="p">)</span>
+        <span class="n">consequences</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"consequence_terms"</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">con</span> <span class="ow">in</span> <span class="n">consequences</span><span class="p">:</span>
             <span class="n">var_effect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_variant_effect</span><span class="p">(</span><span class="n">con</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">var_effect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">var_effects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var_effect</span><span class="p">)</span>
-        <span class="n">gene_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;gene_symbol&quot;</span><span class="p">)</span>
-        <span class="n">exons_affected</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exon&quot;</span><span class="p">)</span>
+        <span class="n">gene_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"gene_symbol"</span><span class="p">)</span>
+        <span class="n">exons_affected</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"exon"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">exons_affected</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">exons_affected</span> <span class="o">=</span> <span class="n">exons_affected</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+            <span class="n">exons_affected</span> <span class="o">=</span> <span class="n">exons_affected</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">exons_affected</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                 <span class="n">exons_affected</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">exons_affected</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">exons_affected</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">exons_affected</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">exons_affected</span><span class="p">)</span>
 
-        <span class="n">protein_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;protein_id&quot;</span><span class="p">)</span>
-        <span class="n">hgvsp</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;hgvsp&quot;</span><span class="p">)</span>
-        <span class="n">protein_effect_start</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;protein_start&quot;</span><span class="p">)</span>
-        <span class="n">protein_effect_end</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;protein_end&quot;</span><span class="p">)</span>
+        <span class="n">protein_id</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"protein_id"</span><span class="p">)</span>
+        <span class="n">hgvsp</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"hgvsp"</span><span class="p">)</span>
+        <span class="n">protein_effect_start</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"protein_start"</span><span class="p">)</span>
+        <span class="n">protein_effect_end</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"protein_end"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">protein_effect_start</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">protein_effect_end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">ve</span> <span class="ow">in</span> <span class="n">VepFunctionalAnnotator</span><span class="o">.</span><span class="n">NONCODING_EFFECTS</span> <span class="k">for</span> <span class="n">ve</span> <span class="ow">in</span> <span class="n">var_effects</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                    <span class="s2">&quot;Missing start/end coordinate for </span><span class="si">%s</span><span class="s2"> on protein </span><span class="si">%s</span><span class="s2">. Protein effect will not be included.&quot;</span><span class="p">,</span>
+                    <span class="s2">"Missing start/end coordinate for </span><span class="si">%s</span><span class="s2"> on protein </span><span class="si">%s</span><span class="s2">. Protein effect will not be included."</span><span class="p">,</span>
                     <span class="n">hgvs_cdna</span><span class="p">,</span>
                     <span class="n">protein_id</span><span class="p">,</span>
                 <span class="p">)</span>
@@ -237,28 +237,28 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">variant_coordinates</span><span class="p">:</span> <span class="n">VariantCoordinates</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get a `dict` with the response from the VEP REST API.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            variant_coordinates: a query :class:`~gpsea.model.VariantCoordinates`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">api_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">%</span> <span class="p">(</span><span class="n">VepFunctionalAnnotator</span><span class="o">.</span><span class="n">format_coordinates_for_vep_query</span><span class="p">(</span><span class="n">variant_coordinates</span><span class="p">))</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Accept"</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span><span class="p">)</span>
         <span class="c1"># Throw an exception rather than errors so we can skip the variant in _phenopackets</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Expected a result but got an Error for variant: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">variant_coordinates</span><span class="o">.</span><span class="n">variant_key</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Expected a result but got an Error for variant: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">variant_coordinates</span><span class="o">.</span><span class="n">variant_key</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected a result but got an Error. See log for details.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Expected a result but got an Error. See log for details."</span><span class="p">)</span>
         <span class="n">results</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">))</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected a result but got an Error. See log for details.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"error"</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Expected a result but got an Error. See log for details."</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Expected only one variant per request but received </span><span class="si">%s</span><span class="s2"> different variants.&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+                <span class="s2">"Expected only one variant per request but received </span><span class="si">%s</span><span class="s2"> different variants."</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
             <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">error</span><span class="p">([</span><span class="n">result</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected only one variant per request but received </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> different variants.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected only one variant per request but received </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> different variants."</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
@@ -266,7 +266,7 @@
 <a class="viewcode-back" href="../../../apidocs/gpsea.preprocessing.html#gpsea.preprocessing.VepFunctionalAnnotator.format_coordinates_for_vep_query">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">format_coordinates_for_vep_query</span><span class="p">(</span><span class="n">vc</span><span class="p">:</span> <span class="n">VariantCoordinates</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Converts the 0-based VariantCoordinates to ones that will be interpreted</span>
 <span class="sd">        correctly by VEP</span>
 
@@ -280,7 +280,7 @@
 <span class="sd">            vc (VariantCoordinates): A VariantCoordinates object</span>
 <span class="sd">        Returns:</span>
 <span class="sd">            str: The variant coordinates formatted to work with VEP</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">chrom</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">chrom</span>
         <span class="n">end</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">end</span>
@@ -291,15 +291,15 @@
             <span class="c1"># TODO: Verify &lt;INS&gt; are working correctly</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">alt</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Trimmed alleles are not yet supported!&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Trimmed alleles are not yet supported!"</span><span class="p">)</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">ref</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">vc</span><span class="o">.</span><span class="n">alt</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="c1"># INS/DUP</span>
-                <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># we must &quot;trim&quot;</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># we must "trim"</span>
                 <span class="n">alt</span> <span class="o">=</span> <span class="n">vc</span><span class="o">.</span><span class="n">alt</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
                 <span class="c1"># 100 AC AGT</span>
                 <span class="c1"># MNV</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">chrom</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">chrom</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">alt</span><span class="si">}</span><span class="s2">"</span></div>
 
 
     <span class="nd">@staticmethod</span>

@@ -83,60 +83,60 @@
 <div class="viewcode-block" id="Sex">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Sex">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Sex</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Sex` represents typical “phenotypic sex”, as would be determined by a midwife or physician at birth.</span>
 
 <span class="sd">    The definition is aligned with `Phenopacket Schema &lt;https://phenopacket-schema.readthedocs.io/en/2.0.0/sex.html&gt;`_</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">UNKNOWN_SEX</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Not assessed or not available. Maps to ``NCIT:C17998``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">FEMALE</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Female sex. Maps to ``NCIT:C46113``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">MALE</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Male sex. Maps to ``NCIT:C46112``.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Sex.is_provided">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Sex.is_provided">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_provided</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if the sex is a known value, such as `FEMALE` or `MALE`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">!=</span> <span class="n">Sex</span><span class="o">.</span><span class="n">UNKNOWN_SEX</span></div>
 
 
 <div class="viewcode-block" id="Sex.is_unknown">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Sex.is_unknown">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_unknown</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if this is an `UNKNOWN_SEX`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Sex</span><span class="o">.</span><span class="n">UNKNOWN_SEX</span></div>
 
 
 <div class="viewcode-block" id="Sex.is_female">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Sex.is_female">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_female</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if the sex represents a `FEMALE`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Sex</span><span class="o">.</span><span class="n">FEMALE</span></div>
 
 
 <div class="viewcode-block" id="Sex.is_male">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Sex.is_male">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_male</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if the sex represents a `MALE`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Sex</span><span class="o">.</span><span class="n">MALE</span></div>
 </div>
 
@@ -145,13 +145,13 @@
 <div class="viewcode-block" id="SampleLabels">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.SampleLabels">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SampleLabels</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A data model for subject identifiers.</span>
 
 <span class="sd">    The subject has a mandatory :attr:`label` and an optional :attr:`meta_label`.</span>
 
 <span class="sd">    The identifiers support natural ordering, equality tests, and are hashable.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">meta_label</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
@@ -171,10 +171,10 @@
 <div class="viewcode-block" id="SampleLabels.label_summary">
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.SampleLabels.label_summary">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">label_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Summarize `label` and `meta_label` into a `str` where the sub-parts are inserted as ``&lt;label&gt;[&lt;meta_label&gt;]``.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span><span class="si">}</span><span class="s2">]&quot;</span></div>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span><span class="si">}</span><span class="s2">]"</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -203,7 +203,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_summary</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;SampleLabels(label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="si">}</span><span class="s2">, meta_label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"SampleLabels(label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_label</span><span class="si">}</span><span class="s2">, meta_label=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_meta_label</span><span class="si">}</span><span class="s2">)"</span></div>
 
 </pre></div>
 

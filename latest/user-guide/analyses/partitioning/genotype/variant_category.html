@@ -176,7 +176,7 @@ are omitted from the analysis.</p>
 <p>Let’s create a classifier to categorize the individuals
 to those having one missense allele or to those having
 one frameshift allele with respect to fictional transcript <code class="docutils literal notranslate"><span class="pre">NM_1234.5</span></code>.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">&quot;NM_1234.5&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tx_id</span> <span class="o">=</span> <span class="s2">"NM_1234.5"</span>
 </pre></div>
 </div>
 <p>We start by creating the variant predicates for missense (<cite>A</cite>)
@@ -189,8 +189,8 @@ and frameshift (<cite>B</cite>) variants:</p>
 </div>
 <p>Monoallelic classifier lets us customize the category names.
 Let’s use <cite>Missense</cite> and <cite>Frameshift</cite> instead of the defaults:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_label</span> <span class="o">=</span> <span class="s2">&quot;Missense&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b_label</span> <span class="o">=</span> <span class="s2">&quot;Frameshift&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_label</span> <span class="o">=</span> <span class="s2">"Missense"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b_label</span> <span class="o">=</span> <span class="s2">"Frameshift"</span>
 </pre></div>
 </div>
 <p>Now we have all we need to create the predicate:</p>
@@ -201,7 +201,7 @@ Let’s use <cite>Missense</cite> and <cite>Frameshift</cite> instead of the def
 <span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="n">a_label</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="n">b_label</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Missense&#39;, &#39;Frameshift&#39;)</span>
+<span class="go">('Missense', 'Frameshift')</span>
 </pre></div>
 </div>
 </section>
@@ -262,10 +262,10 @@ to compare missense and frameshift variants in the context of an autosomal reces
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">biallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">is_missense</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">b_predicate</span><span class="o">=</span><span class="n">is_frameshift</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Missense&quot;</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;Frameshift&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Missense"</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">"Frameshift"</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Missense/Missense&#39;, &#39;Missense/Frameshift&#39;, &#39;Frameshift/Frameshift&#39;)</span>
+<span class="go">('Missense/Missense', 'Missense/Frameshift', 'Frameshift/Frameshift')</span>
 </pre></div>
 </div>
 <p>The classifier assigns an individual into one of three genotype classes:</p>
@@ -312,11 +312,11 @@ into two classes:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">biallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">is_missense</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">b_predicate</span><span class="o">=</span><span class="n">is_frameshift</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">&quot;Missense&quot;</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">&quot;Frameshift&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">a_label</span><span class="o">=</span><span class="s2">"Missense"</span><span class="p">,</span> <span class="n">b_label</span><span class="o">=</span><span class="s2">"Frameshift"</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">partitions</span><span class="o">=</span><span class="n">partitions</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span><span class="o">.</span><span class="n">class_labels</span>
-<span class="go">(&#39;Missense/Missense&#39;, &#39;Missense/Frameshift OR Frameshift/Frameshift&#39;)</span>
+<span class="go">('Missense/Missense', 'Missense/Frameshift OR Frameshift/Frameshift')</span>
 </pre></div>
 </div>
 </section>

@@ -114,19 +114,19 @@ implies exclusion of all its <em>descendants</em>
 <p>Let’s show a few examples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">VariantCoordinates</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.model.genome</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRCh38</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chr1</span> <span class="o">=</span> <span class="n">GRCh38</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s2">&quot;chr1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chr1</span> <span class="o">=</span> <span class="n">GRCh38</span><span class="o">.</span><span class="n">contig_by_name</span><span class="p">(</span><span class="s2">"chr1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The length of the reference allele of a missense variant is 1
 because the variant affects a 1-bp region spanned by the <code class="docutils literal notranslate"><span class="pre">C</span></code> nucleotide:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">missense</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_literal</span><span class="p">(</span><span class="n">chr1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">missense</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_literal</span><span class="p">(</span><span class="n">chr1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">missense</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
 </div>
 <p>The length of a “small” deletion is the same as the length of the ref allele <cite>str</cite>:
 (<code class="docutils literal notranslate"><span class="pre">'CCC'</span></code> in the example below):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deletion</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_literal</span><span class="p">(</span><span class="n">chr1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">deletion</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_literal</span><span class="p">(</span><span class="n">chr1</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="s1">'CCC'</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">deletion</span><span class="p">)</span>
 <span class="go">3</span>
 </pre></div>
@@ -142,7 +142,7 @@ Here, the REF length corresponds to the length of the allele region.</p>
 <p>the length of the REF allele is <cite>3</cite>:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sv_deletion</span> <span class="o">=</span> <span class="n">VariantCoordinates</span><span class="o">.</span><span class="n">from_vcf_symbolic</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">chr1</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="mi">1001</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">1003</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">ref</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">&#39;&lt;DEL&gt;&#39;</span><span class="p">,</span> <span class="n">svlen</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">ref</span><span class="o">=</span><span class="s1">'C'</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s1">'&lt;DEL&gt;'</span><span class="p">,</span> <span class="n">svlen</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">sv_deletion</span><span class="p">)</span>
 <span class="go">3</span>

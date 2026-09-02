@@ -98,10 +98,10 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiPhenotypeAnalysisResult</span><span class="p">,</span> <span class="n">StatisticResult</span>
 
 
-<span class="n">DEFAULT_MTC_PROCEDURE</span> <span class="o">=</span> <span class="s2">&quot;fdr_bh&quot;</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">DEFAULT_MTC_PROCEDURE</span> <span class="o">=</span> <span class="s2">"fdr_bh"</span>
+<span class="sd">"""</span>
 <span class="sd">Use Benjamini-Hochberg as the default MTC procedure.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 <div class="viewcode-block" id="apply_classifiers_on_individuals">
@@ -114,12 +114,12 @@
     <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
     <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">],</span>
 <span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Classify individuals with the genotype and phenotype classifiers.</span>
 
 <span class="sd">    Note, it may not be possible to classify *all* individuals with a genotype/phenotype pair,</span>
 <span class="sd">    since a clasifier is allowed to return `None` (e.g. if it assigns the individual into MISSENSE or NONSENSE groups</span>
-<span class="sd">    but the patient has no MISSENSE or NONSENSE variants). If this happens, the individual will not be &quot;usable&quot;</span>
+<span class="sd">    but the patient has no MISSENSE or NONSENSE variants). If this happens, the individual will not be "usable"</span>
 <span class="sd">    for the phenotype `P`.</span>
 
 <span class="sd">    Args:</span>
@@ -132,7 +132,7 @@
 <span class="sd">        - a sequence with counts of individuals that could be classified according to the phenotype `P`.</span>
 <span class="sd">        - a sequence with data frames with counts of patients in i-th phenotype category</span>
 <span class="sd">          and j-th genotype category where i and j are rows and columns of the data frame.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">n_usable_patient_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
 
     <span class="c1"># Apply genotype and phenotype predicates</span>
@@ -178,7 +178,7 @@
         <span class="n">mtc_correction</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">DEFAULT_MTC_PROCEDURE</span><span class="p">,</span>
         <span class="n">mtc_alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Create the analysis.</span>
 
 <span class="sd">        See the :func:`~statsmodels.stats.multitest.multipletests` for the accepted `mtc_correction` values.</span>
@@ -187,9 +187,9 @@
 <span class="sd">        :param mtc_correction: a `str` with the MTC procedure code or `None` if no MTC should be performed.</span>
 <span class="sd">        :param mtc_alpha: a `float` with the family-wise error rate for FWER controlling procedures</span>
 <span class="sd">            (e.g. Bonferroni MTC) or false discovery rate for the FDR procedures (e.g. Benjamini-Hochberg).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">count_statistic</span><span class="p">,</span> <span class="n">CountStatistic</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">count_statistic</span><span class="o">.</span><span class="n">supports_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;The statistic must support 2D contingency tables&quot;</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">count_statistic</span><span class="o">.</span><span class="n">supports_shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"The statistic must support 2D contingency tables"</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_count_statistic</span> <span class="o">=</span> <span class="n">count_statistic</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mtc_correction</span> <span class="o">=</span> <span class="n">mtc_correction</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mtc_alpha</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="mf">0.0</span> <span class="o">&lt;=</span> <span class="n">mtc_alpha</span> <span class="o">&lt;=</span> <span class="mf">1.0</span>
@@ -211,7 +211,7 @@
         <span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">issues</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">issues</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot execute the analysis: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot execute the analysis: </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_result</span><span class="p">(</span>
             <span class="n">cohort</span><span class="o">=</span><span class="n">cohort</span><span class="p">,</span>
@@ -245,7 +245,7 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pheno</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
             <span class="n">pheno_accepted</span> <span class="o">=</span> <span class="n">pheno</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Cannot use a count statistic that does not check phenotypes&quot;</span><span class="p">)</span>
+            <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Cannot use a count statistic that does not check phenotypes"</span><span class="p">)</span>
 
         <span class="n">pheno_failed</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ph_predicate</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pheno_clfs</span><span class="p">):</span>
@@ -253,8 +253,8 @@
                 <span class="n">pheno_failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pheno_failed</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="s2">&quot;Phenotype predicates </span><span class="si">{}</span><span class="s2"> are incompatible with the count statistic&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pheno_failed</span><span class="p">)</span>
+                <span class="s2">"Phenotype predicates </span><span class="si">{}</span><span class="s2"> are incompatible with the count statistic"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pheno_failed</span><span class="p">)</span>
                 <span class="p">)</span>
             <span class="p">)</span>
 
@@ -264,12 +264,12 @@
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">geno</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
             <span class="n">geno_accepted</span> <span class="o">=</span> <span class="n">geno</span>
         <span class="k">elif</span> <span class="n">pheno</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot use a count statistic that does not check genotypes&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Cannot use a count statistic that does not check genotypes"</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot use a count statistic that supports shape </span><span class="si">{</span><span class="n">pheno</span><span class="p">,</span><span class="w"> </span><span class="n">geno</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot use a count statistic that supports shape </span><span class="si">{</span><span class="n">pheno</span><span class="p">,</span><span class="w"> </span><span class="n">geno</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">geno_accepted</span><span class="p">:</span>
-            <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Genotype predicate is incompatible with the count statistic&quot;</span><span class="p">)</span>
+            <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Genotype predicate is incompatible with the count statistic"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">issues</span>
 
@@ -320,7 +320,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MultiPhenotypeAnalysisResult</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]:</span>
         <span class="n">pheno_clfs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pheno_clfs</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pheno_clfs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No phenotype predicates were provided&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"No phenotype predicates were provided"</span><span class="p">)</span>
 
         <span class="c1"># 1 - Count the patients</span>
         <span class="n">n_usable</span><span class="p">,</span> <span class="n">all_counts</span> <span class="o">=</span> <span class="n">apply_classifiers_on_individuals</span><span class="p">(</span>
@@ -354,12 +354,12 @@
 <div class="viewcode-block" id="HpoTermAnalysisResult">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pcats.html#gpsea.analysis.pcats.HpoTermAnalysisResult">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">HpoTermAnalysisResult</span><span class="p">(</span><span class="n">MultiPhenotypeAnalysisResult</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `HpoTermAnalysisResult` includes the :class:`HpoTermAnalysis` results.</span>
 
 <span class="sd">    On top of the attributes of :class:`~gpsea.analysis.MultiPhenotypeAnalysisResult` parent,</span>
 <span class="sd">    the results include the outcome of :class:`~gpsea.analysis.mtc_filter.PhenotypeMtcFilter`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -395,32 +395,32 @@
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pheno_clfs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mtc_filter_results</span><span class="p">):</span>
             <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;`len(pheno_predicates)` must be the same as `len(mtc_filter_results)` but &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pheno_clfs</span><span class="p">)</span><span class="si">}</span><span class="s2">!=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mtc_filter_results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"`len(pheno_predicates)` must be the same as `len(mtc_filter_results)` but "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pheno_clfs</span><span class="p">)</span><span class="si">}</span><span class="s2">!=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mtc_filter_results</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">errors</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mtc_filter_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the MTC filter name.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mtc_filter_name</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mtc_filter_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">PhenotypeMtcResult</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get a :class:`~gpsea.analysis.mtc_filter.PhenotypeMtcResult`</span>
 <span class="sd">        for each of the :attr:`~gpsea.analysis.MultiPhenotypeAnalysisResult.phenotypes`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mtc_filter_results</span>
 
 <div class="viewcode-block" id="HpoTermAnalysisResult.n_filtered_out">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pcats.html#gpsea.analysis.pcats.HpoTermAnalysisResult.n_filtered_out">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">n_filtered_out</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the number of phenotype terms that were filtered out by the MTC filter.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">is_filtered_out</span><span class="p">()</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mtc_filter_results</span><span class="p">)</span></div>
 
 
@@ -449,7 +449,7 @@
 <div class="viewcode-block" id="HpoTermAnalysis">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pcats.html#gpsea.analysis.pcats.HpoTermAnalysis">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">HpoTermAnalysis</span><span class="p">(</span><span class="n">MultiPhenotypeAnalysis</span><span class="p">[</span><span class="n">hpotk</span><span class="o">.</span><span class="n">TermId</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `HpoTermAnalysis` can be applied if the individual phenotypes are represented as HPO terms.</span>
 
 <span class="sd">    The analysis applies the genotype and phenotype predicates, computes the nominal p values,</span>
@@ -458,7 +458,7 @@
 <span class="sd">    followed by the multiple testing correction `mtc_correction` method.</span>
 
 <span class="sd">    :class:`~gpsea.analysis.mtc_filter.PhenotypeMtcFilter` is applied even if no MTC should be applied.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -483,7 +483,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HpoTermAnalysisResult</span><span class="p">:</span>
         <span class="n">pheno_clfs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">pheno_clfs</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pheno_clfs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No phenotype predicates were provided&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"No phenotype predicates were provided"</span><span class="p">)</span>
 
         <span class="c1"># 1 - Count the patients</span>
         <span class="n">n_usable</span><span class="p">,</span> <span class="n">all_counts</span> <span class="o">=</span> <span class="n">apply_classifiers_on_individuals</span><span class="p">(</span>
@@ -535,7 +535,7 @@
 
 
 
-<span class="n">WHATEVER</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;WHATEVER&quot;</span><span class="p">)</span>
+<span class="n">WHATEVER</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">TypeVar</span><span class="p">(</span><span class="s2">"WHATEVER"</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">slice_list_in_numpy_style</span><span class="p">(</span>

@@ -86,7 +86,7 @@
 <div class="viewcode-block" id="Contig">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Contig">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Contig</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">Sized</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Contig` represents identifiers and length of a contiguous sequence of genome assembly.</span>
 
 <span class="sd">    The identifiers include:</span>
@@ -99,18 +99,18 @@
 <span class="sd">    The length of a `Contig` represents the number of bases of the contig sequence.</span>
 
 <span class="sd">    You should not try to create a `Contig` on your own, but always get it from a :class:`GenomeBuild`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">gb_acc</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">refseq_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ucsc_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_gb_acc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">gb_acc</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;gb_acc&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_refseq</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">refseq_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;refseq_name&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ucsc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">ucsc_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;ucsc_name&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gb_acc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">gb_acc</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"gb_acc"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refseq</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">refseq_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"refseq_name"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ucsc</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">ucsc_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"ucsc_name"</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;length&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"length"</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length must not be negative but got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Length must not be negative but got </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -132,7 +132,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_len</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contig(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, refseq_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">refseq_name</span><span class="si">}</span><span class="s2">, ucsc_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ucsc_name</span><span class="si">}</span><span class="s2">, len=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Contig(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, refseq_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">refseq_name</span><span class="si">}</span><span class="s2">, ucsc_name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ucsc_name</span><span class="si">}</span><span class="s2">, len=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_len</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -154,12 +154,12 @@
 <div class="viewcode-block" id="GenomeBuildIdentifier">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomeBuildIdentifier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenomeBuildIdentifier</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Identifier of the genome build consisting of :attr:`major_assembly` (e.g. GRCh38) and :attr:`patch` (e.g. p13).</span>
 
 <span class="sd">    :param major_assembly: major assembly `str`</span>
 <span class="sd">    :param patch: assembly patch `str`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">major_assembly</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span> <span class="o">=</span> <span class="n">major_assembly</span>
@@ -167,24 +167,24 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">major_assembly</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get major assembly, e.g. `GRCh38`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get assembly patch , e.g. `p13`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get genome build identifier consisting of major assembly + patch, e.g. `GRCh38.p13`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span> <span class="o">+</span> <span class="s2">"."</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_patch</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -197,17 +197,17 @@
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">major_assembly</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">patch</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomeBuildIdentifier(prefix=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span><span class="si">}</span><span class="s2">, patch=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"GenomeBuildIdentifier(prefix=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span><span class="si">}</span><span class="s2">, patch=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomeBuildIdentifier(prefix=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span><span class="si">}</span><span class="s2">, patch=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"GenomeBuildIdentifier(prefix=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_major_assembly</span><span class="si">}</span><span class="s2">, patch=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_patch</span><span class="si">}</span><span class="s2">)"</span></div>
 
 
 
 <div class="viewcode-block" id="GenomeBuild">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomeBuild">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenomeBuild</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `GenomeBuild` is a container for the :attr:`genome_build_id` and the :attr:`contigs` of the build.</span>
 
 <span class="sd">    The build supports retrieving contig by various identifiers:</span>
@@ -216,15 +216,15 @@
 
 <span class="sd">    &gt;&gt;&gt; from gpsea.model.genome import GRCh38</span>
 
-<span class="sd">    &gt;&gt;&gt; chr1 = GRCh38.contig_by_name(&#39;1&#39;)  # by sequence name</span>
+<span class="sd">    &gt;&gt;&gt; chr1 = GRCh38.contig_by_name('1')  # by sequence name</span>
 
-<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name(&#39;CM000663.2&#39;)    # by GenBank identifier</span>
-<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name(&#39;NC_000001.11&#39;)  # by RefSeq accession</span>
-<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name(&#39;chr1&#39;)    # by UCSC name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name('CM000663.2')    # by GenBank identifier</span>
+<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name('NC_000001.11')  # by RefSeq accession</span>
+<span class="sd">    &gt;&gt;&gt; assert chr1 == GRCh38.contig_by_name('chr1')    # by UCSC name</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">identifier</span><span class="p">:</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="n">contigs</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Contig</span><span class="p">]):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="s2">&quot;identifier&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">hpotk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">validate_instance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="n">GenomeBuildIdentifier</span><span class="p">,</span> <span class="s2">"identifier"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_contigs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">contigs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_contig_by_name</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">contig</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contigs</span><span class="p">:</span>
@@ -248,7 +248,7 @@
 <div class="viewcode-block" id="GenomeBuild.contig_by_name">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomeBuild.contig_by_name">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">contig_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Contig</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get a contig with `name`.</span>
 
 <span class="sd">        The name can come in various formats:</span>
@@ -259,7 +259,7 @@
 <span class="sd">        * UCSC name, e.g. `chr1`</span>
 
 <span class="sd">        :param name: a `str` with contig name.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contig_by_name</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -267,10 +267,10 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomeBuild(identifier=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">, n_contigs=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contigs</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"GenomeBuild(identifier=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">, n_contigs=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contigs</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomeBuild(identifier=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">, contigs=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contigs</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"GenomeBuild(identifier=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">, contigs=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contigs</span><span class="si">}</span><span class="s2">)"</span></div>
 
 
 
@@ -303,7 +303,7 @@
 <div class="viewcode-block" id="Region">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Region</span><span class="p">(</span><span class="n">typing</span><span class="o">.</span><span class="n">Sized</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Region` represents a contiguous region/slice of a biological sequence, such as DNA, RNA, or protein.</span>
 
 <span class="sd">    The :attr:`start` and :attr:`end` represent 0-based coordinates of the region.</span>
@@ -311,54 +311,54 @@
 
 <span class="sd">    :param start: 0-based (excluded) start coordinate of the region.</span>
 <span class="sd">    :param end: 0-based (included) end coordinate of the region.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` and `end` must be ints but were `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`start` and `end` must be ints but were `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">end</span><span class="p">)</span><span class="si">}</span><span class="s2">`"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` and `end` must be positive but were `</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`start` and `end` must be positive but were `</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">`, `</span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">`"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">end</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`start` </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> must be at or before `end` </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`start` </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> must be at or before `end` </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">=</span> <span class="n">start</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_end</span> <span class="o">=</span> <span class="n">end</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get 0-based (excluded) start coordinate of the region.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">end</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get 0-based (included) end coordinate of the region.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span>
 
 <div class="viewcode-block" id="Region.overlaps_with">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region.overlaps_with">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">overlaps_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Region&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlaps_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"Region"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Test if this `Region` overlaps with the `other` `Region`.</span>
 
 <span class="sd">        :param other: another :class:`Region`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">Region</span><span class="o">.</span><span class="n">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_a_overlaps_with_b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Region.contains">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region.contains">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Region&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"Region"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Test if this `Region` contains the `other` region.</span>
 
 <span class="sd">        Empty interval `other` is considered as being contained in `self` if `other` lies on either boundary of `self`.</span>
 
 <span class="sd">        :param other: another :class:`Region`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">Region</span><span class="o">.</span><span class="n">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_a_contains_b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span><span class="p">)</span></div>
 
@@ -366,7 +366,7 @@
 <div class="viewcode-block" id="Region.contains_pos">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region.contains_pos">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">contains_pos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Test if this `Region` contains the base or protein located at the `pos`. Note, `pos` is represented by</span>
 <span class="sd">        a 1-based coordinate system.</span>
 
@@ -380,14 +380,14 @@
 <span class="sd">            pos: an `int` with 1-based position to check.</span>
 
 <span class="sd">        Returns: `True` if the `Region` contains the base/aminoacid located at `pos`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start</span> <span class="o">&lt;</span> <span class="n">pos</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span></div>
 
 
 <div class="viewcode-block" id="Region.distance_to">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region.distance_to">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Region&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"Region"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Calculate the number of bases present between this and the `other` region.</span>
 
 <span class="sd">        The distance is zero if the regions are adjacent or if they overlap.</span>
@@ -397,7 +397,7 @@
 <span class="sd">            other: other :class:`Region`</span>
 
 <span class="sd">        Returns: an `int` with the distance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">Region</span><span class="o">.</span><span class="n">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_distance_a_to_b</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">end</span><span class="p">)</span></div>
 
@@ -405,16 +405,16 @@
 <div class="viewcode-block" id="Region.is_empty">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Region.is_empty">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if the region is empty, i.e. it spans 0 units/bases/aminoacids...</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">_is_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">)</span></div>
 
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Region&quot;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_region</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="s2">"Region"</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Region</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`other` is not instance of `Region`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`other` is not instance of `Region`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">other</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -427,7 +427,7 @@
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_end</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Region(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Region(start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -437,54 +437,54 @@
 <div class="viewcode-block" id="Strand">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Strand">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Strand</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Strand` is an enum to model positive and negative strands of double-stranded sequences, such as DNA.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">POSITIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">,)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">POSITIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"+"</span><span class="p">,)</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    The positive strand of a double stranded sequence.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">NEGATIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="n">NEGATIVE</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"-"</span><span class="p">,)</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    The negative strand of a double stranded sequence.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">=</span> <span class="n">symbol</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Get a `str` with the strand&#39;s sign.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Get a `str` with the strand's sign.</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span>
 
 <div class="viewcode-block" id="Strand.is_positive">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Strand.is_positive">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_positive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if this is the *positive* strand.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Strand</span><span class="o">.</span><span class="n">POSITIVE</span></div>
 
 
 <div class="viewcode-block" id="Strand.is_negative">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Strand.is_negative">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_negative</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return `True` if this is the *negative* strand.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Strand</span><span class="o">.</span><span class="n">NEGATIVE</span></div>
 
 
 <div class="viewcode-block" id="Strand.opposite">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Strand.opposite">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">opposite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the opposite strand of the current strand.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Strand</span><span class="o">.</span><span class="n">POSITIVE</span> <span class="k">if</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">Strand</span><span class="o">.</span><span class="n">NEGATIVE</span> <span class="k">else</span> <span class="n">Strand</span><span class="o">.</span><span class="n">NEGATIVE</span></div>
 
 
@@ -496,7 +496,7 @@
 <div class="viewcode-block" id="transpose_coordinate">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.transpose_coordinate">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">transpose_coordinate</span><span class="p">(</span><span class="n">contig</span><span class="p">:</span> <span class="n">Contig</span><span class="p">,</span> <span class="n">coordinate</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Transpose a 0-based coordinate to other strand of the contig.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        contig: contig to transpose the coordinate on.</span>
@@ -504,9 +504,9 @@
 
 <span class="sd">    Returns: an `int` with transposed coordinate.</span>
 <span class="sd">    Raises: ValueError if the `coordinate` is out of contig bounds.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">coordinate</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinate </span><span class="si">{</span><span class="n">coordinate</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> is out of bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">] for contig </span><span class="si">{</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Coordinate </span><span class="si">{</span><span class="n">coordinate</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> is out of bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">] for contig </span><span class="si">{</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">contig</span><span class="p">)</span> <span class="o">-</span> <span class="n">coordinate</span></div>
 
 
@@ -514,9 +514,9 @@
 <div class="viewcode-block" id="Stranded">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Stranded">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Stranded</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Mixin for classes that are on double-stranded sequences.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="nd">@property</span>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
@@ -528,9 +528,9 @@
 <div class="viewcode-block" id="Transposable">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Transposable">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Transposable</span><span class="p">(</span><span class="n">Stranded</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Transposable` elements know how to flip themselves to arbitrary :class:`Strand` of a sequence.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Transposable.with_strand">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.Transposable.with_strand">[docs]</a>
@@ -562,14 +562,14 @@
 <div class="viewcode-block" id="GenomicRegion">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomicRegion">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GenomicRegion</span><span class="p">(</span><span class="n">Transposable</span><span class="p">,</span> <span class="n">Region</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `GenomicRegion` represents a region located on strand of a DNA contig.</span>
 
 <span class="sd">    :param contig: name of the contig, e.g. `15`, `chrX`.</span>
 <span class="sd">    :param start: 0-based (excluded) start coordinate of the region.</span>
 <span class="sd">    :param end: 0-based (included) end coordinate of the region.</span>
 <span class="sd">    :param strand: the strand of the genomic region, `True` for forward strand or `False` for reverse.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contig</span><span class="p">:</span> <span class="n">Contig</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">strand</span><span class="p">:</span> <span class="n">Strand</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
@@ -577,8 +577,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_strand</span> <span class="o">=</span> <span class="n">strand</span>
         <span class="k">if</span> <span class="n">end</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Genomic region end </span><span class="si">{end}</span><span class="s2"> must not extend &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;beyond contig </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span>
+                <span class="s2">"Genomic region end </span><span class="si">{end}</span><span class="s2"> must not extend "</span>
+                <span class="sa">f</span><span class="s2">"beyond contig </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> bounds [0,</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contig</span><span class="p">)</span><span class="si">}</span><span class="s2">]"</span>
             <span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -618,8 +618,8 @@
 
 <div class="viewcode-block" id="GenomicRegion.overlaps_with">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomicRegion.overlaps_with">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">overlaps_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;GenomicRegion&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlaps_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"GenomicRegion"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Test if this `GenomicRegion` overlaps with the other `GenomicRegion`.</span>
 
 <span class="sd">        Empty intervals are NOT considered as overlapping if they are at the boundaries of the other interval.</span>
@@ -629,7 +629,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            other: other :class:`GenomicRegion`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">GenomicRegion</span><span class="o">.</span><span class="n">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="p">:</span>
@@ -645,8 +645,8 @@
 
 <div class="viewcode-block" id="GenomicRegion.contains">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomicRegion.contains">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;GenomicRegion&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"GenomicRegion"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Check if this `GenomicRegion` contains the `other` genomic region.</span>
 
 <span class="sd">        Empty interval `other` is considered as being contained in `self` if `other` lies on either boundary of `self`.</span>
@@ -654,7 +654,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            other: other :class:`GenomicRegion`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">GenomicRegion</span><span class="o">.</span><span class="n">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="p">:</span>
@@ -670,8 +670,8 @@
 
 <div class="viewcode-block" id="GenomicRegion.distance_to">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.model.genome.html#gpsea.model.genome.GenomicRegion.distance_to">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;GenomicRegion&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">"GenomicRegion"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Calculate the number of bases present between this `GenomicRegion` and the `other` genomic region.</span>
 
 <span class="sd">        The distance is zero if the regions are adjacent or if they overlap.</span>
@@ -682,13 +682,13 @@
 
 <span class="sd">        Returns: an `int` with the distance.</span>
 <span class="sd">        Raises: `ValueError` if the `other` region is on a different contig.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">other</span> <span class="o">=</span> <span class="n">GenomicRegion</span><span class="o">.</span><span class="n">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">contig</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Cannot calculate distance between regions on different contigs: &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> &lt;-&gt; </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"Cannot calculate distance between regions on different contigs: "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> &lt;-&gt; </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
             <span class="p">)</span>
 
         <span class="n">other_start</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">start_on_strand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_strand</span><span class="p">)</span>
@@ -700,7 +700,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_check_is_genomic_region</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">GenomicRegion</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`other` is not instance of `GenomicRegion`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`other` is not instance of `GenomicRegion`: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">other</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -716,7 +716,7 @@
         <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;GenomicRegion(contig=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">, strand=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"GenomicRegion(contig=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contig</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, start=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">, end=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end</span><span class="si">}</span><span class="s2">, strand=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">strand</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>

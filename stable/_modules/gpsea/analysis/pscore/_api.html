@@ -95,22 +95,22 @@
 <div class="viewcode-block" id="PhenotypeScorer">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhenotypeScorer</span><span class="p">(</span><span class="n">ContinuousPartitioning</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `PhenotypeScorer` assigns the patient with a phenotype score.</span>
 
 <span class="sd">    The score can be `math.nan` if it is not possible to compute the score for a patient.</span>
 
 <span class="sd">    The scorer can be created by wrapping a scoring function (see :func:`~PhenotypeScorer.wrap_scoring_function`).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="PhenotypeScorer.wrap_scoring_function">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer.wrap_scoring_function">[docs]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">wrap_scoring_function</span><span class="p">(</span>
         <span class="n">func</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">Patient</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span>
-        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Custom Scoring Function&quot;</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PhenotypeScorer&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"Custom Scoring Function"</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">"PhenotypeScorer"</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Create a `PhenotypeScorer` by wrap the provided scoring function `func`.</span>
 
 <span class="sd">        The function must take exactly one argument of type :class:`~gpsea.model.Patient`</span>
@@ -126,7 +126,7 @@
 <span class="sd">        `phenotype_scorer` will assign all patients a score of `123.4`.</span>
 
 <span class="sd">        :param func: the scoring function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">FunctionPhenotypeScorer</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
             <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
@@ -137,18 +137,18 @@
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer.score">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Compute the score for the `patient`.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span></div>
 </div>
 
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">FunctionPhenotypeScorer</span><span class="p">(</span><span class="n">PhenotypeScorer</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `FunctionPhenotypeScorer` computes the phenotype score using the provided function/closure.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="c1"># NOT PART OF THE PUBLIC API</span>
 
@@ -158,11 +158,11 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;A custom function to compute the phenotype score&quot;</span>
+        <span class="k">return</span> <span class="s2">"A custom function to compute the phenotype score"</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variable_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;Phenotype score&quot;</span>
+        <span class="k">return</span> <span class="s2">"Phenotype score"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -174,16 +174,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patient</span><span class="p">:</span> <span class="n">Patient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Apply the function to compute the phenotype score.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="n">patient</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="PhenotypeScoreAnalysisResult">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScoreAnalysisResult">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhenotypeScoreAnalysisResult</span><span class="p">(</span><span class="n">MonoPhenotypeAnalysisResult</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `PhenotypeScoreAnalysisResult` is a container for :class:`PhenotypeScoreAnalysis` results.</span>
 
 <span class="sd">    The :attr:`~gpsea.analysis.MonoPhenotypeAnalysisResult.data`</span>
@@ -207,7 +207,7 @@
 
 <span class="sd">    The `phenotype` contains a `float` with the phenotype score. A `NaN` value is used</span>
 <span class="sd">    if the phenotype score is impossible to compute.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -228,14 +228,14 @@
             <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="n">expected</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">cat_id</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">get_categories</span><span class="p">())</span>
-        <span class="k">assert</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">,</span> <span class="s2">&quot;Mismatch in the genotype classes&quot;</span>
+        <span class="k">assert</span> <span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">,</span> <span class="s2">"Mismatch in the genotype classes"</span>
 
 <div class="viewcode-block" id="PhenotypeScoreAnalysisResult.phenotype_scorer">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScoreAnalysisResult.phenotype_scorer">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">phenotype_scorer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypeScorer</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get the scorer that computed the phenotype score.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># We are sure that `self._phenotype` is a `PhenotypeScorer`</span>
         <span class="c1"># because of the instance check in `__init__` and `PhenotypeScorer`</span>
         <span class="c1"># being a subclass of `Partitioning`.</span>
@@ -247,7 +247,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
         <span class="c1"># skip the patients with unassigned genotype group</span>
         <span class="n">not_na</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
-        <span class="n">not_na_gts</span> <span class="o">=</span> <span class="n">not_na</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+        <span class="n">not_na_gts</span> <span class="o">=</span> <span class="n">not_na</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_na_gts</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_make_x_and_tick_labels</span><span class="p">(</span>
@@ -278,19 +278,19 @@
         <span class="n">median_color</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">PALETTE_SPECIAL</span><span class="p">,</span>
         <span class="o">**</span><span class="n">boxplot_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Draw box plot with distributions of phenotype scores for the genotype groups.</span>
 
 <span class="sd">        :param ax: the Matplotlib :class:`~matplotlib.axes.Axes` to draw on.</span>
 <span class="sd">        :param colors: a sequence with color palette for the box plot patches.</span>
 <span class="sd">        :param median_color: a `str` with the color for the boxplot median line.</span>
 <span class="sd">        :param boxplot_kwargs: arguments to pass into :func:`matplotlib.axes.Axes.boxplot` function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_data_df</span><span class="p">()</span>
 
         <span class="n">x</span><span class="p">,</span> <span class="n">gt_cat_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_x_and_tick_labels</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">patch_artist</span> <span class="o">=</span> <span class="n">boxplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;patch_artist&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">tick_labels</span> <span class="o">=</span> <span class="n">boxplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;tick_labels&quot;</span><span class="p">,</span> <span class="n">gt_cat_names</span><span class="p">)</span>
+        <span class="n">patch_artist</span> <span class="o">=</span> <span class="n">boxplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"patch_artist"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">tick_labels</span> <span class="o">=</span> <span class="n">boxplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"tick_labels"</span><span class="p">,</span> <span class="n">gt_cat_names</span><span class="p">)</span>
 
         <span class="n">bplot</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
             <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
@@ -301,10 +301,10 @@
 
         <span class="c1"># Set face colors of the boxes</span>
         <span class="n">col_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_palette_idxs</span><span class="p">(</span><span class="n">n_categories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">(),</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">patch</span><span class="p">,</span> <span class="n">col_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bplot</span><span class="p">[</span><span class="s2">&quot;boxes&quot;</span><span class="p">],</span> <span class="n">col_idxs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">patch</span><span class="p">,</span> <span class="n">col_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bplot</span><span class="p">[</span><span class="s2">"boxes"</span><span class="p">],</span> <span class="n">col_idxs</span><span class="p">):</span>
             <span class="n">patch</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="n">col_idx</span><span class="p">])</span>
 
-        <span class="k">for</span> <span class="n">median</span> <span class="ow">in</span> <span class="n">bplot</span><span class="p">[</span><span class="s2">&quot;medians&quot;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">median</span> <span class="ow">in</span> <span class="n">bplot</span><span class="p">[</span><span class="s2">"medians"</span><span class="p">]:</span>
             <span class="n">median</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">median_color</span><span class="p">)</span></div>
 
 
@@ -316,19 +316,19 @@
         <span class="n">colors</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">PALETTE_DATA</span><span class="p">,</span>
         <span class="o">**</span><span class="n">violinplot_kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Draw a violin plot with distributions of phenotype scores for the genotype groups.</span>
 
 <span class="sd">        :param ax: the Matplotlib :class:`~matplotlib.axes.Axes` to draw on.</span>
 <span class="sd">        :param colors: a sequence with color palette for the violin patches.</span>
 <span class="sd">        :param violinplot_kwargs: arguments to pass into :func:`matplotlib.axes.Axes.violinplot` function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_data_df</span><span class="p">()</span>
 
         <span class="n">x</span><span class="p">,</span> <span class="n">gt_cat_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_x_and_tick_labels</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="n">showmeans</span> <span class="o">=</span> <span class="n">violinplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;showmeans&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="n">showextrema</span> <span class="o">=</span> <span class="n">violinplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;showextrema&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">showmeans</span> <span class="o">=</span> <span class="n">violinplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"showmeans"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">showextrema</span> <span class="o">=</span> <span class="n">violinplot_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"showextrema"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
         <span class="n">parts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span>
             <span class="n">dataset</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
@@ -351,9 +351,9 @@
         <span class="n">whiskers_min</span><span class="p">,</span> <span class="n">whiskers_max</span> <span class="o">=</span> <span class="n">whiskers</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">whiskers</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">medians</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">quartile1</span><span class="p">,</span> <span class="n">quartile3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">whiskers_min</span><span class="p">,</span> <span class="n">whiskers_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">medians</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">quartile1</span><span class="p">,</span> <span class="n">quartile3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">whiskers_min</span><span class="p">,</span> <span class="n">whiskers_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
             <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gt_cat_names</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
@@ -361,7 +361,7 @@
         <span class="p">)</span>
 
         <span class="n">col_idxs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_choose_palette_idxs</span><span class="p">(</span><span class="n">n_categories</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">(),</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">pc</span><span class="p">,</span> <span class="n">color_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="s2">&quot;bodies&quot;</span><span class="p">],</span> <span class="n">col_idxs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">pc</span><span class="p">,</span> <span class="n">color_idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="s2">"bodies"</span><span class="p">],</span> <span class="n">col_idxs</span><span class="p">):</span>
             <span class="n">pc</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
                 <span class="n">facecolor</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">color_idx</span><span class="p">],</span>
                 <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -388,12 +388,12 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span>
-            <span class="s2">&quot;PhenotypeScoreAnalysisResult(&quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;gt_clf=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;phenotype_scorer=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;statistic=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;data=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;statistic_result=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic_result</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="s2">"PhenotypeScoreAnalysisResult("</span>
+            <span class="sa">f</span><span class="s2">"gt_clf=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_gt_clf</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"phenotype_scorer=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_phenotype</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"statistic=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"data=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"statistic_result=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_statistic_result</span><span class="si">}</span><span class="s2">)"</span>
         <span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -404,7 +404,7 @@
 <div class="viewcode-block" id="PhenotypeScoreAnalysis">
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScoreAnalysis">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhenotypeScoreAnalysis</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `PhenotypeScoreAnalysis` tests the association between two or more genotype classes</span>
 <span class="sd">    and a phenotype score.</span>
 
@@ -413,7 +413,7 @@
 
 <span class="sd">    The association is tested with a :class:`~gpsea.analysis.pscore.stats.PhenotypeScoreStatistic`</span>
 <span class="sd">    and the results are reported as a :class:`PhenotypeScoreAnalysisResult`.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -430,17 +430,17 @@
         <span class="n">gt_clf</span><span class="p">:</span> <span class="n">GenotypeClassifier</span><span class="p">,</span>
         <span class="n">pheno_scorer</span><span class="p">:</span> <span class="n">PhenotypeScorer</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PhenotypeScoreAnalysisResult</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Compute the association between genotype groups and phenotype score.</span>
 
 <span class="sd">        :param cohort: the cohort to analyze.</span>
 <span class="sd">        :param gt_clf: a classifier for assigning an individual into a genotype class.</span>
 <span class="sd">        :param pheno_scorer: the scorer to compute phenotype score.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="n">gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;We only support 2 genotype categories at this point&quot;</span>
+<span class="sd">        """</span>
+        <span class="k">assert</span> <span class="n">gt_clf</span><span class="o">.</span><span class="n">n_categorizations</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"We only support 2 genotype categories at this point"</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pheno_scorer</span><span class="p">,</span> <span class="n">PhenotypeScorer</span><span class="p">)</span>
 
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">((</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span> <span class="k">for</span> <span class="n">patient</span> <span class="ow">in</span> <span class="n">cohort</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;patient_id&quot;</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">((</span><span class="n">patient</span><span class="o">.</span><span class="n">patient_id</span> <span class="k">for</span> <span class="n">patient</span> <span class="ow">in</span> <span class="n">cohort</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"patient_id"</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
             <span class="kc">None</span><span class="p">,</span>
             <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span>

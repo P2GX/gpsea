@@ -94,7 +94,7 @@
 <div class="viewcode-block" id="CountStatistic">
 <a class="viewcode-back" href="../../../../../apidocs/gpsea.analysis.pcats.stats.html#gpsea.analysis.pcats.stats.CountStatistic">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CountStatistic</span><span class="p">(</span><span class="n">Statistic</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `CountStatistic` calculates a p value for a contingency table</span>
 <span class="sd">    produced by a pair of discrete random variables.</span>
 
@@ -104,7 +104,7 @@
 
 <span class="sd">    `CountStatistic` takes the counts in form of a data frame,</span>
 <span class="sd">    and some statistics impose additional requirements on the frame shape.</span>
-<span class="sd">    For instance, GPSEA&#39;s implementation of the Fisher exact test</span>
+<span class="sd">    For instance, GPSEA's implementation of the Fisher exact test</span>
 <span class="sd">    can compare counts in a ``(2, 2)`` or ``(2, 3)`` arrays</span>
 <span class="sd">    but χ2 test can test an ``(m, n)`` array.</span>
 
@@ -125,7 +125,7 @@
 <span class="sd">    +------------------------+-------------------------+------------------+</span>
 <span class="sd">    | χ2                     | ``(*, *)``              | ``(None, None)`` |</span>
 <span class="sd">    +------------------------+-------------------------+------------------+</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -135,9 +135,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">supports_shape</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Get a sequence of the supported shapes.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="CountStatistic.compute_pval">
@@ -161,17 +161,17 @@
 <div class="viewcode-block" id="FisherExactTest">
 <a class="viewcode-back" href="../../../../../apidocs/gpsea.analysis.pcats.stats.html#gpsea.analysis.pcats.stats.FisherExactTest">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FisherExactTest</span><span class="p">(</span><span class="n">CountStatistic</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    `FisherExactTest` performs Fisher&#39;s Exact Test on a `2x2` or `2x3` contingency table.</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    `FisherExactTest` performs Fisher's Exact Test on a `2x2` or `2x3` contingency table.</span>
 
 <span class="sd">    The `2x2` version is a thin wrapper around Scipy :func:`~scipy.stats.fisher_exact` function,</span>
 <span class="sd">    while the `2x3` variant is implemented in Python.</span>
 <span class="sd">    In both variants, the two-sided :math:`H_1` is considered.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fisher&#39;s Exact Test&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"Fisher's Exact Test"</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
@@ -188,7 +188,7 @@
         <span class="n">counts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StatisticResult</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">counts</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">fisher_exact</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s2">&quot;two-sided&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">fisher_exact</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s2">"two-sided"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">StatisticResult</span><span class="p">(</span>
                 <span class="n">statistic</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span>
                 <span class="n">pval</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span>
@@ -200,7 +200,7 @@
                 <span class="n">pval</span><span class="o">=</span><span class="n">pval</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported counts shape </span><span class="si">{</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unsupported counts shape </span><span class="si">{</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_fisher_exact</span><span class="p">(</span>
