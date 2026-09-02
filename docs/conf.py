@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'GPSEA'
-copyright = u'2025'
+copyright = u'2026'
 author = u'Lauren Rekerle, Daniel Danis, Peter N Robinson'
 
 # The version info for the project you're documenting, acts as replacement for
