@@ -1,24 +1,22 @@
 import abc
+import collections.abc
 import os
+import sys
 import typing
-
 from collections import Counter
 
 import hpotk
 import numpy as np
 import pandas as pd
-
+import tqdm
 from statsmodels.stats import multitest
 
 from gpsea.model import Patient
 
-from ..clf import GenotypeClassifier
-from ..clf import P, PhenotypeClassifier
-from ..mtc_filter import PhenotypeMtcFilter, PhenotypeMtcResult
-
-from .stats import CountStatistic
 from .._base import MultiPhenotypeAnalysisResult, StatisticResult
-
+from ..clf import GenotypeClassifier, P, PhenotypeClassifier
+from ..mtc_filter import PhenotypeMtcFilter, PhenotypeMtcResult
+from .stats import CountStatistic
 
 DEFAULT_MTC_PROCEDURE = "fdr_bh"
 """
@@ -27,12 +25,12 @@ Use Benjamini-Hochberg as the default MTC procedure.
 
 
 def apply_classifiers_on_individuals(
-    individuals: typing.Iterable[Patient],
+    individuals: collections.abc.Iterable[Patient],
     gt_clf: GenotypeClassifier,
-    pheno_clfs: typing.Sequence[PhenotypeClassifier[P]],
-) -> typing.Tuple[
-    typing.Sequence[int],
-    typing.Sequence[pd.DataFrame],
+    pheno_clfs: collections.abc.Sequence[PhenotypeClassifier[P]],
+) -> tuple[
+    collections.abc.Sequence[int],
+    collections.abc.Sequence[pd.DataFrame],
 ]:
     """
     Classify individuals with the genotype and phenotype classifiers.
@@ -57,7 +55,12 @@ def apply_classifiers_on_individuals(
 
     # Apply genotype and phenotype predicates
     count_dict = {}
-    for ph_predicate in pheno_clfs:
+    for ph_predicate in tqdm.tqdm(
+        pheno_clfs,
+        desc="HPO terms processed",
+        file=sys.stdout,
+        unit=" terms",
+    ):
         if ph_predicate.phenotype not in count_dict:
             # Make an empty frame for keeping track of the counts.
             count_dict[ph_predicate.phenotype] = pd.DataFrame(
@@ -83,7 +86,7 @@ def apply_classifiers_on_individuals(
     # Convert dicts to numpy arrays
     n_usable_patients = [n_usable_patient_counter[ph_predicate.phenotype] for ph_predicate in pheno_clfs]
 
-    counts = [count_dict[ph_predicate.phenotype] for ph_predicate in pheno_clfs]
+    counts: list[pd.DataFrame] = [count_dict[ph_predicate.phenotype] for ph_predicate in pheno_clfs]
 
     return n_usable_patients, counts
 

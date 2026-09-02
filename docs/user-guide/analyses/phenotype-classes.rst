@@ -287,11 +287,12 @@ Analysis
 
 We can now test associations between the genotype classes and the HPO terms:
 
->>> result = analysis.compare_genotype_vs_phenotypes(
+>>> result = analysis.compare_genotype_vs_phenotypes( # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
 ...     cohort=cohort,
 ...     gt_clf=gt_clf,
 ...     pheno_clfs=pheno_clfs,
 ... )
+HPO terms processed: ...
 >>> len(result.phenotypes)
 369
 >>> result.total_tests
