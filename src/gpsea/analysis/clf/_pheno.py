@@ -76,9 +76,6 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
     ) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
         self._check_patient(patient)
 
-        if len(patient.phenotypes) == 0:
-            return None
-
         for phenotype in patient.phenotypes:
             if phenotype.is_present:
                 if self._query == phenotype.identifier or any(
@@ -94,7 +91,10 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
                     ):
                         return self._phenotype_excluded
 
-        return None
+        if self._missing_implies_phenotype_excluded:
+            return self._phenotype_excluded
+        else:
+            return None
 
     def __eq__(self, value: object) -> bool:
         return (
