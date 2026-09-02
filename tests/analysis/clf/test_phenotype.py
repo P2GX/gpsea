@@ -92,7 +92,9 @@ class TestHpoPredicate:
 
         assert actual is None
 
-    @pytest.mark.parametrize("curie,patient_id,expected", [
+    @pytest.mark.parametrize(
+        "curie,patient_id,expected",
+        [
             # Test exact match
             (
                 "HP:0001166",  # Arachnodactyly
@@ -122,7 +124,8 @@ class TestHpoPredicate:
                 "HetDoubleVar1",
                 "No",
             ),
-    ])
+        ],
+    )
     def test_phenotype_predicate__missing_implies_excluded(
         self,
         toy_cohort: Cohort,
