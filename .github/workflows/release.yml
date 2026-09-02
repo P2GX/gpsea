@@ -4,10 +4,14 @@ on:
     push:
         tags:
             - "v*"
+    workflow_dispatch:
 
 jobs:
     build-and-publish:
         runs-on: ubuntu-latest
+        environment: pypi
+        permissions:
+          id-token: write
 
         steps:
             - uses: actions/checkout@v4
@@ -19,7 +23,5 @@ jobs:
               run: python3 -m pip install build
             - name: Build package
               run: python3 -m build
-            - name: Publish package to PyPI
+            - name: Publish package distributions to PyPI
               uses: pypa/gh-action-pypi-publish@release/v1
-              with:
-                  password: ${{ secrets.PYPI_TOKEN }}
