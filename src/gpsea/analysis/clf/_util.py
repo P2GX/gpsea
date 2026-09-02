@@ -4,7 +4,8 @@ from collections import Counter
 
 import hpotk
 
-from ._pheno import PhenotypeClassifier, HpoClassifier
+from ._api import PhenotypeClassifier
+from ._pheno import HpoClassifier
 
 from gpsea.model import Patient
 

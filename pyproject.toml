@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpsea"
-version = "0.9.13"
+version = "0.9.14"
 authors = [
     { name = "Lauren Rekerle", email = "lauren.rekerle@jax.org" },
-    { name = "Daniel Danis", email = "daniel.danis@bih-charite.de" },
+    { name = "Daniel Danis", email = "daniel.gordon.danis@protonmail.com" },
     { name = "Peter Robinson", email = "peter.robinson@bih-charite.de" },
 ]
 description = "Discover genotype-phenotype correlations with GA4GH phenopackets"
@@ -54,6 +54,7 @@ test = [
     "phenopacket-store-toolkit>=0.1.2",
     "pytest>=7.0.0,<8.0.0",
     "ruff==0.12.1",
+    "basedpyright==v1.39.10",
 ]
 docs = [
     "sphinx>=7.0.0",
@@ -70,6 +71,3 @@ bugtracker = "https://github.com/P2GX/gpsea/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
-
-[tool.setuptools.dynamic]
-version = { attr = "gpsea.__version__" }
