@@ -332,11 +332,12 @@ Statistical testing
 
 Now we can perform the testing and evaluate the results.
 
->>> result = analysis.compare_genotype_vs_phenotypes(
+>>> result = analysis.compare_genotype_vs_phenotypes( # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
 ...     cohort=cohort,
 ...     gt_clf=gt_clf,
 ...     pheno_clfs=pheno_clfs,
 ... )
+HPO terms processed: ...
 >>> result.total_tests
 30
 
