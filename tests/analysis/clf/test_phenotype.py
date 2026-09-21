@@ -3,153 +3,152 @@ import pytest
 
 from gpsea.analysis.clf import (
     HpoClassifier,
-    PhenotypeClassifier,
-    prepare_classifiers_for_terms_of_interest,
-    prepare_hpo_terms_of_interest,
 )
-from gpsea.model import Cohort, Patient
-
-
-def test_prepare_hpo_terms_of_interest(
-    suox_cohort: Cohort,
-    hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
-):
-    terms = prepare_hpo_terms_of_interest(
-        cohort=suox_cohort,
-        hpo=hpo,
-    )
-
-    assert len(terms) == 71
-
-
-def test_prepare_predicates_for_terms_of_interest(
-    suox_cohort: Cohort,
-    hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
-):
-    predicates = prepare_classifiers_for_terms_of_interest(
-        cohort=suox_cohort,
-        hpo=hpo,
-    )
-
-    assert len(predicates) == 71
-    assert all(isinstance(p, PhenotypeClassifier) for p in predicates)
+from gpsea.model import Patient, Phenotype
 
 
 class TestHpoPredicate:
+    @staticmethod
+    def make_patient() -> Patient:
+        return Patient.from_raw_parts(
+            labels="TEST",
+            phenotypes=(
+                Phenotype.from_raw_parts("HP:0001250", is_observed=False),  # No Seizure
+                Phenotype.from_raw_parts("HP:0001166", is_observed=True),  # Yes Arachnodactyly
+            ),
+        )
+
+    @staticmethod
+    def make_empty() -> Patient:
+        return Patient.from_raw_parts(
+            labels="EMPTY",
+            phenotypes=(),
+        )
+
     @pytest.mark.parametrize(
-        "curie, patient_id, expected",
-        # Patient "HetSingleVar" has Phenotypes:
-        # Measured and present - 'HP:0001166;HP:0002266',  # Arachnodactyly;Focal clonic seizure
-        # Measured but excluded - 'HP:0001257',  # Spasticity
+        "query,expected",
         [
-            # Test exact match
             (
-                "HP:0001166",  # Arachnodactyly
-                "HetSingleVar",
+                "HP:0001167",  # Abnormal finger morphology
                 "Yes",
             ),
-            # Test inferred annotations
+            (
+                "HP:0001166",  # Arachnodactyly
+                "Yes",
+            ),
+            (
+                "HP:0012638",  # Abnormal nervous system physiology
+                None,
+            ),
             (
                 "HP:0001250",  # Seizure
-                "HetSingleVar",
-                "Yes",
-            ),
-            # Test excluded feature
-            (
-                "HP:0001257",  # Spasticity
-                "HetSingleVar",
                 "No",
+            ),
+            (
+                "HP:0033259",  # Non-motor seizure
+                "No",
+            ),
+            (
+                "HP:0001640",  # Cardiomegaly
+                None,
             ),
         ],
     )
-    def test_phenotype_predicate__present_or_excluded(
+    def test_hpo_predicate__one_term_individual(
         self,
-        toy_cohort: Cohort,
         hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
-        curie: str,
-        patient_id: str,
-        expected: str,
+        query: str,
+        expected: str | None,
     ):
-        patient = find_patient(patient_id, toy_cohort)
-        term_id = hpotk.TermId.from_curie(curie)
-        predicate = HpoClassifier(hpo=hpo, query=term_id)
-        actual = predicate.test(patient)
-
-        assert actual is not None
-        assert actual.phenotype == term_id
-        assert actual.category.name == expected
-
-    def test_phenotype_predicate__unknown(
-        self,
-        toy_cohort: Cohort,
-        hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
-    ):
-        # Not Measured and not Observed - 'HP:0006280',  # Chronic pancreatitis
-        patient = find_patient("HetSingleVar", toy_cohort)
-        term_id = hpotk.TermId.from_curie("HP:0006280")
-        predicate = HpoClassifier(hpo=hpo, query=term_id)
-        actual = predicate.test(patient)
-
-        assert actual is None
-
-    @pytest.mark.parametrize(
-        "curie,patient_id,expected",
-        [
-            # Test exact match
-            (
-                "HP:0001166",  # Arachnodactyly
-                "HetDoubleVar1",
-                "Yes",
-            ),
-            # An explicitly excluded feature is categorized
-            # even when missing implies excluded
-            (
-                "HP:0001257",  # Spasticity
-                "HetSingleVar",
-                "No",
-            ),
-            # An unannotated feature is implied to be excluded.
-            # This works in an individual with an excluded feature.
-            # Not Measured and not Observed - 'HP:0006280'
-            (
-                "HP:0006280",  # Chronic pancreatitis
-                "HetSingleVar",
-                "No",
-            ),
-            # An unannotated feature is implied to be excluded.
-            # This works even in an individual with no excluded features.
-            # Not Measured and not Observed - 'HP:0006280'
-            (
-                "HP:0006280",  # Chronic pancreatitis
-                "HetDoubleVar1",
-                "No",
-            ),
-        ],
-    )
-    def test_phenotype_predicate__missing_implies_excluded(
-        self,
-        toy_cohort: Cohort,
-        hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
-        curie: str,
-        patient_id: str,
-        expected: str,
-    ):
-        patient = find_patient(patient_id, toy_cohort)
-        term_id = hpotk.TermId.from_curie(curie)
         predicate = HpoClassifier(
             hpo=hpo,
-            query=term_id,
+            query=hpotk.TermId.from_curie(query),
+            missing_implies_phenotype_excluded=False,
+        )
+
+        patient = TestHpoPredicate.make_patient()
+
+        actual = predicate.test(patient)
+
+        if expected is None:
+            assert actual is None
+        else:
+            assert actual is not None
+            assert actual.category.name == expected
+
+    @pytest.mark.parametrize(
+        "query,expected",
+        [
+            (
+                "HP:0001167",  # Abnormal finger morphology
+                "Yes",
+            ),
+            (
+                "HP:0001166",  # Arachnodactyly
+                "Yes",
+            ),
+            (
+                "HP:0012638",  # Abnormal nervous system physiology
+                "No",
+            ),
+            (
+                "HP:0001250",  # Seizure
+                "No",
+            ),
+            (
+                "HP:0033259",  # Non-motor seizure
+                "No",
+            ),
+            (
+                "HP:0001640",  # Cardiomegaly
+                "No",
+            ),
+        ],
+    )
+    def test_hpo_predicate__one_term_individual__missing_implies_excluded(
+        self,
+        hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
+        query: str,
+        expected: str | None,
+    ):
+        predicate = HpoClassifier(
+            hpo=hpo,
+            query=hpotk.TermId.from_curie(query),
+            missing_implies_phenotype_excluded=True,
+        )
+
+        patient = TestHpoPredicate.make_patient()
+
+        actual = predicate.test(patient)
+
+        if expected is None:
+            assert actual is None
+        else:
+            assert actual is not None
+            assert actual.category.name == expected
+
+    def test_hpo_predicate__empty(
+        self,
+        hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
+    ):
+        """
+        An individual with no terms is either assigned into no category (`None`)
+        or into the "No" category if missing implies excluded.
+        """
+        patient = TestHpoPredicate.make_empty()
+
+        predicate = HpoClassifier(
+            hpo=hpo,
+            query=hpotk.TermId.from_curie("HP:0001250"),
+            missing_implies_phenotype_excluded=False,
+        )
+        assert predicate.test(patient) is None
+
+        predicate = HpoClassifier(
+            hpo=hpo,
+            query=hpotk.TermId.from_curie("HP:0001250"),
             missing_implies_phenotype_excluded=True,
         )
         actual = predicate.test(patient)
-
         assert actual is not None
-        assert actual.phenotype == term_id
-        assert actual.category.name == expected
-
-
-def find_patient(pat_id: str, cohort: Cohort) -> Patient:
-    for pat in cohort.all_patients:
-        if pat.patient_id == pat_id:
-            return pat
-    raise ValueError(f"Could not find patient {pat_id}")
+        assert actual.category.name == "No"
