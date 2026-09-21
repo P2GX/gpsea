@@ -96,9 +96,9 @@
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScorer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PhenotypeScorer</span><span class="p">(</span><span class="n">ContinuousPartitioning</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    `PhenotypeScorer` assigns the patient with a phenotype score.</span>
+<span class="sd">    `PhenotypeScorer` assigns the individual with a phenotype score.</span>
 
-<span class="sd">    The score can be `math.nan` if it is not possible to compute the score for a patient.</span>
+<span class="sd">    The score can be `math.nan` if it is not possible to compute the score for a individual.</span>
 
 <span class="sd">    The scorer can be created by wrapping a scoring function (see :func:`~PhenotypeScorer.wrap_scoring_function`).</span>
 <span class="sd">    """</span>
@@ -123,7 +123,7 @@
 <span class="sd">        &gt;&gt;&gt; def f(p): 123.4</span>
 <span class="sd">        &gt;&gt;&gt; phenotype_scorer = PhenotypeScorer.wrap_scoring_function(f)</span>
 
-<span class="sd">        `phenotype_scorer` will assign all patients a score of `123.4`.</span>
+<span class="sd">        `phenotype_scorer` will assign all individuals a score of `123.4`.</span>
 
 <span class="sd">        :param func: the scoring function.</span>
 <span class="sd">        """</span>
@@ -203,7 +203,7 @@
 <span class="sd">    in `genotype` and `phenotype` columns.</span>
 
 <span class="sd">    The `genotype` includes the genotype category ID (:attr:`~gpsea.analysis.clf.PatientCategory.cat_id`)</span>
-<span class="sd">    or `None` if the patient cannot be assigned into any genotype category.</span>
+<span class="sd">    or `None` if the individual cannot be assigned into any genotype category.</span>
 
 <span class="sd">    The `phenotype` contains a `float` with the phenotype score. A `NaN` value is used</span>
 <span class="sd">    if the phenotype score is impossible to compute.</span>
@@ -245,7 +245,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_make_data_df</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-        <span class="c1"># skip the patients with unassigned genotype group</span>
+        <span class="c1"># skip the individuals with unassigned genotype group</span>
         <span class="n">not_na</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
         <span class="n">not_na_gts</span> <span class="o">=</span> <span class="n">not_na</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"columns"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">not_na_gts</span><span class="p">]</span>

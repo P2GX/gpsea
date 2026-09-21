@@ -100,8 +100,8 @@
 <dt class="sig sig-object py" id="gpsea.analysis.pscore.PhenotypeScorer">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">gpsea.analysis.pscore.</span></span><span class="sig-name descname"><span class="pre">PhenotypeScorer</span></span><a class="reference internal" href="../_modules/gpsea/analysis/pscore/_api.html#PhenotypeScorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.analysis.pscore.PhenotypeScorer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="gpsea.analysis.html#gpsea.analysis.ContinuousPartitioning" title="gpsea.analysis._partition.ContinuousPartitioning"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContinuousPartitioning</span></code></a></p>
-<p><cite>PhenotypeScorer</cite> assigns the patient with a phenotype score.</p>
-<p>The score can be <cite>math.nan</cite> if it is not possible to compute the score for a patient.</p>
+<p><cite>PhenotypeScorer</cite> assigns the individual with a phenotype score.</p>
+<p>The score can be <cite>math.nan</cite> if it is not possible to compute the score for a individual.</p>
 <p>The scorer can be created by wrapping a scoring function (see <a class="reference internal" href="#gpsea.analysis.pscore.PhenotypeScorer.wrap_scoring_function" title="gpsea.analysis.pscore.PhenotypeScorer.wrap_scoring_function"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_scoring_function()</span></code></a>).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.analysis.pscore.PhenotypeScorer.wrap_scoring_function">
@@ -115,7 +115,7 @@ and return a <cite>float</cite> with the corresponding phenotype score.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">phenotype_scorer</span> <span class="o">=</span> <span class="n">PhenotypeScorer</span><span class="o">.</span><span class="n">wrap_scoring_function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><cite>phenotype_scorer</cite> will assign all patients a score of <cite>123.4</cite>.</p>
+<p><cite>phenotype_scorer</cite> will assign all individuals a score of <cite>123.4</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>func</strong> – the scoring function.</p>
@@ -198,7 +198,7 @@ property provides a data frame with phenotype score for each tested individual:<
 <p>The DataFrame index includes the identifiers of the tested individuals and the values are stored
 in <cite>genotype</cite> and <cite>phenotype</cite> columns.</p>
 <p>The <cite>genotype</cite> includes the genotype category ID (<a class="reference internal" href="gpsea.analysis.clf.html#gpsea.analysis.clf.PatientCategory.cat_id" title="gpsea.analysis.clf.PatientCategory.cat_id"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cat_id</span></code></a>)
-or <cite>None</cite> if the patient cannot be assigned into any genotype category.</p>
+or <cite>None</cite> if the individual cannot be assigned into any genotype category.</p>
 <p>The <cite>phenotype</cite> contains a <cite>float</cite> with the phenotype score. A <cite>NaN</cite> value is used
 if the phenotype score is impossible to compute.</p>
 <dl class="py method">
@@ -244,7 +244,7 @@ if the phenotype score is impossible to compute.</p>
 <dt class="sig sig-object py" id="gpsea.analysis.pscore.CountingPhenotypeScorer">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">gpsea.analysis.pscore.</span></span><span class="sig-name descname"><span class="pre">CountingPhenotypeScorer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hpo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.ontology.html#hpotk.ontology.MinimalOntology" title="(in hpo-toolkit)"><span class="pre">MinimalOntology</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.14)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.model.html#hpotk.model.TermId" title="(in hpo-toolkit)"><span class="pre">TermId</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/analysis/pscore/_hpo.html#CountingPhenotypeScorer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.analysis.pscore.CountingPhenotypeScorer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#gpsea.analysis.pscore.PhenotypeScorer" title="gpsea.analysis.pscore._api.PhenotypeScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhenotypeScorer</span></code></a></p>
-<p><cite>CountingPhenotypeScorer</cite> assigns the patient with a phenotype score
+<p><cite>CountingPhenotypeScorer</cite> assigns the individual with a phenotype score
 that is equivalent to the count of observed phenotypes that are either
 an exact match to the <cite>query</cite> terms or their descendants.</p>
 <p>For instance, we may want to count whether an individual has brain, liver, kidney, and skin abnormalities.

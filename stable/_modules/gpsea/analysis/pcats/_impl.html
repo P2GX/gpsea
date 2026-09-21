@@ -117,7 +117,7 @@
 
 <span class="sd">    Note, it may not be possible to classify *all* individuals with a genotype/phenotype pair,</span>
 <span class="sd">    since a clasifier is allowed to return `None` (e.g. if it assigns the individual into MISSENSE or NONSENSE groups</span>
-<span class="sd">    but the patient has no MISSENSE or NONSENSE variants). If this happens, the individual will not be "usable"</span>
+<span class="sd">    but the individual has no MISSENSE or NONSENSE variants). If this happens, the individual will not be "usable"</span>
 <span class="sd">    for the phenotype `P`.</span>
 
 <span class="sd">    Args:</span>
@@ -128,7 +128,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        a tuple with 2 items:</span>
 <span class="sd">        - a sequence with counts of individuals that could be classified according to the phenotype `P`.</span>
-<span class="sd">        - a sequence with data frames with counts of patients in i-th phenotype category</span>
+<span class="sd">        - a sequence with data frames with counts of individuals in i-th phenotype category</span>
 <span class="sd">          and j-th genotype category where i and j are rows and columns of the data frame.</span>
 <span class="sd">    """</span>
     <span class="n">n_usable_patient_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>

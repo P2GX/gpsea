@@ -204,7 +204,7 @@ of variant effects considered as a loss-of-function:</p>
 <span class="go">'(TRANSCRIPT_TRANSLOCATION on NM_001042681.2 OR TRANSCRIPT_ABLATION on NM_001042681.2 OR FRAMESHIFT_VARIANT on NM_001042681.2 OR START_LOST on NM_001042681.2 OR STOP_GAINED on NM_001042681.2)'</span>
 </pre></div>
 </div>
-<p>The genotype predicate will bin the patient into two classes: a point mutation or the loss of function:</p>
+<p>The genotype predicate will bin the individual into one of the following two classes: a point mutation or the loss of function:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.analysis.clf</span><span class="w"> </span><span class="kn">import</span> <span class="n">monoallelic_classifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_clf</span> <span class="o">=</span> <span class="n">monoallelic_classifier</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">a_predicate</span><span class="o">=</span><span class="n">point_mutation</span><span class="p">,</span>
@@ -348,15 +348,15 @@ with point vs. loss-of-function mutations.</p>
 <span class="go">Subject 2[PMID_29330883_Subject_2]           1          1</span>
 </pre></div>
 </div>
-<p>The data frame provides a <cite>genotype</cite> category and a <cite>phenotype_score</cite> for each patient.
+<p>The data frame provides a <cite>genotype</cite> category and a <cite>phenotype_score</cite> for each individual.
 The genotype category should be interpreted in the context of the genotype predicate:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gt_id_to_name</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">cat_id</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">gt_clf</span><span class="o">.</span><span class="n">get_categorizations</span><span class="p">()}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gt_id_to_name</span>
 <span class="go">{0: 'Point', 1: 'LoF'}</span>
 </pre></div>
 </div>
-<p>The genotype code <cite>0</cite> is assigned to patients with a point mutation, <cite>1</cite> corresponds to the loss-of-function mutations,
-and <cite>None</cite> is assigned to patients who cannot be assigned into any of the groups.</p>
+<p>The genotype code <cite>0</cite> is assigned to individuals with a point mutation, <cite>1</cite> corresponds to the loss-of-function mutations,
+and <cite>None</cite> is assigned to individuals who cannot be assigned into any of the groups.</p>
 <p>Last, let’s use <a class="reference internal" href="../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.PhenotypeScoreAnalysisResult.plot_boxplots" title="gpsea.analysis.pscore.PhenotypeScoreAnalysisResult.plot_boxplots"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot_boxplots()</span></code></a> method
 to visualize the phenotype score distributions:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>

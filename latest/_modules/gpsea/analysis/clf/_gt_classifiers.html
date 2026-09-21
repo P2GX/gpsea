@@ -318,7 +318,7 @@
     <span class="n">b_label</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GenotypeClassifier</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Monoallelic classifier bins patient into one of two groups, `A` and `B`,</span>
+<span class="sd">    Monoallelic classifier bins individual into one of two groups, `A` and `B`,</span>
 <span class="sd">    based on presence of *exactly one* allele of a variant</span>
 <span class="sd">    that meets the predicate criteria.</span>
 
@@ -632,7 +632,7 @@
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.clf.html#gpsea.analysis.clf.sex_classifier">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">sex_classifier</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">GenotypeClassifier</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Get a genotype predicate for categorizing patients by their :class:`~gpsea.model.Sex`.</span>
+<span class="sd">    Get a genotype predicate for categorizing individuals by their :class:`~gpsea.model.Sex`.</span>
 
 <span class="sd">    See the :ref:`group-by-sex` section for an example.</span>
 <span class="sd">    """</span>
@@ -856,7 +856,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Categorization</span><span class="p">]:</span>
         <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_to_code</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">code</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unexpected patient </span><span class="si">{</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unexpected individual </span><span class="si">{</span><span class="n">patient</span><span class="o">.</span><span class="n">labels</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_code_to_cat</span><span class="p">[</span><span class="n">code</span><span class="p">]</span>
 
@@ -925,7 +925,7 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">):</span>
         <span class="n">samples</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`samples` should be a `Cohort` or an iterable with patients, but got </span><span class="si">{</span><span class="n">samples</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"`samples` should be a `Cohort` or an iterable with individuals, but got </span><span class="si">{</span><span class="n">samples</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
     <span class="n">codes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">codes</span><span class="p">)</span>

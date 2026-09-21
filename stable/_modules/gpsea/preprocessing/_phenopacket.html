@@ -199,7 +199,7 @@
             <span class="c1"># We have a VCF record.</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_assembly</span><span class="p">(</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">genome_assembly</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">"Variant id </span><span class="si">{</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> for patient </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">subject_or_biosample_id</span><span class="si">}</span><span class="s2"> "</span>
+                    <span class="sa">f</span><span class="s2">"Variant id </span><span class="si">{</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> for individual </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">subject_or_biosample_id</span><span class="si">}</span><span class="s2"> "</span>
                     <span class="s2">"has a different Genome Assembly than what was given. "</span>
                     <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">variation_descriptor</span><span class="o">.</span><span class="n">vcf_record</span><span class="o">.</span><span class="n">genome_assembly</span><span class="si">}</span><span class="s2"> is not </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="o">.</span><span class="n">identifier</span><span class="si">}</span><span class="s2">."</span>
                 <span class="p">)</span>
@@ -469,7 +469,7 @@
         <span class="n">pp</span><span class="p">:</span> <span class="n">Phenopacket</span><span class="p">,</span>
         <span class="n">notepad</span><span class="p">:</span> <span class="n">Notepad</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="n">Patient</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""Creates a Patient from the data in a given Phenopacket</span>
+<span class="w">        </span><span class="sd">"""Creates an individual from the data in a given Phenopacket</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            pp (Phenopacket): A Phenopacket object</span>

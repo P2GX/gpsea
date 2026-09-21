@@ -92,7 +92,7 @@
 <a class="viewcode-back" href="../../../../apidocs/gpsea.analysis.pscore.html#gpsea.analysis.pscore.CountingPhenotypeScorer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CountingPhenotypeScorer</span><span class="p">(</span><span class="n">PhenotypeScorer</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    `CountingPhenotypeScorer` assigns the patient with a phenotype score</span>
+<span class="sd">    `CountingPhenotypeScorer` assigns the individual with a phenotype score</span>
 <span class="sd">    that is equivalent to the count of observed phenotypes that are either</span>
 <span class="sd">    an exact match to the `query` terms or their descendants.</span>
 
@@ -257,7 +257,7 @@
 <span class="sd">        Calculate the dev delay component of the score</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            observed_term_ids: terms observed in patient</span>
+<span class="sd">            observed_term_ids: terms observed in the individual.</span>
 
 <span class="sd">        Returns: a score between 0 and 2</span>
 <span class="sd">        """</span>
@@ -282,7 +282,7 @@
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Args:</span>
 <span class="sd">            target_tid: term of interest</span>
-<span class="sd">            observed_term_ids: all terms observed in patient</span>
+<span class="sd">            observed_term_ids: all terms observed in individual</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            1 if at least one term is equal to or descending from the target_tid, otherwise 0</span>
@@ -300,7 +300,7 @@
 <span class="sd">        Calculate the postnatal growth component of the score.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            observed_term_ids: terms observed in patient</span>
+<span class="sd">            observed_term_ids: terms observed in individual</span>
 
 <span class="sd">        Returns: an `int` (between 0 and 2)</span>
 <span class="sd">        """</span>
@@ -326,7 +326,7 @@
 <span class="sd">        Abnormal pinna morphology.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            observed_term_ids: terms observed in patient</span>
+<span class="sd">            observed_term_ids: terms observed in individual</span>
 
 <span class="sd">        Returns: facial dysmorphism score (between 0 and 2)</span>
 
@@ -361,7 +361,7 @@
 <span class="sd">        One point is assigned for either the corresponding HPO terms or any of their descendents up to a maximum of 2.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            observed_term_ids:  terms observed in patient</span>
+<span class="sd">            observed_term_ids:  terms observed in individual</span>
 
 <span class="sd">        Returns:   Non-facial dysmorphism and congenital abnormalities score (between 0 and 2)</span>
 

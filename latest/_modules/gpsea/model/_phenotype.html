@@ -110,7 +110,7 @@
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    `Phenotype` represents a clinical sign or symptom represented as an HPO term.</span>
 
-<span class="sd">    The phenotype can be either present in the patient or excluded.</span>
+<span class="sd">    The phenotype can be either present in the individual or excluded.</span>
 <span class="sd">    """</span>
 
 <div class="viewcode-block" id="Phenotype.from_term">
@@ -132,8 +132,8 @@
 <span class="sd">        Create `Phenotype` from a term ID and observation state.</span>
 
 <span class="sd">        :param term_id: a `str` with CURIE (e.g. `HP:0001250`) or a :class:`~hpotk.TermId`.</span>
-<span class="sd">        :param is_observed: `True` if the term ID was observed in patient or `False` if it was explicitly excluded.</span>
-<span class="sd">        :param onset: the :class:`~gpsea.model.Age` when the phenotype was first observed in patient</span>
+<span class="sd">        :param is_observed: `True` if the term ID was observed in individual or `False` if it was explicitly excluded.</span>
+<span class="sd">        :param onset: the :class:`~gpsea.model.Age` when the phenotype was first observed in individual</span>
 <span class="sd">            or `None` if not available.</span>
 <span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">term_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -183,7 +183,7 @@
 <span class="w">        </span><span class="sd">"""Returns a boolean for whether the phenotype is observed.</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            bool: `True` if this phenotype was observed in the respective patient.</span>
+<span class="sd">            bool: `True` if this phenotype was observed in the respective individual.</span>
 <span class="sd">        """</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">"`observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead"</span><span class="p">,</span>
@@ -202,7 +202,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_observed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Returns `True` if the phenotype was *present* in the respective patient.</span>
+<span class="sd">        Returns `True` if the phenotype was *present* in the respective individual.</span>
 <span class="sd">        """</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s2">"`is_observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead"</span><span class="p">,</span>

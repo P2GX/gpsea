@@ -229,7 +229,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">patient_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get a unique patient ID.</span>
+<span class="sd">        Get a unique individual ID.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="o">.</span><span class="n">label_summary</span><span class="p">()</span>
 
@@ -264,7 +264,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">phenotypes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Phenotype</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get the phenotypes observed and excluded in the patient.</span>
+<span class="sd">        Get the phenotypes observed and excluded in the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotypes</span>
 
@@ -293,7 +293,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">measurements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Measurement</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get the measurements in the patient.</span>
+<span class="sd">        Get the measurements in the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurements</span>
 
@@ -308,7 +308,7 @@
 
 <span class="sd">        :param term_id: a `str` with CURIE or a :class:`~hpotk.TermId`</span>
 <span class="sd">            representing the term ID of a measurement (e.g. `LOINC:2986-8` for *Testosterone[Mass/Vol]*).</span>
-<span class="sd">        :returns: the corresponding :class:`Measurement` or `None` if not found in the patient.</span>
+<span class="sd">        :returns: the corresponding :class:`Measurement` or `None` if not found in the individual.</span>
 <span class="sd">        """</span>
         <span class="n">term_id</span> <span class="o">=</span> <span class="n">Patient</span><span class="o">.</span><span class="n">_check_id</span><span class="p">(</span><span class="n">term_id</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Patient</span><span class="o">.</span><span class="n">_find_first_by_id</span><span class="p">(</span><span class="n">term_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">measurements</span><span class="p">)</span></div>
@@ -326,7 +326,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get the diseases the patient has (not) been diagnosed with.</span>
+<span class="sd">        Get the diseases the individual has (not) been diagnosed with.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span>
 
@@ -355,7 +355,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variants</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Variant</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get a list of variants observed in the patient.</span>
+<span class="sd">        Get a list of variants observed in the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variants</span>
 
@@ -363,7 +363,7 @@
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Patient.present_phenotypes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">present_phenotypes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Phenotype</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get an iterator over the *present* phenotypes of the patient.</span>
+<span class="sd">        Get an iterator over the *present* phenotypes of the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotypes</span><span class="p">)</span></div>
 
@@ -372,7 +372,7 @@
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Patient.excluded_phenotypes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">excluded_phenotypes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Phenotype</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get an iterator over the *excluded* phenotypes of the patient.</span>
+<span class="sd">        Get an iterator over the *excluded* phenotypes of the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">is_excluded</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotypes</span><span class="p">)</span></div>
 
@@ -381,7 +381,7 @@
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Patient.present_diseases">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">present_diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get an iterator with diseases the patient was diagnosed with.</span>
+<span class="sd">        Get an iterator with diseases the individual was diagnosed with.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span><span class="p">)</span></div>
 
@@ -390,7 +390,7 @@
 <a class="viewcode-back" href="../../../apidocs/gpsea.model.html#gpsea.model.Patient.excluded_diseases">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">excluded_diseases</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Disease</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get an iterator with diseases whose presence was excluded in the patient.</span>
+<span class="sd">        Get an iterator with diseases whose presence was excluded in the individual.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">is_present</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diseases</span><span class="p">)</span></div>
 
@@ -493,7 +493,7 @@
         <span class="n">members</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="n">Patient</span><span class="p">],</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Create a cohort from a sequence of patients.</span>
+<span class="sd">        Create a cohort from a sequence of individuals.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Cohort</span><span class="p">(</span>
             <span class="n">members</span><span class="o">=</span><span class="n">members</span><span class="p">,</span>
@@ -509,7 +509,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">all_patients</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Patient</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Get a collection of all patients in the cohort.</span>
+<span class="sd">        Get a collection of all individuals in the cohort.</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_members</span>
 
@@ -636,7 +636,7 @@
 
 <span class="sd">        Returns:</span>
 <span class="sd">            typing.Sequence[typing.Tuple[str, int]]: A sequence of tuples, formatted (phenotype CURIE,</span>
-<span class="sd">                number of patients with that phenotype)</span>
+<span class="sd">                number of individuals with that phenotype)</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_most_common</span><span class="p">(</span>
             <span class="n">extract_identified_items</span><span class="o">=</span><span class="k">lambda</span> <span class="n">individual</span><span class="p">:</span> <span class="n">individual</span><span class="o">.</span><span class="n">phenotypes</span><span class="p">,</span>
@@ -710,7 +710,7 @@
 <span class="sd">            typing.Optional[int]: If not given, lists all variants. Otherwise, lists only the `top` highest counts</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            list: A sequence of tuples, formatted (variant key, number of patients with that variant)</span>
+<span class="sd">            list: A sequence of tuples, formatted (variant key, number of individuals with that variant)</span>
 <span class="sd">        """</span>
         <span class="c1"># TODO: the counter counts the number of occurrences of a variant in an individual,</span>
         <span class="c1"># and NOT the allele count! Evaluate if this is what we want!</span>

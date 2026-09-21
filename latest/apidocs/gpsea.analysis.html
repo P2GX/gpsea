@@ -225,14 +225,14 @@ that tested the association of genotype with two or more phenotypes.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.analysis.MultiPhenotypeAnalysisResult.n_usable">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">n_usable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.analysis.MultiPhenotypeAnalysisResult.n_usable" title="Link to this definition"></a></dt>
-<dd><p>Get a sequence of numbers of patients where the phenotype was assessable,
+<dd><p>Get a sequence of numbers of individuals where the phenotype was assessable,
 and are, thus, usable for genotype-phenotype correlation analysis.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.analysis.MultiPhenotypeAnalysisResult.all_counts">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">all_counts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.analysis.MultiPhenotypeAnalysisResult.all_counts" title="Link to this definition"></a></dt>
-<dd><p>Get a <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> sequence where each <cite>DataFrame</cite> includes the counts of patients
+<dd><p>Get a <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> sequence where each <cite>DataFrame</cite> includes the counts of individuals
 in genotype and phenotype groups.</p>
 <p>An example for a genotype predicate that bins into two categories (<cite>Yes</cite> and <cite>No</cite>) based on presence
 of a missense variant in transcript <cite>NM_123456.7</cite>, and phenotype predicate that checks

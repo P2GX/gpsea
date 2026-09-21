@@ -140,7 +140,7 @@
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    A convenience function for configuring a caching :class:`~gpsea.preprocessing.PhenopacketPatientCreator`.</span>
 
-<span class="sd">    To create the patient creator, we need hpo-toolkit's representation of HPO. Other options are optional.</span>
+<span class="sd">    To create the individual creator, we need hpo-toolkit's representation of HPO. Other options are optional.</span>
 
 <span class="sd">    :param hpo: a HPO instance.</span>
 <span class="sd">    :param genome_build: name of the genome build to use, choose from `{'GRCh37.p13', 'GRCh38.p13'}`.</span>
@@ -594,7 +594,7 @@
     <span class="n">validation_policy</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Literal</span><span class="p">[</span><span class="s2">"permissive"</span><span class="p">,</span> <span class="s2">"lenient"</span><span class="p">,</span> <span class="s2">"strict"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"permissive"</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Cohort</span><span class="p">,</span> <span class="n">PreprocessingValidationResult</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Load phenopacket JSON files from a directory, validate the patient data, and assemble the patients into a cohort.</span>
+<span class="sd">    Load phenopacket JSON files from a directory, validate the individual data, and assemble the individuals into a cohort.</span>
 
 <span class="sd">    A file with `.json` suffix is considered to be a JSON file and all JSON files are assumed to be phenopackets.</span>
 <span class="sd">    Non-JSON files are ignored.</span>

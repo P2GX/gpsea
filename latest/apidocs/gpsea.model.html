@@ -113,13 +113,13 @@ to create a cohort.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Cohort.from_patients">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_patients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">members</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.14)"><span class="pre">Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Patient" title="gpsea.model._cohort.Patient"><span class="pre">Patient</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Cohort.from_patients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Cohort.from_patients" title="Link to this definition"></a></dt>
-<dd><p>Create a cohort from a sequence of patients.</p>
+<dd><p>Create a cohort from a sequence of individuals.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Cohort.all_patients">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">all_patients</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Patient" title="gpsea.model._cohort.Patient"><span class="pre">Patient</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.model.Cohort.all_patients" title="Link to this definition"></a></dt>
-<dd><p>Get a collection of all patients in the cohort.</p>
+<dd><p>Get a collection of all individuals in the cohort.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -205,7 +205,7 @@ Otherwise, lists only the <cite>top</cite> highest counts</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>A sequence of tuples, formatted (phenotype CURIE,</dt><dd><p>number of patients with that phenotype)</p>
+<dt>A sequence of tuples, formatted (phenotype CURIE,</dt><dd><p>number of individuals with that phenotype)</p>
 </dd>
 </dl>
 </p>
@@ -271,7 +271,7 @@ This method counts each variant <em>once</em>, regardless of its genotype!</p>
 <dd class="field-odd"><p><strong>typing.Optional</strong><strong>[</strong><strong>int</strong><strong>]</strong> – If not given, lists all variants. Otherwise, lists only the <cite>top</cite> highest counts</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A sequence of tuples, formatted (variant key, number of patients with that variant)</p>
+<dd class="field-even"><p>A sequence of tuples, formatted (variant key, number of individuals with that variant)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.14)">list</a></p>
@@ -398,7 +398,7 @@ instead of <cite>__init__</cite>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Patient.patient_id">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">patient_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><a class="headerlink" href="#gpsea.model.Patient.patient_id" title="Link to this definition"></a></dt>
-<dd><p>Get a unique patient ID.</p>
+<dd><p>Get a unique individual ID.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -428,7 +428,7 @@ instead of <cite>__init__</cite>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Patient.phenotypes">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">phenotypes</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Phenotype" title="gpsea.model._phenotype.Phenotype"><span class="pre">Phenotype</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.model.Patient.phenotypes" title="Link to this definition"></a></dt>
-<dd><p>Get the phenotypes observed and excluded in the patient.</p>
+<dd><p>Get the phenotypes observed and excluded in the individual.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -446,7 +446,7 @@ instead of <cite>__init__</cite>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Patient.measurements">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">measurements</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Measurement" title="gpsea.model._phenotype.Measurement"><span class="pre">Measurement</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.model.Patient.measurements" title="Link to this definition"></a></dt>
-<dd><p>Get the measurements in the patient.</p>
+<dd><p>Get the measurements in the individual.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -459,7 +459,7 @@ instead of <cite>__init__</cite>.</p>
 representing the term ID of a measurement (e.g. <cite>LOINC:2986-8</cite> for <em>Testosterone[Mass/Vol]</em>).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the corresponding <a class="reference internal" href="#gpsea.model.Measurement" title="gpsea.model.Measurement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Measurement</span></code></a> or <cite>None</cite> if not found in the patient.</p>
+<dd class="field-even"><p>the corresponding <a class="reference internal" href="#gpsea.model.Measurement" title="gpsea.model.Measurement"><code class="xref py py-class docutils literal notranslate"><span class="pre">Measurement</span></code></a> or <cite>None</cite> if not found in the individual.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -473,7 +473,7 @@ representing the term ID of a measurement (e.g. <cite>LOINC:2986-8</cite> for <e
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Patient.diseases">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">diseases</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Disease" title="gpsea.model._phenotype.Disease"><span class="pre">Disease</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.model.Patient.diseases" title="Link to this definition"></a></dt>
-<dd><p>Get the diseases the patient has (not) been diagnosed with.</p>
+<dd><p>Get the diseases the individual has (not) been diagnosed with.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -491,31 +491,31 @@ representing the term ID of a measurement (e.g. <cite>LOINC:2986-8</cite> for <e
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Patient.variants">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">variants</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.14)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Variant" title="gpsea.model._variant.Variant"><span class="pre">Variant</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#gpsea.model.Patient.variants" title="Link to this definition"></a></dt>
-<dd><p>Get a list of variants observed in the patient.</p>
+<dd><p>Get a list of variants observed in the individual.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Patient.present_phenotypes">
 <span class="sig-name descname"><span class="pre">present_phenotypes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Phenotype" title="gpsea.model._phenotype.Phenotype"><span class="pre">Phenotype</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Patient.present_phenotypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Patient.present_phenotypes" title="Link to this definition"></a></dt>
-<dd><p>Get an iterator over the <em>present</em> phenotypes of the patient.</p>
+<dd><p>Get an iterator over the <em>present</em> phenotypes of the individual.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Patient.excluded_phenotypes">
 <span class="sig-name descname"><span class="pre">excluded_phenotypes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Phenotype" title="gpsea.model._phenotype.Phenotype"><span class="pre">Phenotype</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Patient.excluded_phenotypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Patient.excluded_phenotypes" title="Link to this definition"></a></dt>
-<dd><p>Get an iterator over the <em>excluded</em> phenotypes of the patient.</p>
+<dd><p>Get an iterator over the <em>excluded</em> phenotypes of the individual.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Patient.present_diseases">
 <span class="sig-name descname"><span class="pre">present_diseases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Disease" title="gpsea.model._phenotype.Disease"><span class="pre">Disease</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Patient.present_diseases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Patient.present_diseases" title="Link to this definition"></a></dt>
-<dd><p>Get an iterator with diseases the patient was diagnosed with.</p>
+<dd><p>Get an iterator with diseases the individual was diagnosed with.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Patient.excluded_diseases">
 <span class="sig-name descname"><span class="pre">excluded_diseases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterator" title="(in Python v3.14)"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#gpsea.model.Disease" title="gpsea.model._phenotype.Disease"><span class="pre">Disease</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/gpsea/model/_cohort.html#Patient.excluded_diseases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Patient.excluded_diseases" title="Link to this definition"></a></dt>
-<dd><p>Get an iterator with diseases whose presence was excluded in the patient.</p>
+<dd><p>Get an iterator with diseases whose presence was excluded in the individual.</p>
 </dd></dl>
 
 </dd></dl>
@@ -810,7 +810,7 @@ The postnatal timeline starts at birth and ends at death.</p>
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">gpsea.model.</span></span><span class="sig-name descname"><span class="pre">Phenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.model.html#hpotk.model.TermId" title="(in hpo-toolkit)"><span class="pre">TermId</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_observed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">onset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#gpsea.model.Age" title="gpsea.model._temporal.Age"><span class="pre">Age</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/model/_phenotype.html#Phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Phenotype" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.model.html#hpotk.model.Identified" title="(in hpo-toolkit)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Identified</span></code></a>, <a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.model.html#hpotk.model.ObservableFeature" title="(in hpo-toolkit)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservableFeature</span></code></a>, <a class="reference internal" href="#gpsea.model.OnsetAware" title="gpsea.model._phenotype.OnsetAware"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnsetAware</span></code></a></p>
 <p><cite>Phenotype</cite> represents a clinical sign or symptom represented as an HPO term.</p>
-<p>The phenotype can be either present in the patient or excluded.</p>
+<p>The phenotype can be either present in the individual or excluded.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="gpsea.model.Phenotype.from_term">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_term</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">term</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.model.html#hpotk.model.MinimalTerm" title="(in hpo-toolkit)"><span class="pre">MinimalTerm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_observed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gpsea/model/_phenotype.html#Phenotype.from_term"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gpsea.model.Phenotype.from_term" title="Link to this definition"></a></dt>
@@ -824,8 +824,8 @@ The postnatal timeline starts at birth and ends at death.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>term_id</strong> – a <cite>str</cite> with CURIE (e.g. <cite>HP:0001250</cite>) or a <a class="reference external" href="https://ielis.github.io/hpo-toolkit/stable/apidocs/hpotk.html#hpotk.TermId" title="(in hpo-toolkit)"><code class="xref py py-class docutils literal notranslate"><span class="pre">TermId</span></code></a>.</p></li>
-<li><p><strong>is_observed</strong> – <cite>True</cite> if the term ID was observed in patient or <cite>False</cite> if it was explicitly excluded.</p></li>
-<li><p><strong>onset</strong> – the <a class="reference internal" href="#gpsea.model.Age" title="gpsea.model.Age"><code class="xref py py-class docutils literal notranslate"><span class="pre">Age</span></code></a> when the phenotype was first observed in patient
+<li><p><strong>is_observed</strong> – <cite>True</cite> if the term ID was observed in individual or <cite>False</cite> if it was explicitly excluded.</p></li>
+<li><p><strong>onset</strong> – the <a class="reference internal" href="#gpsea.model.Age" title="gpsea.model.Age"><code class="xref py py-class docutils literal notranslate"><span class="pre">Age</span></code></a> when the phenotype was first observed in individual
 or <cite>None</cite> if not available.</p></li>
 </ul>
 </dd>
@@ -850,7 +850,7 @@ or <cite>None</cite> if not available.</p></li>
 <dd><p>Returns a boolean for whether the phenotype is observed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><cite>True</cite> if this phenotype was observed in the respective patient.</p>
+<dd class="field-odd"><p><cite>True</cite> if this phenotype was observed in the respective individual.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.14)">bool</a></p>
@@ -867,7 +867,7 @@ or <cite>None</cite> if not available.</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="gpsea.model.Phenotype.is_observed">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_observed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/builtins/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#gpsea.model.Phenotype.is_observed" title="Link to this definition"></a></dt>
-<dd><p>Returns <cite>True</cite> if the phenotype was <em>present</em> in the respective patient.</p>
+<dd><p>Returns <cite>True</cite> if the phenotype was <em>present</em> in the respective individual.</p>
 </dd></dl>
 
 </dd></dl>
