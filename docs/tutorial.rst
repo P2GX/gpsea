@@ -27,7 +27,7 @@ Holt-Oram syndrome is an autosomal dominant disorder characterized by
 upper limb defects, congenital heart defects, and arrhythmias (`PMID:38336121 <https://pubmed.ncbi.nlm.nih.gov/38336121/>`_).
 It has been observed in the literature that congenital defects of the ventricular and atrial septum
 are more common in the truncating than in the missense variants (`PMID:30552424 <https://pubmed.ncbi.nlm.nih.gov/30552424/>`_).
-Additionally, upper limb defects are more frequent in patients with protein-truncating variants (`PMID:38336121 <https://pubmed.ncbi.nlm.nih.gov/38336121/>`_).
+Additionally, upper limb defects are more frequent in individuals with protein-truncating variants (`PMID:38336121 <https://pubmed.ncbi.nlm.nih.gov/38336121/>`_).
 
 We curated the literature and created a `GA4GH phenopacket <https://pubmed.ncbi.nlm.nih.gov/35705716/>`_
 for each affected individual.
@@ -128,7 +128,7 @@ and we will check that there are no Q/C issues:
 Validated under none policy
 No errors or warnings were found
 
-We loaded the patient data into a `cohort` which is ready for the next steps.
+We loaded the individuals' data into a `cohort` which is ready for the next steps.
 
 .. seealso::
 
@@ -205,7 +205,7 @@ We can prepare a table of all variant alleles that occur in the cohort.
 
 Each table row corresponds to a single allele and lists the variant key,
 the predicted effect on the transcript (*cDNA*) and protein of interest,
-the variant effects, and the number of patients who present
+the variant effects, and the number of individuals who present
 with one or more variant alleles (*Count*):
 
 >>> from gpsea.view import CohortVariantViewer
@@ -382,8 +382,8 @@ and these are the tested HPO terms ordered by the p value corrected with the Ben
 We see that several HPO terms are significantly associated
 with presence of a truncating variant in *TBX5*.
 For example, `Ventricular septal defect <https://hpo.jax.org/browse/term/HP:0001629>`_
-was observed in 31/60 (52%) patients with a missense variant
-but it was observed in 29/29 (100%) patients with a truncating variant.
+was observed in 31/60 (52%) individuals with a missense variant
+but it was observed in 29/29 (100%) individuals with a truncating variant.
 Fisher exact test computed a p value of 5.61e\ :sup:`-7`
 and the p value corrected by Benjamini-Hochberg procedure
 is 9.55e\ :sup:`-6`.

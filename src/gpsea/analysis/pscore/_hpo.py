@@ -12,7 +12,7 @@ A module with HPO-driven phenotype scores. The score generally work with the phe
 
 class CountingPhenotypeScorer(PhenotypeScorer):
     """
-    `CountingPhenotypeScorer` assigns the patient with a phenotype score
+    `CountingPhenotypeScorer` assigns the individual with a phenotype score
     that is equivalent to the count of observed phenotypes that are either
     an exact match to the `query` terms or their descendants.
 
@@ -168,7 +168,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Calculate the dev delay component of the score
 
         Args:
-            observed_term_ids: terms observed in patient
+            observed_term_ids: terms observed in the individual.
 
         Returns: a score between 0 and 2
         """
@@ -193,7 +193,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         """
         Args:
             target_tid: term of interest
-            observed_term_ids: all terms observed in patient
+            observed_term_ids: all terms observed in individual
 
         Returns:
             1 if at least one term is equal to or descending from the target_tid, otherwise 0
@@ -211,7 +211,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Calculate the postnatal growth component of the score.
 
         Args:
-            observed_term_ids: terms observed in patient
+            observed_term_ids: terms observed in individual
 
         Returns: an `int` (between 0 and 2)
         """
@@ -237,7 +237,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         Abnormal pinna morphology.
 
         Args:
-            observed_term_ids: terms observed in patient
+            observed_term_ids: terms observed in individual
 
         Returns: facial dysmorphism score (between 0 and 2)
 
@@ -272,7 +272,7 @@ class DeVriesPhenotypeScorer(PhenotypeScorer):
         One point is assigned for either the corresponding HPO terms or any of their descendents up to a maximum of 2.
 
         Args:
-            observed_term_ids:  terms observed in patient
+            observed_term_ids:  terms observed in individual
 
         Returns:   Non-facial dysmorphism and congenital abnormalities score (between 0 and 2)
 

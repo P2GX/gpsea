@@ -60,7 +60,7 @@ def configure_caching_cohort_creator(
     """
     A convenience function for configuring a caching :class:`~gpsea.preprocessing.PhenopacketPatientCreator`.
 
-    To create the patient creator, we need hpo-toolkit's representation of HPO. Other options are optional.
+    To create the individual creator, we need hpo-toolkit's representation of HPO. Other options are optional.
 
     :param hpo: a HPO instance.
     :param genome_build: name of the genome build to use, choose from `{'GRCh37.p13', 'GRCh38.p13'}`.
@@ -493,7 +493,7 @@ def load_phenopacket_folder(
     validation_policy: typing.Literal["permissive", "lenient", "strict"] = "permissive",
 ) -> typing.Tuple[Cohort, PreprocessingValidationResult]:
     """
-    Load phenopacket JSON files from a directory, validate the patient data, and assemble the patients into a cohort.
+    Load phenopacket JSON files from a directory, validate the individual data, and assemble the individuals into a cohort.
 
     A file with `.json` suffix is considered to be a JSON file and all JSON files are assumed to be phenopackets.
     Non-JSON files are ignored.

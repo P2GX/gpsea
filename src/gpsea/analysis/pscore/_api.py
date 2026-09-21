@@ -16,9 +16,9 @@ from .._partition import ContinuousPartitioning
 
 class PhenotypeScorer(ContinuousPartitioning, metaclass=abc.ABCMeta):
     """
-    `PhenotypeScorer` assigns the patient with a phenotype score.
+    `PhenotypeScorer` assigns the individual with a phenotype score.
 
-    The score can be `math.nan` if it is not possible to compute the score for a patient.
+    The score can be `math.nan` if it is not possible to compute the score for a individual.
 
     The scorer can be created by wrapping a scoring function (see :func:`~PhenotypeScorer.wrap_scoring_function`).
     """
@@ -41,7 +41,7 @@ class PhenotypeScorer(ContinuousPartitioning, metaclass=abc.ABCMeta):
         >>> def f(p): 123.4
         >>> phenotype_scorer = PhenotypeScorer.wrap_scoring_function(f)
 
-        `phenotype_scorer` will assign all patients a score of `123.4`.
+        `phenotype_scorer` will assign all individuals a score of `123.4`.
 
         :param func: the scoring function.
         """
@@ -114,7 +114,7 @@ class PhenotypeScoreAnalysisResult(MonoPhenotypeAnalysisResult):
     in `genotype` and `phenotype` columns.
 
     The `genotype` includes the genotype category ID (:attr:`~gpsea.analysis.clf.PatientCategory.cat_id`)
-    or `None` if the patient cannot be assigned into any genotype category.
+    or `None` if the individual cannot be assigned into any genotype category.
 
     The `phenotype` contains a `float` with the phenotype score. A `NaN` value is used
     if the phenotype score is impossible to compute.
@@ -153,7 +153,7 @@ class PhenotypeScoreAnalysisResult(MonoPhenotypeAnalysisResult):
     def _make_data_df(
         self,
     ) -> pd.DataFrame:
-        # skip the patients with unassigned genotype group
+        # skip the individuals with unassigned genotype group
         not_na = self._data.notna()
         not_na_gts = not_na.all(axis="columns")
         return self._data.loc[not_na_gts]

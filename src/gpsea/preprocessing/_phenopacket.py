@@ -117,7 +117,7 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
             # We have a VCF record.
             if not self._check_assembly(variation_descriptor.vcf_record.genome_assembly):
                 raise ValueError(
-                    f"Variant id {variation_descriptor.id} for patient {item.subject_or_biosample_id} "
+                    f"Variant id {variation_descriptor.id} for individual {item.subject_or_biosample_id} "
                     "has a different Genome Assembly than what was given. "
                     f"{variation_descriptor.vcf_record.genome_assembly} is not {self._build.identifier}."
                 )
@@ -372,7 +372,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
         pp: Phenopacket,
         notepad: Notepad,
     ) -> typing.Optional[Patient]:
-        """Creates a Patient from the data in a given Phenopacket
+        """Creates an individual from the data in a given Phenopacket
 
         Args:
             pp (Phenopacket): A Phenopacket object

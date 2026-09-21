@@ -4,12 +4,12 @@ import hpotk
 
 from gpsea.model import Patient
 
-from ._api import PhenotypeClassifier, PhenotypeCategorization, YES, NO
+from ._api import NO, YES, PhenotypeCategorization, PhenotypeClassifier
 
 
 class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
     """
-    `HpoClassifier` tests if a patient is annotated with an HPO term.
+    `HpoClassifier` tests if a individual is annotated with an HPO term.
 
     Note, `query` must be a term of the provided `hpo`!
 
@@ -22,7 +22,7 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
 
     def __init__(
         self,
-        hpo: hpotk.MinimalOntology,
+        hpo: hpotk.MinimalOntology[hpotk.TermId, hpotk.MinimalTerm],
         query: hpotk.TermId,
         missing_implies_phenotype_excluded: bool = False,
     ):
@@ -72,24 +72,17 @@ class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
 
     def test(
         self,
-        patient: Patient,
+        individual: Patient,
     ) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
-        self._check_patient(patient)
+        self._check_patient(individual)
 
-        for phenotype in patient.phenotypes:
+        for phenotype in individual.phenotypes:
             if phenotype.is_present:
-                if self._query == phenotype.identifier or any(
-                    self._query == anc for anc in self._hpo.graph.get_ancestors(phenotype)
-                ):
+                if self._hpo.graph.is_ancestor_of_or_equal_to(self._query, phenotype.identifier):
                     return self._phenotype_observed
             else:
-                if self._missing_implies_phenotype_excluded:
+                if self._hpo.graph.is_ancestor_of_or_equal_to(phenotype.identifier, self._query):
                     return self._phenotype_excluded
-                else:
-                    if phenotype.identifier == self._query or any(
-                        phenotype.identifier == anc for anc in self._hpo.graph.get_ancestors(self._query)
-                    ):
-                        return self._phenotype_excluded
 
         if self._missing_implies_phenotype_excluded:
             return self._phenotype_excluded
@@ -132,11 +125,11 @@ class DiseasePresenceClassifier(PhenotypeClassifier[hpotk.TermId]):
 
         self._diagnosis_present = PhenotypeCategorization(
             category=YES,
-            phenotype=disease_id_query,
+            phenotype=self._query,
         )
         self._diagnosis_excluded = PhenotypeCategorization(
             category=NO,
-            phenotype=disease_id_query,
+            phenotype=self._query,
         )
 
     @property
@@ -164,10 +157,10 @@ class DiseasePresenceClassifier(PhenotypeClassifier[hpotk.TermId]):
     ) -> typing.Sequence[PhenotypeCategorization[hpotk.TermId]]:
         return self._diagnosis_present, self._diagnosis_excluded
 
-    def test(self, patient: Patient) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
-        self._check_patient(patient)
+    def test(self, individual: Patient) -> typing.Optional[PhenotypeCategorization[hpotk.TermId]]:
+        self._check_patient(individual)
 
-        for dis in patient.diseases:
+        for dis in individual.diseases:
             if dis.is_present and dis.identifier == self._query:
                 return self._diagnosis_present
 

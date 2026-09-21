@@ -136,7 +136,7 @@ of variant effects considered as a loss-of-function:
 '(TRANSCRIPT_TRANSLOCATION on NM_001042681.2 OR TRANSCRIPT_ABLATION on NM_001042681.2 OR FRAMESHIFT_VARIANT on NM_001042681.2 OR START_LOST on NM_001042681.2 OR STOP_GAINED on NM_001042681.2)'
 
 
-The genotype predicate will bin the patient into two classes: a point mutation or the loss of function:
+The genotype predicate will bin the individual into one of the following two classes: a point mutation or the loss of function:
 
 >>> from gpsea.analysis.clf import monoallelic_classifier
 >>> gt_clf = monoallelic_classifier(
@@ -282,7 +282,7 @@ Subject 2[PMID_27087320_Subject_2]        None          4
 Subject 2[PMID_29330883_Subject_2]           1          1
 
 
-The data frame provides a `genotype` category and a `phenotype_score` for each patient.
+The data frame provides a `genotype` category and a `phenotype_score` for each individual.
 The genotype category should be interpreted in the context of the genotype predicate:
 
 >>> gt_id_to_name = {c.category.cat_id: c.category.name for c in gt_clf.get_categorizations()}
@@ -290,8 +290,8 @@ The genotype category should be interpreted in the context of the genotype predi
 {0: 'Point', 1: 'LoF'}
 
 
-The genotype code `0` is assigned to patients with a point mutation, `1` corresponds to the loss-of-function mutations,
-and `None` is assigned to patients who cannot be assigned into any of the groups.
+The genotype code `0` is assigned to individuals with a point mutation, `1` corresponds to the loss-of-function mutations,
+and `None` is assigned to individuals who cannot be assigned into any of the groups.
 
 Last, let's use :meth:`~gpsea.analysis.pscore.PhenotypeScoreAnalysisResult.plot_boxplots` method
 to visualize the phenotype score distributions:

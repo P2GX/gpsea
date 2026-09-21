@@ -58,7 +58,7 @@ class TestFrozenClassifier:
         with pytest.raises(ValueError) as e:
             gt_classifier.test(walt)
 
-        assert e.value.args == ("Unexpected patient Walt",)
+        assert e.value.args == ("Unexpected individual Walt",)
 
     def test_can_be_created_from_a_cohort(
         self,
