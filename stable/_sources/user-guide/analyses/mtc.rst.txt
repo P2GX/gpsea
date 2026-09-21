@@ -213,7 +213,7 @@ Let's say a term such as
 `Posterior polar cataract (HP:0001115) <https://hpo.jax.org/browse/term/HP:0001115>`_
 was observed in 7 of 11 individuals with MISSENSE variants
 and in 3 of 8 individuals with NONSENSE variants.
-If we find the same patient counts (7 of 11 and 3 of 8) in the parent term
+If we find the same counts (7 of 11 and 3 of 8) in the parent term
 `Polar cataract HP:0010696 <https://hpo.jax.org/browse/term/HP:0010696>`_,
 then we choose to not test the parent term.
                                                                                          
@@ -233,8 +233,8 @@ Skip term if underpowered for 2x2 or 2x3 analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the individuals are binned into 2 phenotype groups and 2 genotype groups (2x2)
-and the total count of patients in all genotype-phenotype groups is less than 7,
-or into 2 phenotype groups and 3 genotype groups (2x3) and the total count of patients
+and the total count of individuals in all genotype-phenotype groups is less than 7,
+or into 2 phenotype groups and 3 genotype groups (2x3) and the total count of individuals 
 is less than 6, then there is a lack even of the nominal statistical power
 and the counts can never be significant.
 

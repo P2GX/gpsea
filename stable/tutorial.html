@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutorial &mdash; GPSEA 0.9.16.dev0 documentation</title>
+  <title>Tutorial &mdash; GPSEA 0.10.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -15,7 +15,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=13bc1ec6"></script>
+      <script src="_static/documentation_options.js?v=82662543"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -118,7 +118,7 @@ or a similar interactive environment.</p>
 upper limb defects, congenital heart defects, and arrhythmias (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/38336121/">PMID:38336121</a>).
 It has been observed in the literature that congenital defects of the ventricular and atrial septum
 are more common in the truncating than in the missense variants (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30552424/">PMID:30552424</a>).
-Additionally, upper limb defects are more frequent in patients with protein-truncating variants (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/38336121/">PMID:38336121</a>).</p>
+Additionally, upper limb defects are more frequent in individuals with protein-truncating variants (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/38336121/">PMID:38336121</a>).</p>
 <p>We curated the literature and created a <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/35705716/">GA4GH phenopacket</a>
 for each affected individual.
 The phenopackets are published in <a class="reference external" href="https://github.com/monarch-initiative/phenopacket-store">Phenopacket Store</a>.</p>
@@ -226,7 +226,7 @@ a <a class="reference internal" href="apidocs/gpsea.model.html#gpsea.model.Cohor
 <span class="go">No errors or warnings were found</span>
 </pre></div>
 </div>
-<p>We loaded the patient data into a <cite>cohort</cite> which is ready for the next steps.</p>
+<p>We loaded the individuals’ data into a <cite>cohort</cite> which is ready for the next steps.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>Here we show how to create a <a class="reference internal" href="apidocs/gpsea.model.html#gpsea.model.Cohort" title="gpsea.model.Cohort"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cohort</span></code></a> from phenopackets.
@@ -724,7 +724,7 @@ The diagram also highlights the protein features (domains, repeats, etc.).</p>
 <p>We can prepare a table of all variant alleles that occur in the cohort.</p>
 <p>Each table row corresponds to a single allele and lists the variant key,
 the predicted effect on the transcript (<em>cDNA</em>) and protein of interest,
-the variant effects, and the number of patients who present
+the variant effects, and the number of individuals who present
 with one or more variant alleles (<em>Count</em>):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gpsea.view</span><span class="w"> </span><span class="kn">import</span> <span class="n">CohortVariantViewer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span> <span class="o">=</span> <span class="n">CohortVariantViewer</span><span class="p">(</span><span class="n">tx_id</span><span class="o">=</span><span class="n">tx_id</span><span class="p">)</span>
@@ -1812,8 +1812,8 @@ by exploring the phenotype MTC filtering report:</p>
 <p>We see that several HPO terms are significantly associated
 with presence of a truncating variant in <em>TBX5</em>.
 For example, <a class="reference external" href="https://hpo.jax.org/browse/term/HP:0001629">Ventricular septal defect</a>
-was observed in 31/60 (52%) patients with a missense variant
-but it was observed in 29/29 (100%) patients with a truncating variant.
+was observed in 31/60 (52%) individuals with a missense variant
+but it was observed in 29/29 (100%) individuals with a truncating variant.
 Fisher exact test computed a p value of 5.61e<sup>-7</sup>
 and the p value corrected by Benjamini-Hochberg procedure
 is 9.55e<sup>-6</sup>.</p>

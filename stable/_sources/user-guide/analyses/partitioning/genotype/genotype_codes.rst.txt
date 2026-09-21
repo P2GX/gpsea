@@ -12,7 +12,7 @@ Group by genotype code
 
 Sometimes, we may not want to assign individuals into genotype groups using GPSEA classifiers.
 Perhaps no suitable classifier exists, or the criterion cannot be encoded into a :class:`~gpsea.model.Patient`.
-For instance, we might want to test for association of phenotypes with patient clusters obtained from an external clustering method.
+For instance, we might want to test for association of phenotypes with clusters obtained from an external clustering method.
 
 We can easily do this with a :func:`~gpsea.analysis.clf.frozen_classifier` which groups the individuals
 based on user-provided genotype codes.
