@@ -10,7 +10,7 @@ T = typing.TypeVar("T")
 """
 The input for `PatientCreator`.
 
-It can be any object that contains the patient data (e.g. a phenopacket).
+It can be any object that contains the individual data (e.g. a phenopacket).
 """
 
 
@@ -105,7 +105,7 @@ class CohortCreator(typing.Generic[T]):
         duplicate_pat_labels = set()
 
         for i, pp in enumerate(inputs):
-            sub = notepad.add_subsection(f"patient #{i}")
+            sub = notepad.add_subsection(f"individual #{i}")
             patient = self._pc.process(pp, sub)
             if patient is not None:
                 if patient.labels in patient_labels:
@@ -117,8 +117,8 @@ class CohortCreator(typing.Generic[T]):
             label_summaries = [d.label_summary() for d in duplicate_pat_labels]
             label_summaries.sort()
             notepad.add_error(
-                f"Patient ID/s {', '.join(label_summaries)} have a duplicate",
-                "Please verify every patient has an unique ID.",
+                f"Individual ID/s {', '.join(label_summaries)} have a duplicate",
+                "Please verify every individual has an unique ID.",
             )
 
         return Cohort.from_patients(

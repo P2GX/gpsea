@@ -43,7 +43,7 @@ def prepare_hpo_terms_of_interest(
     """
     Prepare a collection of HPO terms to test.
 
-    This includes the direct HPO patient annotations
+    This includes the direct HPO individual annotations
     as well as the ancestors of the present terms and the descendants of the excluded terms.
 
     :param cohort: a cohort of individuals to investigate.

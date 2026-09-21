@@ -262,7 +262,7 @@ class MultiPhenotypeAnalysisResult(typing.Generic[P], AnalysisResult):
     @property
     def n_usable(self) -> typing.Sequence[int]:
         """
-        Get a sequence of numbers of patients where the phenotype was assessable,
+        Get a sequence of numbers of individuals where the phenotype was assessable,
         and are, thus, usable for genotype-phenotype correlation analysis.
         """
         return self._n_usable
@@ -270,7 +270,7 @@ class MultiPhenotypeAnalysisResult(typing.Generic[P], AnalysisResult):
     @property
     def all_counts(self) -> typing.Sequence[pd.DataFrame]:
         """
-        Get a :class:`~pandas.DataFrame` sequence where each `DataFrame` includes the counts of patients
+        Get a :class:`~pandas.DataFrame` sequence where each `DataFrame` includes the counts of individuals
         in genotype and phenotype groups.
 
         An example for a genotype predicate that bins into two categories (`Yes` and `No`) based on presence

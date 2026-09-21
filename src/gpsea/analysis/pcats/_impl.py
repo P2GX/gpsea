@@ -37,7 +37,7 @@ def apply_classifiers_on_individuals(
 
     Note, it may not be possible to classify *all* individuals with a genotype/phenotype pair,
     since a clasifier is allowed to return `None` (e.g. if it assigns the individual into MISSENSE or NONSENSE groups
-    but the patient has no MISSENSE or NONSENSE variants). If this happens, the individual will not be "usable"
+    but the individual has no MISSENSE or NONSENSE variants). If this happens, the individual will not be "usable"
     for the phenotype `P`.
 
     Args:
@@ -48,7 +48,7 @@ def apply_classifiers_on_individuals(
     Returns:
         a tuple with 2 items:
         - a sequence with counts of individuals that could be classified according to the phenotype `P`.
-        - a sequence with data frames with counts of patients in i-th phenotype category
+        - a sequence with data frames with counts of individuals in i-th phenotype category
           and j-th genotype category where i and j are rows and columns of the data frame.
     """
     n_usable_patient_counter = Counter()

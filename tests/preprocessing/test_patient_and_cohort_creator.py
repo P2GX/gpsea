@@ -90,7 +90,7 @@ class TestPhenopacketCohortCreator:
         actual_lines = outfile.getvalue().splitlines(keepends=False)
 
         expected = (
-            " ·Patient ID/s Pat_1[PMID_12345], Pat_2[PMID_67890] have a duplicate. "
-            "Please verify every patient has an unique ID."
+            " ·Individual ID/s Pat_1[PMID_12345], Pat_2[PMID_67890] have a duplicate. "
+            "Please verify every individual has an unique ID."
         )
         assert expected in actual_lines

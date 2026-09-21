@@ -72,7 +72,7 @@ The ``target`` is particularly important
 if the cohort members include variants in other genes than *EGFR*.
 
 The resulting ``gt_clf`` can partition a cohort along the genotype axis,
-e.g. to compare the patient survivals in a `survival analysis <survival>`.
+e.g. to compare the survivals in a `survival analysis <survival>`.
 
 
 Compare the individuals with monoallelic and biallelic mutations

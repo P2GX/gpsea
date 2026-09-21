@@ -496,7 +496,7 @@ class ProteinVariantViewer(BaseViewer):
         Summarize the data regarding the protein into a HTML table.
 
         Args:
-            cohort (Cohort): the cohort of patients being analyzed
+            cohort (Cohort): the cohort of individuals being analyzed
 
         Returns:
             GpseaReport: a report that can be stored to a path or displayed in

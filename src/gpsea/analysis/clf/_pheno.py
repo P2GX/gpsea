@@ -9,7 +9,7 @@ from ._api import NO, YES, PhenotypeCategorization, PhenotypeClassifier
 
 class HpoClassifier(PhenotypeClassifier[hpotk.TermId]):
     """
-    `HpoClassifier` tests if a patient is annotated with an HPO term.
+    `HpoClassifier` tests if a individual is annotated with an HPO term.
 
     Note, `query` must be a term of the provided `hpo`!
 
