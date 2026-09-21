@@ -238,7 +238,7 @@ def monoallelic_classifier(
     b_label: typing.Optional[str] = None,
 ) -> GenotypeClassifier:
     """
-    Monoallelic classifier bins patient into one of two groups, `A` and `B`,
+    Monoallelic classifier bins individual into one of two groups, `A` and `B`,
     based on presence of *exactly one* allele of a variant
     that meets the predicate criteria.
 
@@ -543,7 +543,7 @@ INSTANCE = SexGenotypeClassifier()
 
 def sex_classifier() -> GenotypeClassifier:
     """
-    Get a genotype predicate for categorizing patients by their :class:`~gpsea.model.Sex`.
+    Get a genotype predicate for categorizing individuals by their :class:`~gpsea.model.Sex`.
 
     See the :ref:`group-by-sex` section for an example.
     """
@@ -760,7 +760,7 @@ class FrozenGenotypeClassifier(GenotypeClassifier):
     ) -> typing.Optional[Categorization]:
         code = self._label_to_code.get(patient.labels, None)
         if code is None:
-            raise ValueError(f"Unexpected patient {patient.labels}")
+            raise ValueError(f"Unexpected individual {patient.labels}")
 
         return self._code_to_cat[code]
 
@@ -827,7 +827,7 @@ def frozen_classifier(
     elif isinstance(samples, typing.Iterable):
         samples = tuple(samples)
     else:
-        raise ValueError(f"`samples` should be a `Cohort` or an iterable with patients, but got {samples}")
+        raise ValueError(f"`samples` should be a `Cohort` or an iterable with individuals, but got {samples}")
 
     n_samples = len(samples)
     codes = tuple(codes)

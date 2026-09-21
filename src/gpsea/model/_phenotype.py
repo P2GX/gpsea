@@ -27,7 +27,7 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
     """
     `Phenotype` represents a clinical sign or symptom represented as an HPO term.
 
-    The phenotype can be either present in the patient or excluded.
+    The phenotype can be either present in the individual or excluded.
     """
 
     @staticmethod
@@ -44,8 +44,8 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
         Create `Phenotype` from a term ID and observation state.
 
         :param term_id: a `str` with CURIE (e.g. `HP:0001250`) or a :class:`~hpotk.TermId`.
-        :param is_observed: `True` if the term ID was observed in patient or `False` if it was explicitly excluded.
-        :param onset: the :class:`~gpsea.model.Age` when the phenotype was first observed in patient
+        :param is_observed: `True` if the term ID was observed in individual or `False` if it was explicitly excluded.
+        :param onset: the :class:`~gpsea.model.Age` when the phenotype was first observed in individual
             or `None` if not available.
         """
         if isinstance(term_id, str):
@@ -94,7 +94,7 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
         """Returns a boolean for whether the phenotype is observed.
 
         Returns:
-            bool: `True` if this phenotype was observed in the respective patient.
+            bool: `True` if this phenotype was observed in the respective individual.
         """
         warnings.warn(
             "`observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead",
@@ -113,7 +113,7 @@ class Phenotype(hpotk.model.Identified, hpotk.model.ObservableFeature, OnsetAwar
     @property
     def is_observed(self) -> bool:
         """
-        Returns `True` if the phenotype was *present* in the respective patient.
+        Returns `True` if the phenotype was *present* in the respective individual.
         """
         warnings.warn(
             "`is_observed` property was deprecated and will be removed in `v0.3.0`. Use `is_present` instead",

@@ -34,7 +34,7 @@ class Endpoint(ContinuousPartitioning, metaclass=abc.ABCMeta):
         patient: Patient,
     ) -> typing.Optional[Survival]:
         """
-        Compute a survival for a given `patient` or `None` if the `patient` lacks the required
+        Compute a survival for a given `individual` or `None` if the `individual` lacks the required
         data (e.g. age of death or age at last investigation).
         """
         pass

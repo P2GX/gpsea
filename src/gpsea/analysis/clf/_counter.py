@@ -36,7 +36,7 @@ class AlleleCounter:
         """
         Count the number of alleles of all variants that pass the predicate.
         Args:
-            patient: the patient to test
+            patient: the individual to test
 
         Returns:
             int: the count of the passing alleles

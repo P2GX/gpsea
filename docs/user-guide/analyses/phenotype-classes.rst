@@ -118,7 +118,7 @@ We need to create one genotype classifier and one or more phenotype classifiers.
 Genotype classifier
 -------------------
 
-We want to separate the patients into two classes: a class *with* a frameshift variant
+We want to separate the individuals into two classes: a class *with* a frameshift variant
 and a class *without* a frameshift variant (i.e. any other heterozygous variant).
 We will use the *MANE* transcript for the analysis:
 
@@ -343,8 +343,8 @@ one HPO term per row. The rows are ordered by the corrected p value and nominal 
 The table shows that several HPO terms are significantly associated
 with presence of a heterozygous (`Frameshift`) frameshift variant in *TBX5*.
 For example, `Ventricular septal defect <https://hpo.jax.org/browse/term/HP:0001629>`_
-was observed in 42/71 (59%) patients with no frameshift allele (`Other`)
-but it was observed in 19/19 (100%) patients with a frameshift allele (`Frameshift`).
+was observed in 42/71 (59%) individualss with no frameshift allele (`Other`)
+but it was observed in 19/19 (100%) of those with a frameshift allele (`Frameshift`).
 Fisher exact test computed a p value of `~0.000242`
 and the p value corrected by Benjamini-Hochberg procedure
 is `~0.00774`.

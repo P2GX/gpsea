@@ -114,7 +114,7 @@ class PhenotypeMtcFilter(typing.Generic[P], metaclass=abc.ABCMeta):
 
     Note, the filter works only when using the HPO term to represent the phenotype.
     Therefore, the expected input asks for :class:`~hpotk.TermId` items.
-    For instance, `n_usable` is a mapping from an *HPO term* to an `int` with the count of the patients
+    For instance, `n_usable` is a mapping from an *HPO term* to an `int` with the count of the individuals
     categorized according to the HPO term.
 
     :attr:`PhenotypeMtcFilter.OK` is returned for HPO terms that pass MTC filtering

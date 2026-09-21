@@ -254,14 +254,14 @@ However, phenotype entity can be anything as long as it is :class:`~typing.Hasha
 (have `__eq__` and `__lt__` magic methods).
 """
 
-YES = PatientCategory(1, "Yes", "The patient belongs to the group.")
+YES = PatientCategory(1, "Yes", "The individual belongs to the group.")
 """
-Category for a patient who *belongs* to the tested group.
+Category for an individual who *belongs* to the tested group.
 """
 
-NO = PatientCategory(0, "No", "The patient does not belong to the group.")
+NO = PatientCategory(0, "No", "The individual does not belong to the group.")
 """
-Category for a patient who does *not* belong to the tested group.
+Category for an individual who does *not* belong to the tested group.
 """
 
 
@@ -312,7 +312,7 @@ class PhenotypeClassifier(
     Only one class can be investigated, and :attr:`phenotype` returns the investigated phenotype
     (e.g. *Arachnodactyly* `HP:0001166`).
 
-    As another hallmark of this predicate, one of the categorizations must correspond to the group of patients
+    As another hallmark of this predicate, one of the categorizations must correspond to the group of individuals
     who exibit the investigated phenotype. The categorization is provided
     via :attr:`present_phenotype_categorization` property.
     """
@@ -329,13 +329,13 @@ class PhenotypeClassifier(
     @abc.abstractmethod
     def present_phenotype_categorization(self) -> PhenotypeCategorization[P]:
         """
-        Get the categorization which represents the group of the patients who exibit the investigated phenotype.
+        Get the categorization which represents the group of the individuals who exibit the investigated phenotype.
         """
         pass
 
     @property
     def present_phenotype_category(self) -> PatientCategory:
         """
-        Get the patient category that correspond to the group of the patients who exibit the investigated phenotype.
+        Get the category that correspond to the group of the individuals who exibit the investigated phenotype.
         """
         return self.present_phenotype_categorization.category

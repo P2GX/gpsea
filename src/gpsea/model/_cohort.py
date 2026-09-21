@@ -140,7 +140,7 @@ class Patient:
     @property
     def patient_id(self) -> str:
         """
-        Get a unique patient ID.
+        Get a unique individual ID.
         """
         return self._labels.label_summary()
 
@@ -175,7 +175,7 @@ class Patient:
     @property
     def phenotypes(self) -> typing.Sequence[Phenotype]:
         """
-        Get the phenotypes observed and excluded in the patient.
+        Get the phenotypes observed and excluded in the individual.
         """
         return self._phenotypes
 
@@ -198,7 +198,7 @@ class Patient:
     @property
     def measurements(self) -> typing.Sequence[Measurement]:
         """
-        Get the measurements in the patient.
+        Get the measurements in the individual.
         """
         return self._measurements
 
@@ -211,7 +211,7 @@ class Patient:
 
         :param term_id: a `str` with CURIE or a :class:`~hpotk.TermId`
             representing the term ID of a measurement (e.g. `LOINC:2986-8` for *Testosterone[Mass/Vol]*).
-        :returns: the corresponding :class:`Measurement` or `None` if not found in the patient.
+        :returns: the corresponding :class:`Measurement` or `None` if not found in the individual.
         """
         term_id = Patient._check_id(term_id)
         return Patient._find_first_by_id(term_id, self.measurements)
@@ -225,7 +225,7 @@ class Patient:
     @property
     def diseases(self) -> typing.Sequence[Disease]:
         """
-        Get the diseases the patient has (not) been diagnosed with.
+        Get the diseases the individual has (not) been diagnosed with.
         """
         return self._diseases
 
@@ -248,31 +248,31 @@ class Patient:
     @property
     def variants(self) -> typing.Sequence[Variant]:
         """
-        Get a list of variants observed in the patient.
+        Get a list of variants observed in the individual.
         """
         return self._variants
 
     def present_phenotypes(self) -> typing.Iterator[Phenotype]:
         """
-        Get an iterator over the *present* phenotypes of the patient.
+        Get an iterator over the *present* phenotypes of the individual.
         """
         return filter(lambda p: p.is_present, self._phenotypes)
 
     def excluded_phenotypes(self) -> typing.Iterator[Phenotype]:
         """
-        Get an iterator over the *excluded* phenotypes of the patient.
+        Get an iterator over the *excluded* phenotypes of the individual.
         """
         return filter(lambda p: p.is_excluded, self._phenotypes)
 
     def present_diseases(self) -> typing.Iterator[Disease]:
         """
-        Get an iterator with diseases the patient was diagnosed with.
+        Get an iterator with diseases the individual was diagnosed with.
         """
         return filter(lambda d: d.is_present, self._diseases)
 
     def excluded_diseases(self) -> typing.Iterator[Disease]:
         """
-        Get an iterator with diseases whose presence was excluded in the patient.
+        Get an iterator with diseases whose presence was excluded in the individual.
         """
         return filter(lambda d: not d.is_present, self._diseases)
 
@@ -369,7 +369,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
         members: typing.Iterable[Patient],
     ):
         """
-        Create a cohort from a sequence of patients.
+        Create a cohort from a sequence of individuals.
         """
         return Cohort(
             members=members,
@@ -384,7 +384,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
     @property
     def all_patients(self) -> typing.Sequence[Patient]:
         """
-        Get a collection of all patients in the cohort.
+        Get a collection of all individuals in the cohort.
         """
         return self._members
 
@@ -479,7 +479,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
 
         Returns:
             typing.Sequence[typing.Tuple[str, int]]: A sequence of tuples, formatted (phenotype CURIE,
-                number of patients with that phenotype)
+                number of individuals with that phenotype)
         """
         return self._get_most_common(
             extract_identified_items=lambda individual: individual.phenotypes,
@@ -544,7 +544,7 @@ class Cohort(typing.Sized, typing.Iterable[Patient]):
             typing.Optional[int]: If not given, lists all variants. Otherwise, lists only the `top` highest counts
 
         Returns:
-            list: A sequence of tuples, formatted (variant key, number of patients with that variant)
+            list: A sequence of tuples, formatted (variant key, number of individuals with that variant)
         """
         # TODO: the counter counts the number of occurrences of a variant in an individual,
         # and NOT the allele count! Evaluate if this is what we want!
