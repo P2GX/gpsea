@@ -4,42 +4,44 @@ import typing
 import warnings
 
 import hpotk
-from hpotk.validate import (
-    ValidationRunner,
-    ObsoleteTermIdsValidator,
-    AnnotationPropagationValidator,
-    PhenotypicAbnormalityValidator,
-)
-
-from stairval.notepad import create_notepad
 
 # pyright: reportGeneralTypeIssues=false
 from google.protobuf.json_format import Parse
+from hpotk.validate import (
+    AnnotationPropagationValidator,
+    ObsoleteTermIdsValidator,
+    PhenotypicAbnormalityValidator,
+    ValidationRunner,
+)
 from phenopackets import Phenopacket
+from stairval.notepad import create_notepad
 from tqdm import tqdm
 
 from gpsea.config import get_cache_dir_path
-from gpsea.model import Cohort
-from gpsea.model.genome import GRCh37, GRCh38, GenomeBuild
+from gpsea.model import Cohort, VariantCoordinates
+from gpsea.model.genome import GenomeBuild, GRCh37, GRCh38
+from gpsea.preprocessing import VariantCoordinateFinder
+
 from ._api import (
     FunctionalAnnotator,
     GeneCoordinateService,
     ImpreciseSvFunctionalAnnotator,
-    ProteinMetadataService,
     PreprocessingValidationResult,
+    ProteinMetadataService,
     TranscriptCoordinateService,
 )
-from ._generic import DefaultImpreciseSvFunctionalAnnotator
-from ._patient import CohortCreator
-from ._phenopacket import PhenopacketPatientCreator, PhenopacketOntologyTermOnsetParser
-
 from ._caching import (
-    JsonCache,
     CachingFunctionalAnnotator,
     CachingGeneCoordinateService,
     CachingProteinMetadataService,
     CachingTranscriptCoordinateService,
+    CachingVariantCoordinateFinder,
+    FileCache,
+    JsonCache,
 )
+from ._generic import DefaultImpreciseSvFunctionalAnnotator
+from ._patient import CohortCreator
+from ._phenopacket import PhenopacketOntologyTermOnsetParser, PhenopacketPatientCreator
 from ._uniprot import UniprotProteinMetadataService
 from ._vep import VepFunctionalAnnotator
 from ._vv import VVHgvsVariantCoordinateFinder, VVMultiCoordinateService
@@ -92,7 +94,12 @@ def configure_caching_cohort_creator(
         cache_dir,
         timeout,
     )
-    hgvs_annotator = VVHgvsVariantCoordinateFinder(build)
+
+    hgvs_coordinate_finder = _configure_variant_coordinate_finder(
+        build,
+        cache_dir,
+        timeout,
+    )
     term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
         hpo=hpo,
@@ -100,7 +107,7 @@ def configure_caching_cohort_creator(
         build=build,
         functional_annotator=functional_annotator,
         imprecise_sv_functional_annotator=imprecise_sv_functional_annotator,
-        hgvs_coordinate_finder=hgvs_annotator,
+        hgvs_coordinate_finder=hgvs_coordinate_finder,
         term_onset_parser=term_onset_parser,
     )
 
@@ -484,6 +491,27 @@ def _configure_imprecise_sv_annotator(
 
     return DefaultImpreciseSvFunctionalAnnotator(
         gene_coordinate_service=gene_coordinate_service,
+    )
+
+
+def _configure_variant_coordinate_finder(
+    build: GenomeBuild,
+    cache_dir: str,
+    timeout: float,
+) -> VariantCoordinateFinder[str]:
+    vc_cache_dir = os.path.join(cache_dir, "variant_coordinates_cache")
+    os.makedirs(vc_cache_dir, exist_ok=True)
+    cache: FileCache[VariantCoordinates] = FileCache(
+        cache_dir=vc_cache_dir,
+    )
+    fallback = VVHgvsVariantCoordinateFinder(
+        genome_build=build,
+        timeout=timeout,
+    )
+    return CachingVariantCoordinateFinder(
+        cache=cache,
+        fallback=fallback,
+        key_func=lambda v: v,
     )
 
 

@@ -5,10 +5,8 @@ import typing
 import pytest
 
 from gpsea.io import GpseaJSONEncoder
-from gpsea.model.genome import GenomeBuild, Strand
-from gpsea.preprocessing import VVMultiCoordinateService, VVHgvsVariantCoordinateFinder
-
-from gpsea.model.genome import transpose_coordinate
+from gpsea.model.genome import GenomeBuild, Strand, transpose_coordinate
+from gpsea.preprocessing import VVHgvsVariantCoordinateFinder, VVMultiCoordinateService
 
 
 @pytest.fixture(scope="module")
@@ -189,8 +187,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
             "requested_symbol",
             "transcripts",
         }
-        assert len(response.keys()) == len(expected_keys)
-        assert all(key in expected_keys for key in response)
+        assert all(key in response for key in expected_keys)
 
     def test_current_name(
         self,

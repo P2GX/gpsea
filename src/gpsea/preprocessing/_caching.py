@@ -1,11 +1,12 @@
 import abc
 import io
 import json
-import pickle
 import os
+import pickle
 import typing
+import uuid
 
-
+from gpsea.io import GpseaJSONDecoder, GpseaJSONEncoder
 from gpsea.model import (
     ProteinMetadata,
     TranscriptAnnotation,
@@ -13,13 +14,13 @@ from gpsea.model import (
     TranscriptInfoAware,
     VariantCoordinates,
 )
-from gpsea.io import GpseaJSONDecoder, GpseaJSONEncoder
 
 from ._api import (
     FunctionalAnnotator,
     GeneCoordinateService,
     ProteinMetadataService,
     TranscriptCoordinateService,
+    VariantCoordinateFinder,
 )
 
 T = typing.TypeVar("T")
@@ -126,6 +127,83 @@ class JsonCache(typing.Generic[T], FilesystemCache[T]):
     @staticmethod
     def _wrap_with_text(fh: io.BytesIO) -> typing.TextIO:
         return io.TextIOWrapper(fh)
+
+
+class FileCache(typing.Generic[T], Cache[T]):
+    """
+    Sometimes we need to cache items that are not easy to store in files
+    named by their description/key (e.g. HGVS variant annotation) due
+    to use of characters that are forbidden in the file paths on the major
+    platforms.
+
+    Therefore, the ``FileCache`` maintains a mapping
+    from the key to UUID and the UUID is used as a file name.
+
+    The class loads the content of the mapping, if present,
+    and stores it upon its destruction. Note, the class is *not* a context
+    manager because the current preprocessing APIs do not allow such usage.
+    """
+
+    _MAPPING_FILE_NAME: str = "GPSEA_FILE_CACHE_MAPPING.json"
+
+    def __init__(
+        self,
+        cache_dir: str,
+    ) -> None:
+        self._cache_dir = cache_dir
+        self._cache_file = os.path.join(cache_dir, FileCache._MAPPING_FILE_NAME)
+        if os.path.exists(self._cache_file):
+            if os.path.isfile(self._cache_file):
+                with open(self._cache_file, "r") as fh:
+                    self._vals: typing.MutableMapping[str, str] = json.load(fh)
+            else:
+                raise ValueError(f"{self._cache_file} exists yet it is not a file")
+        else:
+            self._vals = {}
+
+    def load_item(
+        self,
+        identifier: str,
+    ) -> typing.Optional[T]:
+        uid = self._vals.get(identifier)
+        if uid is None:
+            return None # cache miss
+        else:
+            fname = FileCache._make_filename(uid)
+            fpath = os.path.join(self._cache_dir, fname)
+            with open(fpath, "r") as fh:
+                return json.load(
+                    fh,
+                    cls=GpseaJSONDecoder,
+                )
+
+    def store_item(
+        self,
+        identifier: str,
+        item: T,
+    ):
+        if identifier in self._vals:
+            # already cached
+            return
+        else:
+            uid = str(uuid.uuid4())
+            fname = FileCache._make_filename(uid)
+            fpath = os.path.join(self._cache_dir, fname)
+            with open(fpath, "w") as fh:
+                json.dump(
+                    item,
+                    fh,
+                    cls=GpseaJSONEncoder,
+                )
+            self._vals[identifier] = uid
+
+    @staticmethod
+    def _make_filename(uid: str) -> str:
+        return f"{uid}.json"
+
+    def __del__(self):
+        with open(self._cache_file, "w") as fh:
+            json.dump(self._vals, fh)
 
 
 class CachingProteinMetadataService(ProteinMetadataService):
@@ -248,3 +326,28 @@ class CachingGeneCoordinateService(GeneCoordinateService):
             self._cache.store_item(gene, item)
 
         return item
+
+
+class CachingVariantCoordinateFinder(typing.Generic[T], VariantCoordinateFinder[T]):
+    def __init__(
+        self,
+        cache: FileCache[VariantCoordinates],
+        fallback: VariantCoordinateFinder[T],
+        key_func: typing.Callable[[T], str],
+    ):
+        super().__init__()
+        self._cache = cache
+        self._fallback = fallback
+        self._key_func = key_func
+
+    def find_coordinates(self, item: T) -> typing.Optional[VariantCoordinates]:
+        key = self._key_func(item)
+        val = self._cache.load_item(key)
+
+        if val is None:
+            # cache miss
+            val = self._fallback.find_coordinates(item)
+            if val is not None:
+                self._cache.store_item(key, val)
+        else:
+            return val
