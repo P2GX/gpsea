@@ -167,7 +167,7 @@ class FileCache(typing.Generic[T], Cache[T]):
     ) -> typing.Optional[T]:
         uid = self._vals.get(identifier)
         if uid is None:
-            return None # cache miss
+            return None  # cache miss
         else:
             fname = FileCache._make_filename(uid)
             fpath = os.path.join(self._cache_dir, fname)
