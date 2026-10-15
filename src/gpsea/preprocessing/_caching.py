@@ -142,6 +142,9 @@ class FileCache(typing.Generic[T], Cache[T]):
     The class loads the content of the mapping, if present,
     and stores it upon its destruction. Note, the class is *not* a context
     manager because the current preprocessing APIs do not allow such usage.
+
+    The ``cache_dir`` must point to an already existing directory.
+    An error is raised otherwise.
     """
 
     _MAPPING_FILE_NAME: str = "GPSEA_FILE_CACHE_MAPPING.json"
@@ -150,6 +153,7 @@ class FileCache(typing.Generic[T], Cache[T]):
         self,
         cache_dir: str,
     ) -> None:
+        assert os.path.isdir(cache_dir)
         self._cache_dir = cache_dir
         self._cache_file = os.path.join(cache_dir, FileCache._MAPPING_FILE_NAME)
         if os.path.exists(self._cache_file):
