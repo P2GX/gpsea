@@ -216,7 +216,9 @@ class ProteinVisualizer(BaseProteinVisualizer):
         ax.axis("off")
 
     # TODO: remove in `v0.12.0`
-    @warnings.deprecated("draw_protein_diagram was deprecated and will be removed in `0.12.0`. Use `draw_protein` instead")
+    @warnings.deprecated(
+        "draw_protein_diagram was deprecated and will be removed in `0.12.0`. Use `draw_protein` instead"
+    )
     def draw_protein_diagram(
         self,
         tx_coordinates: TranscriptCoordinates,

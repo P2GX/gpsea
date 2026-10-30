@@ -220,7 +220,7 @@ class CachingProteinMetadataService(ProteinMetadataService):
         cache: Cache[ProteinMetadata],
         fallback: ProteinMetadataService,
     ):
-        self._logger = logging.getLogger(__name__ + '.' + CachingProteinMetadataService.__name__)
+        self._logger = logging.getLogger(__name__ + "." + CachingProteinMetadataService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -248,7 +248,7 @@ class CachingTranscriptCoordinateService(TranscriptCoordinateService):
         cache: Cache[TranscriptCoordinates],
         fallback: TranscriptCoordinateService,
     ):
-        self._logger = logging.getLogger(__name__ + '.' + CachingTranscriptCoordinateService.__name__)
+        self._logger = logging.getLogger(__name__ + "." + CachingTranscriptCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -283,7 +283,7 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
         cache: Cache[typing.Sequence[TranscriptAnnotation]],
         fallback: FunctionalAnnotator,
     ):
-        self._logger = logging.getLogger(__name__ + '.' + CachingFunctionalAnnotator.__name__)
+        self._logger = logging.getLogger(__name__ + "." + CachingFunctionalAnnotator.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -324,8 +324,8 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         self,
         cache: Cache[typing.Sequence[TranscriptCoordinates]],
         fallback: GeneCoordinateService,
-    ): 
-        self._logger = logging.getLogger(__name__ + '.' + CachingGeneCoordinateService.__name__)
+    ):
+        self._logger = logging.getLogger(__name__ + "." + CachingGeneCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -360,7 +360,7 @@ class CachingVariantCoordinateFinder(
         fallback: VariantCoordinateFinder[T],
         key_func: typing.Callable[[T], str],
     ):
-        self._logger = logging.getLogger(__name__ + '.' + CachingGeneCoordinateService.__name__)
+        self._logger = logging.getLogger(__name__ + "." + CachingGeneCoordinateService.__name__)
         self._cache = cache
         self._fallback = fallback
         self._key_func = key_func

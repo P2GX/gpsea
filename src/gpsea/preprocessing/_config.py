@@ -121,7 +121,9 @@ def configure_caching_cohort_creator_context(
 
 
 # TODO: remove in `v0.12.0`
-@warnings.deprecated("Use `gpsea.preprocessing.configure_caching_cohort_creator_context` to create a context manager and then obtain the cohort creator from the manager")
+@warnings.deprecated(
+    "Use `gpsea.preprocessing.configure_caching_cohort_creator_context` to create a context manager and then obtain the cohort creator from the manager"
+)
 def configure_caching_cohort_creator(
     hpo: hpotk.MinimalOntology,
     genome_build: str = "GRCh38.p13",
