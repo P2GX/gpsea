@@ -2,7 +2,11 @@ from ._api import PreprocessingValidationResult
 from ._api import TranscriptCoordinateService, GeneCoordinateService
 from ._api import VariantCoordinateFinder, FunctionalAnnotator, ImpreciseSvFunctionalAnnotator, ProteinMetadataService
 from ._config import load_phenopacket_folder, load_phenopacket_files, load_phenopackets
-from ._config import configure_caching_cohort_creator, configure_cohort_creator
+from ._config import (
+    configure_caching_cohort_creator,
+    configure_cohort_creator,
+    configure_caching_cohort_creator_context,
+)
 from ._config import configure_default_tx_coordinate_service, configure_default_functional_annotator
 from ._config import configure_default_imprecise_sv_functional_annotator
 from ._config import configure_default_protein_metadata_service, configure_protein_metadata_service
@@ -19,6 +23,7 @@ from ._vv import VVHgvsVariantCoordinateFinder, VVMultiCoordinateService, Varian
 
 __all__ = [
     "configure_caching_cohort_creator",
+    "configure_caching_cohort_creator_context",
     "configure_cohort_creator",
     "configure_default_tx_coordinate_service",
     "configure_default_functional_annotator",

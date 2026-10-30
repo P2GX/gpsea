@@ -367,13 +367,13 @@ class TestPhenopacketPatientCreator:
         """
         Check if we get an error if no genotype info is available.
         """
-        pp = Phenopacket()
-        pp.CopyFrom(phenopacket)
-        del pp.interpretations[:]  # clear variants
+        item = Phenopacket()
+        item.CopyFrom(phenopacket)
+        del item.interpretations[:]  # clear variants
 
         notepad = create_notepad("no-gt")
 
-        _ = patient_creator.process(pp=pp, notepad=notepad)
+        _ = patient_creator.process(item=item, notepad=notepad)
 
         errors = tuple(notepad.errors())
 
@@ -400,7 +400,7 @@ class TestPhenopacketPatientCreator:
 
         notepad = create_notepad("no-gt")
 
-        _ = patient_creator.process(pp=pp, notepad=notepad)
+        _ = patient_creator.process(item=pp, notepad=notepad)
 
         errors = tuple(notepad.errors())
 

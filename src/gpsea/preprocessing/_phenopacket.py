@@ -369,7 +369,7 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
 
     def process(
         self,
-        pp: Phenopacket,
+        item: Phenopacket,
         notepad: Notepad,
     ) -> typing.Optional[Patient]:
         """Creates an individual from the data in a given Phenopacket
@@ -381,43 +381,43 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
             Patient: A Patient object
         """
         sample_id = SampleLabels(
-            label=pp.subject.id,
-            meta_label=pp.id if len(pp.id) > 0 else None,
+            label=item.subject.id,
+            meta_label=item.id if len(item.id) > 0 else None,
         )
 
         # Extract karyotypic sex
         indi = notepad.add_subsection("individual")
-        sex = PhenopacketPatientCreator._extract_sex(pp.subject, indi)
+        sex = PhenopacketPatientCreator._extract_sex(item.subject, indi)
 
         # Date of death
-        age = PhenopacketPatientCreator._extract_age(pp.subject, indi)
-        vital_status = PhenopacketPatientCreator._extract_vital_status(pp.subject, indi)
+        age = PhenopacketPatientCreator._extract_age(item.subject, indi)
+        vital_status = PhenopacketPatientCreator._extract_vital_status(item.subject, indi)
 
         # Check phenotypes
         pfs = notepad.add_subsection("phenotype-features")
-        phenotypes = self._add_phenotypes(pp.phenotypic_features, pfs)
+        phenotypes = self._add_phenotypes(item.phenotypic_features, pfs)
 
         # Check diseases
         dip = notepad.add_subsection("diseases")
-        diseases = self._add_diseases(pp.diseases, dip)
+        diseases = self._add_diseases(item.diseases, dip)
 
         mip = notepad.add_subsection("measurements")
-        measurements = self._add_measurements(pp.measurements, mip)
+        measurements = self._add_measurements(item.measurements, mip)
 
         # Check variants
         vs = notepad.add_subsection("variants")
-        variants = self._add_variants(sample_id, pp, vs)
+        variants = self._add_variants(sample_id, item, vs)
 
         # Complain if we have no genotype or phenotype data to work with
         if len(variants) == 0:
             notepad.add_error(
-                f"Individual {pp.id} has no genotype data (variants) to work with",
+                f"Individual {item.id} has no genotype data (variants) to work with",
                 solution="Add variants or remove the individual from the analysis",
             )
 
         if all(len(phenotype) == 0 for phenotype in (phenotypes, diseases, measurements)):
             notepad.add_error(
-                f"Individual {pp.id} has no phenotype data (HPO, a diagnosis, measurement) to work with",
+                f"Individual {item.id} has no phenotype data (HPO, a diagnosis, measurement) to work with",
                 solution="Add HPO terms, a diagnosis, or measurements, or remove the individual from the analysis",
             )
 
