@@ -1,9 +1,9 @@
 import abc
 import io
 import json
+import logging
 import os
 import pickle
-import sys
 import typing
 import uuid
 
@@ -220,6 +220,7 @@ class CachingProteinMetadataService(ProteinMetadataService):
         cache: Cache[ProteinMetadata],
         fallback: ProteinMetadataService,
     ):
+        self._logger = logging.getLogger(__name__ + '.' + CachingProteinMetadataService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -230,8 +231,11 @@ class CachingProteinMetadataService(ProteinMetadataService):
         assert isinstance(protein_id, str)
         item = self._cache.load_item(protein_id)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", protein_id)
             item = self._fallback.annotate(protein_id)
             self._cache.store_item(protein_id, item)
+        else:
+            self._logger.debug("Cached: %s", protein_id)
 
         return item
 
@@ -244,6 +248,7 @@ class CachingTranscriptCoordinateService(TranscriptCoordinateService):
         cache: Cache[TranscriptCoordinates],
         fallback: TranscriptCoordinateService,
     ):
+        self._logger = logging.getLogger(__name__ + '.' + CachingTranscriptCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -257,8 +262,11 @@ class CachingTranscriptCoordinateService(TranscriptCoordinateService):
         tx_id = self._parse_tx(tx)
         item = self._cache.load_item(tx_id)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", tx_id)
             item = self._fallback.fetch(tx_id)
             self._cache.store_item(tx_id, item)
+        else:
+            self._logger.debug("Cached: %s", tx_id)
 
         return item
 
@@ -275,6 +283,7 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
         cache: Cache[typing.Sequence[TranscriptAnnotation]],
         fallback: FunctionalAnnotator,
     ):
+        self._logger = logging.getLogger(__name__ + '.' + CachingFunctionalAnnotator.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -299,8 +308,11 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
         cache_key = CachingFunctionalAnnotator._create_cache_key(variant_coordinates)
         annotations = self._cache.load_item(cache_key)
         if annotations is None:  # cache miss
+            self._logger.debug("Fetching: %s", cache_key)
             annotations = self._fallback.annotate(variant_coordinates)
             self._cache.store_item(cache_key, annotations)
+        else:
+            self._logger.debug("Cached: %s", cache_key)
 
         return annotations
 
@@ -312,7 +324,8 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         self,
         cache: Cache[typing.Sequence[TranscriptCoordinates]],
         fallback: GeneCoordinateService,
-    ) -> None:
+    ): 
+        self._logger = logging.getLogger(__name__ + '.' + CachingGeneCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -328,8 +341,11 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         # `gene` may be treated as a file name by the cache.
         item = self._cache.load_item(gene)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", gene)
             item = self._fallback.fetch_for_gene(gene)
             self._cache.store_item(gene, item)
+        else:
+            self._logger.debug("Cached: %s", gene)
 
         return item
 
@@ -344,7 +360,7 @@ class CachingVariantCoordinateFinder(
         fallback: VariantCoordinateFinder[T],
         key_func: typing.Callable[[T], str],
     ):
-        super().__init__()
+        self._logger = logging.getLogger(__name__ + '.' + CachingGeneCoordinateService.__name__)
         self._cache = cache
         self._fallback = fallback
         self._key_func = key_func
@@ -353,10 +369,13 @@ class CachingVariantCoordinateFinder(
         key = self._key_func(item)
         val = self._cache.load_item(key)
 
-        if val is None:
-            # cache miss
+        if val is None:  # cache miss
+            self._logger.debug("Fetching: %s", key)
             val = self._fallback.find_coordinates(item)
             if val is not None:
+                self._logger.debug("Unable to find the coordinates: %s", key)
                 self._cache.store_item(key, val)
-        else:
-            return val
+            else:
+                self._logger.debug("Received the coordinates: %s", key)
+
+        return val
