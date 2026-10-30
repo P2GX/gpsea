@@ -82,9 +82,9 @@ For a phenopacket collection (e.g. 156 individuals with mutations in *TBX5* gene
 
 processed into a cohort
 
->>> from gpsea.preprocessing import configure_caching_cohort_creator, load_phenopackets
->>> cohort_creator = configure_caching_cohort_creator(hpo)
->>> cohort, _ = load_phenopackets(phenopackets, cohort_creator)  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+>>> from gpsea.preprocessing import configure_caching_cohort_creator_context, load_phenopackets
+>>> with configure_caching_cohort_creator_context(hpo) as cohort_creator:
+...     cohort, _ = load_phenopackets(phenopackets, cohort_creator)  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
 Individuals Processed: ...
 
 

@@ -23,6 +23,7 @@ from gpsea.model.genome import GenomeBuild, GRCh37, GRCh38
 from gpsea.preprocessing import VariantCoordinateFinder
 
 from ._api import (
+    Closeable,
     FunctionalAnnotator,
     GeneCoordinateService,
     ImpreciseSvFunctionalAnnotator,
@@ -40,7 +41,7 @@ from ._caching import (
     JsonCache,
 )
 from ._generic import DefaultImpreciseSvFunctionalAnnotator
-from ._patient import CohortCreator
+from ._patient import CohortCreator, CohortCreatorContext, SimpleCohortCreatorContext
 from ._phenopacket import PhenopacketOntologyTermOnsetParser, PhenopacketPatientCreator
 from ._uniprot import UniprotProteinMetadataService
 from ._vep import VepFunctionalAnnotator
@@ -49,6 +50,78 @@ from ._vv import VVHgvsVariantCoordinateFinder, VVMultiCoordinateService
 VALIDATION_POLICIES = {"permissive", "lenient", "strict"}
 
 
+def configure_caching_cohort_creator_context(
+    hpo: hpotk.MinimalOntology,
+    genome_build: str = "GRCh38.p13",
+    validation_runner: typing.Optional[ValidationRunner] = None,
+    cache_dir: typing.Optional[str] = None,
+    include_ontology_class_onsets: bool = True,
+    variant_fallback: typing.Literal["VEP"] = "VEP",
+    tx_coord_source_fallback: typing.Literal["VV"] = "VV",
+    timeout: typing.Union[float, int] = 30.0,
+) -> CohortCreatorContext[Phenopacket]:
+    """
+    A convenience function for configuring a caching :class:`~gpsea.preprocessing.PhenopacketPatientCreator`.
+
+    To create the individual creator, we need hpo-toolkit's representation of HPO. Other options are optional.
+
+    :param hpo: a HPO instance.
+    :param genome_build: name of the genome build to use, choose from `{'GRCh37.p13', 'GRCh38.p13'}`.
+    :param validation_runner: an instance of the validation runner.
+    :param cache_dir: path to the folder where we will cache the results fetched from the remote APIs or `None`
+        if the cache location should be determined as described in :func:`~gpsea.config.get_cache_dir_path`.
+        In any case, the directory will be created if it does not exist (including non-existing parents).
+    :param include_ontology_class_onsets: `True` if onsets in the ontology class format
+        (e.g. `HP:0003621` for Juvenile onset) should be included (default `True`).
+    :param variant_fallback: the fallback variant annotator to use if we cannot find the annotation locally.
+        Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
+    :param tx_coord_source_fallback: the fallback source of transcript coordinates.
+        Choose from ``{'VV'}`` (only one fallback implementation is available at the moment).
+    :param timeout: timeout in seconds for the REST APIs
+    """
+    closeables = []
+    cache_dir = _configure_cache_dir(cache_dir)
+    timeout = _normalize_timeout(timeout)
+
+    build = _configure_build(genome_build)
+    validator = _setup_hpo_validator(hpo, validation_runner)
+    functional_annotator = _configure_functional_annotator(
+        cache_dir,
+        variant_fallback,
+        timeout,
+    )
+    imprecise_sv_functional_annotator = _configure_imprecise_sv_annotator(
+        build,
+        tx_coord_source_fallback,
+        cache_dir,
+        timeout,
+    )
+
+    hgvs_coordinate_finder = _configure_variant_coordinate_finder(
+        build,
+        cache_dir,
+        timeout,
+        closeables,
+    )
+    term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
+    patient_creator = PhenopacketPatientCreator(
+        hpo=hpo,
+        validator=validator,
+        build=build,
+        functional_annotator=functional_annotator,
+        imprecise_sv_functional_annotator=imprecise_sv_functional_annotator,
+        hgvs_coordinate_finder=hgvs_coordinate_finder,
+        term_onset_parser=term_onset_parser,
+    )
+
+    return SimpleCohortCreatorContext(
+        cohort_creator=CohortCreator(patient_creator=patient_creator),
+        closeables=closeables,
+    )
+
+
+# TODO: remove in `v0.12.0`
+@warnings.deprecated("Use `gpsea.preprocessing.configure_caching_cohort_creator_context` to create a context manager and then obtain the cohort creator from the manager")
 def configure_caching_cohort_creator(
     hpo: hpotk.MinimalOntology,
     genome_build: str = "GRCh38.p13",
@@ -60,7 +133,7 @@ def configure_caching_cohort_creator(
     timeout: typing.Union[float, int] = 30.0,
 ) -> CohortCreator[Phenopacket]:
     """
-    A convenience function for configuring a caching :class:`~gpsea.preprocessing.PhenopacketPatientCreator`.
+    A convenience function for configuring a caching :class:`~gpsea.preprocessing.CohortCreator`.
 
     To create the individual creator, we need hpo-toolkit's representation of HPO. Other options are optional.
 
@@ -99,6 +172,7 @@ def configure_caching_cohort_creator(
         build,
         cache_dir,
         timeout,
+        [],
     )
     term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
@@ -111,7 +185,7 @@ def configure_caching_cohort_creator(
         term_onset_parser=term_onset_parser,
     )
 
-    return CohortCreator(pc)
+    return CohortCreator(patient_creator=pc)
 
 
 def configure_cohort_creator(
@@ -170,6 +244,8 @@ def configure_cohort_creator(
     return CohortCreator(pc)
 
 
+# TODO: remove in `v0.12.0`
+@warnings.deprecated("Use `configure_default_protein_metadata_service` instead")
 def configure_protein_metadata_service(
     cache_dir: typing.Optional[str] = None,
     timeout: float = 30.0,
@@ -184,11 +260,6 @@ def configure_protein_metadata_service(
      In any case, the directory will be created if it does not exist (including any non-existing parents).
     :param timeout: timeout in seconds for the REST APIs.
     """
-    warnings.warn(
-        "Use `configure_default_protein_metadata_service` instead",
-        DeprecationWarning,
-        stacklevel=2,
-    )
     return configure_default_protein_metadata_service(
         cache_dir=cache_dir,
         timeout=timeout,
@@ -498,6 +569,7 @@ def _configure_variant_coordinate_finder(
     build: GenomeBuild,
     cache_dir: str,
     timeout: float,
+    closeables: typing.MutableSequence[Closeable],
 ) -> VariantCoordinateFinder[str]:
     vc_cache_dir = os.path.join(cache_dir, "variant_coordinates_cache")
     os.makedirs(vc_cache_dir, exist_ok=True)
@@ -508,6 +580,7 @@ def _configure_variant_coordinate_finder(
         genome_build=build,
         timeout=timeout,
     )
+    closeables.append(cache)
     return CachingVariantCoordinateFinder(
         cache=cache,
         fallback=fallback,

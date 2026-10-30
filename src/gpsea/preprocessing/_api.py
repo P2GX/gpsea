@@ -6,12 +6,12 @@ import typing
 from stairval.notepad import Notepad
 
 from gpsea.model import (
-    VariantCoordinates,
-    ProteinMetadata,
-    TranscriptInfoAware,
-    TranscriptCoordinates,
-    TranscriptAnnotation,
     ImpreciseSvInfo,
+    ProteinMetadata,
+    TranscriptAnnotation,
+    TranscriptCoordinates,
+    TranscriptInfoAware,
+    VariantCoordinates,
 )
 
 T = typing.TypeVar("T")
@@ -136,6 +136,19 @@ class ProteinMetadataService(metaclass=abc.ABCMeta):
             `ValueError` if the metadata cannot be generated for *any* reason.
         """
         pass
+
+
+class Closeable(metaclass=abc.ABCMeta):
+    """
+    An abstract class implemented by the resources that can be closed.
+    """
+
+    @abc.abstractmethod
+    def close(self):
+        """
+        Close the resource
+        """
+        ...
 
 
 class PreprocessingValidationResult:

@@ -1,16 +1,15 @@
+import collections.abc
 import json
 import os
 
-import pytest
-
 import hpotk
-
+import pytest
+from phenopackets.schema.v2.phenopackets_pb2 import Phenopacket
 from ppktstore.registry import PhenopacketStoreRegistry, configure_phenopacket_registry
 
 from gpsea.io import GpseaJSONEncoder
 from gpsea.model import Cohort
-from gpsea.preprocessing import load_phenopackets
-from gpsea.preprocessing import CohortCreator, configure_caching_cohort_creator
+from gpsea.preprocessing import CohortCreator, configure_caching_cohort_creator_context, load_phenopackets
 
 
 @pytest.fixture
@@ -28,10 +27,11 @@ class TestGenerateCohortsForDocumentation:
     def cohort_creator(
         self,
         hpo: hpotk.MinimalOntology,
-    ) -> CohortCreator:
-        return configure_caching_cohort_creator(
+    ) -> collections.abc.Generator[CohortCreator]:
+        with configure_caching_cohort_creator_context(
             hpo=hpo,
-        )
+        ) as cohort_creator:
+            yield cohort_creator
 
     @pytest.fixture
     def phenopacket_registry(self) -> PhenopacketStoreRegistry:
@@ -40,7 +40,7 @@ class TestGenerateCohortsForDocumentation:
     @staticmethod
     def load_cohort(
         cohort_name: str,
-        cohort_creator: CohortCreator,
+        cohort_creator: CohortCreator[Phenopacket],
         phenopacket_registry: PhenopacketStoreRegistry,
     ) -> Cohort:
         with phenopacket_registry.open_phenopacket_store(

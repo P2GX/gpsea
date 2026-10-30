@@ -108,8 +108,8 @@ class TestFileCache:
         assert loaded is not None
         assert loaded == item
 
-        # Delete the cache ...
-        del cache
+        # Close the cache ...
+        cache.close()
         # ... and check that the file was created
         vals = tuple(os.listdir(data_dir))
         assert len(vals) == 2

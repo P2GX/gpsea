@@ -3,6 +3,7 @@ import io
 import json
 import os
 import pickle
+import sys
 import typing
 import uuid
 
@@ -16,6 +17,7 @@ from gpsea.model import (
 )
 
 from ._api import (
+    Closeable,
     FunctionalAnnotator,
     GeneCoordinateService,
     ProteinMetadataService,
@@ -129,7 +131,7 @@ class JsonCache(typing.Generic[T], FilesystemCache[T]):
         return io.TextIOWrapper(fh)
 
 
-class FileCache(typing.Generic[T], Cache[T]):
+class FileCache(typing.Generic[T], Cache[T], Closeable):
     """
     Sometimes we need to cache items that are not easy to store in files
     named by their description/key (e.g. HGVS variant annotation) due
@@ -205,7 +207,7 @@ class FileCache(typing.Generic[T], Cache[T]):
     def _make_filename(uid: str) -> str:
         return f"{uid}.json"
 
-    def __del__(self):
+    def close(self):
         with open(self._cache_file, "w") as fh:
             json.dump(self._vals, fh)
 
@@ -332,10 +334,13 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         return item
 
 
-class CachingVariantCoordinateFinder(typing.Generic[T], VariantCoordinateFinder[T]):
+class CachingVariantCoordinateFinder(
+    typing.Generic[T],
+    VariantCoordinateFinder[T],
+):
     def __init__(
         self,
-        cache: FileCache[VariantCoordinates],
+        cache: Cache[VariantCoordinates],
         fallback: VariantCoordinateFinder[T],
         key_func: typing.Callable[[T], str],
     ):

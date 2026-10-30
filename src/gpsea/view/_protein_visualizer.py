@@ -215,6 +215,8 @@ class ProteinVisualizer(BaseProteinVisualizer):
 
         ax.axis("off")
 
+    # TODO: remove in `v0.12.0`
+    @warnings.deprecated("draw_protein_diagram was deprecated and will be removed in `0.12.0`. Use `draw_protein` instead")
     def draw_protein_diagram(
         self,
         tx_coordinates: TranscriptCoordinates,
@@ -223,11 +225,6 @@ class ProteinVisualizer(BaseProteinVisualizer):
         ax: typing.Optional[maxs.Axes] = None,
         labeling_method: typing.Literal["abbreviate", "enumerate"] = "abbreviate",
     ) -> typing.Optional[maxs.Axes]:
-        warnings.warn(
-            "draw_protein_diagram was deprecated and will be removed in `1.0.0`. Use `draw_protein` instead",
-            DeprecationWarning,
-            stacklevel=2,
-        )
         if ax is None:
             should_return_ax = True
             _, ax = plt.subplots(figsize=(20, 20))
