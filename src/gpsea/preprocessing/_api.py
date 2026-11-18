@@ -50,14 +50,16 @@ class VariantCoordinateFinderException(typing.Generic[T], GpseaPreprocessingExce
     :param issues: optional additional information.
     """
 
+    Kind = typing.Literal["validation", "timeout"]
+
     def __init__(
         self,
-        kind: typing.Literal["validation", "timeout"] | None,
+        kind: Kind | None,
         context: str,
         issues: typing.Iterable[str] | None = None,
     ):
         super().__init__()
-        self.kind = kind
+        self.kind: VariantCoordinateFinderException.Kind | None = kind
         self.context = context
         self.issues = None if issues is None else tuple(issues)
 
@@ -181,6 +183,18 @@ class Closeable(metaclass=abc.ABCMeta):
         ...
 
 
+VALIDATION_POLICIES = frozenset({"permissive", "lenient", "strict"})
+ValidationPolicy = typing.Literal["permissive", "lenient", "strict"]
+"""
+The validation policy applied to handle preprocessing issues.
+
+The three known levels can be loosely described as:
+* `permissive`: ignores all warnings and errors and produces a result unless it is totally impossible.
+* `lenient`: permits warnings and issues of a minor nature but does *not* produce a result upon encountering a serious issue (an error).
+* `strict`: produces a result only for impeccable inputs, no issues are tolerated.
+"""
+
+
 class PreprocessingValidationResult:
     """
     The result of input validation of patient data.
@@ -188,14 +202,14 @@ class PreprocessingValidationResult:
 
     def __init__(
         self,
-        policy: str,
+        policy: ValidationPolicy,
         notepad: Notepad,
     ):
         self._policy = policy
         self._notepad = notepad
 
     @property
-    def policy(self) -> str:
+    def policy(self) -> ValidationPolicy:
         """
         Get the used validation policy.
         """

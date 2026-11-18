@@ -1,4 +1,4 @@
-from ._api import PreprocessingValidationResult
+from ._api import PreprocessingValidationResult, ValidationPolicy
 from ._api import TranscriptCoordinateService, GeneCoordinateService
 from ._api import VariantCoordinateFinder, VariantCoordinateFinderException, FunctionalAnnotator, ImpreciseSvFunctionalAnnotator, ProteinMetadataService
 from ._config import load_phenopacket_folder, load_phenopacket_files, load_phenopackets
@@ -48,6 +48,7 @@ __all__ = [
     "TranscriptCoordinateService",
     "GeneCoordinateService",
     "UniprotProteinMetadataService",
+    "ValidationPolicy",
     "VepFunctionalAnnotator",
     "VVHgvsVariantCoordinateFinder",
     "VVMultiCoordinateService",

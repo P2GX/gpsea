@@ -19,10 +19,12 @@ from tqdm import tqdm
 
 from gpsea.config import get_cache_dir_path
 from gpsea.model import Cohort, VariantCoordinates
+from gpsea.model.exceptional import VariantCoordinateFinderExceptionData
 from gpsea.model.genome import GenomeBuild, GRCh37, GRCh38
 from gpsea.preprocessing import VariantCoordinateFinder
 
 from ._api import (
+    VALIDATION_POLICIES,
     Closeable,
     FunctionalAnnotator,
     GeneCoordinateService,
@@ -30,6 +32,11 @@ from ._api import (
     PreprocessingValidationResult,
     ProteinMetadataService,
     TranscriptCoordinateService,
+    ValidationPolicy,
+)
+from ._cache import (
+    FileCache,
+    JsonCache,
 )
 from ._caching import (
     CachingFunctionalAnnotator,
@@ -37,8 +44,7 @@ from ._caching import (
     CachingProteinMetadataService,
     CachingTranscriptCoordinateService,
     CachingVariantCoordinateFinder,
-    FileCache,
-    JsonCache,
+    FallbackPolicy,
 )
 from ._generic import DefaultImpreciseSvFunctionalAnnotator
 from ._patient import CohortCreator, CohortCreatorContext, SimpleCohortCreatorContext
@@ -46,8 +52,6 @@ from ._phenopacket import PhenopacketOntologyTermOnsetParser, PhenopacketPatient
 from ._uniprot import UniprotProteinMetadataService
 from ._vep import VepFunctionalAnnotator
 from ._vv import VVHgvsVariantCoordinateFinder, VVMultiCoordinateService
-
-VALIDATION_POLICIES = {"permissive", "lenient", "strict"}
 
 
 def configure_caching_cohort_creator_context(
@@ -59,6 +63,7 @@ def configure_caching_cohort_creator_context(
     variant_fallback: typing.Literal["VEP"] = "VEP",
     tx_coord_source_fallback: typing.Literal["VV"] = "VV",
     timeout: typing.Union[float, int] = 30.0,
+    fallback_policy: FallbackPolicy = "retry",
 ) -> CohortCreatorContext[Phenopacket]:
     """
     A convenience function for configuring a caching :class:`~gpsea.preprocessing.PhenopacketPatientCreator`.
@@ -77,7 +82,11 @@ def configure_caching_cohort_creator_context(
         Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
     :param tx_coord_source_fallback: the fallback source of transcript coordinates.
         Choose from ``{'VV'}`` (only one fallback implementation is available at the moment).
-    :param timeout: timeout in seconds for the REST APIs
+    :param timeout: timeout in seconds for the REST APIs.
+    :param fallback_policy: how to handle a value that could not be retrieved at this point.
+        With *retry* policy, GPSEA will invoke the fallback to try to fetch the value again.
+        The *proceed* policy will, however, not attempt to retrieve the value again,
+        unless the value was missing due to timeout.
     """
     closeables = []
     cache_dir = _configure_cache_dir(cache_dir)
@@ -102,6 +111,7 @@ def configure_caching_cohort_creator_context(
         cache_dir,
         timeout,
         closeables,
+        fallback_policy,
     )
     term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     patient_creator = PhenopacketPatientCreator(
@@ -133,6 +143,7 @@ def configure_caching_cohort_creator(
     variant_fallback: typing.Literal["VEP"] = "VEP",
     tx_coord_source_fallback: typing.Literal["VV"] = "VV",
     timeout: typing.Union[float, int] = 30.0,
+    fallback_policy: FallbackPolicy = "retry",
 ) -> CohortCreator[Phenopacket]:
     """
     A convenience function for configuring a caching :class:`~gpsea.preprocessing.CohortCreator`.
@@ -151,7 +162,11 @@ def configure_caching_cohort_creator(
         Choose from ``{'VEP'}`` (just one fallback implementation is available at the moment).
     :param tx_coord_source_fallback: the fallback source of transcript coordinates.
         Choose from ``{'VV'}`` (only one fallback implementation is available at the moment).
-    :param timeout: timeout in seconds for the REST APIs
+    :param timeout: timeout in seconds for the REST APIs.
+    :param fallback_policy: how to handle a value that could not be retrieved at this point.
+        With *retry* policy, GPSEA will invoke the fallback to try to fetch the value again.
+        The *proceed* policy will, however, not attempt to retrieve the value again,
+        unless the value was missing due to timeout.
     """
     cache_dir = _configure_cache_dir(cache_dir)
     timeout = _normalize_timeout(timeout)
@@ -175,6 +190,7 @@ def configure_caching_cohort_creator(
         cache_dir,
         timeout,
         [],
+        fallback_policy=fallback_policy,
     )
     term_onset_parser = PhenopacketOntologyTermOnsetParser.default_parser() if include_ontology_class_onsets else None
     pc = PhenopacketPatientCreator(
@@ -572,10 +588,11 @@ def _configure_variant_coordinate_finder(
     cache_dir: str,
     timeout: float,
     closeables: typing.MutableSequence[Closeable],
+    fallback_policy: FallbackPolicy,
 ) -> VariantCoordinateFinder[str]:
     vc_cache_dir = os.path.join(cache_dir, "variant_coordinates_cache")
     os.makedirs(vc_cache_dir, exist_ok=True)
-    cache: FileCache[VariantCoordinates] = FileCache(
+    cache: FileCache[VariantCoordinates | VariantCoordinateFinderExceptionData] = FileCache(
         cache_dir=vc_cache_dir,
     )
     fallback = VVHgvsVariantCoordinateFinder(
@@ -587,13 +604,14 @@ def _configure_variant_coordinate_finder(
         cache=cache,
         fallback=fallback,
         key_func=lambda v: v,
+        fallback_policy=fallback_policy,
     )
 
 
 def load_phenopacket_folder(
     pp_directory: str,
     cohort_creator: CohortCreator[Phenopacket],
-    validation_policy: typing.Literal["permissive", "lenient", "strict"] = "permissive",
+    validation_policy: ValidationPolicy = "permissive",
 ) -> typing.Tuple[Cohort, PreprocessingValidationResult]:
     """
     Load phenopacket JSON files from a directory, validate the individual data, and assemble the individuals into a cohort.
@@ -623,7 +641,7 @@ def load_phenopacket_folder(
 def load_phenopacket_files(
     pp_files: typing.Iterator[str],
     cohort_creator: CohortCreator[Phenopacket],
-    validation_policy: typing.Literal["permissive", "lenient", "strict"] = "permissive",
+    validation_policy: ValidationPolicy = "permissive",
 ) -> typing.Tuple[Cohort, PreprocessingValidationResult]:
     """
     Load phenopacket JSON files, validate the data, and assemble into a :class:`~gpsea.model.Cohort`.
@@ -647,7 +665,7 @@ def load_phenopacket_files(
 def load_phenopackets(
     phenopackets: typing.Iterable[Phenopacket],
     cohort_creator: CohortCreator[Phenopacket],
-    validation_policy: typing.Literal["permissive", "lenient", "strict"] = "permissive",
+    validation_policy: ValidationPolicy = "permissive",
 ) -> typing.Tuple[Cohort, PreprocessingValidationResult]:
     """
     Validate the phenopackets and assemble into a :class:`~gpsea.model.Cohort`.

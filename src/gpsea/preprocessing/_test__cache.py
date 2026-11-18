@@ -4,7 +4,7 @@ import uuid
 
 from gpsea.model import Age
 
-from ._caching import FileCache, JsonCache, PicklingCache
+from ._cache import FileCache, JsonCache, PicklingCache
 
 
 class TestJsonCache:
