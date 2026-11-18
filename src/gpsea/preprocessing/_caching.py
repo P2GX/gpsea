@@ -1,10 +1,5 @@
-import abc
-import io
-import json
-import pickle
-import os
+import logging
 import typing
-
 
 from gpsea.model import (
     ProteinMetadata,
@@ -13,119 +8,88 @@ from gpsea.model import (
     TranscriptInfoAware,
     VariantCoordinates,
 )
-from gpsea.io import GpseaJSONDecoder, GpseaJSONEncoder
+from gpsea.model.exceptional import VariantCoordinateFinderExceptionData
 
 from ._api import (
     FunctionalAnnotator,
     GeneCoordinateService,
     ProteinMetadataService,
     TranscriptCoordinateService,
+    VariantCoordinateFinder,
+    VariantCoordinateFinderException,
 )
+from ._cache import Cache
 
 T = typing.TypeVar("T")
 
+FallbackPolicy = typing.Literal["retry", "proceed"]
+"""
+How to handle an entry that could not be retrieved from the fallback source
+on the first attempt due to issues unrelated to fallback timeouts (e.g. validation issues).
 
-class Cache(typing.Generic[T], metaclass=abc.ABCMeta):
-    """
-    Cache stores items locally to prevent having to consult a remote resource.
-
-    The itemes are persisted across runs.
-    """
-
-    @abc.abstractmethod
-    def load_item(self, identifier: str) -> typing.Optional[T]:
-        pass
-
-    @abc.abstractmethod
-    def store_item(self, identifier: str, item: T):
-        pass
+* `retry` stipulates reattempting to retrieve the value.
+* `proceed` will *not* reobtain the value and report the results of the previous attempt.
+"""
 
 
-class FilesystemCache(typing.Generic[T], Cache[T], metaclass=abc.ABCMeta):
+class CachingVariantCoordinateFinder(
+    typing.Generic[T],
+    VariantCoordinateFinder[T],
+):
     def __init__(
         self,
-        data_dir: str,
+        cache: Cache[VariantCoordinates | VariantCoordinateFinderExceptionData],
+        fallback: VariantCoordinateFinder[T],
+        key_func: typing.Callable[[T], str],
+        fallback_policy: FallbackPolicy,
     ):
-        if not os.path.isdir(data_dir):
-            raise ValueError(f"datadir {data_dir} must be an existing directory")
-        self._datadir = data_dir
+        self._logger = logging.getLogger(__name__ + "." + CachingVariantCoordinateFinder.__name__)
+        self._cache = cache
+        self._fallback = fallback
+        self._key_func = key_func
+        self._fallback_policy: FallbackPolicy = fallback_policy
 
-    @property
-    def data_dir(self) -> str:
-        return self._datadir
+    def find_coordinates(self, item: T) -> typing.Optional[VariantCoordinates]:
+        key = self._key_func(item)
+        val = self._cache.load_item(key)
 
-    def load_item(self, identifier: str) -> typing.Optional[T]:
-        name = self._prepare_resource_path(identifier=identifier)
-        if os.path.isfile(name):
-            with open(name, "rb") as fh:
-                return self._deserialize(fh)  # type: ignore
+        if val is None:  # cache miss
+            return self._fetch_and_cache(key, item)
         else:
-            return None
+            if isinstance(val, VariantCoordinateFinderExceptionData):
+                match self._fallback_policy:
+                    case "proceed":
+                        raise VariantCoordinateFinderException(
+                            kind=val.kind,
+                            context=val.context,
+                            issues=val.issues,
+                        )
+                    case "retry":
+                        return self._fetch_and_cache(key, item)
+                    case _:
+                        raise ValueError(f"Invalid failure policy {self._on_failure}")
+            else:
+                return val
 
-    def store_item(self, identifier: str, item: T):
-        name = self._prepare_resource_path(identifier=identifier)
-        with open(name, "wb") as fh:
-            self._serialize(item, fh)  # type: ignore
-
-    @abc.abstractmethod
-    def _prepare_resource_path(self, identifier: str) -> str:
-        pass
-
-    @abc.abstractmethod
-    def _serialize(self, item: T, fh: io.BytesIO):
-        pass
-
-    @abc.abstractmethod
-    def _deserialize(self, fh: io.BytesIO) -> T:
-        pass
-
-
-class PicklingCache(typing.Generic[T], FilesystemCache[T]):
-    def _prepare_resource_path(self, identifier: str) -> str:
-        return os.path.join(self._datadir, f"{identifier}.pickle")
-
-    def _serialize(self, item: T, fh: io.BytesIO):
-        pickle.dump(item, fh)
-
-    def _deserialize(self, fh: io.BytesIO) -> T:
-        return pickle.load(fh)
-
-
-class JsonCache(typing.Generic[T], FilesystemCache[T]):
-    def __init__(
-        self,
-        data_dir: str,
-        indent: typing.Optional[typing.Union[int, str]] = None,
-    ):
-        super().__init__(data_dir=data_dir)
-        self._indent = indent
-
-    def _prepare_resource_path(self, identifier: str) -> str:
-        return os.path.join(self._datadir, f"{identifier}.json")
-
-    def _serialize(
-        self,
-        item: T,
-        fh: io.BytesIO,
-    ):
-        text_fh = JsonCache._wrap_with_text(fh)
-        json.dump(
-            item,
-            text_fh,
-            cls=GpseaJSONEncoder,
-            indent=self._indent,
-        )
-
-    def _deserialize(
-        self,
-        fh: io.BytesIO,
-    ) -> T:
-        text_fh = JsonCache._wrap_with_text(fh)
-        return json.load(fp=text_fh, cls=GpseaJSONDecoder)
-
-    @staticmethod
-    def _wrap_with_text(fh: io.BytesIO) -> typing.TextIO:
-        return io.TextIOWrapper(fh)
+    def _fetch_and_cache(self, key: str, item: T) -> typing.Optional[VariantCoordinates]:
+        self._logger.debug("Fetching: %s", key)
+        try:
+            val = self._fallback.find_coordinates(item)
+        except VariantCoordinateFinderException as e:
+            if e.kind != "timeout":
+                data = VariantCoordinateFinderExceptionData(
+                    kind=e.kind,
+                    context=e.context,
+                    issues=e.issues,
+                )
+                self._cache.store_item(key, data)
+            raise e
+        if val is None:
+            self._logger.debug("Unable to find the coordinates: %s", key)
+        else:
+            self._logger.debug("Received the coordinates: %s", key)
+            self._cache.store_item(key, val)
+        return val
 
 
 class CachingProteinMetadataService(ProteinMetadataService):
@@ -136,6 +100,7 @@ class CachingProteinMetadataService(ProteinMetadataService):
         cache: Cache[ProteinMetadata],
         fallback: ProteinMetadataService,
     ):
+        self._logger = logging.getLogger(__name__ + "." + CachingProteinMetadataService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -146,8 +111,11 @@ class CachingProteinMetadataService(ProteinMetadataService):
         assert isinstance(protein_id, str)
         item = self._cache.load_item(protein_id)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", protein_id)
             item = self._fallback.annotate(protein_id)
             self._cache.store_item(protein_id, item)
+        else:
+            self._logger.debug("Cached: %s", protein_id)
 
         return item
 
@@ -160,6 +128,7 @@ class CachingTranscriptCoordinateService(TranscriptCoordinateService):
         cache: Cache[TranscriptCoordinates],
         fallback: TranscriptCoordinateService,
     ):
+        self._logger = logging.getLogger(__name__ + "." + CachingTranscriptCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -173,8 +142,11 @@ class CachingTranscriptCoordinateService(TranscriptCoordinateService):
         tx_id = self._parse_tx(tx)
         item = self._cache.load_item(tx_id)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", tx_id)
             item = self._fallback.fetch(tx_id)
             self._cache.store_item(tx_id, item)
+        else:
+            self._logger.debug("Cached: %s", tx_id)
 
         return item
 
@@ -191,6 +163,7 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
         cache: Cache[typing.Sequence[TranscriptAnnotation]],
         fallback: FunctionalAnnotator,
     ):
+        self._logger = logging.getLogger(__name__ + "." + CachingFunctionalAnnotator.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -215,8 +188,11 @@ class CachingFunctionalAnnotator(FunctionalAnnotator):
         cache_key = CachingFunctionalAnnotator._create_cache_key(variant_coordinates)
         annotations = self._cache.load_item(cache_key)
         if annotations is None:  # cache miss
+            self._logger.debug("Fetching: %s", cache_key)
             annotations = self._fallback.annotate(variant_coordinates)
             self._cache.store_item(cache_key, annotations)
+        else:
+            self._logger.debug("Cached: %s", cache_key)
 
         return annotations
 
@@ -228,7 +204,8 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         self,
         cache: Cache[typing.Sequence[TranscriptCoordinates]],
         fallback: GeneCoordinateService,
-    ) -> None:
+    ):
+        self._logger = logging.getLogger(__name__ + "." + CachingGeneCoordinateService.__name__)
         assert isinstance(cache, Cache)
         self._cache = cache
 
@@ -244,7 +221,10 @@ class CachingGeneCoordinateService(GeneCoordinateService):
         # `gene` may be treated as a file name by the cache.
         item = self._cache.load_item(gene)
         if item is None:  # cache miss
+            self._logger.debug("Fetching: %s", gene)
             item = self._fallback.fetch_for_gene(gene)
             self._cache.store_item(gene, item)
+        else:
+            self._logger.debug("Cached: %s", gene)
 
         return item

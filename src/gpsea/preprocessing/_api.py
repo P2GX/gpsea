@@ -6,15 +6,19 @@ import typing
 from stairval.notepad import Notepad
 
 from gpsea.model import (
-    VariantCoordinates,
-    ProteinMetadata,
-    TranscriptInfoAware,
-    TranscriptCoordinates,
-    TranscriptAnnotation,
     ImpreciseSvInfo,
+    ProteinMetadata,
+    TranscriptAnnotation,
+    TranscriptCoordinates,
+    TranscriptInfoAware,
+    VariantCoordinates,
 )
 
 T = typing.TypeVar("T")
+
+
+class GpseaPreprocessingException(Exception):
+    pass
 
 
 class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
@@ -27,9 +31,37 @@ class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
         and `None` may be returned.
 
         Raises:
-            ValueError: if there is an error of any kind.
+            VariantCoordinateFinderException: if there is an error of any kind.
         """
         pass
+
+
+class VariantCoordinateFinderException(typing.Generic[T], GpseaPreprocessingException):
+    """
+    Describes an issue encountered during establishing coordinates of a variant.
+
+    The issue can be one of the following kinds:
+    * `validation`: the variant should be fixed and analyzed again.
+      Retrying should be attempted after resolving the issue.
+    * `timeout`: the operation timed out. Retrying it might succeed.
+
+    :param kind: an optional issue kind.
+    :param context: description of the action being performed.
+    :param issues: optional additional information.
+    """
+
+    Kind = typing.Literal["validation", "timeout"]
+
+    def __init__(
+        self,
+        kind: Kind | None,
+        context: str,
+        issues: typing.Iterable[str] | None = None,
+    ):
+        super().__init__()
+        self.kind: VariantCoordinateFinderException.Kind | None = kind
+        self.context = context
+        self.issues = None if issues is None else tuple(issues)
 
 
 class FunctionalAnnotator(metaclass=abc.ABCMeta):
@@ -138,6 +170,31 @@ class ProteinMetadataService(metaclass=abc.ABCMeta):
         pass
 
 
+class Closeable(metaclass=abc.ABCMeta):
+    """
+    An abstract class implemented by the resources that can be closed.
+    """
+
+    @abc.abstractmethod
+    def close(self):
+        """
+        Close the resource
+        """
+        ...
+
+
+VALIDATION_POLICIES = frozenset({"permissive", "lenient", "strict"})
+ValidationPolicy = typing.Literal["permissive", "lenient", "strict"]
+"""
+The validation policy applied to handle preprocessing issues.
+
+The three known levels can be loosely described as:
+* `permissive`: ignores all warnings and errors and produces a result unless it is totally impossible.
+* `lenient`: permits warnings and issues of a minor nature but does *not* produce a result upon encountering a serious issue (an error).
+* `strict`: produces a result only for impeccable inputs, no issues are tolerated.
+"""
+
+
 class PreprocessingValidationResult:
     """
     The result of input validation of patient data.
@@ -145,14 +202,14 @@ class PreprocessingValidationResult:
 
     def __init__(
         self,
-        policy: str,
+        policy: ValidationPolicy,
         notepad: Notepad,
     ):
         self._policy = policy
         self._notepad = notepad
 
     @property
-    def policy(self) -> str:
+    def policy(self) -> ValidationPolicy:
         """
         Get the used validation policy.
         """
@@ -203,7 +260,7 @@ class PreprocessingValidationResult:
                 if node.has_errors_or_warnings(include_subsections=True):
                     # We must report the node label even if there are no issues with the node.
                     l_pad = " " * (node.level * indent)
-                    file.write(l_pad + node.label)
+                    file.write(l_pad + str(node.label))
                     file.write(os.linesep)
 
                     if node.has_errors():

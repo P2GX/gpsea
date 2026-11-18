@@ -69,13 +69,15 @@ phenopackets into a :class:`~gpsea.model.Cohort`.
 The transformation is very flexible, with an array of parameters to tweak.
 However, the majority of cases should be covered by the default settings
 and we recommend to configure the default cohort creator with
-the :func:`~gpsea.preprocessing.configure_caching_cohort_creator` method:
+the :func:`~gpsea.preprocessing.configure_caching_cohort_creator_context` method:
 
->>> from gpsea.preprocessing import configure_caching_cohort_creator
->>> cohort_creator = configure_caching_cohort_creator(hpo)
+>>> from gpsea.preprocessing import configure_caching_cohort_creator_context
+>>> with configure_caching_cohort_creator_context(hpo) as cohort_creator:
+...    pass  # use the `cohort_creator`
 
-The ``cohort_creator`` will check the HPO terms for any invalid or obsolete
-terms, as well as point out any logical inconsistencies.
+The method returns a context manager that, when called, provides the ``cohort_creator``
+to check the HPO terms for any invalid or obsolete terms,
+as well as point out any logical inconsistencies.
 The functional annotation and validation of variants is delegated to 
 Variant Effect Predictor and Variant Validator REST APIs,
 and the API responses are cached in the current working directory, to reduce the network bandwith.
@@ -110,10 +112,11 @@ is orchestrated by the :func:`~gpsea.preprocessing.load_phenopackets`
 loader function:
 
 >>> from gpsea.preprocessing import load_phenopackets
->>> cohort, qc_results = load_phenopackets(
-...     phenopackets=phenopackets,
-...     cohort_creator=cohort_creator,
-... )  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+>>> with configure_caching_cohort_creator_context(hpo) as cohort_creator:
+...     cohort, qc_results = load_phenopackets(
+...         phenopackets=phenopackets,
+...         cohort_creator=cohort_creator,
+...     )  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
 Individuals Processed: ...
 >>> len(cohort)
 19

@@ -4,7 +4,9 @@ import typing
 
 from stairval.notepad import Notepad
 
-from gpsea.model import Patient, Cohort
+from gpsea.model import Cohort, Patient
+
+from ._api import Closeable
 
 T = typing.TypeVar("T")
 """
@@ -44,7 +46,10 @@ class CohortCreator(typing.Generic[T]):
     subjecting the cohort members to Q/C and filtering.
 
     Cohort creator uses :class:`~gpsea.preprocessing.PatientCreator`
-    to map each cohort member into a :class:`~gpsea.model.Patient`.
+    to first map each cohort member into a :class:`~gpsea.model.Patient`,
+    applying the individual-scoped Q/C and filtering steps,
+    and then follows with cohort-scoped Q/C and filtering.
+
     The cohort creator is generic over the cohort member type `T`
     and all that matters is if the inner :class:`~gpsea.preprocessing.PatientCreator`
     can map `T` into a :class:`~gpsea.model.Patient`.
@@ -135,3 +140,41 @@ class CohortCreator(typing.Generic[T]):
             return False
         else:
             return True
+
+
+class CohortCreatorContext(
+    typing.Generic[T],
+    metaclass=abc.ABCMeta,
+):
+    """
+    `CohortCreatorContext` is used as a context manager for getting a :class:`~gpsea.preprocessing.CohortCreator`
+    and performing the necessary cleanup after the work is done.
+    """
+
+    @abc.abstractmethod
+    def __enter__(self) -> CohortCreator[T]: ...
+
+    @abc.abstractmethod
+    def __exit__(self, exc_type, exc_value, traceback) -> typing.Optional[bool]: ...
+
+
+class SimpleCohortCreatorContext(
+    typing.Generic[T],
+    CohortCreatorContext[T],
+):
+    # NOT PART OF THE PUBLIC API
+
+    def __init__(
+        self,
+        cohort_creator: CohortCreator[T],
+        closeables: typing.Iterable[Closeable],
+    ):
+        self._cohort_creator = cohort_creator
+        self._closeables = closeables
+
+    def __enter__(self) -> CohortCreator[T]:
+        return self._cohort_creator
+
+    def __exit__(self, exc_type, exc_value, traceback) -> typing.Optional[bool]:
+        for c in self._closeables:
+            c.close()

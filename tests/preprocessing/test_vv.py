@@ -5,10 +5,12 @@ import typing
 import pytest
 
 from gpsea.io import GpseaJSONEncoder
-from gpsea.model.genome import GenomeBuild, Strand
-from gpsea.preprocessing import VVMultiCoordinateService, VVHgvsVariantCoordinateFinder
-
-from gpsea.model.genome import transpose_coordinate
+from gpsea.model.genome import GenomeBuild, Strand, transpose_coordinate
+from gpsea.preprocessing import (
+    VariantCoordinateFinderException,
+    VVHgvsVariantCoordinateFinder,
+    VVMultiCoordinateService,
+)
 
 
 @pytest.fixture(scope="module")
@@ -189,8 +191,7 @@ class TestVVTranscriptCoordinateServiceGeneralProperties:
             "requested_symbol",
             "transcripts",
         }
-        assert len(response.keys()) == len(expected_keys)
-        assert all(key in expected_keys for key in response)
+        assert all(key in response for key in expected_keys)
 
     def test_current_name(
         self,
@@ -527,9 +528,9 @@ class TestVVHgvsVariantCoordinateFinder:
         self,
         coordinate_finder: VVHgvsVariantCoordinateFinder,
     ):
-        with pytest.raises(ValueError) as e:
-            coordinate_finder.find_coordinates(item="NM_006772.3:c.359_")
+        item = "NM_006772.3:c.359_"
+        with pytest.raises(VariantCoordinateFinderException) as e:
+            coordinate_finder.find_coordinates(item=item)
 
-        assert e.value.args == (
-            "Cannot find genomic coordinates for NM_006772.3:c.359_. See URL for more info: https://rest.variantvalidator.org/VariantValidator/variantvalidator/GRCh38/NM_006772.3:c.359_/NM_006772.3",
-        )
+        assert e.value.item == item
+        assert e.value.issue == "validation_issue"

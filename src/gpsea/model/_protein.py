@@ -78,13 +78,8 @@ class FeatureInfo:
         return str(self)
 
 
-def _deprecation_warning():
-    warnings.warn(
-        "`FeatureType` was deprecated and will be removed prior `v1.0.0`. Use a `str` instead!",
-        DeprecationWarning,
-    )
-
-
+# TODO: remove in `v0.12.0`
+@warnings.deprecated("`FeatureType` was deprecated and will be removed in `v0.12.0`. Use a `str` instead!")
 class FeatureType(enum.Enum):
     """
     An enum representing the protein feature types supported in GPSEA.
@@ -151,9 +146,6 @@ class FeatureType(enum.Enum):
     A region with a known DNA binding activity.
     """
 
-    def __init__(self, _value):
-        _deprecation_warning()
-
     @staticmethod
     def from_string(category: str) -> "FeatureType":
         cat_lower = category.lower()
@@ -179,10 +171,6 @@ class FeatureType(enum.Enum):
             return FeatureType.DNA_BINDING
         else:
             raise ValueError(f'Unrecognized protein feature type: "{category}"')
-
-    @staticmethod
-    def deprecation_warning():
-        _deprecation_warning()
 
 
 class ProteinFeature(metaclass=abc.ABCMeta):

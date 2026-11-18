@@ -31,6 +31,7 @@ from gpsea.model import (
     VitalStatus,
 )
 from gpsea.model.genome import Contig, Region, GenomicRegion, Strand
+from gpsea.model.exceptional import VariantCoordinateFinderExceptionData
 
 
 class GpseaJSONEncoder(JSONEncoder):
@@ -184,6 +185,12 @@ class GpseaJSONEncoder(JSONEncoder):
             return {
                 "name": o.name,
                 "region": o.region,
+            }
+        elif isinstance(o, VariantCoordinateFinderExceptionData):
+            return {
+                "kind": o.kind,
+                "context": o.context,
+                "issues": o.issues,
             }
         else:
             return super().default(o)
@@ -398,6 +405,12 @@ class GpseaJSONDecoder(JSONDecoder):
         elif GpseaJSONDecoder._has_all_fields(obj, _COHORT_FIELDS):
             return Cohort(
                 members=obj["members"],
+            )
+        elif GpseaJSONDecoder._has_all_fields(obj, ("kind", "context", "issues")):
+            return VariantCoordinateFinderExceptionData(
+                kind=obj["kind"],
+                context=obj["context"],
+                issues=obj["issues"] if obj["issues"] is None else tuple(obj["issues"]),
             )
         else:
             return obj

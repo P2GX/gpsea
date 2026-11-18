@@ -6,7 +6,7 @@ import pytest
 
 from gpsea.io import GpseaJSONEncoder, GpseaJSONDecoder
 from gpsea.model import Cohort
-from gpsea.preprocessing import configure_caching_cohort_creator, load_phenopackets
+from gpsea.preprocessing import configure_caching_cohort_creator_context, load_phenopackets
 
 
 def test_round_trip(suox_cohort: Cohort):
@@ -35,12 +35,12 @@ def test_regenerate_cohort(
         # for testing.
         phenopackets = tuple(sorted(ps.iter_cohort_phenopackets("SUOX"), key=lambda pp: pp.id + pp.subject.id))
 
-    cohort_creator = configure_caching_cohort_creator(hpo, timeout=30.0)
-    cohort, validation = load_phenopackets(
-        phenopackets=phenopackets,
-        cohort_creator=cohort_creator,
-        validation_policy="strict",
-    )
+    with configure_caching_cohort_creator_context(hpo, timeout=30.0) as cohort_creator:
+        cohort, validation = load_phenopackets(
+            phenopackets=phenopackets,
+            cohort_creator=cohort_creator,
+            validation_policy="strict",
+        )
 
     if not validation.is_ok():
         raise ValueError("The cohort MUST be OK!")

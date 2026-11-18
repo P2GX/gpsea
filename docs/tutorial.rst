@@ -114,12 +114,12 @@ We loaded 156 phenopackets which need further preprocessing to prepare for the a
 We will compute functional annotations for the mutations and then include the individuals into
 a :class:`~gpsea.model.Cohort`:
 
->>> from gpsea.preprocessing import configure_caching_cohort_creator, load_phenopackets
->>> cohort_creator = configure_caching_cohort_creator(hpo)
->>> cohort, validation = load_phenopackets(  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
-...     phenopackets=phenopackets,
-...     cohort_creator=cohort_creator,
-... )
+>>> from gpsea.preprocessing import configure_caching_cohort_creator_context, load_phenopackets
+>>> with configure_caching_cohort_creator_context(hpo) as cohort_creator:
+...     cohort, validation = load_phenopackets(  # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
+...         phenopackets=phenopackets,
+...         cohort_creator=cohort_creator,
+...     )
 Individuals Processed: ...
 
 and we will check that there are no Q/C issues:

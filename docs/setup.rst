@@ -62,6 +62,22 @@ Once on `develop`, we use ``pip`` to use the current folder (``.``) as a package
 and install it into the current Python (virtual) environment.
 
 
+Patch release
+=============
+
+Sometimes, especially after we publish a bug fix or a new feature,
+we might need you to install the patched code to verify that the bugfix/feature works
+as intended on your end as well as on ours. We do this by asking you to install
+the package from a specific development branch. This is normally very easy to do
+with ``pip`` or any other decent package manager.
+
+A specific patch of GPSEA can be installed by running::
+
+  python3 -m pip install git+https://github.com/P2GX/gpsea.git@feature-branch-name
+
+where ``feature-branch-name`` is the name of the branch with the patch.
+
+
 *********
 Run tests
 *********
