@@ -1,6 +1,6 @@
 from ._api import PreprocessingValidationResult
 from ._api import TranscriptCoordinateService, GeneCoordinateService
-from ._api import VariantCoordinateFinder, FunctionalAnnotator, ImpreciseSvFunctionalAnnotator, ProteinMetadataService
+from ._api import VariantCoordinateFinder, VariantCoordinateFinderException, FunctionalAnnotator, ImpreciseSvFunctionalAnnotator, ProteinMetadataService
 from ._config import load_phenopacket_folder, load_phenopacket_files, load_phenopackets
 from ._config import (
     configure_caching_cohort_creator,
@@ -31,6 +31,7 @@ __all__ = [
     "configure_default_protein_metadata_service",
     "configure_protein_metadata_service",
     "VariantCoordinateFinder",
+    "VariantCoordinateFinderException",
     "FunctionalAnnotator",
     "ImpreciseSvFunctionalAnnotator",
     "ProteinMetadataService",

@@ -1,16 +1,23 @@
 # A module with classes that interact with Variant validator's REST API to fetch required data.
+import json
 import logging
 import re
 import typing
 
-import requests
+from collections.abc import Mapping
+
 import ratelimit
-import json
+import requests
 
+from gpsea.model import TranscriptCoordinates, TranscriptInfoAware, VariantCoordinates
+from gpsea.model.genome import Contig, GenomeBuild, GenomicRegion, Strand, transpose_coordinate
 
-from gpsea.model import VariantCoordinates, TranscriptInfoAware, TranscriptCoordinates
-from gpsea.model.genome import GenomeBuild, GenomicRegion, Strand, Contig, transpose_coordinate
-from ._api import VariantCoordinateFinder, TranscriptCoordinateService, GeneCoordinateService
+from ._api import (
+    GeneCoordinateService,
+    TranscriptCoordinateService,
+    VariantCoordinateFinder,
+    VariantCoordinateFinderException,
+)
 
 # To match strings such as `NM_1234.56`, `NM_1234`, or `XM_123456.7`
 REFSEQ_TX_PT = re.compile(r"^[NX]M_\d+(\.\d+)?$")
@@ -60,8 +67,8 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
         Extracts variant coordinates from an HGVS string using Variant Validator's REST API.
 
         :param item: a hgvs string
-        :return: variant coordinates
-        :raises ValueError: for an error of any kind
+        :return: the variant coordinates. Never returns `None`.
+        :raises VariantCoordinateFinderException: for an error of any kind
         """
         matcher = self._hgvs_pattern.match(item)
         if matcher:
@@ -72,25 +79,57 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
                 response = fetch_response(request_url, self._headers, self._timeout)
                 match response["flag"]:
                     case "warning":
-                        raise ValueError(
-                            f"Cannot find genomic coordinates for {item}. See URL for more info: {request_url}"
+                        issues = []
+                        if any(f.startswith("validation_warning") for f in response):
+                            for f in response:
+                                if f.startswith("validation_warning"):
+                                    val = response[f]
+                                    if (
+                                        isinstance(val, Mapping)
+                                        and "validation_warnings" in val
+                                        and len(val["validation_warnings"]) > 0
+                                    ):
+                                        issues.extend(val["validation_warnings"])
+                        raise VariantCoordinateFinderException(
+                            kind="validation",
+                            context=f'finding coordinates of {item}',
+                            issues=issues,
                         )
                     case "gene_variant":
-                        return self._extract_variant_coordinates(response)
+                        return self._extract_variant_coordinates(response, item)
                     case _:
                         # Variant Validator API response includes an unexpected flag.
                         # Please submit an issue to our GitHub tracker if you believe
-                        # there is nothing wrong with the HGVS input.
+                        # there is nothing wrong with your HGVS input.
                         raise ValueError(f"Got unexpected flag: {response['flag']}. Open a ticket on our issue tracker")
-            except (requests.exceptions.RequestException, VariantValidatorDecodeException) as e:
-                raise ValueError(f"Error processing {item}") from e
+            except requests.exceptions.Timeout as e:
+                raise VariantCoordinateFinderException(
+                    kind="timeout",
+                    context=f'finding coordinates of {item}',
+                ) from e
+            except requests.exceptions.RequestException | VariantValidatorDecodeException as e:
+                raise VariantCoordinateFinderException(
+                    kind=None,
+                    context=f'finding coordinates of {item}',
+                    issues=("Error occurred while finding coordinates",),
+                ) from e
         else:
             # The HGVS did not pass validation by a regular expression.
             # Please submit an issue to our GitHub tracker if you believe
             # the HGVS expression is correct.
-            raise ValueError(f"Invalid HGVS string: {item}")
+            raise VariantCoordinateFinderException(
+                kind="validation",
+                context=f'finding coordinates of {item}',
+                issues=(
+                    f'Unsupported HGVS format: {input}'
+                ),
+            )
 
-    def _extract_variant_coordinates(self, response: typing.Dict) -> typing.Optional[VariantCoordinates]:
+    def _extract_variant_coordinates(
+        self,
+        response: typing.Mapping,
+        item: str,
+    ) -> typing.Optional[VariantCoordinates]:
         """
         Extracts variant coordinates from a response from Variant Validator's REST API.
         :param response: Variant Validator's REST API response as a dictionary
@@ -104,8 +143,12 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
 
         contig = self._build.contig_by_name(variant_data["chr"])
         if contig is None:
-            raise VariantValidatorDecodeException(
-                f"Contig {variant_data['chr']} was not found in build {self._build.identifier}"
+            raise VariantCoordinateFinderException(
+                kind="validation",
+                context=f"finding coordinates of {item}",
+                issues=(
+                    f"Contig {variant_data['chr']} was not found in {self._build.identifier}",
+                )
             )
 
         pos = int(variant_data["pos"])

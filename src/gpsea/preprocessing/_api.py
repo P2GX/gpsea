@@ -17,6 +17,10 @@ from gpsea.model import (
 T = typing.TypeVar("T")
 
 
+class GpseaPreprocessingException(Exception):
+    pass
+
+
 class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def find_coordinates(self, item: T) -> typing.Optional[VariantCoordinates]:
@@ -27,9 +31,35 @@ class VariantCoordinateFinder(typing.Generic[T], metaclass=abc.ABCMeta):
         and `None` may be returned.
 
         Raises:
-            ValueError: if there is an error of any kind.
+            VariantCoordinateFinderException: if there is an error of any kind.
         """
         pass
+
+
+class VariantCoordinateFinderException(typing.Generic[T], GpseaPreprocessingException):
+    """
+    Describes an issue encountered during establishing coordinates of a variant.
+
+    The issue can be one of the following kinds:
+    * `validation`: the variant should be fixed and analyzed again.
+      Retrying should be attempted after resolving the issue.
+    * `timeout`: the operation timed out. Retrying it might succeed.
+
+    :param kind: an optional issue kind.
+    :param context: description of the action being performed.
+    :param issues: optional additional information.
+    """
+
+    def __init__(
+        self,
+        kind: typing.Literal["validation", "timeout"] | None,
+        context: str,
+        issues: typing.Iterable[str] | None = None,
+    ):
+        super().__init__()
+        self.kind = kind
+        self.context = context
+        self.issues = None if issues is None else tuple(issues)
 
 
 class FunctionalAnnotator(metaclass=abc.ABCMeta):
@@ -216,7 +246,7 @@ class PreprocessingValidationResult:
                 if node.has_errors_or_warnings(include_subsections=True):
                     # We must report the node label even if there are no issues with the node.
                     l_pad = " " * (node.level * indent)
-                    file.write(l_pad + node.label)
+                    file.write(l_pad + str(node.label))
                     file.write(os.linesep)
 
                     if node.has_errors():

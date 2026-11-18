@@ -2,41 +2,46 @@ import logging
 import typing
 
 import hpotk
+import phenopackets.schema.v2.core.individual_pb2 as ppi
 from hpotk.util import validate_instance
-from hpotk.validate import ValidationRunner, ValidationLevel
-
+from hpotk.validate import ValidationLevel, ValidationRunner
+from phenopackets.schema.v2.core.base_pb2 import OntologyClass as PPOntologyClass
+from phenopackets.schema.v2.core.base_pb2 import TimeElement as PPTimeElement
+from phenopackets.schema.v2.core.disease_pb2 import Disease as PPDisease
+from phenopackets.schema.v2.core.interpretation_pb2 import GenomicInterpretation
+from phenopackets.schema.v2.core.measurement_pb2 import Measurement as PPMeasurement
+from phenopackets.schema.v2.core.phenotypic_feature_pb2 import PhenotypicFeature as PPPhenotypicFeature
+from phenopackets.schema.v2.phenopackets_pb2 import Phenopacket
+from phenopackets.vrs.v1.vrs_pb2 import Variation
+from phenopackets.vrsatile.v1.vrsatile_pb2 import VariationDescriptor, VcfRecord
 from stairval import Level
 from stairval.notepad import Notepad
 
-import phenopackets.schema.v2.core.individual_pb2 as ppi
-from phenopackets.schema.v2.phenopackets_pb2 import Phenopacket
-from phenopackets.schema.v2.core.base_pb2 import TimeElement as PPTimeElement, OntologyClass as PPOntologyClass
-from phenopackets.schema.v2.core.phenotypic_feature_pb2 import PhenotypicFeature as PPPhenotypicFeature
-from phenopackets.schema.v2.core.disease_pb2 import Disease as PPDisease
-from phenopackets.schema.v2.core.measurement_pb2 import Measurement as PPMeasurement
-from phenopackets.schema.v2.core.interpretation_pb2 import GenomicInterpretation
-from phenopackets.vrsatile.v1.vrsatile_pb2 import VcfRecord, VariationDescriptor
-from phenopackets.vrs.v1.vrs_pb2 import Variation
-
-from gpsea.model import SampleLabels, Patient, Sex, Disease, Measurement
 from gpsea.model import (
-    VariantClass,
-    VariantCoordinates,
-    ImpreciseSvInfo,
-    VariantInfo,
-    Variant,
-    Phenotype,
+    Age,
+    Disease,
     Genotype,
     Genotypes,
-    Age,
-    VitalStatus,
+    ImpreciseSvInfo,
+    Measurement,
+    Patient,
+    Phenotype,
+    SampleLabels,
+    Sex,
     Status,
+    Variant,
+    VariantClass,
+    VariantCoordinates,
+    VariantInfo,
+    VitalStatus,
 )
 from gpsea.model.genome import GenomeBuild, GenomicRegion, Strand
+
 from ._api import (
-    VariantCoordinateFinder,
     FunctionalAnnotator,
     ImpreciseSvFunctionalAnnotator,
+    VariantCoordinateFinder,
+    VariantCoordinateFinderException,
 )
 from ._patient import PatientCreator
 
@@ -100,13 +105,7 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
         item: GenomicInterpretation,
     ) -> typing.Optional[VariantCoordinates]:
         """
-        Tries to extract the variant coordinates from the `GenomicInterpretation`.
-
-        Args:
-            item (GenomicInterpretation): a genomic interpretation element from Phenopacket Schema
-
-        Returns:
-            typing.Optional[VariantCoordinates]: variant coordinates
+        Extracts variant coordinates from the `GenomicInterpretation`.
         """
         if not isinstance(item, GenomicInterpretation):
             raise ValueError(f"item must be a Phenopacket GenomicInterpretation but was type {type(item)}")
@@ -116,10 +115,12 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
         if self._vcf_is_available(variation_descriptor.vcf_record):
             # We have a VCF record.
             if not self._check_assembly(variation_descriptor.vcf_record.genome_assembly):
-                raise ValueError(
-                    f"Variant id {variation_descriptor.id} for individual {item.subject_or_biosample_id} "
-                    "has a different Genome Assembly than what was given. "
-                    f"{variation_descriptor.vcf_record.genome_assembly} is not {self._build.identifier}."
+                raise VariantCoordinateFinderException(
+                    kind="validation",
+                    context="checking genome assembly",
+                    issues=(
+                        f"GPSEA expects {self._build.identifier} but VCF indicates the variant is located on {variation_descriptor.vcf_record.genome_assembly}",
+                    ),
                 )
             contig = self._build.contig_by_name(variation_descriptor.vcf_record.chrom)
             assert contig is not None
@@ -152,7 +153,11 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
                 alt = "<DUP>"
                 change_length = end - start
             else:
-                raise ValueError(f"The copy number of {number} is not supported. Supported values: {{1, 3}}")
+                raise VariantCoordinateFinderException(
+                    kind="validation",
+                    context="validating cnv",
+                    issues=(f"The copy number of {number} is not supported. Supported values: {{1, 3}}",),
+                )
 
             region = GenomicRegion(contig, start, end, Strand.POSITIVE)
             return VariantCoordinates(region, ref, alt, change_length)
@@ -160,12 +165,20 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
             # We have some expressions. Let's try to find the 1st expression with `hgvs.c` syntax.
             for expression in variation_descriptor.expressions:
                 if expression.syntax == "hgvs.c":
-                    return self._hgvs_finder.find_coordinates(expression.value)
+                    try:
+                        return self._hgvs_finder.find_coordinates(expression.value)
+                    except VariantCoordinateFinderException as e:
+                        # TODO: handle properly
+                        raise e
         elif self._looks_like_large_sv(variation_descriptor):
             # We cannot extract exact variant coordinates from a variation descriptor in this format.
             return None
         else:
-            raise ValueError("Unable to find variant coordinates.")
+            raise VariantCoordinateFinderException(
+                kind=None,
+                context="finding variant coordinates",
+                issues=("Unrecognized variant format",)
+            )
 
     def _check_assembly(self, genome_assembly: str) -> bool:
         if "38" in genome_assembly and self._build.identifier == "GRCh38.p13":
@@ -701,11 +714,23 @@ class PhenopacketPatientCreator(PatientCreator[Phenopacket]):
 
         try:
             variant_coordinates = self._coord_finder.find_coordinates(genomic_interpretation)
-        except ValueError as e:
-            notepad.add_warning(
-                f"Expected a VCF record, a VRS CNV, or an expression with `hgvs.c` but encountered an error {e.args}",
-                "Remove variant from testing",
-            )
+        except VariantCoordinateFinderException as e:
+            match e.kind:
+                case "validation":
+                    notepad.add_warning(
+                        f"While {e.context}, the following issues were encountered: {', '.join(e.issues) if e.issues else ''}",
+                        "Fix the variant and try again",
+                    )
+                case "timeout":
+                    notepad.add_warning(
+                        "Encountered timeout",
+                        "Try again later",
+                    )
+                case None | _:
+                    notepad.add_warning(
+                        f"Encountered an error while {e.context}",
+                        "Remove variant from testing",
+                    )
             return None
 
         if variant_coordinates is None:
