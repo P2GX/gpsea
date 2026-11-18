@@ -175,9 +175,7 @@ class PhenopacketVariantCoordinateFinder(VariantCoordinateFinder[GenomicInterpre
             return None
         else:
             raise VariantCoordinateFinderException(
-                kind=None,
-                context="finding variant coordinates",
-                issues=("Unrecognized variant format",)
+                kind=None, context="finding variant coordinates", issues=("Unrecognized variant format",)
             )
 
     def _check_assembly(self, genome_assembly: str) -> bool:

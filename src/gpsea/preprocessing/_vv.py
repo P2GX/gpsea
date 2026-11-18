@@ -92,7 +92,7 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
                                         issues.extend(val["validation_warnings"])
                         raise VariantCoordinateFinderException(
                             kind="validation",
-                            context=f'finding coordinates of {item}',
+                            context=f"finding coordinates of {item}",
                             issues=issues,
                         )
                     case "gene_variant":
@@ -105,12 +105,12 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
             except requests.exceptions.Timeout as e:
                 raise VariantCoordinateFinderException(
                     kind="timeout",
-                    context=f'finding coordinates of {item}',
+                    context=f"finding coordinates of {item}",
                 ) from e
             except requests.exceptions.RequestException | VariantValidatorDecodeException as e:
                 raise VariantCoordinateFinderException(
                     kind=None,
-                    context=f'finding coordinates of {item}',
+                    context=f"finding coordinates of {item}",
                     issues=("Error occurred while finding coordinates",),
                 ) from e
         else:
@@ -119,10 +119,8 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
             # the HGVS expression is correct.
             raise VariantCoordinateFinderException(
                 kind="validation",
-                context=f'finding coordinates of {item}',
-                issues=(
-                    f'Unsupported HGVS format: {input}'
-                ),
+                context=f"finding coordinates of {item}",
+                issues=(f"Unsupported HGVS format: {input}"),
             )
 
     def _extract_variant_coordinates(
@@ -146,9 +144,7 @@ class VVHgvsVariantCoordinateFinder(VariantCoordinateFinder[str]):
             raise VariantCoordinateFinderException(
                 kind="validation",
                 context=f"finding coordinates of {item}",
-                issues=(
-                    f"Contig {variant_data['chr']} was not found in {self._build.identifier}",
-                )
+                issues=(f"Contig {variant_data['chr']} was not found in {self._build.identifier}",),
             )
 
         pos = int(variant_data["pos"])

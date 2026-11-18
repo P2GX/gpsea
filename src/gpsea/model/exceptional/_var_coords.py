@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 VariantCoordinateFinderExceptionKind = typing.Literal["validation", "timeout"]
 
+
 @dataclass(frozen=True, slots=True)
 class VariantCoordinateFinderExceptionData:
     kind: VariantCoordinateFinderExceptionKind | None
